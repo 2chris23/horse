@@ -236,7 +236,11 @@ $l = url(\Config::get('logos.fbhws'));
                                                 @endif
                                             </div>
                                         </a>
-                                        <div @if( $venta == 0) @include('backend.common.toolmoneda',['horse'=>$v,'p'=>1,'class'=>' short-description-1 clearfix ']) @else class="short-description-1 clearfix" @endif >
+                                        <?php if($venta == 0): ?>
+                                        <div @include('backend.common.toolmoneda',['horse'=>$v,'p'=>1,'class'=>' short-description-1 clearfix ']) >
+                                        <?php else: ?>
+                                        <div class="short-description-1 clearfix" >
+                                        <?php endif; ?>
                                             <div class="category-title">
                                                 <a href="{!! $link !!}">{!! trans('horse.raza.'.$raza)!!}</a>
                                             </div>

@@ -160,9 +160,8 @@ class Functions extends Controller
             'AutoFormat.RemoveEmpty' => true,
 
         ];
-        $p = new Purify();
-        //$p = Purify::
-        $str = $p->clean($str, $config);
+        
+        $str = \Stevebauman\Purify\Facades\Purify::clean($str, $config);
         $str = str_replace('<br />', '. ', $str);
         //$str = filter_var ( $str, FILTER_SANITIZE_SPECIAL_CHARS);
         return $str;

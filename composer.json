@@ -12,6 +12,7 @@
         "jenssegers/agent": "^2.6",
         "laracasts/flash": "^3.2",
         "laravel/framework": "^13.17",
+        "laravel/helpers": "^1.8",
         "laravel/tinker": "^3.0",
         "laravel/ui": "^4.6",
         "mcamara/laravel-localization": "^2.4",

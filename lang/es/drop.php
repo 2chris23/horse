@@ -1,0 +1,11 @@
+<?php return ['default' => '',
+    'replace' => 'Arrastra y suelta tus archivos o haz clic para reemplazarlo',
+    'remove' => 'Borrar',
+    'error' => 'Un error ha ocurrido',
+    'fileSize' => 'El tamaño del archivo es demasiado alto ({{ value }} max).',
+    'minWidth' => 'El ancho de la imágen es demasiado pequeño ({{ value }}px min).',
+    'maxWidth' => 'El ancho de la imágen es demasiado grande ({{ value }}px max).',
+    'minHeight' => 'El alto de la imágen es demasiado pequeño ({{ value }}px min).',
+    'maxHeight' => 'El alto de la imágen es demasiado grande ({{ value }}px max).',
+    'imageFormat' => 'El formato de la imágen no es permitido, solo ({{ value }}).',
+    'fileExtension' => 'La extensión de la imágen no es permitido, solo ({{ value }} only).',];

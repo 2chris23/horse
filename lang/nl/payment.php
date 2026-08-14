@@ -1,0 +1,13 @@
+<?php return array('Tittle' => 'Betalingen',
+    'menu' => array('caption' => 'Betalingen',
+        'create' => 'Creëren',
+        'show' => 'Tonen',
+        'index' => 'Inhoud',
+        'edit' => 'Uitgeven',), 'attrib' => array('horses_id' => 'Paard-ID',
+        'users_id' => 'Gebruiker',
+        'confirm' => 'Bevestigd voor verkoop',
+        'transaction_id' => 'Transactie-ID',
+        'gateway_id' => 'Betalingsgateway',
+        'created_by' => 'Gemaakt door',
+        'updated_by' => 'Bijgewerkt door',
+        'deleted_by' => 'Verwijderd door',), 'chooseone' => 'Selecteer er een',);

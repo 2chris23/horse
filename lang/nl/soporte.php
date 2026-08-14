@@ -1,0 +1,13 @@
+<?php return array('asignado' => '<div style="text-align: justify;">Beste <strong>:name</strong>, <br>we informeren u dat we uw ticket hebben ontvangen <strong>":titulo"</strong>, van categorie :categoria.<br><br> Binnenkort zal ons ondersteuningsteam uw verzoek inwilligen. </div><br> <br>',
+    'comentario' => '<div style="text-align: justify;"> De gebruiker: ":usuario" om commentaar te geven op het ticket ":titulo"<br><br><div style="padding-left:5%;">:contenido</div> <br>Nous vous invitons à entrer <strong>HorsesWorldSale.com</strong> et à nous dire si cette réponse vous a aidé.</div><br><br>',
+    'status' => '<div style="text-align:justify;"> Beste <strong>:name</strong>, <br> We informeren u dat uw ticket: <strong>:titulo</strong> status is gewijzigd in: :status. </div><br>',
+    'tituloasignado' => 'Het supportteam van HorsesWorldSale.com informeert u <br> We hebben uw ticket ontvangen          <br>          <br>',
+    'titulocomentario' => 'Het supportteam van HorsesWorldSale.com informeert u <br> U krijgt een nieuw antwoord van het ":titulo" -ticket',
+    'titulocorreoasignado' => 'Steun HorsesWorldSale.com <br> We hebben je ticket ontvangen :name',
+    'titulocorreocomentario' => 'Support HorsesWorldSale.com <br> Er is een nieuw antwoord voor het ticket :name',
+    'titulocorreostatus' => 'HorsesWorldSale.com <br>Hulp bij Ticket :name veranderde staat',
+    'titulocorreotransferencia' => 'Steun HorsesWorldSale.com <br> Het ticket is overgedragen :name',
+    'titulostatus' => 'Het supportteam van HorsesWorldSale.com informeert u <br> Uw ticket is van staat veranderd',
+    'titulotransferencia' => 'Ondersteuning HorseWorldSale.com vous report over transfert de :titulo',
+    'transferencia' => 'De support heeft je ticket ontvangen ":titulo"',
+    'texto' => 'Ondersteuning',);

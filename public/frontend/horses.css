@@ -1,0 +1,50 @@
+@font-face {
+  font-family: 'icomoon1';
+  src:  url('fonts/icomoon.eot?dh70k6');
+  src:  url('fonts/icomoon.eot?dh70k6#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?dh70k6') format('truetype'),
+    url('fonts/icomoon.woff?dh70k6') format('woff'),
+    url('fonts/icomoon.svg?dh70k6#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+i.horse {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon1' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.horse-camino:before {
+  content: "\e900";
+}
+.horse-comiendo:before {
+  content: "\e901";
+}
+.horse-parado:before {
+  content: "\e902";
+}
+.horse-parado-1:before {
+  content: "\e903";
+}
+.horse-pata:before {
+  content: "\e904";
+}
+.horse-pata-1:before {
+  content: "\e905";
+}
+.horse-pata-2:before {
+  content: "\e906";
+}
+.horse-salto:before {
+  content: "\e907";
+}

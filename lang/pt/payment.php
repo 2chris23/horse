@@ -1,0 +1,13 @@
+<?php return array('Tittle' => 'Pagamentos',
+    'menu' => array('caption' => 'Pagamentos',
+        'create' => 'Criar',
+        'show' => 'Mostrar',
+        'index' => 'Indice',
+        'edit' => 'Editar',), 'attrib' => array('horses_id' => 'ID do Cavalo',
+        'users_id' => 'Usuário',
+        'confirm' => 'Confirmado para venda',
+        'transaction_id' => 'ID da transação',
+        'gateway_id' => 'Gateway de pagamento',
+        'created_by' => 'Criado por',
+        'updated_by' => 'Atualizado por',
+        'deleted_by' => 'Excluído por',), 'chooseone' => 'Selecióne um',);

@@ -1,0 +1,11 @@
+<?php return array('default' => '',
+    'replace' => 'Ziehen Sie Ihre Dateien per Drag&Drop oder klicken Sie, um sie zu ersetzen.',
+    'remove' => 'Löschen',
+    'error' => 'Ein Fehler ist aufgetreten',
+    'fileSize' => 'Die Dateigröße ist zu groß ({{ value }} max).',
+    'minWidth' => 'Die Breite des Bildes ist zu klein ({{ value }}px min).',
+    'maxWidth' => 'Die Breite des Bildes ist zu groß ({{ value }}px max).',
+    'minHeight' => 'Die Bildhöhe ist zu klein ({{ value }}px min).',
+    'maxHeight' => 'Die Bildhöhe ist zu groß ({{ value }}px max).',
+    'imageFormat' => 'Die Bildformatierung ist nicht erlaubt ({{ value }}).',
+    'fileExtension' => 'Image-Erweiterung ist nicht erlaubt, nur ({{ value }} nur).',);

@@ -1,0 +1,13 @@
+<?php return array('Tittle' => 'Betalingsgateways',
+    'menu' => array('caption' => 'Betalingsgateways',
+        'create' => 'Creëren',
+        'show' => 'Tonen',
+        'index' => 'Inhoud',
+        'edit' => 'Uitgeven',), 'attrib' => array('name' => 'Naam',
+        'url' => 'Adres URL',
+        'public_key' => 'Openbare sleutel',
+        'public_id' => 'Identificatie openbaar',
+        'status' => 'Staat',
+        'created_by' => 'Gemaakt door',
+        'updated_by' => 'Bijgewerkt door',
+        'deleted_by' => 'Verwijderd door',), 'chooseone' => 'Selecteer er een',);

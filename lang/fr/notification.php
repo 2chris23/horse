@@ -1,0 +1,13 @@
+<?php return array('asunto' => 'Sujet',
+    'contact' => 'Contact',
+    'correo' => 'Email',
+    'created_at' => 'Date de creation',
+    'inbox' => 'Boîte aux lettres',
+    'index' => 'Liste de notification',
+    'mensaje' => 'Message',
+    'numero' => 'Le numéro',
+    'support' => 'Support technique',
+    'nosms' => 'Vous n\'avez pas de messages',
+    'newsms' => 'Vous avez :num nouveaux messages',
+    'throttle' => 'Trop de tentatives, veuillez patienter :seconds secondes.',
+    'other' => 'Prénom',);

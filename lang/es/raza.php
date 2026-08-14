@@ -1,0 +1,10 @@
+<?php return ['attrib' => ['name' => 'Nombre',
+    'status' => 'Prioridad',
+    'created_by' => 'Creado por',
+    'updated_by' => 'Actualizado por',
+    'deleted_by' => 'Borrado por',], 'Tittle' => 'Raza de caballos',
+    'menu' => ['caption' => 'Raza de Caballos',
+        'create' => 'Crear',
+        'show' => 'Mostrar',
+        'index' => 'Indice',
+        'edit' => 'Editar',], 'chooseone' => 'Selecciona uno',];

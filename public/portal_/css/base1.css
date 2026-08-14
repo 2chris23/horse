@@ -1,0 +1,14 @@
+.todo-center {
+    left: 25%;
+    position: relative;
+
+}
+
+.page-header-area::before {
+    /*background: rgba(36, 40, 47, 0.5);*/
+    background: transparent;
+}
+
+.f-s-18 {
+    font-size: 18px;
+}

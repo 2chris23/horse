@@ -1,0 +1,1 @@
+<?php return array('contacto' => array(0 => 'Select one', 1 => 'Tamer', 2 => 'Foreman', 3 => 'Stables', 4 => 'Trainer', 5 => 'Horseman', 6 => 'Seller', 7 => 'Others',), 'trabajo' => array(0 => 'Select one', 1 => 'Foreman', 2 => 'Mayoral', 3 => 'Stables', 4 => 'Trainer', 5 => 'Horseman', 6 => 'Seller', 7 => 'Others',),);

@@ -1,0 +1,13 @@
+<?php return array('Tittle' => 'Passerelles de paiement',
+    'menu' => array('caption' => 'Passerelles de paiement',
+        'create' => 'Créer',
+        'show' => 'Montrer',
+        'index' => 'Indice',
+        'edit' => 'Modifier',), 'attrib' => array('name' => 'Nom',
+        'url' => 'Adresse URL',
+        'public_key' => 'Clé publique',
+        'public_id' => 'Id Public',
+        'status' => 'Etat',
+        'created_by' => 'Créé par',
+        'updated_by' => 'Mis à jour par',
+        'deleted_by' => 'Supprimé par',), 'chooseone' => 'Sélectionnez un',);

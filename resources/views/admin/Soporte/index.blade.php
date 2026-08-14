@@ -1,0 +1,143 @@
+@extends('backend.layouts.base')
+@section('title', trans('horse.Tittle') )
+
+@section('topcss')
+
+    <style>
+
+        .pad-5-5 {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+    </style>
+@endsection
+@section('content')
+
+    <div id="datos" class="card col-12 ">
+        <div class="card-block">
+            <div class='card-header bg-white '>
+                Soporte
+                {{--
+                Listado de posibles clientes @if(count($clientes) !=0)
+                    <span style="padding-left:10px;"><span class="badge badge-pill badge-warning notifications_badge_top">{!! count($clientes )!!}</span>
+                                                 </span>
+                     @endif
+                --}}
+            </div>
+            <div class="row">
+                <div class="col-lg-12 m-t-25">
+                    <div class="row">
+                        <div class="offset-9 col-3  text-right ">
+                            <div class="row">
+                                <div class="col-6 ">
+                                    <a href="{!! route('clientes.create') !!}"
+                                       class="save btn btn-block btn-success glow_button">{!! trans('clientes.new') !!}</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" col-12 table-responsive noSwipe m-t-20">
+
+                        </div>
+
+                        {{--<div class="offset-3 col-6 text-center ">
+                            {{$clientes->render()}}
+                        </div>--}}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@endsection
+
+@section('bottomjs_')
+    <script>
+        $(document).ready(function () {
+
+
+            var table = $('#tabla').dataTable({
+                "order": [[0, "desc"]],
+                "pageLength": 25,
+                "language": {
+                    "decimal": ",",
+                    "thousands": ".",
+                    //"lengthMenu": "Mostrando _MENU_ registros por pagina",
+                    "zeroRecords": "{!! trans('users.zerorecord') !!}",
+                    "info": "{!! trans('users.tableinfo') !!}",
+                    "loadingRecords": "{!! trans('users.tableloading') !!}",
+                    //"processing": "{!! trans('users.tablebusy') !!}",
+                    //"search": "Filter records:",
+                    "search": "{!! trans('users.tablesearch') !!}",
+                    "infoEmpty": "{!! trans('users.tableinfoempty') !!}",
+                    "infoFiltered": "{!! trans('users.tableinfofilter') !!}",
+                    "emptyTable": "{!! trans('users.tableempty') !!}",
+                    "lengthMenu": "{!! trans('users.tableregistros') !!}","emptyTable": "{!! trans('users.emptyTable') !!}",
+                    "paginate": {
+                        "first": "{!! trans('users.tablefirst') !!}",
+                        "last": "{!! trans('users.tablelast') !!}",
+                        "next": "{!! trans('users.tablenext') !!}",
+                        "previous": "{!! trans('users.tableprevious') !!}",
+
+                    },
+                    {{--
+                                "ajax": {
+                                    'url': "{!! route('fotospost.index') !!}",
+                                    'type': 'POST',
+                                    'beforeSend': function (request) {
+                                        request.setRequestHeader("X-CSRF-TOKEN", token);
+                                        request.setRequestHeader("csrftoken", token);
+                                    }
+
+                                },
+                                --}}
+
+
+                },
+
+                "fnInitComplete": function (oSettings, json) {
+                    $('#tabla').on('page.dt', function () {
+                        //var info = table.page.info();
+                        //console.log( 'Showing page: '+info.page+' of '+info.pages );
+                        cargarimagenes();
+                        $('.page-link').on('click', function () {
+                            cargarimagenes();
+                        });
+                    });
+                },
+
+                //"processing": true,
+                //"serverSide": true,
+            });
+            {{--}}
+            var t1 = $('#tabla').dataTable({
+                "ajax": {
+                    'url':"{!! route('fotospost.index') !!}",
+                    'type':'POST',
+                    'beforeSend':function(request){
+                        console.log("EEEEEEEEEEEEEEEEEEE");
+                        request.setRequestHeader("X-CSRF-TOKEN",token);
+                        request.setRequestHeader("csrftoken",token);
+                    }
+
+                },
+            });
+            --}}
+            {{--
+            t1.ajax.url("http://horse.com/admin/Fotos").load();
+                //.url("{!! route('fotospost.index') !!}").load();
+            //"http://horse.com/admin/Fotos"
+            --}}
+            //table.ajax.url("http://horse.com/admin/Fotos").load();
+
+            $(window).hover(function () {
+                cargarimagenes();
+            });
+            $('#tabla tbody').on('click', 'tr', function () {
+                console.log('clicl');
+                //var data = table.row(this).data();
+                //alert('You clicked on ' + data[0] + '\'s row');
+            });
+        });
+    </script>
+@endsection

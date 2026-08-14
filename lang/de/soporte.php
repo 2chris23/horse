@@ -1,0 +1,13 @@
+<?php return array('asignado' => '<div style="text-align: justify;">Lieber <strong>:name</strong>, <br> Wir informieren Sie, dass wir Ihr Ticket erhalten haben <strong>":titulo"</strong>, der Kategorie :categoria. <br> <br>Bald wird unser Support-Team Ihre Anfrage bearbeiten. </div><br><br>',
+    'comentario' => '<div style="text-align:justify;"> Der Benutzer: ":usuario" hat das Ticket ":titulo" kommentiert.<br><br><div style="padding-left:5%;">:contenido</div><br> Wir laden Sie ein, <strong>HorsesWorldSale.com</strong> einzugeben und uns mitzuteilen, ob diese Antwort Ihnen geholfen hat.</div><br><br>',
+    'status' => '<div style="text-align:justify;">Sehr geehrte <strong>:name</strong>, <br>Wir weisen Sie darauf hin, dass Ihr ticket: <strong>:titulo</strong> den Status in: :status geändert hat.</div><br><br>',
+    'tituloasignado' => 'Das Support Team HorsesWorldSale.com informiert Sie <br> Wir haben Ihr Ticket erhalten         <br>         <br>',
+    'titulocomentario' => 'Das Support Team HorsesWorldSale.com informiert Sie <br> <br> Sie haben eine neue Antwort auf das Ticket ":titulo"',
+    'titulocorreoasignado' => 'Support HorsesWorldSale.com<br>Wir haben Ihr Ticket erhalten :name',
+    'titulocorreocomentario' => 'Support HorsesWorldSale.com<br>Es gibt eine neue Antwort für das Ticket :name',
+    'titulocorreostatus' => 'HorsesWorldSale.com support<br>Das Ticket :name hat den Status geändert',
+    'titulocorreotransferencia' => 'Support HorsesWorldSale.com<br>Das Ticket wurde übertragen :name',
+    'titulostatus' => 'Das Support-Team HorsesWorldSale.com informiert Sie<br>Ihr Ticket hat den Status geändert',
+    'titulotransferencia' => 'Support HorseWorldSale.com informiert Sie über die Übertragung von :titulo',
+    'transferencia' => 'Support hat Ihr Ticket erhalten ":titulo"',
+    'texto' => 'Unterstützung',);

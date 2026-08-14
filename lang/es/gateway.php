@@ -1,0 +1,13 @@
+<?php return ['Tittle' => 'Pasarelas de Pago',
+    'menu' => ['caption' => 'Pasarelas de Pago',
+        'create' => 'Crear',
+        'show' => 'Mostrar',
+        'index' => 'Indice',
+        'edit' => 'Editar',], 'attrib' => ['name' => 'Nombre',
+        'url' => 'Dirección Url',
+        'public_key' => 'Llave Pública',
+        'public_id' => 'Id Público',
+        'status' => 'Estado',
+        'created_by' => 'Creado por',
+        'updated_by' => 'Actualizado por',
+        'deleted_by' => 'Borrado por',], 'chooseone' => 'Selecciona uno',];

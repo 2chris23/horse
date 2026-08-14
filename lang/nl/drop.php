@@ -1,0 +1,11 @@
+<?php return array('default' => '',
+    'replace' => 'Versleep je bestanden of klik om het te vervangen',
+    'remove' => 'Verwijderen',
+    'error' => 'Er is een fout opgetreden',
+    'fileSize' => 'De bestandsgrootte is te hoog ({{ value }} max).',
+    'minWidth' => 'De breedte van de afbeelding is te klein ({{ value }}px min).',
+    'maxWidth' => 'De breedte van de afbeelding is te groot ({{ value }}px max).',
+    'minHeight' => 'De hoogte van de afbeelding is te klein ({{ value }}px min).',
+    'maxHeight' => 'De hoogte van het beeld is te groot ({{ value }}px max).',
+    'imageFormat' => 'Het formaat van de afbeelding is niet toegestaan, alleen ({{ value }}).',
+    'fileExtension' => 'De extensie van de afbeelding is niet toegestaan, alleen ({{ value }} alleen).',);

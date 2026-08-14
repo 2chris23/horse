@@ -1,0 +1,13 @@
+<?php return ['Tittle' => 'Pagos',
+    'menu' => ['caption' => 'Pagos',
+        'create' => 'Crear',
+        'show' => 'Mostrar',
+        'index' => 'Indice',
+        'edit' => 'Editar',], 'attrib' => ['horses_id' => 'Id de Caballo',
+        'users_id' => 'Usuario',
+        'confirm' => 'Confirmado de venta',
+        'transaction_id' => 'Id de transacción',
+        'gateway_id' => 'Pasarela de pago',
+        'created_by' => 'Creado por',
+        'updated_by' => 'Actualizado por',
+        'deleted_by' => 'Borrado por',], 'chooseone' => 'Selecciona uno',];

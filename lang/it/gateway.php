@@ -1,0 +1,13 @@
+<?php return array('Tittle' => 'Gateway di pagamento',
+    'menu' => array('caption' => 'Gateway di pagamento',
+        'create' => 'Creare',
+        'show' => 'Mostrare',
+        'index' => 'Índice',
+        'edit' => 'Modifica',), 'attrib' => array('name' => 'Nome',
+        'url' => 'URL indirizzo',
+        'public_key' => 'Chiave pubblica',
+        'public_id' => 'Id pubblico',
+        'status' => 'Estato',
+        'created_by' => 'Creato da',
+        'updated_by' => 'Aggiornato da',
+        'deleted_by' => 'Elimina da',), 'chooseone' => 'Scegline uno',);

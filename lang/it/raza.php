@@ -1,0 +1,10 @@
+<?php return array('Tittle' => 'Razze di cavalli',
+    'menu' => array('caption' => 'Razze di cavalli',
+        'create' => 'Creare',
+        'show' => 'Mostrare',
+        'index' => 'Índice',
+        'edit' => 'Modifica',), 'attrib' => array('name' => 'Nome',
+        'status' => 'Priorità',
+        'created_by' => 'Creato da',
+        'updated_by' => 'Aggiornato da',
+        'deleted_by' => 'Elimina da',), 'chooseone' => 'Scegline uno',);

@@ -1,0 +1,30 @@
+<?php
+
+return array('MyHorsesV1' => '/Paard', 'Caballos' => '/Paarden',
+    'JsTablaCaballo' => '/tablehorse_nl.js',
+    'MyPage' => '/',
+    'MyContact' => '/Contact',
+    'MyGallery' => '/Galerij',
+    'MyGallery2' => '/Galerij2',
+    'MyGallery2post' => '/Galerij3',
+    'MyVideo' => '/Video',
+    'MyInstalation' => '/Uitrusting',
+    'MyInstalation2' => '/Uitrusting2',
+    'MySell' => '/Verkoop',
+    'MySellDetailSell' => '/Verkoop/{horse?}',
+    'MyHorseDetailed' => '/Detail/{horse?}',
+
+    'Trabajo' => '/Ikwerk',
+    'CaballoPortalDetalle' => '/Paarden/{slug?}',
+
+    'TrabajoIndex' => '/Ikwerk',
+    'MyHorses' => '/Paarden/{horse?}',
+    'MyHorseDetailedBase' => '/Detail/{horse?}',
+    'Listacss' => '/lista_nl.css',
+    'Listajs' => '/lista_nl.js',
+    'listaportal' => '/LijstVanPaarden',
+    'lista5' => '/lista5',
+    'NuevaBusqueda' => '/NieuweZoekopdracht',
+    'probusqueda' => '/Zoekopdracht',
+    'probusquedapost' => '/Zoekopdracht_p',
+);

@@ -1,0 +1,10 @@
+<?php return array('Tittle' => 'Pferderasse',
+    'menu' => array('caption' => 'Pferderasse',
+        'create' => 'Anlegen',
+        'show' => 'Zeige',
+        'index' => 'Index',
+        'edit' => 'Bearbeiten',), 'attrib' => array('name' => 'Vorname Vorname',
+        'status' => 'Priorität',
+        'created_by' => 'Erstellt von',
+        'updated_by' => 'Aktualisiert von',
+        'deleted_by' => 'Gelöscht von',), 'chooseone' => 'Wählen Sie einen',);

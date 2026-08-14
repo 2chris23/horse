@@ -1,0 +1,79 @@
+User-agent: *
+Disallow: /login
+Disallow: /panel/*
+Disallow: /admin/*
+Disallow: /panel/Validacion/*
+Disallow: /panel/reseting/*
+Disallow: /panel/passwordreset/*
+Disallow: /panel/addphone/*
+Disallow: /panel/Lang/*
+Disallow: /panel/detalle/*
+Disallow: /limpiar
+Disallow: /print/*
+Disallow: /Caballoestado
+Disallow: /Raza/*
+
+Disallow: /es/es/*
+Disallow: /es/en/*
+Disallow: /es/de/*
+Disallow: /es/fr/*
+Disallow: /es/it/*
+Disallow: /es/nl/*
+Disallow: /es/pr/*
+
+
+Disallow: /en/es/*
+Disallow: /en/en/*
+Disallow: /en/de/*
+Disallow: /en/fr/*
+Disallow: /en/it/*
+Disallow: /en/nl/*
+Disallow: /en/pr/*
+
+
+Disallow: /de/es/*
+Disallow: /de/en/*
+Disallow: /de/de/*
+Disallow: /de/fr/*
+Disallow: /de/it/*
+Disallow: /de/nl/*
+Disallow: /de/pr/*
+
+
+Disallow: /fr/es/*
+Disallow: /fr/en/*
+Disallow: /fr/de/*
+Disallow: /fr/fr/*
+Disallow: /fr/it/*
+Disallow: /fr/nl/*
+Disallow: /fr/pr/*
+
+Disallow: /it/es/*
+Disallow: /it/en/*
+Disallow: /it/de/*
+Disallow: /it/fr/*
+Disallow: /it/it/*
+Disallow: /it/nl/*
+Disallow: /it/pr/*
+
+
+Disallow: /nl/es/*
+Disallow: /nl/en/*
+Disallow: /nl/de/*
+Disallow: /nl/fr/*
+Disallow: /nl/it/*
+Disallow: /nl/nl/*
+Disallow: /nl/pr/*
+
+Disallow: /pr/es/*
+Disallow: /pr/en/*
+Disallow: /pr/de/*
+Disallow: /pr/fr/*
+Disallow: /pr/it/*
+Disallow: /pr/nl/*
+Disallow: /pr/pr/*
+Disallow: /print/*
+
+
+Disallow: /landing/js/rs-plugin/videojs
+Sitemap: http: //app.horsesworldsale.com/sitemap.xml

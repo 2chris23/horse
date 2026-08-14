@@ -1,0 +1,134 @@
+/*#ff0000 rojo yt*/
+.h-76 {
+    height: 79px;
+}
+
+.sharedbtn {
+    width: 10px;
+    height: 24px;
+}
+
+.sharedbtn > i {
+    margin-left: -6px;
+    margin-top: -16px;
+    font-size: 15px;
+    color: white;
+}
+
+.slide-main > li > img {
+    margin: auto;
+    max-height: 500px;
+    width: auto;
+}
+
+.volver {
+    /*margin-right: 25%;
+    float: right;
+
+    */
+    padding-top: 35px;
+    padding-left: 0px;
+    text-align: center;
+    font-size: 18px;
+    text-align: center;
+    color: #f58936 !important;
+}
+
+.volver:hover, .volver:focus, .volver:active {
+    color: #a5a5a5 !important;
+    /*transform: scale(1.2);
+    float: right;
+    */
+
+    font-size: 18px!important;
+    padding-top: 35px!important;
+    padding-left: 0px!important;
+    text-align: center;
+    /*
+    margin-right: 25%;
+    padding: 0px;
+    */
+}
+
+.h-50 {
+    max-height: 50px;
+
+}
+
+.h-313-234 {
+    max-height: 234px !important;
+    max-width: 313px !important;
+}
+
+.m-w-313 {
+    min-width: 313px !important;
+    margin-left: 22px !important;
+}
+
+@media (min-width: 0px) and (max-width: 767px) {
+    .page-header-area {
+        /*margin-top: 60px !important;*/
+        padding-top: 260px !important;
+    }
+}
+
+#carousels {
+    max-height: 120px;
+}
+ .fa-play{
+     text-shadow: 0px 0px 11px rgba(0, 0, 0, 1);
+     color: #f58936;
+ }
+ .fa-youtube-play{
+     text-shadow: 0px 0px 11px rgba(0, 0, 0, 1);
+     color: #ff0000;
+ }
+.slide-main > .flex-active-slide > .fa-youtube-play,
+.slide-main > .flex-active-slide > .fa-play
+{
+    font-size: 5em;
+    position: absolute;
+    top: 40%;
+    margin-left: -1%;
+
+}
+
+.slide-thumbnail > li > .fa-play,
+.slide-thumbnail > li > .fa-youtube-play
+{
+    position: relative;
+    top: -5em;
+    left: -1.1em;
+    float: right;
+}
+
+
+
+.nivo-lightbox-image > img {
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 100%;
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.nivo-lightbox-image > img {
+    -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+@media (max-width: 475px) {
+    .post-prev,
+    .post-prev:hover,
+    .post-prev:focus,
+    .post-prev:active {
+        display: none;
+    }
+
+}
+
+.nivo-lightbox-overlay {
+    background-color: #0000007a;
+}

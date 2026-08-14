@@ -1,0 +1,11 @@
+<?php return array('default' => '',
+    'replace' => 'Drag and drop your files or click to replace them',
+    'remove' => 'Delete',
+    'error' => 'An error has occurred',
+    'fileSize' => 'The file size is too high ({{ value }} max).',
+    'minWidth' => 'The width of the image is too small ({{ value }}px min).',
+    'maxWidth' => 'The width of the image is too large ({{ value }}px max}.',
+    'minHeight' => 'The image height is too small ({{ value }}px min}.',
+    'maxHeight' => 'The image height is too large ({{ value }px max).',
+    'imageFormat' => 'Image formatting is not allowed, only ({{ value }}).',
+    'fileExtension' => 'Image extension is not allowed, only ({{ value }} only).',);

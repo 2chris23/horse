@@ -1,0 +1,10 @@
+<?php return array('Tittle' => 'Races de chevaux',
+    'menu' => array('caption' => 'Races de chevaux',
+        'create' => 'Créer',
+        'show' => 'Montrer',
+        'index' => 'Indice',
+        'edit' => 'Modifier',), 'attrib' => array('name' => 'Nom',
+        'status' => 'Priorité',
+        'created_by' => 'Créé par',
+        'updated_by' => 'Mis à jour par',
+        'deleted_by' => 'Supprimé par',), 'chooseone' => 'Sélectionnez un',);

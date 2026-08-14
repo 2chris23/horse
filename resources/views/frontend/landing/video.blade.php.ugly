@@ -1,0 +1,1016 @@
+@extends('frontend.landing.studs.base',['user'=>$user,'stud'=>$stud])
+@section('title', 'Pagina de '.$stud->getName())
+@php
+    $logobasic= url("landing/images/basic/logo.png");
+        $logo =$stud->getLogo();
+        $espanol =  url("landing/img/es.png");
+        $english =  url("landing/img/en.png");
+
+        /*slider*/
+        $dummy = url("landing/images/dummy.png");
+        /*slider 1*/
+        $text1 = "LA APLICACIÓN DE CABALLOS QUE TE HARA LAS COSAS MÄS FACIL PARA GESTIONAR TU NEGOCIO";
+        $stext1 ="¡INSCRÍBETE CON NOSOTROS YA!";
+
+        $text2 = '2 LA APLICACIÓN DE CABALLOS QUE TE HARA LAS COSAS MÄS FACIL PARA GESTIONAR TU NEGOCIO';
+        $stext2 ='LAS COSAS MÄS FACIL PARA GESTIONAR TU NEGOCIO';
+
+        $horseapp ='LA APLICACIÖN DE CABALLOS QUE TE HARA LAS COSAS MÄS FACIL PARA GESTIONAR TU NEGOCIO';
+        $horseinscription ="¡INSCRÍBETE CON NOSOTROS YA!";
+
+        $tittlehorsewordsale ='Horses Word Sale';
+        $contenido ="Este contenido es de prueba";
+        $contenido2 ="Caballos, ventas";
+        $login = "Iniciar sesion";
+        $imgother3 = url("landing/images/other/3.png");
+         //dd($galeria);
+$d[0]= url("landing/images/slider/1/2.jpg");
+$d[1]= url("landing/images/slider/1/1.jpg");
+$d[2]= url('frontend/img/slides/s3.jpg');
+$d[3]= url('frontend/img/gallery/img-2.jpg');
+$d[4]= url('frontend/img/gallery/img-3.jpg');
+$d[5]= url('frontend/img/gallery/img-4.jpg');
+$d[6]= url('frontend/img/gallery/img-5.jpg');
+$d[7]= url('frontend/img/slides/s1.jpg');
+$d[8]= url('frontend/img/slides/s2.jpg');
+$d[9]= url('frontend/img/slides/s3.jpg');
+
+$text[0]= "Nuestro mejor caballo";
+$text[1]= "Nuestra mejor Yegua";
+$text[2]= "Lo mejor en crias";
+$text[3]= "Excelente servicio";
+$text[4]= "";
+$text[5]= "";
+$text[6]= "";
+$text[7]= "";
+$text[8]= "";
+$text[9]= "";
+$stext[0]= "Nuestro mejor caballo";
+$stext[1]= "Nuestra mejor Yegua";
+$stext[2]= "Lo mejor en crias";
+$stext[3]= "Excelente servicio";
+$stext[4]= "";
+$stext[5]= "";
+$stext[6]= "";
+$stext[7]= "";
+$stext[8]= "";
+$stext[9]= "";
+
+@endphp
+@section('csstop')
+    <link href="{!! url('css/ilightbox.css') !!}" rel="stylesheet">
+    <style>
+        .ilightbox-overlay, .ilightbox-loader, .ilightbox-loader *, .ilightbox-holder, .ilightbox-holder .ilightbox-container, .ilightbox-holder .ilightbox-container img.ilightbox-image, .ilightbox-holder .ilightbox-container .ilightbox-caption, .ilightbox-toolbar, .ilightbox-toolbar *, .ilightbox-thumbnails, .ilightbox-thumbnails *, .ilightbox-holder .ilightbox-container .ilightbox-social, .ilightbox-holder .ilightbox-container .ilightbox-social * {
+            float: none;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            outline: 0;
+            font-size: 100%;
+            line-height: 100%;
+            vertical-align: baseline;
+            background: transparent;
+
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: -moz-none;
+            -khtml-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+
+            -webkit-transform: translateZ(0);
+            -moz-transform: translateZ(0);
+        }
+
+        /* Disable & Hide Scrollbar */
+        .ilightbox-noscroll {
+            overflow: hidden;
+        }
+
+        .ilightbox-closedhand * {
+            cursor: url(closedhand.cur), default !important;
+        }
+
+        .ilightbox-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 100000;
+        }
+
+        .ilightbox-loader {
+            position: fixed;
+            z-index: 100005;
+            top: 45%;
+            left: -192px;
+            padding-left: 30px;
+            opacity: 0.9;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+            filter: alpha(opacity=90);
+
+            -webkit-border-radius: 0 100px 100px 0;
+            border-radius: 0 100px 100px 0;
+        }
+
+        .ilightbox-loader div {
+            width: 72px;
+            height: 72px;
+
+            -webkit-border-radius: 0 100px 100px 0;
+            border-radius: 0 100px 100px 0;
+        }
+
+        .ilightbox-loader.horizontal {
+            left: 45%;
+            top: -192px;
+            padding: 0;
+            padding-top: 30px;
+
+            -webkit-border-radius: 0 0 100px 100px;
+            border-radius: 0 0 100px 100px;
+        }
+
+        .ilightbox-loader.horizontal div {
+            -webkit-border-radius: 0 0 100px 100px;
+            border-radius: 0 0 100px 100px;
+        }
+
+        .ilightbox-toolbar {
+            display: none;
+            position: fixed;
+            z-index: 100010;
+        }
+
+        .ilightbox-toolbar a {
+            float: left;
+            cursor: pointer;
+        }
+
+        .ilightbox-toolbar .ilightbox-prev-button,
+        .ilightbox-toolbar .ilightbox-next-button {
+            display: none;
+        }
+
+        .ilightbox-thumbnails {
+            display: block;
+            position: fixed;
+            z-index: 100009;
+        }
+
+        .ilightbox-thumbnails.ilightbox-horizontal {
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+        }
+
+        .ilightbox-thumbnails.ilightbox-vertical {
+            top: 0;
+            right: 0;
+            width: 140px;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .ilightbox-thumbnails .ilightbox-thumbnails-container {
+            display: block;
+            position: relative;
+        }
+
+        .ilightbox-thumbnails.ilightbox-horizontal .ilightbox-thumbnails-container {
+            width: 100%;
+            height: 100px;
+        }
+
+        .ilightbox-thumbnails.ilightbox-vertical .ilightbox-thumbnails-container {
+            width: 140px;
+            height: 100%;
+        }
+
+        .ilightbox-thumbnails .ilightbox-thumbnails-grid {
+            display: block;
+            position: absolute;
+
+            -webkit-transform: translateZ(0);
+            -moz-transform: translateZ(0);
+        }
+
+        .ilightbox-thumbnails .ilightbox-thumbnails-grid .ilightbox-thumbnail {
+            display: block;
+            cursor: pointer;
+            padding: 10px;
+            position: relative;
+        }
+
+        .ilightbox-thumbnails .ilightbox-thumbnails-grid .ilightbox-thumbnail img {
+            width: 100%;
+            height: 100%;
+
+            -webkit-border-radius: 2px;
+            border-radius: 2px;
+
+            -ms-interpolation-mode: bicubic;
+        }
+
+        .ilightbox-thumbnails .ilightbox-thumbnails-grid .ilightbox-thumbnail .ilightbox-thumbnail-icon {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: .7;
+        }
+
+        .ilightbox-thumbnails .ilightbox-thumbnails-grid .ilightbox-thumbnail .ilightbox-thumbnail-icon:hover {
+            opacity: 1;
+        }
+
+        .ilightbox-holder {
+            display: none;
+            position: fixed;
+            z-index: 100003;
+
+            -webkit-transform: translateZ(0);
+            -moz-transform: translateZ(0);
+        }
+
+        .ilightbox-holder.ilightbox-next, .ilightbox-holder.ilightbox-prev {
+            cursor: pointer;
+        }
+
+        .ilightbox-holder div.ilightbox-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .ilightbox-holder img.ilightbox-image {
+            width: 100%;
+            height: 100%;
+        }
+
+        .ilightbox-holder .ilightbox-container .ilightbox-caption {
+            display: none;
+            position: absolute;
+            left: 30px;
+            right: 30px;
+            bottom: 0;
+            max-width: 100%;
+            padding: 5px 10px;
+            margin: 0 auto;
+            font-size: 12px;
+            line-height: 150%;
+            word-wrap: break-word;
+            z-index: 20003;
+
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+
+            -webkit-border-radius: 3px 3px 0 0;
+            border-radius: 3px 3px 0 0;
+        }
+
+        .ilightbox-holder .ilightbox-container .ilightbox-social {
+            display: none;
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            padding: 5px;
+            padding-left: 0;
+            z-index: 20003;
+            height: 16px;
+        }
+
+        .ilightbox-holder .ilightbox-container .ilightbox-social ul {
+            float: left;
+            list-style: none;
+            height: 16px;
+        }
+
+        .ilightbox-holder .ilightbox-container .ilightbox-social ul li {
+            display: inline;
+        }
+
+        .ilightbox-holder .ilightbox-container .ilightbox-social ul li a {
+            float: left;
+            margin-left: 5px;
+            width: 16px;
+            height: 16px;
+            background-repeat: no-repeat;
+            background-position: 50%;
+        }
+
+        .ilightbox-holder .ilightbox-container .ilightbox-social ul li.facebook a {
+            background-image: url('../social_icons/facebook_16.png');
+        }
+
+        .ilightbox-holder .ilightbox-container .ilightbox-social ul li.digg a {
+            background-image: url('../social_icons/digg_16.png');
+        }
+
+        .ilightbox-holder .ilightbox-container .ilightbox-social ul li.twitter a {
+            background-image: url('../social_icons/twitter_16.png');
+        }
+
+        .ilightbox-holder .ilightbox-container .ilightbox-social ul li.delicious a {
+            background-image: url('../social_icons/delicious_16.png');
+        }
+
+        .ilightbox-holder .ilightbox-container .ilightbox-social ul li.reddit a {
+            background-image: url('../social_icons/reddit_16.png');
+        }
+
+        .ilightbox-holder .ilightbox-container .ilightbox-social ul li.googleplus a {
+            background-image: url('../social_icons/google_plus_16.png');
+        }
+
+        .ilightbox-holder .ilightbox-alert {
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            text-align: center;
+            padding-top: 100px;
+            margin: auto;
+            width: 300px;
+            height: 50px;
+        }
+
+        .ilightbox-holder .ilightbox-wrapper {
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+        }
+
+        .ilightbox-holder .ilightbox-inner-toolbar {
+            position: relative;
+            z-index: 100;
+        }
+
+        .ilightbox-holder .ilightbox-inner-toolbar .ilightbox-toolbar {
+            position: absolute;
+        }
+
+        /* Style arrow buttons */
+        .ilightbox-button {
+            position: fixed;
+            z-index: 100008;
+            cursor: pointer;
+        }
+
+        /* Style mobile devices */
+        .isMobile .ilightbox-button,
+        .isMobile .ilightbox-thumbnails {
+            display: none !important;
+        }
+
+        .isMobile .ilightbox-toolbar .ilightbox-prev-button,
+        .isMobile .ilightbox-toolbar .ilightbox-next-button {
+            display: block;
+        }
+    </style>
+@endsection
+@section('js')
+
+    <script type="text/javascript"
+            src="{!! url('galeria/js/css_browser_selector.min.js')!!}"></script>
+    <script src="{!! url('galeria/js/jquery.requestAnimationFrame.js') !!}"></script>
+    <!--<script type="text/javascript" async="" defer="" src="./js/projects.php"></script>-->
+    <script src="{!! url('galeria/js/prettify.js') !!}"></script>
+    <script src="{!! url('galeria/js/jquery.mousewheel.js') !!}"></script>
+    {{--<script src="{!! url('galeria/js/ilightbox.js') !!}"></script>--}}
+    <script src="{!! url('galeria/js/iligh2.js') !!}"></script>
+    {{--<script src="{!! url('galeria/js/iligh.js') !!}"></script>--}}
+    <script src="{!! url('galeria/js/bootstrap-dropdown.js') !!}"></script>
+    <script src="{!! url('galeria/js/bootstrap-scrollspy.js') !!}"></script>
+    <script src="{!! url('galeria/js/bootstrap-tooltip.js') !!}"></script>
+    <script src="{!! url('galeria/js/bootstrap-popover.js') !!}"></script>
+    <script src="{!! url('galeria/js/bootstrap-collapse.js') !!}"></script>
+    <script>
+
+        $(document).ready(function () {
+            function k() {
+                g = !1;
+                clearTimeout(f);
+                e.text("Slideshow")
+            }
+
+            function h(a, b) {
+                a = $("<div />", {"class": "dialogue clearfix"}).append(a);
+                $.iLightBox([{URL: a, type: "html", title: b ? b : null}], {
+                    skin: "metro-white ilightbox-dialogue",
+                    minScale: 1,
+                    innerToolbar: !0,
+                    show: {effect: !1},
+                    hide: {effect: !1},
+                    overlay: {blur: !1},
+                    controls: {fullscreen: !1},
+                    callback: {
+                        onRender: function (a) {
+                            $(".btn", a.currentElement).click(function () {
+                                $(".btn", a.currentElement).unbind("click");
+                                a.hide()
+                           });
+                        }, onShow: function (a) {
+                            $(".btn-primary", a.currentElement).focus()
+                        }
+                    }
+               });
+            }
+
+            function l(a, b) {
+                a = $("<p />", {html: a, "class": "dialogue_message"});
+                var d = $("<button />", {
+                    html: "OK", "class": "btn btn-primary", keyup: function (a) {
+                        13 == a.keyCode && $(this).trigger("click")
+                    }
+                });
+                h(a.add(d), b)
+            }
+
+            function m(a, b, d, c) {
+                a = $("<p />", {html: a, "class": "dialogue_message"});
+                var e = $("<input />", {type: "text", val: d});
+                d = $("<div />", {"class": "clear"});
+                var f = $("<button />", {
+                    html: "OK", "class": "btn btn-primary", click: function () {
+                        c(e.val())
+                    }, keyup: function (a) {
+                        13 == a.keyCode && $(this).trigger("click")
+                    }
+                }), g = $("<button />", {
+                    html: "Cancel", "class": "btn", click: function () {
+                        c(null)
+                    }
+                });
+                h(a.add(e).add(d).add(f).add(g), b)
+            }
+
+            function n(a, b, d) {
+                a = $("<p />", {html: a});
+                var c = $("<button />", {
+                    html: "Yes", "class": "btn btn-primary", click: function () {
+                        d(!0)
+                    }, keyup: function (a) {
+                        13 == a.keyCode && $(this).trigger("click")
+                    }
+                }), e = $("<button />", {
+                    html: "No", "class": "btn", click: function () {
+                        d(!1)
+                    }
+                });
+                h(a.add(e).add(c), b, function () {
+                    d(!1)
+               });
+            }
+
+            window.prettyPrint && prettyPrint();
+            $("#singleimage_1").iLightBox();
+            $("#singleimage_2").iLightBox();
+            $("#singleimage_3").iLightBox();
+            $("#singleimage_4").iLightBox();
+            $("ul#image_gallery li a").iLightBox();
+            $("#forceresize").iLightBox({
+                attr: "photo",
+                skin: "mac",
+                innerToolbar: !0,
+                overlay: {opacity: .7},
+                controls: {fullscreen: !1}
+            });
+            $("#inline_gallery").click(function () {
+                $.iLightBox([{
+                    URL: "assets/img/photos/caesarlima/489_1zokvamp_beauty.jpg",
+                    type: "image",
+                    options: {thumbnail: "assets/img/thumbnails/caesarlima/489_1zokvamp_beauty.jpg", skin: "dark"}
+                }, {
+                    URL: "assets/img/photos/caesarlima/452_1npblonde.jpg",
+                    type: "image",
+                    options: {thumbnail: "assets/img/thumbnails/caesarlima/452_1npblonde.jpg"}
+                }, {
+                    URL: "assets/img/photos/caesarlima/397_1natascha_wind.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/caesarlima/397_1natascha_wind.jpg", skin: "dark"},
+                    type: "image"
+                }, {
+                    URL: "assets/img/photos/caesarlima/599_1nero_splash_1.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/caesarlima/599_1nero_splash_1.jpg"},
+                    type: "image",
+                    caption: "Skins can even be modified on a per-element or group basis."
+                }, {
+                    URL: "assets/img/photos/caesarlima/481_1cae_shadow.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/caesarlima/481_1cae_shadow.jpg"},
+                    type: "image"
+                }, {
+                    URL: "assets/img/photos/caesarlima/618_1marilia_splash.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/caesarlima/618_1marilia_splash.jpg", skin: "dark"},
+                    type: "image"
+                }, {
+                    URL: "assets/img/photos/caesarlima/319_1caenewpg2.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/caesarlima/319_1caenewpg2.jpg"},
+                    type: "image"
+                }, {
+                    URL: "assets/img/photos/caesarlima/350_1r3__2007__caesarlima_seb8mag3.jpg",
+                    options: {
+                        thumbnail: "assets/img/thumbnails/caesarlima/350_1r3__2007__caesarlima_seb8mag3.jpg",
+                        width: 300
+                    },
+                    type: "image",
+                    caption: "This one resized to wiidth:300px"
+                }, {
+                    URL: "assets/img/photos/caesarlima/625_1beautykaetsite.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/caesarlima/625_1beautykaetsite.jpg"},
+                    type: "image"
+                }, {
+                    URL: "assets/img/photos/caesarlima/583_1testsnowwhite.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/caesarlima/583_1testsnowwhite.jpg"},
+                    type: "image"
+                }, {
+                    URL: "assets/img/photos/caesarlima/601_1beauty1.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/caesarlima/601_1beauty1.jpg", skin: "dark"},
+                    type: "image"
+                }, {
+                    URL: "assets/img/photos/caesarlima/585_1DawnO_056casei.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/caesarlima/585_1DawnO_056casei.jpg"},
+                    type: "image"
+                }, {
+                    URL: "assets/img/photos/caesarlima/592_1r388_yb_banner.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/caesarlima/592_1r388_yb_banner.jpg", skin: "dark"},
+                    type: "image"
+                }, {
+                    URL: "assets/img/photos/caesarlima/604_1beauty3.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/caesarlima/604_1beauty3.jpg"},
+                    type: "image"
+                }, {
+                    URL: "assets/img/photos/caesarlima/603_1beauty4.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/caesarlima/603_1beauty4.jpg"},
+                    type: "image"
+                }, {
+                    URL: "assets/img/photos/caesarlima/631_1steampunksplash4.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/caesarlima/631_1steampunksplash4.jpg"},
+                    type: "image"
+                }], {
+                    startFrom: 3,
+                    skin: "light",
+                    path: "horizontal",
+                    maxScale: 1.3,
+                    overlay: {opacity: .4},
+                    styles: {nextOffsetX: 75, nextOpacity: .55, prevOffsetX: 75, prevOpacity: .55},
+                    thumbnails: {normalOpacity: .6, activeOpacity: 1}
+                });
+                return !1
+            });
+            $("#open_in_modal").click(function () {
+                $.iLightBox([{
+                    URL: "assets/img/photos/MS-test-day-27898.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/MS-test-day-27898.jpg"},
+                    type: "image",
+                    caption: "First Caption. It'll blow your mind."
+                }, {
+                    URL: "assets/img/photos/MS-test-day-27771.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/MS-test-day-27771.jpg"},
+                    type: "image",
+                    caption: "Oh yeah, it's that good. See for yourself."
+                }, {
+                    URL: "assets/img/photos/MS-test-day-27845.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/MS-test-day-27845.jpg"},
+                    type: "image",
+                    caption: "And lastly, this one. Checkmate."
+                }, {
+                    URL: "assets/img/photos/MS-test-day-27780.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/MS-test-day-27780.jpg"},
+                    type: "image"
+                }, {
+                    URL: "assets/img/photos/MS-test-day-278081.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/MS-test-day-278081.jpg"},
+                    type: "image"
+                }, {
+                    URL: "assets/img/photos/MS-test-day-27749.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/MS-test-day-27749_2.jpg"},
+                    type: "image"
+                }], {
+                    skin: "metro-black",
+                    path: "horizontal",
+                    overlay: {opacity: .7, blur: !1},
+                    keyboard: {esc: !1},
+                    styles: {nextOpacity: .55, prevOpacity: .55}
+                });
+                return !1
+            });
+            $("#image_recognizer").click(function () {
+                var a = {
+                    facebook: !0,
+                    twitter: !0,
+                    googleplus: {source: "https://plus.google.com/share?url={URL}", text: "Share on Google+"},
+                    digg: {width: 800, height: 480}
+                };
+                $.iLightBox([{
+                    URL: "https://instagram.com/p/37O9GLqlXJ/",
+                    caption: "This one recognized from this <a href='http://instagram.com/p/37O9GLqlXJ/' target='_blank'>URL</a> on instagram.",
+                    options: {
+                        social: $.extend(!0, {}, a, {
+                            facebook: {URL: "http://instagram.com/p/37O9GLqlXJ/"},
+                            twitter: {URL: "http://instagram.com/p/37O9GLqlXJ/"},
+                            googleplus: {URL: "http://instagram.com/p/37O9GLqlXJ/"},
+                            digg: {URL: "http://instagram.com/p/37O9GLqlXJ/"}
+                       });
+                    }
+                }, {
+                    URL: "https://www.flickr.com/photos/bruce-hood/8584616829/",
+                    caption: "This one recognized from this <a href='https://www.flickr.com/photos/bruce-hood/8584616829/' target='_blank'>URL</a> on flickr.",
+                    options: {
+                        social: {
+                            facebook: {URL: "https://www.flickr.com/photos/bruce-hood/8584616829/"},
+                            twitter: {URL: "https://www.flickr.com/photos/bruce-hood/8584616829/"}
+                        }
+                    }
+                }, {
+                    URL: "http://oer-wout.deviantart.com/art/Amber-473365198",
+                    caption: "This one recognized from this <a href='http://oer-wout.deviantart.com/art/Amber-473365198' target='_blank'>URL</a> on deviantArt.",
+                    options: {
+                        social: $.extend(!0, {}, a, {
+                            facebook: {URL: "http://oer-wout.deviantart.com/art/Amber-473365198"},
+                            twitter: {URL: "http://oer-wout.deviantart.com/art/Amber-473365198"},
+                            googleplus: {URL: "http://oer-wout.deviantart.com/art/Amber-473365198"},
+                            digg: {URL: "http://oer-wout.deviantart.com/art/Amber-473365198"}
+                       });
+                    }
+                }], {
+                    smartRecognition: !0,
+                    skin: "smooth",
+                    path: "horizontal",
+                    fullAlone: !1,
+                    caption: {start: !1},
+                    social: {start: !1, buttons: a},
+                    styles: {nextScale: .6, prevScale: .6, nextOpacity: .6, prevOpacity: .6},
+                    thumbnails: {normalOpacity: .6, activeOpacity: 1}
+                });
+                return !1
+            });
+            $("#cycling_arrows").click(function () {
+                $.iLightBox([{
+                    URL: "assets/img/photos/challenger_by_nikosalpha-d5mgk3u.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/challenger_by_nikosalpha-d5mgk3u.jpg"},
+                    caption: "Presenting Tonia Sotiropoulou, in a new 2012 shooting. Tonia is currently in the big screen with James Bond's Skyfall. This photo is a sample for magazine use, more photos will follow in the future. See previous work with her at <a href='http://nikosalpha.com/tonia'>nikosalpha.com/tonia</a>."
+                }, {
+                    URL: "assets/img/photos/catharine_by_nikosalpha-d5drzr1.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/catharine_by_nikosalpha-d5drzr1.jpg"},
+                    caption: "Presenting Catharine. She is a young multitalented beautiful voice singing in the UK. Follow her work <a href='https://www.facebook.com/CatharineAmorosoMusic'>here</a>"
+                }, {
+                    URL: "assets/img/photos/underexposed_by_nikosalpha.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/underexposed_by_nikosalpha.jpg"}
+                }, {
+                    URL: "assets/img/photos/auric_by_nikosalpha-d4ymtor.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/auric_by_nikosalpha-d4ymtor.jpg"},
+                    caption: "One more photo of one of my favorite subjects, the Lips. I decided to create a unique tag in my website only for them. Here they are so far: <a href='http://nikosalpha.com/lips'>nikosalpha.com/lips</a>."
+                }, {
+                    URL: "assets/img/photos/piece_by_nikosalpha-d3bc2cc.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/piece_by_nikosalpha-d3bc2cc.jpg"},
+                    caption: "The sweetest piece of my life"
+                }, {
+                    URL: "assets/img/photos/blonde_by_nikosalpha-d5hk45h.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/blonde_by_nikosalpha-d5hk45h.jpg"},
+                    caption: "New session with the singer Valerie Kalenti! (:"
+                }], {
+                    skin: "smooth",
+                    path: "horizontal",
+                    fullAlone: 0,
+                    controls: {thumbnail: 0, arrows: 1, slideshow: 1}
+                });
+                return !1
+            });
+            $("#deeplinking_looping_gallery li a").iLightBox({
+                skin: "metro-white",
+                path: "horizontal",
+                fullViewPort: "fill",
+                infinite: !0,
+                linkId: "music",
+                overlay: {opacity: 1, blur: !1},
+                controls: {thumbnail: !1},
+                styles: {nextOffsetX: -45, prevOffsetX: -45}
+            });
+            $("#inline_html_simple").iLightBox({attr: "target", skin: "metro-white"});
+            $("#inline_html_forced").click(function () {
+                $.iLightBox([{
+                    URL: "#demo_inline_element",
+                    type: "inline",
+                    options: {width: 720, height: 360}
+                }], {skin: "metro-white"});
+                return !1
+            });
+            $("#ajax_simple").iLightBox({attr: "target", overlay: {opacity: .6}, skin: "parade", minScale: 1});
+            $("#ajax_forced").iLightBox({attr: "target", overlay: {opacity: .6}, skin: "parade", minScale: 1});
+            $("#ajax_modal").iLightBox({
+                attr: "target",
+                innerToolbar: !0,
+                overlay: {opacity: .6, blur: !1},
+                controls: {fullscreen: !1},
+                keyboard: {esc: !1},
+                skin: "parade",
+                minScale: 1
+            });
+            $("#flash_simple").iLightBox({innerToolbar: !0, controls: {fullscreen: !1}, skin: "dark"});
+            $("#flash_forced").iLightBox({innerToolbar: !0, controls: {fullscreen: !1}, minScale: 1});
+            $("#iframe_1").iLightBox();
+            $("#iframe_2").iLightBox({minScale: 1});
+            $("#iframe_3").iLightBox({minScale: 1});
+            $("#DOM").click(function () {
+                var a = $('<div class="center"><h2><img src="assets/img/smile.gif">It\'s time to upgrade.</h2><hr><p>iLightBox supports DOM elements created on the fly.</p></div>');
+                $.iLightBox([{URL: a, type: "html"}], {
+                    innerToolbar: !0,
+                    controls: {fullscreen: !1},
+                    skin: "parade",
+                    minScale: 1
+                });
+                return !1
+            });
+            $("#video_1").iLightBox();
+            $("#video_2").iLightBox();
+            $("#video_3").iLightBox();
+            $("#video_html5").iLightBox();
+            $("#video_4").iLightBox({smartRecognition: !0});
+            $("#video_5").iLightBox({smartRecognition: !0});
+            $("#video_6").iLightBox({smartRecognition: !0});
+            $("#video_7").iLightBox({smartRecognition: !0});
+            $("#video_8").iLightBox({smartRecognition: !0});
+            $("#video_9").iLightBox({smartRecognition: !0});
+            $("#video_gallery").click(function () {
+                $.iLightBox([{URL: "http://www.youtube.com/watch?v=_pV2zz3z0oM"}, {URL: "http://vimeo.com/55331511"}, {URL: "http://www.hulu.com/watch/424558"}, {URL: "http://www.metacafe.com/watch/9542534/man_of_steel_trailer/"}, {URL: "http://www.dailymotion.com/video/xp53r5_the-avengers-official-trailer-2_shortfilms"}, {
+                    URL: "http://www.gametrailers.com/videos/za4633/crysis-3-the-7-wonders---episode-1--hell-of-a-town",
+                    options: {width: 1280, height: 720}
+                }], {
+                    smartRecognition: !0,
+                    skin: "dark",
+                    overlay: {blur: !1},
+                    keyboard: {esc: !1},
+                    styles: {nextOpacity: .55, prevOpacity: .55}
+                });
+                return !1
+            });
+            $("#mixed_contents").click(function () {
+                $.iLightBox([{
+                    URL: "assets/MV5BMTM1NTMyMDE4OV5BMTFeQW1wNF5BbWU3MDEyNTI0OTU.mp4",
+                    options: {
+                        thumbnail: "assets/img/thumbnails/sherlock_holmes/trailer.jpg",
+                        html5video: {
+                            webm: "http://ilightbox.net/assets/MV5BMTM1NTMyMDE4OV5BMTFeQW1wNF5BbWU3MDEyNTI0OTU.webm",
+                            poster: "assets/img/sherlock_holmes/trailer.jpg"
+                        },
+                        width: 1280,
+                        height: 544
+                    }
+                }, {
+                    URL: "assets/img/sherlock_holmes/1.jpg",
+                    caption: "This one fill the screen when you enter fullscreen.",
+                    options: {thumbnail: "assets/img/thumbnails/sherlock_holmes/1.jpg", fullViewPort: "fill"}
+                }, {
+                    URL: "assets/img/sherlock_holmes/2.jpg",
+                    caption: "This one fit to the screen when you enter fullscreen.",
+                    options: {thumbnail: "assets/img/thumbnails/sherlock_holmes/2.jpg", fullViewPort: "fit"}
+                }, {
+                    URL: "http://www.youtube.com/embed/lNxhpNpnAkk?autohide=1&border=0&egm=0&showinfo=0&showsearch=0",
+                    options: {
+                        thumbnail: "assets/img/thumbnails/sherlock_holmes/mqdefault.jpg",
+                        fullViewPort: "stretch",
+                        icon: "video",
+                        width: 1280,
+                        height: 720
+                    }
+                }, {
+                    URL: "assets/img/sherlock_holmes/3.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/sherlock_holmes/3.jpg"}
+                }, {
+                    URL: "assets/img/sherlock_holmes/4.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/sherlock_holmes/4.jpg"}
+                }, {
+                    URL: "assets/img/sherlock_holmes/5.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/sherlock_holmes/5.jpg"}
+                }, {
+                    URL: "assets/img/sherlock_holmes/6.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/sherlock_holmes/6.jpg"}
+                }, {
+                    URL: "assets/img/sherlock_holmes/7.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/sherlock_holmes/7.jpg"}
+                }, {
+                    URL: "assets/img/sherlock_holmes/8.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/sherlock_holmes/8.jpg"}
+                }], {path: "horizontal", skin: "metro-black", styles: {nextOpacity: 0, prevOpacity: 0}});
+                return !1
+            });
+            $("#google_maps").click(function () {
+                $.iLightBox([{
+                    URL: "assets/ajax/maps.html",
+                    options: {width: 720, height: 420},
+                    type: "iframe"
+                }], {minScale: 1, skin: "metro-black"});
+                return !1
+            });
+            var e = $('<a class="btn btn-primary slideshow_button">Slideshow</a>'), g = !1, f = null;
+            $("ul#image_gallery_with_slideshow li a").iLightBox({
+                skin: "metro-white",
+                path: "horizontal",
+                controls: {thumbnail: !1},
+                styles: {pageOffsetY: 100, nextScale: .6, prevScale: .6, nextOpacity: .6, prevOpacity: .6},
+                effects: {switchSpeed: 700},
+                callback: {
+                    onOpen: function () {
+                        var a = this;
+                        $("body").append(e);
+                        e.on("click", function () {
+                            g ? k() : (a.vars.current == a.vars.total - 1 && a.goTo(0), g = !0, e.text("Stop"), f = setTimeout(function () {
+                                a.moveTo("next")
+                            }, 5E3))
+                       });
+                    }, onHide: function () {
+                        e.off("click").hide().remove()
+                    }, onAfterLoad: function () {
+                        e.fadeIn(this.options.effects.loadedFadeSpeed)
+                    }, onBeforeChange: function () {
+                        clearTimeout(f)
+                    }, onAfterChange: function (a) {
+                        var b = this;
+                        g && (a.currentItem == this.vars.total - 1 ? k() : f = setTimeout(function () {
+                            b.moveTo("next")
+                        }, 5E3))
+                    }, onEnterFullScreen: function () {
+                        e.hide();
+                        clearTimeout(f)
+                    }, onExitFullScreen: function () {
+                        var a = this;
+                        e.show();
+                        g && a.vars.current != a.vars.total - 1 && (f = setTimeout(function () {
+                            a.moveTo("next")
+                        }, 5E3))
+                    }
+                }
+            });
+            $("#show_alert").click(function () {
+                l("Custom alert() functions are cool.", "Alert!")
+            });
+            $("#show_prompt").click(function () {
+                m("How would you describe iLightBox?", "Attention!", "Awesome!", function (a) {
+                    alert(a)
+               });
+            });
+            $("#show_confirm").click(function () {
+                n("Click Yes if you love iLightBox", "Do you agree?", function (a) {
+                    alert(a)
+               });
+            });
+            $("#events_gallery").click(function () {
+                var a = $("#pre_events");
+                $.iLightBox([{
+                    URL: "assets/img/photos/MS-test-day-27898.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/MS-test-day-27898.jpg"},
+                    type: "image",
+                    caption: "First Caption. It'll blow your mind."
+                }, {
+                    URL: "assets/img/photos/MS-test-day-27771.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/MS-test-day-27771.jpg"},
+                    type: "image",
+                    caption: "Oh yeah, it's that good. See for yourself."
+                }, {
+                    URL: "assets/img/photos/MS-test-day-27845.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/MS-test-day-27845.jpg"},
+                    type: "image",
+                    caption: "And lastly, this one. Checkmate."
+                }, {
+                    URL: "assets/img/photos/MS-test-day-27780.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/MS-test-day-27780.jpg"},
+                    type: "image"
+                }, {
+                    URL: "assets/img/photos/MS-test-day-278081.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/MS-test-day-278081.jpg"},
+                    type: "image"
+                }, {
+                    URL: "assets/img/photos/MS-test-day-27749.jpg",
+                    options: {thumbnail: "assets/img/thumbnails/MS-test-day-27749_2.jpg"},
+                    type: "image"
+                }], {
+                    path: "horizontal", overlay: {opacity: .7}, callback: {
+                        onOpen: function () {
+                            var b = new Date;
+                            a.append(b.getHours() + ":" + b.getMinutes() + ":" + b.getSeconds() + "." + b.getMilliseconds() + ' - Event "onOpen" fired<br />').scrollTop(1E4)
+                        }, onRender: function (b, d) {
+                            var c = new Date;
+                            a.append(c.getHours() + ":" + c.getMinutes() + ":" + c.getSeconds() + "." + c.getMilliseconds() + ' - Event "onRender" fired for item ' + d + ".<br />").scrollTop(1E4)
+                        }, onShow: function (b, d) {
+                            var c = new Date;
+                            a.append(c.getHours() + ":" + c.getMinutes() + ":" + c.getSeconds() + "." + c.getMilliseconds() + ' - Event "onShow" fired for item ' + d + ".<br />").scrollTop(1E4)
+                        }, onHide: function () {
+                            var b = new Date;
+                            a.append(b.getHours() + ":" + b.getMinutes() + ":" + b.getSeconds() + "." + b.getMilliseconds() + ' - Event "onHide" fired.<br /><p>-----------------------------------</p>').scrollTop(1E4)
+                        }, onEnterFullScreen: function () {
+                            var b = new Date;
+                            a.append(b.getHours() + ":" + b.getMinutes() + ":" + b.getSeconds() + "." + b.getMilliseconds() + ' - Event "onEnterFullScreen" fired.<br />').scrollTop(1E4)
+                        }, onExitFullScreen: function () {
+                            var b = new Date;
+                            a.append(b.getHours() + ":" + b.getMinutes() + ":" + b.getSeconds() + "." + b.getMilliseconds() + ' - Event "onExitFullScreen" fired.<br />').scrollTop(1E4)
+                        }, onBeforeLoad: function (b, d) {
+                            var c = new Date;
+                            a.append(c.getHours() + ":" + c.getMinutes() + ":" + c.getSeconds() + "." + c.getMilliseconds() + ' - Event "onBeforeLoad" fired for item ' + d + ".<br />").scrollTop(1E4)
+                        }, onAfterLoad: function (b, d) {
+                            var c = new Date;
+                            a.append(c.getHours() + ":" + c.getMinutes() + ":" + c.getSeconds() + "." + c.getMilliseconds() + ' - Event "onAfterLoad" fired for item ' + d + ".<br />").scrollTop(1E4)
+                        }, onBeforeChange: function () {
+                            var b = new Date;
+                            a.append(b.getHours() + ":" + b.getMinutes() + ":" + b.getSeconds() + "." + b.getMilliseconds() + ' - Event "onBeforeChange" fired.<br />').scrollTop(1E4)
+                        }, onAfterChange: function () {
+                            var b = new Date;
+                            a.append(b.getHours() + ":" + b.getMinutes() + ":" + b.getSeconds() + "." + b.getMilliseconds() + ' - Event "onAfterChange" fired.<br />').scrollTop(1E4)
+                        }
+                    }
+                });
+                return !1
+           });
+        });
+
+
+    </script>
+@endsection
+@section('content')
+    <style>
+        a.nivo-trigger > img {
+            height: 320px;
+            width: auto;
+        }
+    </style>
+
+    <!-- basic-slider start -->
+    <!-- Banner -->
+    @include('frontend.landing.studs.partials.principal',['stud'=>$stud,'titulo'=>'Video','texto'=>'Conoce un poco mas de nosotros'])
+    <div class="volunteers-wrapper images-gallery-wrapper">
+        <div class="container">
+            <div class="row">
+                {{--
+                <div class="col-xs-offset-3 col-xs-6">
+                    <div class=" embed-responsive embed-responsive-16by9 m-t-40">
+                        <iframe class="embed-responsive-item"
+                                src="{!! $user->getVideo()->getEmbedVideoYoutube() !!}"></iframe>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                --}}
+                {{--
+                este
+                @foreach($stud->getVideosModel() as $k=>$v)
+                    <div class="col-xs-3">
+                        <div class=" embed-responsive embed-responsive-16by9 m-t-40">
+
+                            <iframe class="embed-responsive-item"
+                                    src="{!! $v->getEmbedVideoYoutube() !!}"></iframe>
+                        </div>
+                    </div>
+
+
+                    @endforeach
+                --}}
+                {{--
+                @foreach($galeria  as $k=>$v)
+                    <div class="col-sm-4 images-outer ">
+                        <div class="images-inner  ">
+                            <div class="nivo-activator">
+                            </div>
+                            <div class="images single-images-gl clearfix">
+                                <a href="{!! $v['url'] !!}" class="nivo-trigger" data-lightbox-gallery="gallery1">
+                            <span class="fa fa-arrows-alt">
+                            </span>
+                                    <img src="{!! $v['url'] !!}" alt="{!! $v['name'] !!}">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+                --}}
+            </div>
+        </div>
+    </div>
+
+
+    <div class="volunteers-wrapper images-gallery-wrapper">
+        <div class="container">
+            <div class="row">
+                <ul class="thumbnails">
+                    @foreach($stud->getVideosModel() as $k=>$v)
+                        <li class="span3">
+                            <a id="video_{!! $k !!}"
+                               href="{!! $v->getEmbedVideoYoutube() !!}?autoplay=1&amp;autohide=1&amp;fs=1&amp;rel=0&amp;hd=1&amp;wmode=opaque&amp;enablejsapi=1"
+                               class="thumbnail" data-caption="{!! $v->getName() !!}"
+                               data-options="width:1920, height:1080">
+                                <img src="{!! $v->getYoutubeThumb() !!}"
+                                     alt="iLightBox - YouTube Video">
+                            </a>
+                            <center><code
+                                        style="display:inline-block; margin-top: 10px;">&nbsp;&nbsp;<b>YouTube</b>&nbsp;&nbsp;</code>
+                            </center>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    </div>
+@endsection

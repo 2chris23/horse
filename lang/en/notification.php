@@ -1,0 +1,13 @@
+<?php return array('inbox' => 'Message Box',
+    'index' => 'Notification List',
+    'asunto' => 'Subject',
+    'correo' => 'Mail',
+    'numero' => 'Number',
+    'mensaje' => 'Message',
+    'created_at' => 'Date of creation',
+    'newsms' => 'You have :num new messages',
+    'nosms' => 'You have no messages',
+    'contact' => 'Contact',
+    'support' => 'Technical Support',
+    'throttle' => 'Too many attempts, please wait :seconds seconds.',
+    'other' => 'Name',);

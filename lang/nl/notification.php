@@ -1,0 +1,13 @@
+<?php return array('asunto' => 'Bedrijf',
+    'contact' => 'Contact',
+    'correo' => 'Email',
+    'created_at' => 'Datum van creatie',
+    'inbox' => 'Brievenbus',
+    'index' => 'Meldingslijst',
+    'mensaje' => 'Bericht',
+    'numero' => 'Nummer',
+    'support' => 'Technische ondersteuning',
+    'nosms' => 'Je hebt geen berichten',
+    'newsms' => 'U hebt :num nieuwe berichten',
+    'throttle' => 'Te veel pogingen, even geduld aub :seconds seconden.',
+    'other' => 'Naam',);

@@ -1,0 +1,31 @@
+<?php
+
+return array('MyHorsesV1' => '/{slug}/Paard',
+    'Caballos' => '/{slug}/Paarden',
+    'JsTablaCaballo' => '/tablehorse_nl.js',
+    'MyPage' => '/{slug}',
+    'MyContact' => '/{slug}/Contact',
+    'MyGallery' => '/{slug}/Galerij',
+    'MyGallery2' => '/{slug}/Galerij2',
+    'MyGallery2post' => '/{slug}/Galerij3',
+    'MyVideo' => '/{slug}/Video',
+    'MyInstalation' => '/{slug}/Uitrusting',
+    'MyInstalation2' => '/{slug}/Uitrusting2',
+    'MySell' => '/{slug}/Verkoop',
+    'MySellDetailSell' => '/{slug}/Verkoop/{horse?}',
+    'MyHorseDetailed' => '/{stud?}/Detail/{horse?}',
+
+    'Trabajo' => '/{slug}/Ikwerk',
+    'CaballoPortalDetalle' => '/Paarden/{slug?}',
+
+    'TrabajoIndex' => '/{slug}/Ikwerk',
+    'MyHorses' => '/{stud?}/Paarden/{horse?}',
+    'MyHorseDetailedBase' => '/{stud?}/Detail/{horse?}',
+    'Listacss' => '/lista_nl.css',
+    'Listajs' => '/lista_nl.js',
+    'listaportal' => '/LijstVanPaarden',
+    'lista5' => '/lista5',
+    'NuevaBusqueda' => '/NieuweZoekopdracht',
+    'probusqueda' => '/Zoekopdracht',
+    'probusquedapost' => '/Zoekopdracht_p',
+);

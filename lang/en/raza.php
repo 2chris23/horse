@@ -1,0 +1,10 @@
+<?php return array('Tittle' => 'Horse breed',
+    'menu' => array('caption' => 'Horse Breed',
+        'create' => 'Create',
+        'show' => 'Show',
+        'index' => 'Index',
+        'edit' => 'Edit',), 'attrib' => array('name' => 'First Name',
+        'status' => 'Priority',
+        'created_by' => 'Created by',
+        'updated_by' => 'Updated by',
+        'deleted_by' => 'Deleted by',), 'chooseone' => 'Select one',);

@@ -1,0 +1,31 @@
+<?php
+
+return array(
+    'JsTablaCaballo' => '/tablehorse_de.js',
+    'MyPage' => '/',
+    'MyContact' => '/Kontakt',
+    'MyGallery' => '/Galerie',
+    'MyGallery2' => '/Galerie2',
+    'MyGallery2post' => '/Galerie3',
+    'MyVideo' => '/Video',
+    'MyInstalation' => '/Einrichtungen',
+    'MyInstalation2' => '/Einrichtungen2',
+    'MySell' => '/Verkaufe',
+    'MySellDetailSell' => '/Verkaufe/{horse?}',
+    'MyHorseDetailed' => '/Detail/{horse?}',
+    'Caballos' => '/Pferde',
+    'Trabajo' => '/Arbeit',
+    'CaballoPortalDetalle' => '/Pferde/{slug?}',
+    'MyHorsesV1' => '/Pferd',
+    'TrabajoIndex' => '/Arbeit',
+    'MyHorses' => '/Pferde/{v?}/{type?}',
+    'MyHorseDetailedBase' => '/Detail/{horse?}',
+    'listaportal' => '/listederpferde',
+    'probusqueda' => '/Suche',
+    'NuevaBusqueda' => '/NeueSuche',
+    'probusquedapost' => '/Suche_p',
+    'Listajs' => '/listederpferde.js',
+    'Listacss' => '/listederpferde.css',
+    'lista5' => '/lista5',
+
+);

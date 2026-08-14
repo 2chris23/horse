@@ -1,0 +1,97 @@
+/* Logo
+ ------------------------------ */
+#logo {
+    margin: 0px 0px 0px 0px;
+}
+
+/* Accent Color
+ ------------------------------ */
+a, a > *,
+blockquote cite a,
+blockquote cite a:hover,
+#searchform #searchsubmit i:hover,
+.color,
+#slidebar header a:hover, #slidebar header a:hover span,
+#main-nav ul li a:hover,
+.article-title a:hover,
+.meta-cats a:hover,
+.format-quote .quote-text cite, .format-quote .quote-text cite a,
+#footer-note .footer-copyrights a:hover,
+.widget a:hover,
+.widget-title a:hover,
+.widget table#wp-calendar #next a:hover, .widget table#wp-calendar #prev a:hover,
+.widget_archive li:before, .widget_categories li:before, .widget_links li:before, .widget_meta li:before, .widget_nav_menu li:before, .widget_pages li:before, .widget_recent_comments li:before, .widget_recent_entries li:before,
+.tweets-widget li a,
+.widget_pendulum_recent_posts .rp-caption h4 a,
+.icon_column .text-holder a:hover,
+.icon_column:hover .icon_column_title, .icon_column:hover .icon
+{
+	color: #0099cc;
+}
+#site:before,
+#nav .active > a,
+#nav .current > a, 
+#nav a:hover,
+.meta-tags a:hover,
+.more-link, .more-link-excerpt,
+.masonry-list .event-li.selected .date,
+.masonry-list .event-li:hover .date,
+.comment .reply a:hover,
+#footer-note .social-button.circle-button:hover,
+#scroll-button:hover,
+.widget button, .widget .button, .widget input[type="button"], .widget input[type="reset"], .widget input[type="submit"],
+.widget_tag_cloud .tagcloud a:hover,
+input[type="submit"], button, .btn, .widget .btn,
+.circle-btn:hover,
+.pill-btn,
+.music-slide .spl-position,
+#top-button,
+.circle-button:hover,
+.spl-player .spl-single-track .spl-position
+{
+    background-color: #0099cc;
+}
+::-moz-selection {
+    background: #0099cc;
+}
+::selection {
+    background: #0099cc;
+}
+.scroll-list a:hover {
+    border-color: #0099cc;
+}
+
+/* Headings Color
+ ------------------------------ */
+ h1, h2, h3, h4, h5, h6,
+ #footer-container .widget .widget-title,
+ .article-title, .article-title a,
+ #slidebar .widget .widget-title {
+    color: #ffffff;
+}
+
+/* Text Color
+ ------------------------------ */
+body {
+    color: #bbbbbb;
+}
+
+/* Theme Backrounds
+ ------------------------------ */
+body {
+	background-image: url(images/bg.jpg);
+	background-repeat: repeat;
+	background-attachment: scroll;
+}
+
+#site {
+	background-image: url(images/bg2.png);
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+}
+
+/* Slidebar image
+ ------------------------------ */
+#slidebar .slidebar-image {
+	background-image: url();
+}

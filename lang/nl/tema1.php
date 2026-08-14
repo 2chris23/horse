@@ -1,0 +1,6 @@
+<?php return array('aboutus' => 'Onze geschiedenis',
+    'destacados' => 'Dit zijn onze meest opvallende paarden ..',
+    'ficha' => 'Zie bestand',
+    'raza' => array(0 => 'Alle geslachten', 1 => 'De beste lijnen, gecontrasteerd en getest voor sport zonder schoonheid te verliezen.', 2 => 'Onze gecastreerde paarden zijn de beste, afstammelingen van zuivere lijnen, klaar voor een rustig leven.', 3 => 'Onze merries zijn geselecteerd vanwege hun schoonheid en functionaliteit. gekwalificeerd.', 4 => 'Onze hengstveulens zijn afstammelingen van sportpaarden, die hebben meegedaan en hun waarde hebben bewezen.', 5 => 'Onze hengstveulens zijn afstammelingen van sportpaarden, die hebben meegedaan en hun waarde hebben bewezen.',), 'seeall' => 'Alles zien',
+    'visita' => array('stitulo' => 'Schrijf ons en we helpen je graag...',
+        'titulo' => 'Wil je ons bezoeken?',), 'whorwithus' => 'Als u met ons wilt samenwerken, klikt u op deze link <a class="link" href=":link">"werkgelegenheid"</a>',);

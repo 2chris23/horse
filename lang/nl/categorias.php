@@ -1,0 +1,1 @@
+<?php return array('contacto' => array(0 => 'Selecteer er een', 1 => 'Temmer', 2 => 'Voorman', 3 => 'Blokken', 4 => 'Bereider', 5 => 'Ruiter', 6 => 'Verkoper', 7 => 'Anderen',), 'trabajo' => array(0 => 'Selecteer er een', 1 => 'Temmer', 2 => 'Voorman', 3 => 'Blokken', 4 => 'Bereider', 5 => 'Ruiter', 6 => 'Verkoper', 7 => 'Anderen',),);

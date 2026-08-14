@@ -1,0 +1,13 @@
+<?php return array('Tittle' => 'Gateways de pagamento',
+    'menu' => array('caption' => 'Gateways de pagamento',
+        'create' => 'Criar',
+        'show' => 'Mostrar',
+        'index' => 'Indice',
+        'edit' => 'Editar',), 'attrib' => array('name' => 'Nome',
+        'url' => 'URL de endereço',
+        'public_key' => 'Chave pública',
+        'public_id' => 'Id Public',
+        'status' => 'Estado',
+        'created_by' => 'Criado por',
+        'updated_by' => 'Atualizado por',
+        'deleted_by' => 'Excluído por',), 'chooseone' => 'Selecióne um',);

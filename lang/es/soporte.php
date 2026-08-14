@@ -1,0 +1,13 @@
+<?php return ['asignado' => '<div style="text-align:justify;">Estimado (a) <strong>:name</strong>, <br> te informamos que hemos recibido tu ticket <strong>":titulo"</strong>, de la Categoría :categoria.         <br>         <br>En breve nuestro equipo de soporte estará atendiendo tu solicitud. </div><br><br>',
+    'tituloasignado' => 'El equipo de soporte HorsesWorldSale.com te informa<br> Hemos recibido tu ticket         <br>         <br>',
+    'comentario' => '<div style="text-align:justify;">El usuario: ":usuario" ha hecho un comentario al ticket ":titulo" <br><br><div style="padding-left:5%;">:contenido</div><br> Te invitamos a entrar a <strong>HorsesWorldSale.com</strong> y nos comentes si ésta respuesta te ha ayudado.</div><br><br>',
+    'titulocomentario' => 'El equipo de soporte HorsesWorldSale.com te informa<br>Tienes una nueva respuesta del ticket ":titulo"',
+    'status' => '<div style="text-align:justify;">Estimado <strong>:name</strong>, <br>Te informamos que tu ticket <strong>:titulo</strong> ha cambiado de estado a: :status. </div><br><br>',
+    'titulostatus' => 'El equipo de soporte HorsesWorldSale.com te informa <br>Tu ticket ha cambiado de estado',
+    'transferencia' => 'Soporte ha recibido tu ticket ":titulo"',
+    'titulotransferencia' => 'Soporte HorseWorldSale.com le informa sobre la transferencia de :titulo',
+    'titulocorreoasignado' => 'Soporte HorsesWorldSale.com<br>Hemos recibido su ticket :name',
+    'titulocorreostatus' => 'Soporte HorsesWorldSale.com <br>El ticket :name ha cambiado de estado',
+    'titulocorreocomentario' => 'Soporte HorsesWorldSale.com <br>Hay una nueva respuesta para el ticket :name',
+    'titulocorreotransferencia' => 'Soporte HorsesWorldSale.com <br>Se ha transferido el ticket :name',
+    'texto' => 'Soporte',];

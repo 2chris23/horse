@@ -1,0 +1,13 @@
+<?php return array('Tittle' => 'Payment Gateways',
+    'menu' => array('caption' => 'Payment Gateways',
+        'create' => 'Create',
+        'show' => 'Show',
+        'index' => 'Index',
+        'edit' => 'Edit',), 'attrib' => array('name' => 'First Name',
+        'url' => 'Url Address',
+        'public_key' => 'Public Key',
+        'public_id' => 'Public Id',
+        'status' => 'Status',
+        'created_by' => 'Created by',
+        'updated_by' => 'Updated by',
+        'deleted_by' => 'Deleted by',), 'chooseone' => 'Select one',);

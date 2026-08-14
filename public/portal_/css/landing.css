@@ -1,0 +1,57 @@
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    color: #ffffff !important;
+    background-color: rgba(245, 137, 54, 0.5) !important;
+}
+
+/*Menu*/
+.menu-list-items {
+    background: rgb(255, 255, 255) !important;
+}
+
+.transparent-header .mega-menu > section.menu-list-items .menu-links > li > a {
+    color: black !important;
+}
+
+.horse-special-price {
+    margin-top: -67px !important;
+}
+
+.short-description-1 {
+    padding-top: 30px !important;
+    padding-bottom: 0px !important;
+}
+
+.white.category-grid-box-1 .short-description-1 {
+    padding-bottom: 0px !important;
+    padding-top: 7px !important;
+}
+
+/*Menu*/
+.linear-overlay {
+    /*background: transparent;;*/
+    background: rgba(36, 40, 47, 0.5);;
+}
+
+
+@media(min-width: 0px) and (max-width: 767px){
+    .background-rotator .content{
+        padding: 0 ;
+    }
+}
+@media(min-width: 768px) {
+    .background-rotator .content{
+        padding: 0 70px;
+    }
+
+}
+@media(max-width: 767px) {
+    
+    .background-rotator-slider{
+        display: none;
+    }
+    .background-rotator .search-form{
+        background-color: rgba(0, 0, 0, 0.8);
+        margin-top: 180px;
+    }
+}
+

@@ -14,19 +14,6 @@ class Photo extends Model
         'updated_by', 'deleted_by', 'marcado'
     ];
 
-    protected static function boot(): void
-    {
-        parent::boot();
-
-        static::created(function (self $model) {
-            // Optimization logic should be handled through jobs or observers in L11
-        });
-
-        static::deleting(function (self $model) {
-            // File deletion should be moved to observers or controllers
-        });
-    }
-
     public function horse()
     {
         return $this->belongsTo(Horse::class, 'tableid')->where('type', 4);
@@ -40,5 +27,148 @@ class Photo extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'tableid')->whereIn('type', [1, 10]);
+    }
+
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    public function setUrl($url)
+    {
+        $this->url = $url;
+        return $this;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function setName($name)
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    public function setDescription($description)
+    {
+        $this->description = $description;
+        return $this;
+    }
+
+    public function getTitulo1()
+    {
+        return $this->titulo1 ?? '';
+    }
+
+    public function setTitulo1($titulo1)
+    {
+        $this->titulo1 = $titulo1;
+        return $this;
+    }
+
+    public function getTitulo2()
+    {
+        return $this->titulo2 ?? '';
+    }
+
+    public function setTitulo2($titulo2)
+    {
+        $this->titulo2 = $titulo2;
+        return $this;
+    }
+
+    public function getOrden()
+    {
+        return $this->order;
+    }
+
+    public function setOrden($order)
+    {
+        $this->order = $order;
+        return $this;
+    }
+
+    public function getPublish()
+    {
+        return $this->publish;
+    }
+
+    public function setPublish($publish)
+    {
+        $this->publish = $publish;
+        return $this;
+    }
+
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    public function setType($type)
+    {
+        if ($type === 'stud') $type = 1;
+        $this->type = $type;
+        return $this;
+    }
+
+    public function getTableid()
+    {
+        return $this->tableid;
+    }
+
+    public function setTableid($tableid)
+    {
+        $this->tableid = $tableid;
+        return $this;
+    }
+
+    public function getSize()
+    {
+        return $this->size;
+    }
+
+    public function setSize($size)
+    {
+        $this->size = $size;
+        return $this;
+    }
+
+    // ── Scopes ─────────────────────────────────────────────────
+
+    public function scopeHorse($query, $horse_id)
+    {
+        return $query->where(['type' => 4, 'tableid' => $horse_id])->orderBy('order', 'asc');
+    }
+
+    public function scopeGallery($query, $stud_id)
+    {
+        return $query->where(['type' => 2, 'tableid' => $stud_id])->orderBy('order', 'asc');
+    }
+
+    public function scopeInstalations($query, $stud_id)
+    {
+        return $query->where(['type' => 3, 'tableid' => $stud_id])->orderBy('order', 'asc');
+    }
+
+    public function scopeSlider($query, $stud_id)
+    {
+        return $query->where(['type' => 5, 'tableid' => $stud_id])->orderBy('order', 'asc');
+    }
+
+    public function scopeFront($query, $stud_id)
+    {
+        return $query->where(['type' => 7, 'tableid' => $stud_id])->orderBy('order', 'asc');
+    }
+
+    public function scopeAdminLogo($query, $admin_id)
+    {
+        return $query->where(['type' => 10, 'tableid' => $admin_id])->orderBy('order', 'asc');
     }
 }

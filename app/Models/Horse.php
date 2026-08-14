@@ -4,10 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+use Cviebrock\EloquentSluggable\Sluggable;
+use App\Http\Controllers\Functions;
+use App\Http\Controllers\PublicController;
 
 class Horse extends Model
 {
     use SoftDeletes;
+    use Sluggable;
 
     protected $table = 'horses';
     public $incrementing = true;
@@ -66,9 +73,31 @@ class Horse extends Model
         });
     }
 
+    public function sluggable(): array
+    {
+        return [
+            'slug' => ['source' => 'name']
+        ];
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'users_id');
+    }
+
+    public function getUser()
+    {
+        return User::find($this->users_id);
+    }
+
+    public function User()
+    {
+        return $this->belongsTo(User::class, 'users_id', 'id');
     }
 
     public function stud()
@@ -76,9 +105,19 @@ class Horse extends Model
         return $this->belongsTo(Stud::class, 'studs_id');
     }
 
+    public function Stud()
+    {
+        return $this->belongsTo(Stud::class, 'studs_id', 'id');
+    }
+
     public function photos()
     {
         return $this->hasMany(Photo::class, 'tableid')->where('type', 4)->orderBy('order');
+    }
+
+    public function Fotos()
+    {
+        return $this->hasMany(Photo::class, 'tableid', 'id')->where('type', 4);
     }
 
     public function videos()
@@ -86,7 +125,368 @@ class Horse extends Model
         return $this->hasMany(Video::class, 'tableid')->where('type', 4)->orderBy('orden');
     }
 
-    // ── Query Scopes (legacy) ──────────────────────────────────
+    public function Videoss()
+    {
+        return $this->hasMany(Video::class, 'tableid', 'id')->where('type', 4);
+    }
+
+    public function Colors()
+    {
+        return $this->belongsTo(Color::class, 'color', 'id');
+    }
+
+    // ── Getters and Setters ──────────────────────────────────────
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function setName($name)
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    public function getGenealogia()
+    {
+        return $this->genealogia;
+    }
+
+    public function setGenealogia($genealogia)
+    {
+        $this->genealogia = $genealogia;
+        return $this;
+    }
+
+    public function getStudsId()
+    {
+        return $this->studs_id;
+    }
+
+    public function setStudsId($user_id)
+    {
+        $this->studs_id = 0;
+        $u = User::find($user_id);
+        if (!empty($u)) {
+            if (!empty($u->studs_id)) {
+                $this->studs_id = $u->studs_id;
+            } elseif (!empty($u->Yeguada())) {
+                $this->studs_id = $u->Yeguada()->id;
+            } else {
+                $this->studs_id = 0;
+            }
+        }
+        return $this;
+    }
+
+    public function getSex()
+    {
+        return $this->sex;
+    }
+
+    public function getSexString()
+    {
+        $d = '';
+        if ($this->sex != 0) {
+            $d = trans('horse.sex.' . $this->sex);
+        }
+        return $d;
+    }
+
+    public function setSex($sex)
+    {
+        $this->sex = $sex;
+        return $this;
+    }
+
+    public function getStud()
+    {
+        return $this->stud;
+    }
+
+    public function getStudName()
+    {
+        $d = $this->getYeguada();
+        if (empty($d)) return '';
+        return is_object($d) ? $d->getName() : '';
+    }
+
+    public function getYeguada()
+    {
+        $g = User::find($this->users_id);
+        if (!empty($g)) {
+            $d = $g->Yeguada();
+        } else {
+            $d = null;
+        }
+        if (empty($d)) return '';
+        return $d;
+    }
+
+    public function getStudPhone()
+    {
+        $d = $this->getYeguada();
+        if (empty($d) || !is_object($d)) return null;
+        return $d->getPhone();
+    }
+
+    public function getStudLocation()
+    {
+        $d = $this->getYeguada();
+        if (empty($d) || !is_object($d)) return null;
+        return $d->getAddress();
+    }
+
+    public function setStud($stud)
+    {
+        $this->stud = $stud;
+        return $this;
+    }
+
+    public function getSold()
+    {
+        return (bool)$this->sold;
+    }
+
+    public function setSold($sold)
+    {
+        $this->sold = $sold;
+        return $this;
+    }
+
+    public function getRaised()
+    {
+        return Functions::AjustarNumeroMil($this->raised);
+    }
+
+    public function setRaised($raised)
+    {
+        $this->raised = $raised;
+        return $this;
+    }
+
+    public function getBirthdate()
+    {
+        return $this->birthdate;
+    }
+
+    public function setBirthdate($birthdate)
+    {
+        $this->birthdate = $birthdate;
+        return $this;
+    }
+
+    public function getRaza()
+    {
+        return $this->raza;
+    }
+
+    public function setRaza($raza)
+    {
+        $this->raza = $raza;
+        return $this;
+    }
+
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    public function getPriceMil()
+    {
+        return Functions::AjustarNumeroMil($this->price);
+    }
+
+    public function setPrice($price)
+    {
+        $this->price = Functions::ConvertirNumeroAFloat($price);
+        return $this;
+    }
+
+    public function getTosold()
+    {
+        return (bool)$this->tosold;
+    }
+
+    public function setTosold($tosold)
+    {
+        $this->tosold = ($tosold === true || $tosold === 1 || $tosold === '1' || $tosold === 'true') ? 1 : 0;
+        return $this;
+    }
+
+    public function getUsersId()
+    {
+        return $this->users_id;
+    }
+
+    public function setUsersId($users_id)
+    {
+        $this->users_id = $users_id;
+        return $this;
+    }
+
+    public function getDoma()
+    {
+        return (bool)$this->doma;
+    }
+
+    public function setDoma($doma)
+    {
+        $this->doma = ($doma === true || $doma === 1 || $doma === '1' || $doma === 'true') ? 1 : 0;
+        return $this;
+    }
+
+    public function getFirstFoto()
+    {
+        return Photo::where('type', 4)->where('tableid', $this->id)->first();
+    }
+
+    public function getPhotoModel()
+    {
+        return Photo::where('type', 4)->where('tableid', $this->id)->get();
+    }
+
+    public function getPhotoFirstModel()
+    {
+        $p = Photo::where('type', 4)->where('tableid', $this->id)->first();
+        return $p ?? new Photo();
+    }
+
+    public function getPhoto()
+    {
+        return Photo::where('type', 4)->where('tableid', $this->id)->get()->toArray();
+    }
+
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    public function getColorString()
+    {
+        return ($this->color !== 0 && !empty($this->color)) ? trans('horse.color.' . $this->color) : '';
+    }
+
+    public function setColor($color)
+    {
+        $this->color = $color;
+        return $this;
+    }
+
+    public function getDescripcion()
+    {
+        return str_replace(["\r\n", "\r"], " ", nl2br((string)$this->descripcion));
+    }
+
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = str_replace(["\r\n", "<br>"], " ", (string)$descripcion);
+        $this->descripcion = Functions::LimpiarTexto($this->descripcion);
+        return $this;
+    }
+
+    public function getRaisedFormat()
+    {
+        return Functions::ConvertirNumeroAFloat($this->raised) . " cm";
+    }
+
+    public function getAge()
+    {
+        $tdy = Carbon::now()->year;
+        $dat = Functions::AjustarFechaAnyo($this->getBirthdate());
+        return ($tdy - $dat);
+    }
+
+    public function getAgeMonth()
+    {
+        $tdy = Carbon::now()->month;
+        $dat = Functions::AjustarFechaMes($this->getBirthdate());
+        return ($tdy - $dat);
+    }
+
+    public function getVideosModel()
+    {
+        return Video::where(['type' => 4, 'tableid' => $this->id])->orderBy('orden')->get();
+    }
+
+    public function getPublish()
+    {
+        return $this->publish;
+    }
+
+    public function setPublish($publish)
+    {
+        $this->publish = $publish;
+        return $this;
+    }
+
+    public function getCubri()
+    {
+        return $this->cubri;
+    }
+
+    public function setCubri($cubri)
+    {
+        $this->cubri = $cubri;
+        return $this;
+    }
+
+    public function getToCubri()
+    {
+        return $this->tocubri;
+    }
+
+    public function setToCubri($CubriBol = 0)
+    {
+        $this->tocubri = empty($CubriBol) ? 0 : $CubriBol;
+        return $this;
+    }
+
+    public function getCubriPrice()
+    {
+        return $this->cubri;
+    }
+
+    public function setCubriPrice($CubriPrice)
+    {
+        $this->cubri = $CubriPrice;
+        return $this;
+    }
+
+    public function getFavorite()
+    {
+        return $this->favorite ? 1 : 0;
+    }
+
+    public function isFavorite()
+    {
+        return (bool)$this->favorite;
+    }
+
+    public function setFavorite($favorite)
+    {
+        $this->favorite = $favorite;
+        return $this;
+    }
+
+    public function getMonedabase()
+    {
+        $f = $this->monedabase;
+        if (empty($f)) {
+            $ds = \Auth::user();
+            $f = 'EUR';
+            if ($ds && method_exists($ds, 'isAdm') && !$ds->isAdm()) {
+                $y = $ds->Yeguada();
+                if ($y && is_object($y) && method_exists($y, 'getMoneda')) {
+                    $f = $y->getMoneda();
+                }
+            }
+        }
+        return $f ?: 'EUR';
+    }
+
+    // ── Query Scopes ───────────────────────────────────────────
 
     public function scopeVentaPublica($query)
     {
@@ -110,11 +510,26 @@ class Horse extends Model
 
     public function scopeBuscarPorYeguadas($query, $yeguadas = [])
     {
-        return $query->wherein('studs_id', $yeguadas);
+        return $query->whereIn('studs_id', $yeguadas);
     }
 
     public function scopeBuscarPorSexos($query, $sexos = [])
     {
-        return $query->wherein('sex', $sexos);
+        return $query->whereIn('sex', $sexos);
+    }
+
+    public function scopeCaballosPorUsuario($query, $users_id)
+    {
+        return $query->where('users_id', $users_id);
+    }
+
+    public function scopeCaballos($query, Stud $stud)
+    {
+        return $query->where('studs_id', $stud->id);
+    }
+
+    public function scopeAzar($query)
+    {
+        return $query->inRandomOrder();
     }
 }

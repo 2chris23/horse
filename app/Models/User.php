@@ -2,16 +2,10 @@
 
 namespace App\Models;
 
-use App\Models\Stud;
-use App\Models\Horse;
-use App\Models\Personal;
-use App\Models\Photo;
-use App\Models\Video;
-use App\Models\SocialNetwork;
-use App\Models\Notification;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Http\Controllers\Functions;
 
 class User extends Authenticatable
 {
@@ -65,10 +59,6 @@ class User extends Authenticatable
             $model->active = $model->active ?: 0;
             $model->validado = $model->validado ?: 0;
         });
-
-        static::created(function (self $model) {
-            // Replaced push() logic; relationships should now be created explicitly via controllers.
-        });
     }
 
     public function stud()
@@ -86,7 +76,17 @@ class User extends Authenticatable
         return $this->hasOne(Personal::class, 'users_id');
     }
 
+    public function Personal()
+    {
+        return Personal::where('users_id', $this->id)->first();
+    }
+
     public function horses()
+    {
+        return $this->hasMany(Horse::class, 'users_id');
+    }
+
+    public function Horses()
     {
         return $this->hasMany(Horse::class, 'users_id');
     }
@@ -99,5 +99,76 @@ class User extends Authenticatable
     public function videos()
     {
         return $this->hasMany(Video::class, 'tableid')->where('type', 0);
+    }
+
+    // ── Helper Methods ───────────────────────────────────────────
+
+    public function Yeguada()
+    {
+        $d = Stud::where('users_id', $this->id)->first();
+        if (empty($d) && !empty($this->studs_id)) {
+            $d = Stud::find($this->studs_id);
+        }
+        return $d ?? new Stud();
+    }
+
+    public function hasYeguada(): bool
+    {
+        return Stud::where('users_id', $this->id)->exists();
+    }
+
+    public function isAdm(): bool
+    {
+        return (int)$this->type === 0;
+    }
+
+    public function getType(): int
+    {
+        return (int)$this->type;
+    }
+
+    public function getName()
+    {
+        return $this->name ?? '';
+    }
+
+    public function setName($name)
+    {
+        $this->name = ucwords(trim((string)$name));
+        return $this;
+    }
+
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function getDominio()
+    {
+        return str_replace(['_', ' '], '', (string)$this->domain);
+    }
+
+    public function getLogo()
+    {
+        $r = $this->Yeguada();
+        return $r ? $r->getLogo() : url('img/admin.jpg');
+    }
+
+    public function CaballosPublicadosPorRaza($raza = null)
+    {
+        if (empty($raza)) {
+            return Horse::where(['tosold' => 1, 'users_id' => $this->id])->get();
+        }
+        return Horse::where(['tosold' => 1, 'raza' => $raza, 'users_id' => $this->id])->get();
+    }
+
+    public function getHorses()
+    {
+        return Horse::where('users_id', $this->id)->get();
     }
 }

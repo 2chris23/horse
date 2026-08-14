@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Cviebrock\EloquentSluggable\Sluggable;
+use App\Http\Controllers\Functions;
 
 class Stud extends Model
 {
     use SoftDeletes;
+    use Sluggable;
 
     protected $table = 'studs';
 
@@ -19,23 +22,26 @@ class Stud extends Model
         'updated_by', 'deleted_by'
     ];
 
-    protected static function boot(): void
+    public function sluggable(): array
     {
-        parent::boot();
+        return [
+            'slug' => ['source' => 'name']
+        ];
+    }
 
-        static::created(function (self $model) {
-            // Note: $user->studs_id setting should be handled in controllers instead of push()
-        });
-
-        static::deleting(function (self $model) {
-            $model->photos()->delete();
-            $model->videos()->delete();
-        });
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 
     public function user()
     {
         return $this->belongsTo(User::class, 'users_id');
+    }
+
+    public function User()
+    {
+        return $this->belongsTo(User::class, 'users_id', 'id');
     }
 
     public function horses()
@@ -51,5 +57,109 @@ class Stud extends Model
     public function videos()
     {
         return $this->hasMany(Video::class, 'tableid')->where('type', 3);
+    }
+
+    // ── Getters and Setters ──────────────────────────────────────
+
+    public function getName()
+    {
+        $d = explode("_", (string)$this->name);
+        $s = "";
+        foreach ($d as $v) {
+            $s .= " " . $v;
+        }
+        $s = trim(preg_replace('/\s+/', ' ', $s));
+        return empty($s) ? 'Yeguada' : $s;
+    }
+
+    public function setName($name)
+    {
+        $name = str_replace(["  ", "_"], ' ', (string)$name);
+        $name = ucwords(trim($name));
+        $this->name = $name;
+        return $this;
+    }
+
+    public function getDescription()
+    {
+        return str_replace(["'", "\""], " ", (string)$this->description);
+    }
+
+    public function setDescription($description)
+    {
+        $this->description = Functions::LimpiarTexto($description);
+        return $this;
+    }
+
+    public function getAddress()
+    {
+        $d = Functions::LimpiarTexto($this->address);
+        return str_replace(['<p>', '</p>'], '', (string)$d);
+    }
+
+    public function setAddress($address)
+    {
+        $this->address = Functions::LimpiarTexto($address);
+        return $this;
+    }
+
+    public function getCountry()
+    {
+        return empty($this->country) ? 0 : $this->country;
+    }
+
+    public function getCountryModel()
+    {
+        return Country::findOrNew($this->country);
+    }
+
+    public function getState()
+    {
+        return empty($this->state) ? 0 : $this->state;
+    }
+
+    public function getStateModel()
+    {
+        return State::findOrNew($this->state);
+    }
+
+    public function getCity()
+    {
+        return $this->city ?? '';
+    }
+
+    public function setCity($city)
+    {
+        $this->city = $city;
+        return $this;
+    }
+
+    public function getPaid()
+    {
+        return $this->paid ?? 0;
+    }
+
+    public function getMoneda()
+    {
+        return $this->moneda ?? 'EUR';
+    }
+
+    public function getLogo()
+    {
+        if (!empty($this->logo)) {
+            $f = \Config::get('aplication.fotologo', 'logo');
+            return url("uploads/" . $f . "/" . $this->logo);
+        }
+        return url('img/admin.jpg');
+    }
+
+    public function getEmail()
+    {
+        return strtolower((string)$this->email);
+    }
+
+    public function getPhone()
+    {
+        return [];
     }
 }

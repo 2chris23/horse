@@ -21,5 +21,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Schema::defaultStringLength(191);
+        \Illuminate\Foundation\AliasLoader::getInstance()->alias('Funciones', \App\Http\Controllers\Functions::class);
     }
 }

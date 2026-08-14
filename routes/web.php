@@ -231,7 +231,16 @@ Route::group(['ttl' => 60], function () {
     */
 
 
-    Auth::routes();
+    // Auth::routes(); Reemplazado por rutas explícitas para Laravel 11 sin laravel/ui
+    Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+    Route::post('login', 'Auth\LoginController@login');
+    Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+    Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+    Route::post('register', 'Auth\RegisterController@register');
+    Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+    Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+    Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+    Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 //Route::get('Validacion/{token?}', 'TokenActivacion@show')->name('activacion.confirmar');
     Route::get('Validacion/{token?}', 'TokenActivacion@Activar')->name('activacion.confirmar');
     Route::post('Validacion', 'TokenActivacion@PrimeraClave')->name('activacion.Clave');

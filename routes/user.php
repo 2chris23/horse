@@ -209,7 +209,7 @@ Route::group(['domain' => "$host", 'middleware' => 'Autentificado', 'prefix' => 
     });
 });
 Route::group(array('domain' => "$host"), function () {
-    Auth::routes();
+    // Auth::routes();
     Route::get('/home', 'HomeController@index')->name('cliente.home');
     Route::get('/', function () {
         return redirect()->route('home');

@@ -245,6 +245,15 @@ Route::group(['ttl' => 60], function () {
     Route::get('Validacion/{token?}', 'TokenActivacion@Activar')->name('activacion.confirmar');
     Route::post('Validacion', 'TokenActivacion@PrimeraClave')->name('activacion.Clave');
     route::post('/contacto', 'PublicController@Contacto')->name('contacto.accion');
+    
+    // Ruta temporal para limpiar la caché en Plesk
+    Route::get('/limpiar-cache', function () {
+        \Artisan::call('view:clear');
+        \Artisan::call('route:clear');
+        \Artisan::call('cache:clear');
+        \Artisan::call('config:clear');
+        return 'Caché de vistas, rutas, configuración y aplicación borradas exitosamente.';
+    });
 
 
     /*

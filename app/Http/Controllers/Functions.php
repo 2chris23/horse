@@ -1858,7 +1858,7 @@ cellpadding=\"0\" style=\"letter-spacing: 2px;width: 100%;font-size: 13px; font-
 
         $parametros = $ruta->parameters();
         $nombre = $ruta->getName();
-        $uri = $ruta->getUri();
+        $uri = $ruta->uri();
 
 
         $objeto['parametro'] = $parametros;
@@ -7325,9 +7325,9 @@ Favicon successfully generated. <a href="' . $directory . $strip_ext . '.ico" ta
         $nombre = $ruta->getName();
         $thato = trans($base . $nombre);
 
-        $uri = $ruta->getUri();
+        $uri = $ruta->uri();
         $ln = \Config::get('lenguaje');
-        $b = LaravelLocalization::createUrlFromUri($ruta->getUri());
+        $b = LaravelLocalization::createUrlFromUri($ruta->uri());
         $para = [];
         foreach ($parametros as $k => $v) {
             $para['{' . $k . '}'] = $v;

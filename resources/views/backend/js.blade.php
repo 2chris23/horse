@@ -1,7 +1,7 @@
-@php($user = isset($user)?$user:null)
-@php($stud = !empty($user)?$user->Yeguada():null)
+<?php $user = isset($user)?$user:null; ?>
+<?php $stud = !empty($user)?$user->Yeguada():null; ?>
 
-@php($tiempoaviso = 60000)
+<?php $tiempoaviso = 60000; ?>
 @if(!empty($cd))
     <script>
         @endif
@@ -195,7 +195,7 @@
                     currentText: '{!! Funciones::ReemplazarApostrofe(trans('sell.hoy')) !!}',
                     monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
                     monthNamesShort: [
-                        @php($mes = trans('sell.meses'))
+                        <?php $mes = trans('sell.meses'); ?>
                                 @for($i =0;$i<count($mes);$i++)
                                 @if(isset($mes[$i]))
                             '{!! Funciones::ReemplazarApostrofe($mes[$i]) !!}'
@@ -209,7 +209,7 @@
                     dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
                     dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
                     dayNamesMin: [
-                        @php($mes = trans('sell.dia'))
+                        <?php $mes = trans('sell.dia'); ?>
                                 @for($i =0;$i<count($mes);$i++)
                                 @if(isset($mes[$i])) '{!! Funciones::ReemplazarApostrofe($mes[$i]) !!}' @if(isset($mes[$i+1])) {!! ',' !!} @endif @endif
                         @endfor

@@ -1,4 +1,4 @@
-@php($cd = null)
+<?php $cd = null; ?>
 @if(!empty($cd))
     <style>
         @endif
@@ -144,7 +144,7 @@
         }
 
         @for($i = 0;$i<12;$i++)
-        @php($f = $i*10)
+        <?php $f = $i*10; ?>
         .m-t-{!! $f+5 !!} { margin-top: {!! $f+5 !!}px; }
         .m-t-{!! $f+10 !!} { margin-top: {!! $f+10 !!}px; }
 @endfor

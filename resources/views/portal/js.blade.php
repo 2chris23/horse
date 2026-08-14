@@ -1,4 +1,4 @@
-@php($cd = null)
+<?php $cd = null; ?>
 @if(!empty($cd))
     <script>
                 @endif

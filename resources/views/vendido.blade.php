@@ -1,4 +1,4 @@
-@php($lng = \Session::get('lang'))
+<?php $lng = \Session::get('lang'); ?>
 <style>
 
 

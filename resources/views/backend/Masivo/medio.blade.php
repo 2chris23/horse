@@ -521,7 +521,7 @@
                                                     </table>
                                                 </td>
                                             @endif
-                                            @php($i = $i+1)
+                                            <?php $i = $i+1; ?>
                                         @endfor
                                         {{--
                                         <td width='15'>

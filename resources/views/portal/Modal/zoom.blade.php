@@ -12,21 +12,21 @@
             <div class="modal-body">
                 <div class="slideshow-container">
                     <!-- Full-width images with number and caption text -->
-                    @php($ts = 0)
-                    @php($totales = count($horse->getPhotoModel()) +count($horse->getPhotoModel())  )
+                    <?php $ts = 0; ?>
+                    <?php $totales = count($horse->getPhotoModel()) +count($horse->getPhotoModel())  ; ?>
 
                     @foreach($horse->getPhotoModel() as $k=>$v)
-                        @php($ffoto =  $v->getUrl())
+                        <?php $ffoto =  $v->getUrl(); ?>
                         <div class="mySlides fade in">
                             <div class="numbertext">{!! $k +1 !!} / {!! $totales !!}</div>
                             <img src="{!! $ffoto !!}"  alt="{!! $horse->getAltText() !!}" style="width:100%">
                             {{--<div class="text">Caption Text</div>--}}
                         </div>
-                        @php($ts = $k+1)
+                        <?php $ts = $k+1; ?>
                     @endforeach
 
                     @foreach($horse->getVideosModel() as $k=>$v)
-                        @php($ssd = $k+$ts)
+                        <?php $ssd = $k+$ts; ?>
                         <div class="mySlides fade in embed-responsive embed-responsive-4by3">
                             <div class="numbertext">{!! $ssd  !!} / {!! $totales !!}</div>
                             <iframe class="embed-responsive-item "

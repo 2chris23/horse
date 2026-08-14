@@ -1,7 +1,7 @@
-@php($etiquetalabel = "col-xs-12 col-sm-12 col-md-12 col-lg-3 text-sm-left text-md-left text-lg-right col-12")
-@php($tiquetainput = "col-xs-12 col-sm-12 col-md-12 col-lg-8 col-12")
-@php($time = \Session::get('timezone'))
-@php($time = !empty($time)?$time:Config::get('app.timezone'))
+<?php $etiquetalabel = "col-xs-12 col-sm-12 col-md-12 col-lg-3 text-sm-left text-md-left text-lg-right col-12"; ?>
+<?php $tiquetainput = "col-xs-12 col-sm-12 col-md-12 col-lg-8 col-12"; ?>
+<?php $time = \Session::get('timezone'); ?>
+<?php $time = !empty($time)?$time:Config::get('app.timezone'); ?>
 
 @extends('backend.layouts.base')
 @section('title', trans('Titulos.Facebook') )

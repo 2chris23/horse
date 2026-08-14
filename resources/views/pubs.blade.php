@@ -1,6 +1,6 @@
-@php($logo =url("landing/images/basic/logo.png"))
-@php($logo =url("portal_/images/logoportal.png"))
-@php($logo = url(\Config::get('logos.logoh350')))
+<?php $logo =url("landing/images/basic/logo.png"); ?>
+<?php $logo =url("portal_/images/logoportal.png"); ?>
+<?php $logo = url(\Config::get('logos.logoh350')); ?>
 @php
 
     if(\Config::get('app.env')== 'local'){
@@ -13,8 +13,8 @@
 
 @endphp
 
-@php($baner = url('portal_/images/banner-1.png'))
-@php($baner = url('portal_/images/pereira1.jpg'))
+<?php $baner = url('portal_/images/banner-1.png'); ?>
+<?php $baner = url('portal_/images/pereira1.jpg'); ?>
 
 <a href="{!! $linkbaner !!}" target="_blank">
     <figure class="banner-dd ">

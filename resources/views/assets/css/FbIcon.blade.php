@@ -1,4 +1,4 @@
-@php($user = isset($user)?$user:null) @php($stud = !empty($user)?$user->Yeguada():null) @php($cd = null) @if(!empty($cd))
+<?php $user = isset($user)?$user:null; ?> <?php $stud = !empty($user)?$user->Yeguada():null; ?> <?php $cd = null; ?> @if(!empty($cd))
     <style>  @endif  .emoji {
             background-repeat: no-repeat;
             background-size: auto;

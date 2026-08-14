@@ -1,4 +1,4 @@
-@php($logo = url('logo.png'))
+<?php $logo = url('logo.png'); ?>
         <!DOCTYPE html>
 <html>
 <head>

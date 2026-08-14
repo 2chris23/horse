@@ -1,5 +1,5 @@
-@php($logo =url("portal_/images/logoportal.png"))
-@php($raza=(isset($raza))?$raza:0)
+<?php $logo =url("portal_/images/logoportal.png"); ?>
+<?php $raza=(isset($raza))?$raza:0; ?>
 @extends('portal.baselarge')
 
 @php
@@ -34,7 +34,7 @@
             $pais = null;
         }
 @endphp
-@php($moneda = '<i class="fa fa-eur"></i>')
+<?php $moneda = '<i class="fa fa-eur"></i>'; ?>
 @section('social')
     @php
         $seokey = trans('seo.portalkey');

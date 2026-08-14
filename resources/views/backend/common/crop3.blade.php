@@ -1,4 +1,4 @@
-@php($user = (isset($user))?$user:null)
+<?php $user = (isset($user))?$user:null; ?>
 {{--{!!Html::script("/js/canvas-to-blob.min.js")!!}--}}
 
 

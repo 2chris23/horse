@@ -1,20 +1,20 @@
-@php($user = (isset($user))?$user:null)
-@php($nombre = (isset($nombre))?$nombre:null)
-@php($imagen = (isset($imagen))?$imagen:null)
-@php($imagen_id = (isset($imagen_id))?$imagen_id:0)
+<?php $user = (isset($user))?$user:null; ?>
+<?php $nombre = (isset($nombre))?$nombre:null; ?>
+<?php $imagen = (isset($imagen))?$imagen:null; ?>
+<?php $imagen_id = (isset($imagen_id))?$imagen_id:0; ?>
 {{--
-@php($viewport=[0=> 128,1=> 72])
-@php($boundary=[0=> 256,1=> 144])
+<?php $viewport=[0=> 128,1=> 72]; ?>
+<?php $boundary=[0=> 256,1=> 144]; ?>
 
 
-@php($viewport=[0=> 256,1=> 144])
-@php($boundary=[0=> 384,1=> 216])
-@php($viewport=[0=> 384,1=> 216])
+<?php $viewport=[0=> 256,1=> 144]; ?>
+<?php $boundary=[0=> 384,1=> 216]; ?>
+<?php $viewport=[0=> 384,1=> 216]; ?>
 
-@php($boundary=[0=> 1920,1=> 685])
-@php($viewport=[0=> 1920,1=> 685])
+<?php $boundary=[0=> 1920,1=> 685]; ?>
+<?php $viewport=[0=> 1920,1=> 685]; ?>
 --}}
-{{--@php($viewport=[0=> 640,1=> 360])--}}
+{{--<?php $viewport=[0=> 640,1=> 360]; ?>--}}
 
 
 

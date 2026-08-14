@@ -1,7 +1,7 @@
 @extends('backend.layouts.base')
 @section('title', "Landing" )
-@php($urlfotos='https://image.flaticon.com/icons/png/128/2/2409.png')
-@php($urlcubri='https://image.flaticon.com/icons/png/128/2/2409.png')
+<?php $urlfotos='https://image.flaticon.com/icons/png/128/2/2409.png'; ?>
+<?php $urlcubri='https://image.flaticon.com/icons/png/128/2/2409.png'; ?>
 
 
 @section('topcss')
@@ -34,10 +34,10 @@
 
 @endsection
 @section('content')
-    @php($cubri = count(\Auth::user()->Horses()->where('tocubri',1)->get()))
-    @php($fotocaballo= \Auth::user()->Horses()->with('Fotos')->get()->pluck('id'))
-    @php($fotosyeguada= \Auth::user()->Yeguada()->getPhotosModel())
-    @php($videosyeguada= \Auth::user()->Yeguada()->getVideosModel())
+    <?php $cubri = count(\Auth::user()->Horses()->where('tocubri',1)->get()); ?>
+    <?php $fotocaballo= \Auth::user()->Horses()->with('Fotos')->get()->pluck('id'); ?>
+    <?php $fotosyeguada= \Auth::user()->Yeguada()->getPhotosModel(); ?>
+    <?php $videosyeguada= \Auth::user()->Yeguada()->getVideosModel(); ?>
     @php
         $ht =[];
 
@@ -87,7 +87,7 @@
     {{--------ICON DEMO-----------}}
     <div id="datos" class="card col-12 m-t-35 ">
         <div class="card-block">
-            @php($ts = count(\Auth::user()->Horses()->get()))
+            <?php $ts = count(\Auth::user()->Horses()->get()); ?>
             <div class='card-header bg-white '>
                 {!! trans('portal.allhorse') !!}
                 @if($ts !=0)
@@ -99,7 +99,7 @@
                 @endif
                 <div class="pull-right text-right totalessex ">
                     @foreach(trans('horse.raza')  as $k =>$v)
-                        @php($ht = count(\Auth::user()->Horses()->where('raza',$k)->get()))
+                        <?php $ht = count(\Auth::user()->Horses()->where('raza',$k)->get()); ?>
                         @if($ht!=0)
                             @if($k!=0)
                                 <span class="badge badge-warning">
@@ -116,7 +116,7 @@
                 {{--
                                 @foreach(trans('horse.raza') as $k=>$v)
                                     @if($k!=0)
-                                        @php($ts = count(\Auth::user()->Horses()->where('raza',$k)->get()))
+                                        <?php $ts = count(\Auth::user()->Horses()->where('raza',$k)->get()); ?>
 
                                     @endif
                                     @if($ts != 0)
@@ -148,8 +148,8 @@
 
                 @foreach(trans('horse.sexs') as $k=>$v)
                     @if($k != 0)
-                        @php($dda =   count(\Auth::user()->Horses()->where('sex',$k)->get()))
-                        {{--@php($ht[$k] = $dda )--}}
+                        <?php $dda =   count(\Auth::user()->Horses()->where('sex',$k)->get()); ?>
+                        {{--<?php $ht[$k] = $dda ; ?>--}}
                         <div class="col-xl-2 col-lg-4 col-md-6 col-sm-12 col-12 m-t-20">
                             <div class="card card-np">
                                 <div class="pull-left sales_icons">
@@ -191,7 +191,7 @@
     <div id="datos" class="card col-12 m-t-35 ">
         <div class="card-block">
             <div class='card-header bg-white '>
-                @php($ts =count(\Auth::user()->Horses()->where(['tosold'=>1])->get()) )
+                <?php $ts =count(\Auth::user()->Horses()->where(['tosold'=>1])->get()) ; ?>
                 {!! trans('portal.sellhorse') !!}
                 @if($ts !=0)
                     <span style="padding-left:10px;">
@@ -202,7 +202,7 @@
                 @endif
                 <div class="pull-right text-right totalessex">
                     @foreach(trans('horse.raza')  as $k =>$v)
-                        @php($ht = count(\Auth::user()->Horses()->where(['raza'=>$k,'tosold'=>1])->get()))
+                        <?php $ht = count(\Auth::user()->Horses()->where(['raza'=>$k,'tosold'=>1])->get()); ?>
                         @if($ht!=0)
                             @if($k!=0)
                                 <span class="badge badge-warning">
@@ -221,15 +221,15 @@
                                 @foreach(trans('horse.raza') as $k=>$v)
 
                                     @if($k!=0)
-                                        @php($hrs = \Auth::user()->Horses()->where(['raza'=>$k,'tosold'=>1])->get())
-                                        @php($ts = count($hrs))
-                                        @php($ht[$k] = $ts)
-                                        @php($cub =\Auth::user()->Horses()->where(['raza'=>$k,'tosold'=>1,'tocubri'=>1])->get() )
+                                        <?php $hrs = \Auth::user()->Horses()->where(['raza'=>$k,'tosold'=>1])->get(); ?>
+                                        <?php $ts = count($hrs); ?>
+                                        <?php $ht[$k] = $ts; ?>
+                                        <?php $cub =\Auth::user()->Horses()->where(['raza'=>$k,'tosold'=>1,'tocubri'=>1])->get() ; ?>
 
                                     @else
-                                        @php($hrs = \Auth::user()->Horses()->where(['tosold'=>1])->get())
-                                        @php($ts = count($hrs))
-                                        @php($cub =\Auth::user()->Horses()->where(['tosold'=>1,'tocubri'=>1])->get() )
+                                        <?php $hrs = \Auth::user()->Horses()->where(['tosold'=>1])->get(); ?>
+                                        <?php $ts = count($hrs); ?>
+                                        <?php $cub =\Auth::user()->Horses()->where(['tosold'=>1,'tocubri'=>1])->get() ; ?>
                                     @endif
                                 @endforeach
                                 --}}
@@ -305,7 +305,7 @@
 
                 @foreach(trans('horse.sexs') as $k=>$v)
                     @if($k != 0)
-                        @php($dda =  count(\Auth::user()->Horses()->where(['tosold'=>1,'sex'=>$k])->get()))
+                        <?php $dda =  count(\Auth::user()->Horses()->where(['tosold'=>1,'sex'=>$k])->get()); ?>
                         @if($dda !=0)
                             <div class="col-xl-2 col-lg-4 col-md-6 col-sm-12 col-12 m-t-20">
                                 <div class="card card-np ">
@@ -382,8 +382,8 @@
                 </div>
             --}}
                 {{--FOTOS DE CABALLO--}}
-                {{--@php($ts = \Auth::user()->Horses()->with('Fotos')->get()->pluck('id'))--}}
-                @php($ts = \Auth::user()->Yeguada()->getPhotosModel())
+                {{--<?php $ts = \Auth::user()->Horses()->with('Fotos')->get()->pluck('id'); ?>--}}
+                <?php $ts = \Auth::user()->Yeguada()->getPhotosModel(); ?>
                 @if(count($ts)!=0)
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 m-t-20">
 
@@ -391,20 +391,20 @@
 
                             <div class="row ">
 
-                                {{--@php($fot = Photo::wherein('tableid',$ts)->where(['type'=>4])->orderby('created_at','desc')->get())--}}
-                                @php($fot = $ts)
+                                {{--<?php $fot = Photo::wherein('tableid',$ts)->where(['type'=>4])->orderby('created_at','desc')->get(); ?>--}}
+                                <?php $fot = $ts; ?>
                                 <div class="col-8  sales_icons1 fotosimg fotosimg-small">
                                     {{--<img src="{!! $urlfotos !!}" alt="" class="img-fluid placefoto">
                                     --}}
                                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                         <!-- Indicators -->
                                         <ol class="carousel-indicators">
-                                            @php($f = false)
+                                            <?php $f = false; ?>
                                             @foreach($fot as $k=>$v)
                                                 <li data-target="#carouselExampleIndicators" data-slide-to="{!! $k !!}"
                                                     @if($f == false)
                                                     class="active"
-                                                        @php($f = true)
+                                                        <?php $f = true; ?>
                                                         @endif
                                                 >
 
@@ -413,14 +413,14 @@
                                             @endforeach
                                         </ol>
 
-                                        @php($f = false)
+                                        <?php $f = false; ?>
 
                                         <div class="carousel-inner" role="listbox">
                                             @foreach($fot as $k=>$v)
 
-                                                {{--@php($hrs = Horse::find($v->tableid))--}}
+                                                {{--<?php $hrs = Horse::find($v->tableid); ?>--}}
                                                 <div class="carousel-item
-                                @if($f ==false) active @php($f = true) @endif ">
+                                @if($f ==false) active <?php $f = true; ?> @endif ">
                                                     <figure class="fotosimg-small-figure">
                                                         <img lsrc="{!! url($v->url) !!}"
                                                              class="d-block img-fluid hidden" {{--alt="Chania" width="460" height="345"--}}>
@@ -494,39 +494,39 @@
                 --}}
 
                 {{--VIDEOS--}}
-                {{--@php($ts = \Auth::user()->Horses()->with('Videoss')->get()->pluck('id'))--}}
-                @php($ts = \Auth::user()->Yeguada()->getVideosModel())
+                {{--<?php $ts = \Auth::user()->Horses()->with('Videoss')->get()->pluck('id'); ?>--}}
+                <?php $ts = \Auth::user()->Yeguada()->getVideosModel(); ?>
                 @if(count($ts)!=0)
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 m-t-20">
 
                         <div class="card card-np ">
                             <div class="row ">
-                                {{--@php($fot = Video::wherein('tableid',$ts)->where(['type'=>4])->orderby('created_at','desc')->get())--}}
-                                @php($fot = $ts)
+                                {{--<?php $fot = Video::wherein('tableid',$ts)->where(['type'=>4])->orderby('created_at','desc')->get(); ?>--}}
+                                <?php $fot = $ts; ?>
                                 <div class="col-8  sales_icons1 fotosimg fotosimg-small">
                                     {{--<img src="{!! $urlfotos !!}" alt="" class="img-fluid placefoto"> --}}
                                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                         <!-- Indicators -->
                                         <ol class="carousel-indicators">
-                                            @php($f = false)
+                                            <?php $f = false; ?>
                                             @foreach($fot as $k=>$v)
                                                 <li data-target="#carouselExampleIndicators" data-slide-to="{!! $k !!}"
                                                     @if($f == false)
                                                     class="active"
-                                                        @php($f = true)
+                                                        <?php $f = true; ?>
                                                         @endif>
 
                                                 </li>
                                             @endforeach
                                         </ol>
 
-                                        @php($f = false)
+                                        <?php $f = false; ?>
 
                                         <div class="carousel-inner" role="listbox">
                                             @foreach($fot as $k=>$v)
 
                                                 <div class="carousel-item
-                                @if($f ==false) active @php($f = true) @endif ">
+                                @if($f ==false) active <?php $f = true; ?> @endif ">
                                                     <figure class="fotosimg-small-figure">
                                                         <img lsrc="{!! url($v->getYoutubeThumb()) !!}"
                                                              class="d-block img-fluid hidden" {{--alt="Chania" width="460" height="345"--}}>
@@ -632,7 +632,7 @@
 
     {{--
     <div class="col-12 row">
-    @php($ts = \Auth::user()->Horses()->with('Fotos')->get()->pluck('id'))
+    <?php $ts = \Auth::user()->Horses()->with('Fotos')->get()->pluck('id'); ?>
     @if(count($ts)!=0)
         <div class="col-12 col-md-6">
             <div id="datos" class="card col-12  m-t-35 ">
@@ -642,28 +642,28 @@
                     </div>
                     <div class="row">
                         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                        @php($fot = Photo::wherein('tableid',$ts)->where(['type'=>4])->orderby('created_at','desc')->get())
+                        <?php $fot = Photo::wherein('tableid',$ts)->where(['type'=>4])->orderby('created_at','desc')->get(); ?>
                         <!-- Indicators -->
                             <ol class="carousel-indicators">
-                                @php($f = false)
+                                <?php $f = false; ?>
                                 @foreach($fot as $k=>$v)
                                     <li data-target="#carouselExampleIndicators" data-slide-to="{!! $k !!}">
 
                                         @if($f == false)
                                             class="active"
-                                            @php($f = true)
+                                            <?php $f = true; ?>
                                         @endif
                                     </li>
                                 @endforeach
                             </ol>
 
-                            @php($f = false)
+                            <?php $f = false; ?>
 
                             <div class="carousel-inner" role="listbox">
                                 @foreach($fot as $k=>$v)
-                                    @php($hrs = Horse::find($v->tableid))
+                                    <?php $hrs = Horse::find($v->tableid); ?>
                                     <div class="carousel-item
-                            @if($f ==false) active @php($f = true) @endif ">
+                            @if($f ==false) active <?php $f = true; ?> @endif ">
                                         <figure>
                                             <img src="{!! url($v->url) !!}"
                                                  class="d-block img-fluid" {{--alt="Chania" width="460" height="345"-- }}>
@@ -711,7 +711,7 @@
 
 
     {{-------------FOTOS DE YEGUADA------------------- }}
-    @php($ts = \Auth::user()->Yeguada()->getPhotosModel())
+    <?php $ts = \Auth::user()->Yeguada()->getPhotosModel(); ?>
     @if(count($ts)!=0)
         <div class="col-12 col-md-6">
             <div id="datos" class="card col-12 m-t-35 ">
@@ -724,25 +724,25 @@
                         {{--<div id="myCarousel" class="carousel slide" data-ride="carousel">-- }}
                         <!-- Indicators -->
                             <ol class="carousel-indicators">
-                                @php($f = false)
+                                <?php $f = false; ?>
                                 @foreach($ts as $k=>$v)
                                     <li data-target="#carouselStud" data-slide-to="{!! $k !!}">
 
                                         @if($f == false)
                                             class="active"
-                                            @php($f = true)
+                                            <?php $f = true; ?>
                                         @endif
                                     </li>
                                 @endforeach
                             </ol>
 
-                            @php($f = false)
+                            <?php $f = false; ?>
 
                             <div class="carousel-inner" role="listbox">
                                 @foreach($ts as $k=>$v)
 
                                     <div class="carousel-item
-                        @if($f ==false) active @php($f = true) @endif ">
+                        @if($f ==false) active <?php $f = true; ?> @endif ">
                                         <figure>
                                             <img src="{!! url($v->url) !!}"
                                                  class="d-block img-fluid" {{--alt="Chania" width="460" height="345"-- }}>
@@ -903,7 +903,7 @@
         </div>
     </div>
     --}}
-    @php($sociales = \Auth::user()->Yeguada()->getSocialNetwork())
+    <?php $sociales = \Auth::user()->Yeguada()->getSocialNetwork(); ?>
 
 
 
@@ -925,12 +925,12 @@
                             <ul class="m-b-0">
                                 @foreach($sociales as $k=>$v)
 
-                                    @php($t = $v->getTwitter())
-                                    @php($p =$v->getPinterest())
-                                    @php($f =$v->getFacebook())
-                                    @php($g =$v->getGoogle())
-                                    @php($i =$v->getInstagram())
-                                    @php($y =$v->getYoutube())
+                                    <?php $t = $v->getTwitter(); ?>
+                                    <?php $p =$v->getPinterest(); ?>
+                                    <?php $f =$v->getFacebook(); ?>
+                                    <?php $g =$v->getGoogle(); ?>
+                                    <?php $i =$v->getInstagram(); ?>
+                                    <?php $y =$v->getYoutube(); ?>
                                     @if(!empty($t))
                                         <li class="twitter">
                                             <a href="{!! $t !!}" target="_blank">
@@ -1202,7 +1202,7 @@
     {{--https://www.youtube.com/user/YeguadaJuanVazquez--}}
 
     {{--
-    @php($chanel ="UCqOKHHyTda2gjCkngPFdruw" )
+    <?php $chanel ="UCqOKHHyTda2gjCkngPFdruw" ; ?>
     <script src="http://www.gmodules.com/ig/ifr?url=http://www.google.com/ig/modules/youtube.xml&amp;up_channel={!! $chanel !!}&amp;synd=open&amp;w=320&amp;h=390&amp;title=&amp;border=%23ffffff%7C3px%2C1px+solid+%23999999&amp;output=js">
 
     </script>

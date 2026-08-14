@@ -219,7 +219,7 @@ if (!empty(\Auth::user())) {
                                 $id = $user->id;
                                 }@endphp
                                 --}}
-                                @php($id = isset($user)?$user->id:0)
+                                <?php $id = isset($user)?$user->id:0; ?>
                                 {{--
                                 <button class="btn btn-warning glow_button">Button
                                 </button>

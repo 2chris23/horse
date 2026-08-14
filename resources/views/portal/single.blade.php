@@ -1,10 +1,10 @@
 {{-- ESTE SE USA PARA DETALLE DE CABALLO --}}
-@php($logo =url("landing/images/basic/logo.png"))
-@php($logo =url("portal_/images/logoportal.png"))
-@php($logo =url(\Config::get('logos.favicon32')))
-@php($stud = $horse->getYeguada())
-@php($Coins = \Session::get('moneda'))
-@php($Coins = empty($Coins)?'USD':$Coins)
+<?php $logo =url("landing/images/basic/logo.png"); ?>
+<?php $logo =url("portal_/images/logoportal.png"); ?>
+<?php $logo =url(\Config::get('logos.favicon32')); ?>
+<?php $stud = $horse->getYeguada(); ?>
+<?php $Coins = \Session::get('moneda'); ?>
+<?php $Coins = empty($Coins)?'USD':$Coins; ?>
 @php
     $prs = \Session::get('pre');
 
@@ -96,7 +96,7 @@
                 background: rgba(0, 0, 0, 0) url({!! $imagen !!}) no-repeat scroll center top/ cover;
             }
 
-            @php($imagen = 'http://horsesworldsale.com/landing/images/slider/1/9.jpg')
+            <?php $imagen = 'http://horsesworldsale.com/landing/images/slider/1/9.jpg'; ?>
             .page-header-area {
                 background: rgba(0, 0, 0, 0) url({!! $imagen !!}) no-repeat scroll center top/ cover;
 
@@ -252,9 +252,9 @@
                             <div class="flexslider single-page-slider">
                                 <div class="flex-viewport">
                                     <ul class="slides slide-main">
-                                        @php($ts = count($horse->getPhotoModel()))
+                                        <?php $ts = count($horse->getPhotoModel()); ?>
                                         @foreach($horse->getPhotoModel() as $k=>$v)
-                                            @php($ffoto =  $v->getUrl())
+                                            <?php $ffoto =  $v->getUrl(); ?>
                                             <li @if($k==0) class="flex-active-slide" @endif >
                                                 <div class="nivo-activator">
                                                 </div>
@@ -272,11 +272,11 @@
                                                 </figure>
 
                                             </li>
-                                            @php($ts = $k+1)
+                                            <?php $ts = $k+1; ?>
                                         @endforeach
 
                                         @foreach($horse->getVideosModel() as $k => $v)
-                                            @php($ssd = $ts + $k)
+                                            <?php $ssd = $ts + $k; ?>
                                             <li @if($k==0) class="flex-active-slide" @endif >
                                                 <div class="nivo-activator"></div>
                                                 <a id="vid_{!! $k !!}"
@@ -1449,9 +1449,9 @@
                                 {!! trans('portal.emailcontact') !!}
                             </button>
                         @if(!empty($horse->getStudPhone()))
-                            @php($ph = $horse->getStudPhone())
+                            <?php $ph = $horse->getStudPhone(); ?>
                             @if(isset($ph[0]))
-                                @php($ph = Phone::find($ph[0]['id']))
+                                <?php $ph = Phone::find($ph[0]['id']); ?>
                                 <!-- Email Modal -->
                                     <button
                                             {{--onclick="Llamar({!! $ph->getFormatNumberOnly() !!},this)"--}}
@@ -1503,7 +1503,7 @@
                                     @if(!is_string($stud))
                                         <img src="{!! $stud->getLogo() !!}" alt="{!! $stud->name !!}">
                                     @else
-                                        {{--@php(\Log::critical('EPA PROBLEMAS CON '.$horse->id))--}}
+                                        {{--<?php \Log::critical('EPA PROBLEMAS CON '.$horse->id); ?>--}}
                                     @endif
                                 </div>
                                 <div class="user-information no-padding col-md-8 col-sm-9 col-xs-8">
@@ -1527,7 +1527,7 @@
 
 
                                         @else
-                                            {{--@php(\Log::critical('EPA PROBLEMAS CON ADDREESSS '.$horse->id))--}}
+                                            {{--<?php \Log::critical('EPA PROBLEMAS CON ADDREESSS '.$horse->id); ?>--}}
                                         @endif
                                     </div>
 
@@ -1545,7 +1545,7 @@
                             </div>
                             @if(!empty($horse))
                                 @if(!empty($horse->getUser()))
-                                    @php($publicaciones = $horse->getUser()->CaballosPublicadosPorRaza())
+                                    <?php $publicaciones = $horse->getUser()->CaballosPublicadosPorRaza(); ?>
                                 @endif
                             @endif
                             @if(!empty($publicaciones))
@@ -1555,7 +1555,7 @@
                                     <ul>
                                         @foreach($razas as $k=>$v)
                                             @if($k !=0)
-                                                @php($total = $horse->getUser()->CaballosPublicadosPorRaza($k))
+                                                <?php $total = $horse->getUser()->CaballosPublicadosPorRaza($k); ?>
                                                 @if(count($total)!=0)
                                                     <li>{!! $v !!}: <span
                                                                 class="color">{!! count($horse->getUser()->CaballosPublicadosPorRaza($k)) !!}</span>

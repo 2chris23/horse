@@ -1,5 +1,5 @@
-@php($etiquetalabel = "col-xs-12 col-sm-12 col-md-12 col-lg-3 text-sm-left text-md-left text-lg-right col-12")
-@php($tiquetainput = "col-xs-12 col-sm-12 col-md-12 col-lg-8 col-12")
+<?php $etiquetalabel = "col-xs-12 col-sm-12 col-md-12 col-lg-3 text-sm-left text-md-left text-lg-right col-12"; ?>
+<?php $tiquetainput = "col-xs-12 col-sm-12 col-md-12 col-lg-8 col-12"; ?>
 @php
     use App\Model\Autopostconf;$user = \Auth::user();
     $adm = $user->isAdm();
@@ -128,7 +128,7 @@
                                         </div>
                                         <div class="{!! $tiquetainput !!} times row placec">
                                             @if(!empty($diarias))
-                                                @php($post = $diarias->getHoras())
+                                                <?php $post = $diarias->getHoras(); ?>
                                                 @foreach($post as $k=>$v)
                                                     <div class="col-12 col-md-6 col-lg-4 m-t-10">
                                                         <div class="input-group">
@@ -150,7 +150,7 @@
 
                                         </div>
                                         <div class="{!! $tiquetainput !!} row m-t-10">
-                                            @php($aguapre = (!empty($diarias))?((!empty($diarias->status))?$diarias->status:0):0)
+                                            <?php $aguapre = (!empty($diarias))?((!empty($diarias->status))?$diarias->status:0):0; ?>
                                             <div class="col-12 confac m-t-10  m-t-10 "
                                                  data-check="{!! $aguapre !!}">
                                                  <span class="nopredeterminado text-red @if($aguapre!=0) hidden-xs-up @endif">
@@ -248,7 +248,7 @@
                                         </div>
                                         <div class="{!! $tiquetainput !!} row placed">
                                             @if(!empty($cubriciones))
-                                                @php($post = $cubriciones->getHoras())
+                                                <?php $post = $cubriciones->getHoras(); ?>
                                                 @foreach($post as $k=>$v)
                                                     <div class="col-12 col-md-6 col-lg-4 m-t-10">
                                                         <div class="input-group">
@@ -268,7 +268,7 @@
                                         <div class="{!! $etiquetalabel !!} m-t-25 m-b-20">
                                         </div>
                                         <div class="{!! $tiquetainput !!} m-t-25 row ">
-                                            @php($aguapre = (!empty($ventas))?((!empty($ventas->status))?$ventas->status:0):0)
+                                            <?php $aguapre = (!empty($ventas))?((!empty($ventas->status))?$ventas->status:0):0; ?>
                                             <div class="col-12 confac m-t-10  m-t-10 "
                                                  data-check="{!! $aguapre !!}">
                                                  <span class="nopredeterminado text-red @if($aguapre!=0) hidden-xs-up @endif">
@@ -356,7 +356,7 @@
                                         </div>
                                         <div class="{!! $tiquetainput !!} row placef">
                                             @if(!empty($ventas))
-                                                @php($post = $ventas->getHoras())
+                                                <?php $post = $ventas->getHoras(); ?>
                                                 @foreach($post as $k=>$v)
                                                     <div class="col-12 col-md-6 col-lg-4 m-t-10">
                                                         <div class="input-group">
@@ -377,7 +377,7 @@
 
                                         </div>
                                         <div class="{!! $tiquetainput !!} row m-t-10">
-                                            @php($aguapre = (!empty($cubriciones))?((!empty($cubriciones->status))?$cubriciones->status:0):0)
+                                            <?php $aguapre = (!empty($cubriciones))?((!empty($cubriciones->status))?$cubriciones->status:0):0; ?>
                                             <div class="col-12 confac m-t-10  m-t-10 "
                                                  data-check="{!! $aguapre !!}">
                                                  <span class="nopredeterminado text-red @if($aguapre!=0) hidden-xs-up @endif">
@@ -438,7 +438,7 @@
 
                                         <div class="{!! $tiquetainput !!} row placedvid">
                                             @if(!empty($videos))
-                                                @php($post = $videos->horas)
+                                                <?php $post = $videos->horas; ?>
                                                 <div class="col-12 col-md-6 col-lg-4 m-t-20">
                                                     <div class="input-group">
                                                             <span class="input-group-addon" id="basic-addon1">
@@ -472,7 +472,7 @@
                                         <div class="{!! $etiquetalabel !!} m-t-25 m-b-20">
                                         </div>
                                         <div class="{!! $tiquetainput !!} m-t-25 row ">
-                                            @php($aguapre = (!empty($videos))?((!empty($videos->status))?$videos->status:0):0)
+                                            <?php $aguapre = (!empty($videos))?((!empty($videos->status))?$videos->status:0):0; ?>
                                             <div class="col-12 confac m-t-10  m-t-10 "
                                                  data-check="{!! $aguapre !!}">
                                                  <span class="nopredeterminado text-red @if($aguapre!=0) hidden-xs-up @endif">
@@ -531,7 +531,7 @@
                                         </div>
                                         <div class="{!! $tiquetainput !!} row placedvid">
                                             @if(!empty($fotos))
-                                                @php($post = $fotos->horas)
+                                                <?php $post = $fotos->horas; ?>
 
                                                 <div class="col-12 col-md-6 col-lg-4 m-t-10">
                                                     <div class="input-group">
@@ -565,7 +565,7 @@
                                         <div class="{!! $etiquetalabel !!} m-t-25 m-b-20">
                                         </div>
                                         <div class="{!! $tiquetainput !!} m-t-25 row ">
-                                            @php($aguapre = (!empty($fotos))?((!empty($fotos->status))?$fotos->status:0):0)
+                                            <?php $aguapre = (!empty($fotos))?((!empty($fotos->status))?$fotos->status:0):0; ?>
                                             <div class="col-12 confac m-t-10  m-t-10 "
                                                  data-check="{!! $aguapre !!}">
                                                  <span class="nopredeterminado text-red @if($aguapre!=0) hidden-xs-up @endif">

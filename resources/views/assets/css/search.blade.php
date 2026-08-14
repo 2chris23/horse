@@ -1,6 +1,6 @@
-@php($user = isset($user)?$user:null)
-@php($stud = !empty($user)?$user->Yeguada():null)
-@php($cd = null)
+<?php $user = isset($user)?$user:null; ?>
+<?php $stud = !empty($user)?$user->Yeguada():null; ?>
+<?php $cd = null; ?>
 @if(!empty($cd))
     <style>
         @endif

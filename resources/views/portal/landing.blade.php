@@ -1,5 +1,5 @@
-@php($logo =url("landing/images/basic/logo.png"))
-@php($logo =url("portal_/images/logoportal.png"))
+<?php $logo =url("landing/images/basic/logo.png"); ?>
+<?php $logo =url("portal_/images/logoportal.png"); ?>
 
 <?php
 $prs = \Session::get('pre');
@@ -139,7 +139,7 @@ $l = url(\Config::get('logos.fbhws'));
     </style>
 </head>
 <body>
-@php($robot= Agent::isRobot())
+<?php $robot= Agent::isRobot(); ?>
 @if($robot != true)
     <!-- Google Tag Manager (noscript) -->
     <noscript>
@@ -156,7 +156,7 @@ $l = url(\Config::get('logos.fbhws'));
 
     @for($i = 0;$i<count($f);$i++)
         <!-- Slide -->
-            @php($v = $f[$i])
+            <?php $v = $f[$i]; ?>
             <div class="item linear-overlay">
                 <img src="{!!$v !!}" alt="{!! Config::get('app.name') !!}">
             </div>
@@ -306,7 +306,7 @@ $l = url(\Config::get('logos.fbhws'));
         @endforeach
     </div>
 
-@php($envi = \Config::get('app.env'))
+<?php $envi = \Config::get('app.env'); ?>
 @if($envi != 'local')
     <!------------- nueva ------------------------>
 
@@ -396,7 +396,7 @@ $l = url(\Config::get('logos.fbhws'));
 <!-- Back To Top -->
 <a href="#0" class="cd-top">Top</a>
 @include('portal.sidebar.foot')
-@php($robot= Agent::isRobot())
+<?php $robot= Agent::isRobot(); ?>
 @if($robot != true)
     <script>
 

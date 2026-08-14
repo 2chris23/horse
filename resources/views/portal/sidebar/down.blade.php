@@ -1,5 +1,5 @@
 {{-- Se usa. fondo negro --}}
-@php($logo = url(\Config('logos.blanco750X')))
+<?php $logo = url(\Config('logos.blanco750X')); ?>
 <footer class="footer-area">
     <!--Footer Upper-->
     <div class="footer-content">

@@ -1,4 +1,4 @@
-@php($cd = null)
+<?php $cd = null; ?>
 @if(!empty($cd))
     <script>
                 @endif
@@ -404,7 +404,7 @@
             $('table').removeClass('hidden').removeClass('hidden-xs-up');
         });
 
-        @php($cd = null)
+        <?php $cd = null; ?>
         @if(!empty($cd))
     </script>
 @endif

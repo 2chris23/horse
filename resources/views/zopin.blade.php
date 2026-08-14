@@ -1,6 +1,6 @@
-@php($envi = \Config::get('app.env'))
+<?php $envi = \Config::get('app.env'); ?>
 @if($envi != 'local')
-    @php($robot= Agent::isRobot())
+    <?php $robot= Agent::isRobot(); ?>
     @if($robot != true)
     {{--
         <!--Start of Zendesk Chat Script-->

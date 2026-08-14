@@ -65,7 +65,7 @@ if ($asoc == true) {
 
     <div id="datos" class="card col-12 m-t-35 ">
         <div class="card-block">
-            @php($ts = count($caballos))
+            <?php $ts = count($caballos); ?>
             <div class='card-header bg-white '>
                 {!! trans('portal.allhorse') !!}
                 @if($ts !=0)
@@ -78,9 +78,9 @@ if ($asoc == true) {
                 <div class="pull-right text-right totalessex ">
                     @foreach(trans('horse.raza')  as $k =>$v)
                         @if(empty($yeg))
-                            @php($ht = count(Horses::where('raza',$k)->get()))
+                            <?php $ht = count(Horses::where('raza',$k)->get()); ?>
                         @else
-                            @php($ht = count(Horses::where('raza',$k)->wherein('studs_id',$yeg)->get()))
+                            <?php $ht = count(Horses::where('raza',$k)->wherein('studs_id',$yeg)->get()); ?>
                         @endif
                         @if($ht!=0)
                             @if($k!=0)
@@ -98,7 +98,7 @@ if ($asoc == true) {
                 {{--
                                 @foreach(trans('horse.raza') as $k=>$v)
                                     @if($k!=0)
-                                        @php($ts = count(Horses::where('raza',$k)->get()))
+                                        <?php $ts = count(Horses::where('raza',$k)->get()); ?>
 
                                     @endif
                                     @if($ts != 0)
@@ -131,13 +131,13 @@ if ($asoc == true) {
                 @foreach(trans('horse.sexs') as $k=>$v)
                     @if($k != 0)
                         @if(empty($yeg))
-                            @php($dda =   count(Horses::where('sex',$k)->get()))
+                            <?php $dda =   count(Horses::where('sex',$k)->get()); ?>
                         @else
-                            @php($dda =   count(Horses::where('sex',$k)->wherein('studs_id',$yeg)->get()))
+                            <?php $dda =   count(Horses::where('sex',$k)->wherein('studs_id',$yeg)->get()); ?>
                         @endif
 
 
-                        {{--@php($ht[$k] = $dda )--}}
+                        {{--<?php $ht[$k] = $dda ; ?>--}}
                         <div class="col-xl-2 col-lg-4 col-md-6 col-sm-12 col-12 m-t-20">
                             <div class="card card-np">
                                 <div class="pull-left sales_icons">
@@ -181,9 +181,9 @@ if ($asoc == true) {
             <div class='card-header bg-white '>
 
                 @if(empty($yeg))
-                    @php($ts =count(Horses::where(['tosold'=>1])->get()) )
+                    <?php $ts =count(Horses::where(['tosold'=>1])->get()) ; ?>
                 @else
-                    @php($ts =count(Horses::where(['tosold'=>1])->wherein('studs_id',$yeg)->get()))
+                    <?php $ts =count(Horses::where(['tosold'=>1])->wherein('studs_id',$yeg)->get()); ?>
                 @endif
                 {!! trans('portal.sellhorse') !!}
                 @if($ts !=0)
@@ -199,9 +199,9 @@ if ($asoc == true) {
                     @foreach(trans('horse.raza')  as $k =>$v)
 
                         @if(empty($yeg))
-                            @php($ht = count(Horses::where(['raza'=>$k,'tosold'=>1])->get()))
+                            <?php $ht = count(Horses::where(['raza'=>$k,'tosold'=>1])->get()); ?>
                         @else
-                            @php($ht = count(Horses::where(['raza'=>$k,'tosold'=>1])->wherein('studs_id',$yeg)->get()))
+                            <?php $ht = count(Horses::where(['raza'=>$k,'tosold'=>1])->wherein('studs_id',$yeg)->get()); ?>
                         @endif
                         @if($ht!=0)
                             @if($k!=0)
@@ -300,40 +300,40 @@ if ($asoc == true) {
                 </div>
             --}}
                 {{--FOTOS DE CABALLO--}}
-                {{--@php($ts = Horses::with('Fotos')->get()->pluck('id'))--}}
-                @php($ts = $fotosyeguada)
+                {{--<?php $ts = Horses::with('Fotos')->get()->pluck('id'); ?>--}}
+                <?php $ts = $fotosyeguada; ?>
                 @if(count($ts)!=0)
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 m-t-20">
                         <div class="card card-np ">
                             <div class="row ">
-                                {{--@php($fot = Photo::wherein('tableid',$ts)->where(['type'=>4])->orderby('created_at','desc')->get())--}}
-                                @php($fot = $ts)
+                                {{--<?php $fot = Photo::wherein('tableid',$ts)->where(['type'=>4])->orderby('created_at','desc')->get(); ?>--}}
+                                <?php $fot = $ts; ?>
                                 <div class="col-8  sales_icons1 fotosimg fotosimg-small">
                                     {{--<img src="{!! $urlfotos !!}" alt="" class="img-fluid placefoto">
                                     --}}
                                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                         <!-- Indicators -->
                                         <ol class="carousel-indicators">
-                                            @php($f = false)
+                                            <?php $f = false; ?>
                                             @foreach($fot as $k=>$v)
                                                 <li data-target="#carouselExampleIndicators" data-slide-to="{!! $k !!}">
 
                                                     @if($f == false)
                                                         class="active"
-                                                        @php($f = true)
+                                                        <?php $f = true; ?>
                                                     @endif
                                                 </li>
                                             @endforeach
                                         </ol>
 
-                                        @php($f = false)
+                                        <?php $f = false; ?>
 
                                         <div class="carousel-inner" role="listbox">
                                             @foreach($fot as $k=>$v)
 
-                                                {{--@php($hrs = Horse::find($v->tableid))--}}
+                                                {{--<?php $hrs = Horse::find($v->tableid); ?>--}}
                                                 <div class="carousel-item
-                                @if($f ==false) active @php($f = true) @endif ">
+                                @if($f ==false) active <?php $f = true; ?> @endif ">
                                                     <figure class="fotosimg-small-figure">
                                                         <img lsrc="{!! url($v->url) !!}"
                                                              class="d-block img-fluid hidden" {{--alt="Chania" width="460" height="345"--}}>
@@ -407,39 +407,39 @@ if ($asoc == true) {
                 --}}
 
                 {{--VIDEOS--}}
-                {{--@php($ts = Horses::with('Videoss')->get()->pluck('id'))--}}
-                @php($ts = $videosyeguada)
+                {{--<?php $ts = Horses::with('Videoss')->get()->pluck('id'); ?>--}}
+                <?php $ts = $videosyeguada; ?>
                 @if(count($ts)!=0)
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 m-t-20">
 
                         <div class="card card-np ">
                             <div class="row ">
-                                {{--@php($fot = Video::wherein('tableid',$ts)->where(['type'=>4])->orderby('created_at','desc')->get())--}}
-                                @php($fot = $ts)
+                                {{--<?php $fot = Video::wherein('tableid',$ts)->where(['type'=>4])->orderby('created_at','desc')->get(); ?>--}}
+                                <?php $fot = $ts; ?>
                                 <div class="col-8  sales_icons1 fotosimg fotosimg-small">
                                     {{--<img src="{!! $urlfotos !!}" alt="" class="img-fluid placefoto"> --}}
                                     <div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel">
                                         <!-- Indicators -->
                                         <ol class="carousel-indicators">
-                                            @php($f = false)
+                                            <?php $f = false; ?>
                                             @foreach($fot as $k=>$v)
                                                 <li data-target="#carouselExampleIndicators1"
                                                     data-slide-to="{!! $k !!}">
                                                     @if($f == false)
                                                         class="active"
-                                                        @php($f = true)
+                                                        <?php $f = true; ?>
                                                     @endif
                                                 </li>
                                             @endforeach
                                         </ol>
 
-                                        @php($f = false)
+                                        <?php $f = false; ?>
 
                                         <div class="carousel-inner" role="listbox">
                                             @foreach($fot as $k=>$v)
 
                                                 <div class="carousel-item
-                                @if($f ==false) active @php($f = true) @endif ">
+                                @if($f ==false) active <?php $f = true; ?> @endif ">
                                                     <figure class="fotosimg-small-figure">
                                                         <img lsrc="{!! url($v->getYoutubeThumb()) !!}"
                                                              class="d-block img-fluid hidden" {{--alt="Chania" width="460" height="345"--}}>
@@ -690,7 +690,7 @@ if ($asoc == true) {
     {{--https://www.youtube.com/user/YeguadaJuanVazquez--}}
 
     {{--
-    @php($chanel ="UCqOKHHyTda2gjCkngPFdruw" )
+    <?php $chanel ="UCqOKHHyTda2gjCkngPFdruw" ; ?>
     <script src="http://www.gmodules.com/ig/ifr?url=http://www.google.com/ig/modules/youtube.xml&amp;up_channel={!! $chanel !!}&amp;synd=open&amp;w=320&amp;h=390&amp;title=&amp;border=%23ffffff%7C3px%2C1px+solid+%23999999&amp;output=js">
 
     </script>

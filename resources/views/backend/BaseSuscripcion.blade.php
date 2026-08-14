@@ -1,14 +1,14 @@
 @extends('backend.layouts.base')
 @section('title', trans('Titulos.PlanesStud') )
-@php($p1 = 10)
-@php($p3 = 25)
-@php($p6 = 50)
-@php($p12 = 100)
+<?php $p1 = 10; ?>
+<?php $p3 = 25; ?>
+<?php $p6 = 50; ?>
+<?php $p12 = 100; ?>
 
-@php($c1 = '#000')
-@php($c3 = '#d66a00')
-@php($c6 = '#f38f2c')
-@php($c12 = '#f93')
+<?php $c1 = '#000'; ?>
+<?php $c3 = '#d66a00'; ?>
+<?php $c6 = '#f38f2c'; ?>
+<?php $c12 = '#f93'; ?>
 @section('topcss')
     <link type="text/css" rel="stylesheet"
           href="{!! url('css/pages/widgets.css') !!}"/>

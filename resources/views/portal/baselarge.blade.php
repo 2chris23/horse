@@ -1,5 +1,5 @@
-@php($titulo = "")
-@php($subtitulo = "")
+<?php $titulo = ""; ?>
+<?php $subtitulo = ""; ?>
 @php
     $f[0]=url('landing/images/slider/1/2.jpg');
 $f[1]=url('landing/images/slider/1/6.jpg');
@@ -13,7 +13,7 @@ $lang = 'es';
 }
 App::setLocale($lang);
 @endphp
-@php($logo =url("portal_/images/logoportal.png"))
+<?php $logo =url("portal_/images/logoportal.png"); ?>
         <!DOCTYPE html>
 <html lang="{!! $lang !!}">
 <head>

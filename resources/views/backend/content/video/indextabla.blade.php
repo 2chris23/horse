@@ -82,9 +82,9 @@
                                 </thead>
 
                                 <tbody>
-                                @php($cont = 0)
+                                <?php $cont = 0; ?>
                                 @foreach($video as $c)
-                                    {{--@php($c->Optimizar())--}}
+                                    {{--<?php $c->Optimizar(); ?>--}}
                                     {{--
                                     FatalErrorException in Decoder.php line 136:
 Allowed memory size of 165675008 bytes exhausted (tried to allocate 24576 bytes)
@@ -99,7 +99,7 @@ in Decoder.php line 136
                                                         {!! $c->getStudName() !!}
                                                     </a>
                                                 @elseif($k == "id")
-                                                    @php($cont = $cont + 1)
+                                                    <?php $cont = $cont + 1; ?>
                                                     {!! Funciones::RellenarCeros($cont) !!}
                                                 @elseif($k=='type')
                                                     {!! $c->getTypeString() !!}

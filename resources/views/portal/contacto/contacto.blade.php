@@ -1,4 +1,4 @@
-﻿@php($logo =url("portal_/images/logoportal.png"))
+﻿<?php $logo =url("portal_/images/logoportal.png"); ?>
         <!DOCTYPE html>
 <html lang="en">
 <head>

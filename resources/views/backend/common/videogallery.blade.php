@@ -182,9 +182,9 @@
     }
 
 </style>
-@php($image = (isset($image))?$image:null)
-@php($titulo = (isset($titulo))?$titulo:null)
-@php($contenido = (isset($contenido))?$contenido:null)
+<?php $image = (isset($image))?$image:null; ?>
+<?php $titulo = (isset($titulo))?$titulo:null; ?>
+<?php $contenido = (isset($contenido))?$contenido:null; ?>
 
 
 <div id="owl-example" class="owl-carousel">

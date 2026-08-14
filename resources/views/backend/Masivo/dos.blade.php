@@ -1,8 +1,8 @@
-@php($moneda = '<i class="fa fa-eur"></i>')
-@php($titulo = "")
-@php($subtitulo = "")
-@php($logo =url("portal_/images/logoportal.png"))
-@php($raza=(isset($raza))?$raza:0)
+<?php $moneda = '<i class="fa fa-eur"></i>'; ?>
+<?php $titulo = ""; ?>
+<?php $subtitulo = ""; ?>
+<?php $logo =url("portal_/images/logoportal.png"); ?>
+<?php $raza=(isset($raza))?$raza:0; ?>
 
 @php
     $f[0]=url('landing/images/slider/1/2.jpg');
@@ -33,10 +33,10 @@ $lang = 'es';
 }
 App::setLocale($lang);
 @endphp
-@php($logo =url("portal_/images/logoportal.png"))
-@php($logo =url("portal_/images/logoportal.png"))
-@php($logo =url(\Config::get('logos.favicon32')))
-@php($favicon =$logo)
+<?php $logo =url("portal_/images/logoportal.png"); ?>
+<?php $logo =url("portal_/images/logoportal.png"); ?>
+<?php $logo =url(\Config::get('logos.favicon32')); ?>
+<?php $favicon =$logo; ?>
 @php
     $favicon =  url(\Config::get('logos.favicon16'));
     $logo =url(\Config::get('logos.logoh250')) ;
@@ -226,7 +226,7 @@ $key1 = $t;
             font-weight: 400;
         }
 
-        @php($imagen = 'http://horsesworldsale.com/landing/images/slider/1/9.jpg')
+        <?php $imagen = 'http://horsesworldsale.com/landing/images/slider/1/9.jpg'; ?>
     .page-header-area {
             background: rgba(0, 0, 0, 0) url({!! $imagen !!}) no-repeat scroll center top/ cover;
         }
@@ -319,7 +319,7 @@ $key1 = $t;
     </section>
     <!-- =-=-=-=-=-=-= Ads Archives End =-=-=-=-=-=-= -->
     {{-- Se usa. fondo negro --}}
-    @php($logo = url(\Config('logos.blanco750X')))
+    <?php $logo = url(\Config('logos.blanco750X')); ?>
     <footer class="footer-area">
         <!--Footer Upper-->
         <div class="footer-content">

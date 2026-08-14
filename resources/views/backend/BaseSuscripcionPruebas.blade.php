@@ -1,20 +1,20 @@
 @extends('backend.layouts.base')
 @section('title', trans('Titulos.PlanesStud') )
-@php($decimal = 1)
-@php($p1 = Funciones::AjustarNumeroMil($suscripcion->getDescuentoBase(),$decimal))
-@php($p3 =  Funciones::AjustarNumeroMil($suscripcion->get3Meces(),$decimal))
-@php($p6 =  Funciones::AjustarNumeroMil($suscripcion->get6Meces(),$decimal))
-@php($p12 =  Funciones::AjustarNumeroMil($suscripcion->get12Meces(),$decimal))
-@php($decimal = 0)
-@php($ds1 =  Funciones::AjustarNumeroMil($suscripcion->discount,$decimal))
-@php($ds3 =  Funciones::AjustarNumeroMil($suscripcion->ds3,$decimal))
-@php($ds6 =  Funciones::AjustarNumeroMil($suscripcion->dst6,$decimal))
-@php($ds12 =  Funciones::AjustarNumeroMil($suscripcion->dst12,$decimal))
+<?php $decimal = 1; ?>
+<?php $p1 = Funciones::AjustarNumeroMil($suscripcion->getDescuentoBase(),$decimal); ?>
+<?php $p3 =  Funciones::AjustarNumeroMil($suscripcion->get3Meces(),$decimal); ?>
+<?php $p6 =  Funciones::AjustarNumeroMil($suscripcion->get6Meces(),$decimal); ?>
+<?php $p12 =  Funciones::AjustarNumeroMil($suscripcion->get12Meces(),$decimal); ?>
+<?php $decimal = 0; ?>
+<?php $ds1 =  Funciones::AjustarNumeroMil($suscripcion->discount,$decimal); ?>
+<?php $ds3 =  Funciones::AjustarNumeroMil($suscripcion->ds3,$decimal); ?>
+<?php $ds6 =  Funciones::AjustarNumeroMil($suscripcion->dst6,$decimal); ?>
+<?php $ds12 =  Funciones::AjustarNumeroMil($suscripcion->dst12,$decimal); ?>
 
-@php($c1 = '#000')
-@php($c3 = '#d66a00')
-@php($c6 = '#f38f2c')
-@php($c12 = '#f93')
+<?php $c1 = '#000'; ?>
+<?php $c3 = '#d66a00'; ?>
+<?php $c6 = '#f38f2c'; ?>
+<?php $c12 = '#f93'; ?>
 @section('topcss')
 
     <link type="text/css" rel="stylesheet" href="{!! url('css/pages/widgets.css') !!}"/>

@@ -1,13 +1,13 @@
-@php($user = isset($user)?$user:null)
-@php($stud = !empty($user)?$user->Yeguada():null)
-@php($cd = null)
+<?php $user = isset($user)?$user:null; ?>
+<?php $stud = !empty($user)?$user->Yeguada():null; ?>
+<?php $cd = null; ?>
 @if(!empty($cd))
     <style>
         @endif
         @for($i=0;$i<110;$i++)
-        @php($a = $i*10)
-        @php($b = $a)
-        @php($c = $b+5)
+        <?php $a = $i*10; ?>
+        <?php $b = $a; ?>
+        <?php $c = $b+5; ?>
 
         .m-l-{!! $b !!} {
             margin-left: {!! $b !!}px;

@@ -1,5 +1,5 @@
-@php($logo =url("landing/images/basic/logo.png"))
-@php($logo =url("portal_/images/logoportal.png"))
+<?php $logo =url("landing/images/basic/logo.png"); ?>
+<?php $logo =url("portal_/images/logoportal.png"); ?>
 @php
     $precio = Funciones::AjustarNumeroMil($horse->getPrice());
                                     $raza = $horse->getRaza();

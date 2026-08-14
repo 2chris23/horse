@@ -80,7 +80,7 @@
                                        data-url="{!! route('FotosIndexAdmin') !!}" data-token="{!! csrf_token() !!}">
                                     <thead>
                                     <tr>
-                                        @php($cont = 0)
+                                        <?php $cont = 0; ?>
                                         @foreach($columns as $k=>$v)
 
                                             <th >
@@ -108,7 +108,7 @@
                                                                                                 {!! $c->getStudName() !!}
                                                                                             </a>
                                                                                         @elseif($k == "id")
-                                                                                            @php($cont =$cont+1 )
+                                                                                            <?php $cont =$cont+1 ; ?>
                                                                                             {!! Funciones::RellenarCeros($cont) !!}
                                                                                         @elseif($k == "action")
                                                                                             <a href="#!" class="dropify-clear"
@@ -118,8 +118,8 @@
                                                                                             </a>
                                                                                         @elseif($k=='url')
 
-                                                                                            @php($id = $c->id)
-                                                                                            @php($imagen =  $c->url)
+                                                                                            <?php $id = $c->id; ?>
+                                                                                            <?php $imagen =  $c->url; ?>
 
                                                                                             @include('backend.common.galleryimage',['titulo'=>$c->getName(),'id'=>$c->id,'imagen'=>$c->getUrl(),'adminpanel'=>1,'size'=>$c->Size()])
 
@@ -128,7 +128,7 @@
                                                                                         @elseif($k=='tama')
                                                                                             {!! Funciones::AjustarNumeroMil($c->Size()) !!}
                                                                                         @elseif($k=='tableid')
-                                                                                            @php($ds = $c->ObtenerYeguada())
+                                                                                            <?php $ds = $c->ObtenerYeguada(); ?>
 
 
                                                                                             @if(!empty($ds))

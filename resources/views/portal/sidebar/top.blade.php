@@ -1,5 +1,5 @@
-@php($logo =url("landing/images/basic/logo.png"))
-@php($logo =url("portal_/images/logoportal.png"))
+<?php $logo =url("landing/images/basic/logo.png"); ?>
+<?php $logo =url("portal_/images/logoportal.png"); ?>
 <div class="colored-header">
     <!-- Top Bar -->
     <div class="header-top">

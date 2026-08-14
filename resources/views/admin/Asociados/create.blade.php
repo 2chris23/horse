@@ -60,7 +60,7 @@ $country = $persona->getCountry();
                         <div class="col-12 m-t-25 row">
 
 
-                            @php($campos = trans('asociados.campos'))
+                            <?php $campos = trans('asociados.campos'); ?>
                             @foreach($campos as $k=>$v)
 
                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-xs-center">

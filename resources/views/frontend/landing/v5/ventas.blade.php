@@ -1,6 +1,6 @@
 @extends('frontend.landing.v5.base')
-@php($venta= isset($venta)?$venta:0)
-@php($logo = $stud->getLogo())
+<?php $venta= isset($venta)?$venta:0; ?>
+<?php $logo = $stud->getLogo(); ?>
 @section('fbheader')
 
     @include('meta',

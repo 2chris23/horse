@@ -1,8 +1,8 @@
-@php($user = isset($user)?$user:null)
-@php($adm = \Auth::user()->isAdm())
-@php($rutaborrar = $adm==true?route('BorrarPostAdmin'):route('BorrarPost'))
+<?php $user = isset($user)?$user:null; ?>
+<?php $adm = \Auth::user()->isAdm(); ?>
+<?php $rutaborrar = $adm==true?route('BorrarPostAdmin'):route('BorrarPost'); ?>
 
-@php($tiempoaviso = 60000)
+<?php $tiempoaviso = 60000; ?>
 @if(!empty($cd))
     <script>
         @endif

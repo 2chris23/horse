@@ -1,4 +1,4 @@
-@php($cd = null)
+<?php $cd = null; ?>
 @if(!empty($cd))
     <style>
         @endif
@@ -503,8 +503,8 @@
          @endphp
          @if(!empty(Photo::Slider($stud->id)->first()))
             {{-- @if(count($sliders)>1)--}}
-             @php($d5 = $sliders[rand(0,count($sliders)-1)]->getUrl())
-             @php($d6 = $sliders[rand(0,count($sliders)-1)]->getUrl())
+             <?php $d5 = $sliders[rand(0,count($sliders)-1)]->getUrl(); ?>
+             <?php $d6 = $sliders[rand(0,count($sliders)-1)]->getUrl(); ?>
          @else
              @php
                 $d = [];

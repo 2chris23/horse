@@ -1,4 +1,4 @@
-@php($user = (isset($user))?$user:null)
+<?php $user = (isset($user))?$user:null; ?>
 @php($logo = str_replace('\\','/',$user->getLogo()))
 {{--{!!Html::script("/js/canvas-to-blob.min.js")!!}--}}
 {{--{!!Html::script("https://foliotek.github.io/Croppie/bower_components/exif-js/exif.js")!!}--}}

@@ -428,7 +428,7 @@ echo $converted_currency;
                                             </tr>
 
                                         @endif
-                                        @php($i = $i+1)
+                                        <?php $i = $i+1; ?>
                                     @endfor
 
                                 </table>

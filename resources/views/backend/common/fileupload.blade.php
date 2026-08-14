@@ -1,8 +1,8 @@
-@php($user = (isset($user))?$user:null)
-@php($horse = (isset($horse))?$horse:null)
-@php($stud= (isset($stud))?$stud:null)
-@php($photos= (isset($photos))?$photos:null)
-@php($type= (isset($type))?$type:null)
+<?php $user = (isset($user))?$user:null; ?>
+<?php $horse = (isset($horse))?$horse:null; ?>
+<?php $stud= (isset($stud))?$stud:null; ?>
+<?php $photos= (isset($photos))?$photos:null; ?>
+<?php $type= (isset($type))?$type:null; ?>
 @php
     if(!empty($horse)) $img =$horse->getPhotoModel();
     if(!empty($stud)) $img =$stud->getInstalationsGalleryModel();

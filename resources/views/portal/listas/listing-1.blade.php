@@ -1,4 +1,4 @@
-﻿@php($horses = Horse::where('id','!=',0)->get())
+﻿<?php $horses = Horse::where('id','!=',0)->get(); ?>
 @extends('portal.base')
 @section('content')
     <style>.h-246{
@@ -35,7 +35,7 @@
                         <div class="clearfix"></div>
                         <!-- Ads Archive -->
                         <div class="posts-masonry">
-                            @php($j=0)
+                            <?php $j=0; ?>
                             @foreach($horses as $k=>$v)
 
                                 @php
@@ -71,9 +71,9 @@
                                             </a>
                                         </section>
                                     </div>
-                                    @php($j=0)
+                                    <?php $j=0; ?>
                                 @endif
-                                @php($j++)
+                                <?php $j++; ?>
 
                             <!-- Listing Ad Grid -->
                                 <div class="col-md-6 col-xs-12 col-sm-6">

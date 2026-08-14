@@ -1,5 +1,5 @@
-@php($etiquetalabel = "col-xs-12 col-sm-12 col-md-12 col-lg-3 text-sm-left text-md-left text-lg-right col-12")
-@php($tiquetainput = "col-xs-12 col-sm-12 col-md-12 col-lg-8 col-12")
+<?php $etiquetalabel = "col-xs-12 col-sm-12 col-md-12 col-lg-3 text-sm-left text-md-left text-lg-right col-12"; ?>
+<?php $tiquetainput = "col-xs-12 col-sm-12 col-md-12 col-lg-8 col-12"; ?>
 @extends('backend.layouts.base')
 @section('title', trans('facebook.paginas') )
 @section('topcss')
@@ -72,7 +72,7 @@
                 <div class="col-12 row ">
                     <div class="col-12 m-t-25 row">
                         @for($i=0;$i<count($paginas);$i++)
-                            @php($t = $paginas[$i])
+                            <?php $t = $paginas[$i]; ?>
                             <form action="{!! route('MisPaginasAdminPost') !!}" method="post"
                                   class="col-12 col-sm-6 col-lg-3 col-md-3 row m-t-10 text-center">
                                 {!! csrf_field() !!}

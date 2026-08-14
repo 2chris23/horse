@@ -1,4 +1,4 @@
-@php($stud = null)
+<?php $stud = null; ?>
 @if(!empty($stud))
     <script>
         @endif
@@ -198,7 +198,7 @@
             })
         }(window);
 
-        @php($stud = null)
+        <?php $stud = null; ?>
         @if(!empty($stud))
     </script>
 @endif

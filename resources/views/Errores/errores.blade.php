@@ -39,7 +39,7 @@
 <div class="container-fluid">
     <div class="row">
         <table class="table table-responsive table-striped table-hover table-condensed">
-            @php($col = [
+            <?php $col = [
 
                                     "id",
                                     "Tipo",
@@ -53,7 +53,7 @@
                                     "header",
                                     "traza",
 
-                                ])
+                                ]; ?>
             <thead class="j209">
             <tr class="j210">
                 @foreach($col as $v)

@@ -99,7 +99,7 @@ $favicon= url(\Config::get('logos.favicon256'));
     <meta name="keywords" content="{!! trans('seo.apptags').', '.trans('seo.portalkey')!!} ">
     <meta name="author" content="{!! \Config::get('app.name') !!}">
     <link rel="shortcut icon" href="{!!url(\Config::get('logos.favicon48')) !!}"/>
-@php($l = url(\Config::get('logos.fb')))
+<?php $l = url(\Config::get('logos.fb')); ?>
 {{--'titulo' =>  \Config::get('app.name'),--}}
 @include('meta',
   [

@@ -1,4 +1,4 @@
-@php($robot= Agent::isRobot())
+<?php $robot= Agent::isRobot(); ?>
 @if($robot != true)
     @php
         //$url =  Request::fullUrl() ;

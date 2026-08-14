@@ -1,5 +1,5 @@
-@php($logo =url("landing/images/basic/logo.png"))
-@php($logo =url("portal_/images/logoportal.png"))
+<?php $logo =url("landing/images/basic/logo.png"); ?>
+<?php $logo =url("portal_/images/logoportal.png"); ?>
 @php
 
     $f[0]=url('landing/images/slider/1/2.jpg');
@@ -45,7 +45,7 @@ App::setLocale($lang);
 
 <head>
     @include('portal.sidebar.head')
-    @php($l = url(\Config::get('logos.fbhws')))
+    <?php $l = url(\Config::get('logos.fbhws')); ?>
     @include('meta',
   [
 'titulo' =>  \Config::get('app.name'),
@@ -230,7 +230,7 @@ App::setLocale($lang);
                                                 {{--
                                                 <!-- Category -->
                                                 <select class="category form-control" name="seleccion" id="seleccion">
-                                                    @php($raza = trans('horse.raza'))
+                                                    <?php $raza = trans('horse.raza'); ?>
                                                     @foreach($raza as $k => $v)
                                                         @if($k==0)
                                                             <option value="{!! $k !!}" selected>Todas las razas</option>
@@ -268,7 +268,7 @@ App::setLocale($lang);
                                                 @include('portal.partials.country')
                                                 {{--
                                                 <select class="category form-control" name="seleccionp" id="seleccionp">
-                                                    @php($raza = trans('horse.raza'))
+                                                    <?php $raza = trans('horse.raza'); ?>
                                                     @foreach($raza as $k => $v)
                                                         @if($k==0)
                                                             <option value="{!! $k !!}" selected>Todas las razas</option>

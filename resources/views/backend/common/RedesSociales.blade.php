@@ -1,9 +1,9 @@
-@php($instagram = (isset($instagram))?$instagram:null)
-@php($twitter = (isset($twitter))?$twitter:null)
-@php($youtube = (isset($youtube))?$youtube:null)
-@php($facebook = (isset($facebook))?$facebook:null)
-@php($pinterest = (isset($pinterest))?$pinterest:null)
-@php($google = (isset($google))?$google:null)
+<?php $instagram = (isset($instagram))?$instagram:null; ?>
+<?php $twitter = (isset($twitter))?$twitter:null; ?>
+<?php $youtube = (isset($youtube))?$youtube:null; ?>
+<?php $facebook = (isset($facebook))?$facebook:null; ?>
+<?php $pinterest = (isset($pinterest))?$pinterest:null; ?>
+<?php $google = (isset($google))?$google:null; ?>
 {{--
 $cliente->getYoutube()->getUrl()
 $cliente->getInstagram()->getUrl()

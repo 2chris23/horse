@@ -354,7 +354,7 @@
         </div>
     </div>
 
-    @php($videos = $horse->getVideosModel())
+    <?php $videos = $horse->getVideosModel(); ?>
 
     <div class="col-md-12 m-t-35">
         <div class="card">
@@ -405,7 +405,7 @@
 
     {{---------------REPORTES-----------------}}
 
-    @php($repor = $horse->Reporte()->get())
+    <?php $repor = $horse->Reporte()->get(); ?>
 
     @if(count($repor)!=0)
         <div class="col-md-12 m-t-35">

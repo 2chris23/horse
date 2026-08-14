@@ -18,23 +18,23 @@ $teres = $fbpromo;
 
 @section('title', trans('Titulos.PlanesStud') )
 
-@php($decimal = 0)
-@php($p1 = Funciones::AjustarNumeroMil($suscripcion->getDescuentoBase(),$decimal))
+<?php $decimal = 0; ?>
+<?php $p1 = Funciones::AjustarNumeroMil($suscripcion->getDescuentoBase(),$decimal); ?>
 
-@php($p3 =  Funciones::AjustarNumeroMil($suscripcion->get3Meces(),$decimal))
+<?php $p3 =  Funciones::AjustarNumeroMil($suscripcion->get3Meces(),$decimal); ?>
 
-@php($p6 =  Funciones::AjustarNumeroMil($suscripcion->get6Meces(),$decimal))
-@php($p12 =  Funciones::AjustarNumeroMil($suscripcion->get12Meces(),$decimal))
-@php($decimal = 0)
-@php($ds1 =  Funciones::AjustarNumeroMil($suscripcion->discount,$decimal))
-@php($ds3 =  Funciones::AjustarNumeroMil($suscripcion->ds3,$decimal))
-@php($ds6 =  Funciones::AjustarNumeroMil($suscripcion->dst6,$decimal))
-@php($ds12 =  Funciones::AjustarNumeroMil($suscripcion->dst12,$decimal))
+<?php $p6 =  Funciones::AjustarNumeroMil($suscripcion->get6Meces(),$decimal); ?>
+<?php $p12 =  Funciones::AjustarNumeroMil($suscripcion->get12Meces(),$decimal); ?>
+<?php $decimal = 0; ?>
+<?php $ds1 =  Funciones::AjustarNumeroMil($suscripcion->discount,$decimal); ?>
+<?php $ds3 =  Funciones::AjustarNumeroMil($suscripcion->ds3,$decimal); ?>
+<?php $ds6 =  Funciones::AjustarNumeroMil($suscripcion->dst6,$decimal); ?>
+<?php $ds12 =  Funciones::AjustarNumeroMil($suscripcion->dst12,$decimal); ?>
 
-@php($c1 = '#000')
-@php($c3 = '#d66a00')
-@php($c6 = '#f38f2c')
-@php($c12 = '#f93')
+<?php $c1 = '#000'; ?>
+<?php $c3 = '#d66a00'; ?>
+<?php $c6 = '#f38f2c'; ?>
+<?php $c12 = '#f93'; ?>
 @section('topcss')
     <link type="text/css" rel="stylesheet" href="{!! url('css/icomoon/style.css') !!}"/>
     <link type="text/css" rel="stylesheet" href="{!! url('css/pages/widgets.css') !!}"/>
@@ -318,7 +318,7 @@ Tambien podemos poner el modal ese en el footer con una oferta!!
         <div class="col-12 m-t-45  text-center row   wrap  " id="plan2">
             <div class="wrap main packets row">
                 @foreach($plan as $k=>$v)
-                    @php($pop = $v['popular'])
+                    <?php $pop = $v['popular']; ?>
                     <div class="paquete-otem @if($k == 2) midi @else mini @endif  @if($k == 0) paqn @endif  @if($k != 0) quickka @endif col-12 col-md-6 col-lg-3"
                     >
                         @if($k != 0)

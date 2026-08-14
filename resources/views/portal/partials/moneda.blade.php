@@ -1,6 +1,6 @@
-@php($monedas= Funciones::Monedas())
-@php($moneda = \Session::get('moneda'))
-@php($moneda = !empty($moneda)?$moneda:'EUR')
+<?php $monedas= Funciones::Monedas(); ?>
+<?php $moneda = \Session::get('moneda'); ?>
+<?php $moneda = !empty($moneda)?$moneda:'EUR'; ?>
 
 <select class="form-control select moneda" name="moneda" id="moneda" data-placeholder="{!! trans('portal.placecolor') !!}" onchange="CambioMoneda()">
     @foreach($monedas  as $k=>$v)

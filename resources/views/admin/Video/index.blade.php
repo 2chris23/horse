@@ -132,7 +132,7 @@
                                 <tbody></tbody>
                                 {{--
                                 <tbody>
-                                @php($cont = 0)
+                                <?php $cont = 0; ?>
                                 @foreach($Video as $c)
                                     <tr>
                                         @foreach($columns as $k=>$v)
@@ -142,7 +142,7 @@
                                                         {!! $c->getStudName() !!}
                                                     </a>
                                                 @elseif($k == "id")
-                                                    @php($cont = $cont + 1)
+                                                    <?php $cont = $cont + 1; ?>
                                                     {!! Funciones::RellenarCeros($cont) !!}
                                                 @elseif($k=='type')
                                                     {!! $c->getTypeString() !!}

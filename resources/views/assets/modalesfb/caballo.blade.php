@@ -43,9 +43,9 @@
                                     {{--@if($seleccionado == $v['id']) selected @endif-- }}
                             >{!! trans('users.chooseone')!!}</option>
                             @for($i = 0; $i<count($horses);$i++)
-                                @php($h = $horses[$i])
-                                @php($slug = $h->slug)
-                                @php($name = $h->getName())
+                                <?php $h = $horses[$i]; ?>
+                                <?php $slug = $h->slug; ?>
+                                <?php $name = $h->getName(); ?>
                                 <option
                                         data-tokens="{!! $slug !!}"
                                         value="{!! $slug !!}"
@@ -150,9 +150,9 @@
                                                     {{--@if($seleccionado == $v['id']) selected @endif--}}
                                             >{!! trans('users.chooseone')!!}</option>
                                             @for($i = 0; $i<count($horses);$i++)
-                                                @php($h = $horses[$i])
-                                                @php($slug = $h->slug)
-                                                @php($name = $h->getName())
+                                                <?php $h = $horses[$i]; ?>
+                                                <?php $slug = $h->slug; ?>
+                                                <?php $name = $h->getName(); ?>
                                                 <option
                                                         data-tokens="{!! $slug !!}"
                                                         value="{!! $slug !!}"

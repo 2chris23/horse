@@ -67,7 +67,7 @@ $colombia = !empty($colombia)?$colombia:false;
         </a>
         <ul class="dropdown-menu">
             @for($i = 0;$i<count($Monedas);$i++)
-                @php($v = $Monedas[$i])
+                <?php $v = $Monedas[$i]; ?>
                 {{--@foreach($Monedas as $k=>$v)--}}
                 <li>
                     {{--<a href="{!! route('lengauje',['lang'=>$k]) !!}">{!! $v !!}</a>--}}

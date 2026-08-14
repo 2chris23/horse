@@ -1,8 +1,8 @@
-@php($robot= Agent::isRobot())
-@php($envi = \Config::get('app.env'))
+<?php $robot= Agent::isRobot(); ?>
+<?php $envi = \Config::get('app.env'); ?>
 @if($envi != 'local')
-@php($ganalitic= isset($ganalitic)?$ganalitic:\Config::get('aplication.GoogleAnalitics'))
-@php($ganalitic= !empty($ganalitic)?$ganalitic:\Config::get('aplication.GoogleAnalitics'))
+<?php $ganalitic= isset($ganalitic)?$ganalitic:\Config::get('aplication.GoogleAnalitics'); ?>
+<?php $ganalitic= !empty($ganalitic)?$ganalitic:\Config::get('aplication.GoogleAnalitics'); ?>
     @if($robot != true)
         <!-- Google Analytics -->
         <script>

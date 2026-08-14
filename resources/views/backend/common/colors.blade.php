@@ -1,6 +1,6 @@
-@php($etiquetalabel = "col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 text-sm-left text-md-left text-lg-right ")
-@php($tiquetainput = " col-xs-12 col-sm-12 col-md-9 col-lg-6 col-xl-6")
-@php($validacion =(isset($validacion)?$validacion:0))
+<?php $etiquetalabel = "col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 text-sm-left text-md-left text-lg-right "; ?>
+<?php $tiquetainput = " col-xs-12 col-sm-12 col-md-9 col-lg-6 col-xl-6"; ?>
+<?php $validacion =(isset($validacion)?$validacion:0); ?>
 
 @php
     $seleccionado = (isset($seleccionado))?$seleccionado:0;

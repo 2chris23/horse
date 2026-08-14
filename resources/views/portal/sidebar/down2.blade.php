@@ -1,4 +1,4 @@
-@php($logo = url(\Config('logos.blanco750X')))
+<?php $logo = url(\Config('logos.blanco750X')); ?>
 <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
 <footer>
     <!-- Footer Content -->

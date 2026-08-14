@@ -1,15 +1,15 @@
-@php($cd = null)
+<?php $cd = null; ?>
 @if(!empty($cd))
     <script>
                 @endif
 
 
-                @php($pricemint = (isset($pricemin) and ($pricemin!=0) ) ?$pricemin:3000)
-                @php($pricemaxt = (isset($pricemax)and ($pricemax!=0 ) )  ?$pricemax:20000)
-                @php($preciomax = Horse::where('tosold',1)->max('price'))
-                @php($raisedmint = (isset($raisedmin) and ($raisedmin!=0) )?$raisedmin:50)
-                @php($raisedmaxt = (isset($raisedmax) and ($raisedmax!=0) )?$raisedmax:150)
-                @php($alturamax = Horse::where('tosold',1)->max('raised'))
+                <?php $pricemint = (isset($pricemin) and ($pricemin!=0) ) ?$pricemin:3000; ?>
+                <?php $pricemaxt = (isset($pricemax)and ($pricemax!=0 ) )  ?$pricemax:20000; ?>
+                <?php $preciomax = Horse::where('tosold',1)->max('price'); ?>
+                <?php $raisedmint = (isset($raisedmin) and ($raisedmin!=0) )?$raisedmin:50; ?>
+                <?php $raisedmaxt = (isset($raisedmax) and ($raisedmax!=0) )?$raisedmax:150; ?>
+                <?php $alturamax = Horse::where('tosold',1)->max('raised'); ?>
 
         var horses = null;
         var start = 0;

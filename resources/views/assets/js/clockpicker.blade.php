@@ -1,7 +1,7 @@
-@php($user = isset($user)?$user:null)
-@php($tiempoaviso = 60000)
-@php($time = \Session::get('timezone'))
-@php($time = !empty($time)?$time:Config::get('app.timezone'))
+<?php $user = isset($user)?$user:null; ?>
+<?php $tiempoaviso = 60000; ?>
+<?php $time = \Session::get('timezone'); ?>
+<?php $time = !empty($time)?$time:Config::get('app.timezone'); ?>
 @if(!empty($cd))
     <script>
         @endif

@@ -16,7 +16,7 @@
         <optgroup label="{!! trans('users.recomended') !!}">
             @for($i = 0;$i<count($principales);$i++)
                 {{--@foreach($principales as $k=>$v)--}}
-                @php($v = $principales[$i])
+                <?php $v = $principales[$i]; ?>
                 <option data-tokens="{!! $v['id'] !!}" value="{!! $v['id'] !!}"
                         @if($seleccionado == $v['id']) selected @endif>{!! trans('horse.raza.'.$v['id']) !!}
                 </option>
@@ -29,7 +29,7 @@
     <optgroup label="_______________________">
         @for($i = 0;$i<count($secundarios);$i++)
             {{--@foreach($secundarios as $k=>$v)--}}
-            @php($v = $secundarios[$i])
+            <?php $v = $secundarios[$i]; ?>
             @if($v['id'] != 29)
             <option data-tokens="{!! $v['id'] !!}" value="{!! $v['id'] !!}"
                     @if($seleccionado == $v['id']) selected @endif>{!!  trans('horse.raza.'.$v['id']) !!}</option>
@@ -41,7 +41,7 @@
     <optgroup label="_______________________">
         @for($i = 0;$i<count($secundarios);$i++)
             {{--@foreach($secundarios as $k=>$v)--}}
-            @php($v = $secundarios[$i])
+            <?php $v = $secundarios[$i]; ?>
             @if($v['id'] == 29)
                 <option data-tokens="{!! $v['id'] !!}" value="{!! $v['id'] !!}"
                         @if($seleccionado == $v['id']) selected @endif>{!!  trans('horse.raza.'.$v['id']) !!}</option>

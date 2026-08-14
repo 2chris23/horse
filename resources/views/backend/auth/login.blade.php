@@ -1,5 +1,5 @@
 @extends('backend.layouts.fakelanding')
-@php($logo = url(\Config::get('logos.logoh250')))
+<?php $logo = url(\Config::get('logos.logoh250')); ?>
 <!-- Main Content -->
 @section('content')
     <style>

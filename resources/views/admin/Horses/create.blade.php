@@ -130,9 +130,9 @@
                             @endforeach
 
                             @if(count($cliente->getPhoneModel()) <3)
-                                @php($p = count($cliente->getPhoneModel()))
+                                <?php $p = count($cliente->getPhoneModel()); ?>
                                 @for($i=$p;$i<3;$i++)
-                                    @php($v = $cliente->getNewPhone())
+                                    <?php $v = $cliente->getNewPhone(); ?>
 
                                     @php  try{
                                     $ext = $v->getExt();

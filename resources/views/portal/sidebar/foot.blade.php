@@ -1,4 +1,4 @@
-@php($robot= Agent::isRobot())
+<?php $robot= Agent::isRobot(); ?>
 <!-- =-=-=-=-=-=-= JQUERY =-=-=-=-=-=-= -->
 {{--<script src="{!! url('portal_/js/jquery.min.js') !!}"></script>--}}
 <!-- Bootstrap Core Css  -->

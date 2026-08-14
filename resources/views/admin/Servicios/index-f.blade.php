@@ -2,25 +2,25 @@
     use App\Model\Servicio;
 use App\Model\Codigopromo;
 @endphp
-@php($etiquetalabel = "col-xs-12 col-sm-12 col-md-12 col-lg-3 text-sm-left text-md-left text-lg-right ")
-@php($tiquetainput = " col-xs-12 col-sm-12 col-md-12 col-lg-9 ")
-@php($tiquetainputsmall =  " col-xs-8 col-sm-8 col-md-8 col-lg-4 ")
+<?php $etiquetalabel = "col-xs-12 col-sm-12 col-md-12 col-lg-3 text-sm-left text-md-left text-lg-right "; ?>
+<?php $tiquetainput = " col-xs-12 col-sm-12 col-md-12 col-lg-9 "; ?>
+<?php $tiquetainputsmall =  " col-xs-8 col-sm-8 col-md-8 col-lg-4 "; ?>
 
 
-@php($etiquetalabelsmall = "col-xs-12 col-sm-12 col-md-12 col-lg-3 text-sm-left text-md-left text-lg-right ")
-@php($tiquetainputsmall =  "col-xs-12 col-sm-12 col-md-12 col-lg-5 ")
-@php($tiquetainputsmall2 = "col-xs-2  col-sm-2  col-md-2  col-lg-2 ")
-@php($dstw = "Descuento(%)")
+<?php $etiquetalabelsmall = "col-xs-12 col-sm-12 col-md-12 col-lg-3 text-sm-left text-md-left text-lg-right "; ?>
+<?php $tiquetainputsmall =  "col-xs-12 col-sm-12 col-md-12 col-lg-5 "; ?>
+<?php $tiquetainputsmall2 = "col-xs-2  col-sm-2  col-md-2  col-lg-2 "; ?>
+<?php $dstw = "Descuento(%)"; ?>
 
 
-@php($label2='col-xs-12 col-sm-12 col-md-12 col-lg-2 text-sm-left text-md-left text-lg-right ')
-@php($label3='col-12 text-center ')
-@php($mensual = Servicio::where('type',1)->first())
-@php($m1 = (!empty($mensual))?$mensual->getPrice():0)
-@php($d[1]= (!empty($mensual))?$mensual->getDiscount():0)
-@php($d[3]=  (!empty($mensual))?$mensual->ds3:0)
-@php($d[6]=  (!empty($mensual))?$mensual->dst6:0)
-@php($d[12]=  (!empty($mensual))?$mensual->dst12:0)
+<?php $label2='col-xs-12 col-sm-12 col-md-12 col-lg-2 text-sm-left text-md-left text-lg-right '; ?>
+<?php $label3='col-12 text-center '; ?>
+<?php $mensual = Servicio::where('type',1)->first(); ?>
+<?php $m1 = (!empty($mensual))?$mensual->getPrice():0; ?>
+<?php $d[1]= (!empty($mensual))?$mensual->getDiscount():0; ?>
+<?php $d[3]=  (!empty($mensual))?$mensual->ds3:0; ?>
+<?php $d[6]=  (!empty($mensual))?$mensual->dst6:0; ?>
+<?php $d[12]=  (!empty($mensual))?$mensual->dst12:0; ?>
 @extends('backend.layouts.base')
 @section('title', trans('horse.Tittle') )
 
@@ -720,7 +720,7 @@ Mensualidad
             <div class="row">
                 <div class="col-lg-12 m-t-25">
                     <div class="row">
-                        @php($codigos = Codigopromo::all())
+                        <?php $codigos = Codigopromo::all(); ?>
                         <div class=" col-12 table-responsive noSwipe m-t-20">
                             <table id="tabla1" class="table table-striped table-hover" cellspacing="0">
                                 <thead>

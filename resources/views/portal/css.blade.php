@@ -1,4 +1,4 @@
-@php($cd = null) @if(!empty($cd))
+<?php $cd = null; ?> @if(!empty($cd))
     <style> @endif @php $f[0]=url('landing/images/slider/1/2.jpg'); $f[1]=url('landing/images/slider/1/6.jpg'); $f[2]=url('landing/images/slider/1/9.jpg'); $f[3]=url('landing/images/slider/1/8.jpg'); $imagen = $f[rand(0,3)]; @endphp .category-grid-box-1 .image {
             height: 220px;
         }
@@ -79,7 +79,7 @@
             font-weight: 400;
         }
 
-        @php($imagen = 'http://horsesworldsale.com/landing/images/slider/1/9.jpg') .page-header-area {
+        <?php $imagen = 'http://horsesworldsale.com/landing/images/slider/1/9.jpg'; ?> .page-header-area {
             background: rgba(0, 0, 0, 0) url({!! $imagen !!}) no-repeat scroll center top/ cover;
         }
 

@@ -4,7 +4,7 @@
         $f[2]=url('landing/images/slider/1/3.JPG');
         $imagen = $f[rand(0,2)];
 @endphp
-@php($logo =url("portal_/images/logoportal.png"))
+<?php $logo =url("portal_/images/logoportal.png"); ?>
 
         <!DOCTYPE html>
 <html lang="en">

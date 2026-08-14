@@ -41,7 +41,7 @@ $yeguada = $horse->getStud();
                         @endif
                         --}}
                         <li>{!! trans('portal.location') !!} : <b>
-                                @php($stud = $horse->getYeguada())
+                                <?php $stud = $horse->getYeguada(); ?>
                                 @if(!empty($stud->getAddress()))
                                     {!! $stud->getAddress() !!}, {!! $stud->getCity() !!}
                                     , {!! $stud->getStateModel()->name!!}
@@ -58,9 +58,9 @@ $yeguada = $horse->getStud();
             <div class="pull-left row">
                 <div class="col-md-6 col-sm-6 col-xs-12 ">
                 @if(!empty($horse->getStudPhone()))
-                    @php($ph = $horse->getStudPhone())
+                    <?php $ph = $horse->getStudPhone(); ?>
                     @if(isset($ph[0]))
-                        @php($ph = Phone::find($ph[0]['id']))
+                        <?php $ph = Phone::find($ph[0]['id']); ?>
                         <!-- Email Modal -->
 
                             <a href="tel:{!! $ph->getFormatNumberOnly() !!}" class="btn btn-block pull-left btn-phone number "

@@ -39,11 +39,6 @@ class Stud extends Model
         return $this->belongsTo(User::class, 'users_id');
     }
 
-    public function User()
-    {
-        return $this->belongsTo(User::class, 'users_id', 'id');
-    }
-
     public function horses()
     {
         return $this->hasMany(Horse::class, 'studs_id');

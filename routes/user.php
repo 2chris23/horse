@@ -48,9 +48,9 @@ Route::get('/landing', function () {
 /*Tema temporal http://foxythemes.net/preview/products/maisonnette/?theme=blue-sky*/
 
 /*Ruta publica*/
-Route::post('paises', 'PublicController@Paises')->name('cliente.country.ajax');
-Route::post('provincia', 'PublicController@Estados')->name('cliente.state.ajax');
-Route::post('ciudad', 'PublicController@Ciudades')->name('cliente.city.ajax');
+Route::post('cliente/paises', 'PublicController@Paises')->name('cliente.country.ajax');
+Route::post('cliente/provincia', 'PublicController@Estados')->name('cliente.state.ajax');
+Route::post('cliente/ciudad', 'PublicController@Ciudades')->name('cliente.city.ajax');
 /*Ruta publica*/
 
 Route::group(['prefix' => 'Cliente'], function () {
@@ -210,7 +210,7 @@ Route::group(['domain' => "$host", 'middleware' => 'Autentificado', 'prefix' => 
 });
 Route::group(array('domain' => "$host"), function () {
     // Auth::routes();
-    Route::get('/home', 'HomeController@index')->name('cliente.home');
+    Route::get('/cliente/home', 'HomeController@index')->name('cliente.home');
     Route::get('/', function () {
         return redirect()->route('home');
         //return view('welcome');

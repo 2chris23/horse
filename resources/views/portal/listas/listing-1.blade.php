@@ -1,4 +1,4 @@
-﻿<?php $horses = Horse::where('id','!=',0)->get(); ?>
+<?php $horses = Horse::where('id','!=',0)->get(); ?>
 @extends('portal.base')
 @section('content')
     <style>.h-246{
@@ -82,7 +82,7 @@
                                         <!-- Ad Img -->
                                         <div class="category-grid-img">
                                             <figure class="h-246">
-                                            @if(count($photo)!=0)
+                                            @if(!empty($photo) && count($photo)!=0)
                                                 <img class="img-responsive" alt=""
                                                      src="{!! $photo[0]->getUrl() !!}"
                                                      style="    min-height: 313px; margin: auto !important; ">

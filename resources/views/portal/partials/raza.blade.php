@@ -12,7 +12,7 @@
     <option data-tokens="0" value="0" selected>
         {!! trans('portal.allra') !!}
     </option>
-    @if(count($principales != 0))
+    @if(!empty($principales) && count($principales) != 0)
         <optgroup label="{!! trans('users.recomended') !!}">
             @for($i = 0;$i<count($principales);$i++)
                 {{--@foreach($principales as $k=>$v)--}}
@@ -26,6 +26,7 @@
     @endif
 
     {{--<optgroup label=""> </optgroup>--}}
+    @if(!empty($secundarios))
     <optgroup label="_______________________">
         @for($i = 0;$i<count($secundarios);$i++)
             {{--@foreach($secundarios as $k=>$v)--}}
@@ -49,6 +50,7 @@
             {{--@endforeach--}}
         @endfor
     </optgroup>
+    @endif
 {{--
     @if(count($principales != 0))
         @foreach(\App\Http\Controllers\PublicController::ArrayRazaPrincipal() as $k=>$v)

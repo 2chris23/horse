@@ -26,7 +26,7 @@ $colombia = !empty($colombia)?$colombia:false;
     <option data-tokens="0" value="0" selected>
         {!! trans('portal.allra') !!}
     </option>
-    @if(count($principales != 0))
+    @if(!empty($principales) && count($principales) != 0)
         <optgroup label="{!! trans('users.recomended') !!}">
             @foreach($principales as $k=>$v)
                 <option data-tokens="{!! $v['id'] !!}" value="{!! $v['id'] !!}"
@@ -34,7 +34,7 @@ $colombia = !empty($colombia)?$colombia:false;
             @endforeach
         </optgroup>
     @endif
-    @if(count($secundarios != 0))
+    @if(!empty($secundarios) && count($secundarios) != 0)
         <optgroup label="_______________________">
             @foreach($secundarios as $k=>$v)
                 <option data-tokens="{!! $v['id'] !!}" value="{!! $v['id'] !!}"

@@ -6,8 +6,8 @@
 $logo =url("landing/images/basic/logo.png");
 $logo =url("portal_/images/logoportal.png");
 $logo = url(\Config::get('logos.logoh350'));
-$lng = \Config('lenguaje');
-$Monedas = \Session::get('monedas');
+$lng = \Config('lenguaje') ?? [];
+$Monedas = \Session::get('monedas') ?? [];
 $escritorio = Agent::isDesktop();
 
  $mx = \Session::get('mexico');

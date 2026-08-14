@@ -4,12 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\App;
-use Laravel\Scout\Searchable;
 use App\Http\Controllers\Functions;
 
 class BuscarCaballo extends Model
 {
-    use Searchable;
 
     protected $table = 'buscar_caballo';
     

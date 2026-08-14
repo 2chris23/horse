@@ -4,14 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Laravel\Scout\Searchable;
-use App\Observador\Updater;
 use App\Http\Controllers\Functions;
 use Illuminate\Support\Facades\Session;
 
 class Country extends Model
 {
-    use SoftDeletes, Searchable, Updater;
+    use SoftDeletes;
 
     protected $table = 'country';
     

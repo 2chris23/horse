@@ -4,11 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Observador\Updater;
 
 class City extends Model
 {
-    use SoftDeletes, Updater;
+    use SoftDeletes;
 
     protected $table = 'city';
     

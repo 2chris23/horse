@@ -4,12 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Laravel\Scout\Searchable;
-use App\Observador\Updater;
 
 class Raza extends Model
 {
-    use SoftDeletes, Searchable, Updater;
+    use SoftDeletes;
 
     protected $table = 'razas';
     

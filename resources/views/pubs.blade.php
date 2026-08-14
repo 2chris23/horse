@@ -2,15 +2,9 @@
 <?php $logo =url("portal_/images/logoportal.png"); ?>
 <?php $logo = url(\Config::get('logos.logoh350')); ?>
 @php
-
-    if(\Config::get('app.env')== 'local'){
-    $yte = App\Model\Stud::find(1);
-    $linkbaner =  route('MyPageBase', ['slug'=>$yte->slug]);
-    }else{
-    $yte = App\Model\Stud::find(6);
-    $linkbaner =  route('MyPageBase', ['slug'=>$yte->slug]);
-    }
-
+    $studId = (\Config::get('app.env') == 'local') ? 1 : 6;
+    $yte = \App\Models\Stud::find($studId);
+    $linkbaner = $yte ? route('MyPageBase', ['slug' => $yte->slug]) : url('/');
 @endphp
 
 <?php $baner = url('portal_/images/banner-1.png'); ?>

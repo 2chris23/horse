@@ -22,5 +22,16 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         \Illuminate\Foundation\AliasLoader::getInstance()->alias('Funciones', \App\Http\Controllers\Functions::class);
+
+        // Auto-alias legacy App\Model\* to App\Models\*
+        spl_autoload_register(function ($class) {
+            if (str_starts_with($class, 'App\\Model\\')) {
+                $modelName = substr($class, strlen('App\\Model\\'));
+                $targetClass = 'App\\Models\\' . $modelName;
+                if (class_exists($targetClass)) {
+                    class_alias($targetClass, $class);
+                }
+            }
+        });
     }
 }

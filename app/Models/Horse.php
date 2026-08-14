@@ -523,6 +523,116 @@ class Horse extends Model
         return $query->inRandomOrder();
     }
 
+    public function getAltText()
+    {
+        $s = '';
+        if (!empty($this->name)) {
+            $s .= $this->name . " ";
+        }
+        if (!empty($this->sex)) {
+            $s .= trans('horse.sex.' . $this->sex) . " ";
+        }
+        if (!empty($this->raza)) {
+            $s .= trans('horse.raza.' . $this->raza) . " ";
+        }
+        if (!empty($this->studs_id)) {
+            $stud = Stud::find($this->studs_id);
+            if ($stud) {
+                $s .= $stud->name . " ";
+            }
+        }
+        return trim($s);
+    }
+
+    public function getSimboloMoneda()
+    {
+        $d = $this->getMonedabase();
+        $m = Moneda::where('small', $d)->first();
+        return $m ? $m->getSimbolo() : '€';
+    }
+
+    public function setMonedabase($monedabase = null)
+    {
+        $d = null;
+        if (!empty($monedabase)) {
+            $d = Moneda::where('small', $monedabase)->first();
+        }
+        if (!empty($d)) {
+            $d = $d->getSmall();
+        } else {
+            $y = $this->getYeguada();
+            $d = ($y && is_object($y) && method_exists($y, 'getMoneda')) ? $y->getMoneda() : 'EUR';
+        }
+        $this->monedabase = $d;
+        return $this;
+    }
+
+    public function ObtenPrecioMonedaMill($compara = null)
+    {
+        if (empty($compara)) {
+            $compara = $this->getMonedabase();
+        }
+        return Functions::AjustarNumeroMil($this->ObtenPrecioMoneda(strtoupper($compara)));
+    }
+
+    public function ObtenPrecioMoneda($compara = null)
+    {
+        if (empty($compara)) {
+            $compara = $this->getMonedabase();
+        }
+        $compara = strtoupper($compara);
+        $base = 'EUR';
+        $mimoneda = $this->getMonedabase();
+        $pv = $this->price;
+
+        if ($mimoneda == $compara) return $pv;
+
+        $c1 = ($compara != $base);
+        $c2 = ($mimoneda != $base);
+
+        if ($c1 && !$c2) {
+            return Functions::currencyConverter($compara, $pv);
+        } elseif (!$c1 && $c2) {
+            return Functions::currencyConverter('EUR', $pv, $mimoneda);
+        } else {
+            $sa = Functions::currencyConverter($base, $pv, $mimoneda);
+            return Functions::currencyConverter($compara, $sa, $base);
+        }
+    }
+
+    public function ObtenPrecioCubricionMonedaMill($compara = null)
+    {
+        if (empty($compara)) {
+            $compara = $this->getMonedabase();
+        }
+        return Functions::AjustarNumeroMil($this->ObtenPrecioCubricionMoneda(strtoupper($compara)));
+    }
+
+    public function ObtenPrecioCubricionMoneda($compara = null)
+    {
+        if (empty($compara)) {
+            $compara = $this->getMonedabase();
+        }
+        $compara = strtoupper($compara);
+        $base = 'EUR';
+        $mimoneda = $this->getMonedabase();
+        $pv = $this->cubri;
+
+        if ($mimoneda == $compara) return $pv;
+
+        $c1 = ($compara != $base);
+        $c2 = ($mimoneda != $base);
+
+        if ($c1 && !$c2) {
+            return Functions::currencyConverter($compara, $pv);
+        } elseif (!$c1 && $c2) {
+            return Functions::currencyConverter('EUR', $pv, $mimoneda);
+        } else {
+            $sa = Functions::currencyConverter($base, $pv, $mimoneda);
+            return Functions::currencyConverter($compara, $sa, $base);
+        }
+    }
+
     public function ObtenerSlug()
     {
         $lo = App::getLocale();

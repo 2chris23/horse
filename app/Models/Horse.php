@@ -85,4 +85,36 @@ class Horse extends Model
     {
         return $this->hasMany(Video::class, 'tableid')->where('type', 4)->orderBy('orden');
     }
+
+    // ── Query Scopes (legacy) ──────────────────────────────────
+
+    public function scopeVentaPublica($query)
+    {
+        return $query->where(['tosold' => 1, 'publish' => 1, 'sold' => 0]);
+    }
+
+    public function scopeEnVenta($query, Stud $stud)
+    {
+        return $query->where('studs_id', $stud->id)->where(['tosold' => 1, 'sold' => 0]);
+    }
+
+    public function scopeBuscarPorAlzada($query, $min = 50, $max = 150)
+    {
+        return $query->whereBetween('raised', [$min, $max]);
+    }
+
+    public function scopeBuscarPorPrecio($query, $min = 0, $max = 50000000)
+    {
+        return $query->whereBetween('price', [$min, $max]);
+    }
+
+    public function scopeBuscarPorYeguadas($query, $yeguadas = [])
+    {
+        return $query->wherein('studs_id', $yeguadas);
+    }
+
+    public function scopeBuscarPorSexos($query, $sexos = [])
+    {
+        return $query->wherein('sex', $sexos);
+    }
 }

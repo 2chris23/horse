@@ -95,8 +95,8 @@ class Functions extends Controller
     public static function LimpiarTextoHard($str)
     {
         $str = Functions::LimpiarTexto($str);
-        $str = filter_var($str, FILTER_SANITIZE_MAGIC_QUOTES);
-        $str = filter_var($str, FILTER_SANITIZE_STRING);
+        $str = addslashes((string)$str);
+        $str = strip_tags((string)$str);
         //$str = filter_var($str, FILTER_SANITIZE_URL, FILTER_FLAG_NO_ENCODE_QUOTES);
         //$str = htmlspecialchars(htmlentities(preg_replace(array('/\s/', '/\.[\.]+/', '/[^\w_\.\-]/'), array('_', '.', ''), $str)));
         //$str = ((preg_replace(array('/\s/', '/\.[\.]+/', '/[^\w_\.\-]/'), array('_', '.', ''), $str)));

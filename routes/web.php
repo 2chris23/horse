@@ -248,12 +248,21 @@ Route::group(['ttl' => 60], function () {
     
     // Ruta temporal para limpiar la caché en Plesk
     Route::get('/limpiar-cache', function () {
-        \Artisan::call('view:clear');
-        \Artisan::call('route:clear');
-        \Artisan::call('cache:clear');
+    try {
         \Artisan::call('config:clear');
-        return 'Caché de vistas, rutas, configuración y aplicación borradas exitosamente.';
-    });
+    } catch (\Exception $e) {}
+    try {
+        \Artisan::call('view:clear');
+    } catch (\Exception $e) {}
+    try {
+        \Artisan::call('route:clear');
+    } catch (\Exception $e) {}
+    try {
+        \Artisan::call('cache:clear');
+    } catch (\Exception $e) {}
+    
+    return 'Caché de vistas, rutas, configuración y aplicación borradas exitosamente.';
+});
 
 
     /*

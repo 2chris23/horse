@@ -76,17 +76,7 @@ class User extends Authenticatable
         return $this->hasOne(Personal::class, 'users_id');
     }
 
-    public function Personal()
-    {
-        return Personal::where('users_id', $this->id)->first();
-    }
-
     public function horses()
-    {
-        return $this->hasMany(Horse::class, 'users_id');
-    }
-
-    public function Horses()
     {
         return $this->hasMany(Horse::class, 'users_id');
     }

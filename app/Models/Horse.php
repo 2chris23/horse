@@ -95,19 +95,9 @@ class Horse extends Model
         return User::find($this->users_id);
     }
 
-    public function User()
-    {
-        return $this->belongsTo(User::class, 'users_id', 'id');
-    }
-
     public function stud()
     {
         return $this->belongsTo(Stud::class, 'studs_id');
-    }
-
-    public function Stud()
-    {
-        return $this->belongsTo(Stud::class, 'studs_id', 'id');
     }
 
     public function photos()

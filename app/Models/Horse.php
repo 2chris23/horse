@@ -522,4 +522,19 @@ class Horse extends Model
     {
         return $query->inRandomOrder();
     }
+
+    public function ObtenerSlug()
+    {
+        $lo = App::getLocale();
+        $fa = $this->SlugNuevo()->first();
+        if ($fa && !empty($fa->{$lo})) {
+            return $fa->{$lo};
+        }
+        return $this->slug ?? 'caballo';
+    }
+
+    public function SlugNuevo()
+    {
+        return $this->hasOne(SlugCaballo::class, 'horse_id', 'id');
+    }
 }

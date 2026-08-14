@@ -16,7 +16,7 @@ use TijsVerkoyen\CssToInlineStyles\CssToInlineStyles;
 use function array_push;
 use function flash;
 use function redirect;
-use function str_random;
+
 
 class MailController extends Controller
 {
@@ -280,7 +280,7 @@ class MailController extends Controller
         $direccionenvio = "contacto@horsesworldsale.com";
         $host = Config::get('aplication.host');
         $naranja = "#fa6900";
-        $url = route('activacion.confirmar', ['token' => str_random(64)]);
+        $url = route('activacion.confirmar', ['token' => \Illuminate\Support\Str::random(64)]);
         $data['logo'] = url('assets/img/logo2.png');
         $data['urlapp'] = route('portal');
         $data['titulo'] = "Te damos la bienvenida Carlos Alvarado";

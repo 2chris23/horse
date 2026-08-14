@@ -45,7 +45,7 @@ use function is_array;
 use function is_object;
 use function is_string;
 use function redirect;
-use function str_random;
+
 use function str_replace;
 use function strtolower;
 use function strtoupper;
@@ -1291,7 +1291,7 @@ En definitiva, otro ejemplar de la filosofía de Yeguada Juan Vázquez, no sólo
 
     public function fakeValidacion()
     {
-        $token = str_random(64);
+        $token = \Illuminate\Support\Str::random(64);
         return view('backend . auth . passwords . changepassword', compact('token'));
     }
 

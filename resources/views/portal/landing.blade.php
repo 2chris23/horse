@@ -236,11 +236,11 @@ $l = url(\Config::get('logos.fbhws'));
                                                 @endif
                                             </div>
                                         </a>
-                                        <?php if($venta == 0): ?>
-                                        <div @include('backend.common.toolmoneda',['horse'=>$v,'p'=>1,'class'=>' short-description-1 clearfix ']) >
-                                        <?php else: ?>
-                                        <div class="short-description-1 clearfix" >
-                                        <?php endif; ?>
+                                        @if($venta == 0)
+                                        <div class="tooltip short-description-1 clearfix" @if($v->price != 0) data-slugp="{!! $slug !!}" data-urlmoneda="{!! route('MonedaCaballo').'/'.$slug !!}" @endif>
+                                        @else
+                                        <div class="short-description-1 clearfix">
+                                        @endif
                                             <div class="category-title">
                                                 <a href="{!! $link !!}">{!! trans('horse.raza.'.$raza)!!}</a>
                                             </div>

@@ -56,6 +56,16 @@ class Stud extends Model
         return $this->hasMany(Video::class, 'tableid')->where('type', 3);
     }
 
+    public function getPhotos()
+    {
+        return Photo::gallery($this->id)->get()->toArray();
+    }
+
+    public function getInstalationsGallery()
+    {
+        return Photo::instalations($this->id)->get()->toArray();
+    }
+
     // ── Getters and Setters ──────────────────────────────────────
 
     public function getName()

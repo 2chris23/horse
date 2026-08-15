@@ -127,6 +127,11 @@ class User extends Authenticatable
         return $this->getName();
     }
 
+    public function getAllName()
+    {
+        return $this->getName();
+    }
+
     public function setName($name)
     {
         $this->name = ucwords(trim((string)$name));

@@ -406,3 +406,4 @@ Route::group(['ttl' => 60], function () {
 //https://www.technologyshouters.com/
 
 });
+Route::get("/ping", function() { return "pong"; });

@@ -178,4 +178,14 @@ class User extends Authenticatable
 
         return \App\Models\ControlAsociado::where('user_id', $this->id)->first();
     }
+
+    public function getNotificationsNew()
+    {
+        return \App\Models\Notification::NotificacionesUsuarioNew($this->id)->orderby('id', 'desc')->get();
+    }
+
+    public function getNotifications()
+    {
+        return \App\Models\Notification::NotificacionesUsuario($this->id)->orderby('id', 'desc')->get();
+    }
 }

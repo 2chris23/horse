@@ -34,28 +34,28 @@
                                 --}}
                                 <div class="row">
                                     <div class="col-12 m-t-35">
-                                        <a href="{!! route('logs') !!}">
+                                        <a href="{!! url('#') !!}">
                                             Registros
                                         </a>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 m-t-35">
-                                        <a href="{!! route('Monedas.lista') !!}" target="_blank">
+                                        <a href="{!! url('#') !!}" target="_blank">
                                             Monedas
                                         </a>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 m-t-35">
-                                        <a href="{!! route('traducir1') !!}" target="_blank">
+                                        <a href="{!! url('#') !!}" target="_blank">
                                             Traducciones
                                         </a>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 m-t-35">
-                                        <a href="{!! route('razasa.index') !!}" target="_blank">
+                                        <a href="{!! url('#') !!}" target="_blank">
                                             Razas
                                         </a>
                                     </div>
@@ -63,7 +63,7 @@
                                 {{--
                                 <div class="row">
                                     <div class="col-12 m-t-35">
-                                        <a href="{!! route('FakeMail') !!}">
+                                        <a href="{!! url('#') !!}">
                                             Fakemail test
                                         </a>
                                     </div>
@@ -98,12 +98,12 @@
 
                                 <div class="row">
                                     {{--<div class="col-12 m-t-35 text-center">
-                                        <a href="{!! route('MonitorBackup') !!}" target="_blank">
+                                        <a href="{!! url('#') !!}" target="_blank">
                                             Monitor
                                         </a>
                                     </div>--}}
                                     <div class="col-12 m-t-35">
-                                        <a href="{!! route('MakebackUp') !!}" target="_blank">
+                                        <a href="{!! url('#') !!}" target="_blank">
                                             Backup
                                         </a>
                                     </div>

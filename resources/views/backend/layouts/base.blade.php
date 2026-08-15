@@ -280,7 +280,7 @@ if (!empty(\Auth::user())) {
         {{--
         Aviso de alerta
         --}}
-        @if(count(session('flash_notification', collect())->toArray()) !=0)
+        @if(collect(session('flash_notification'))->count() != 0)
             <!-- mensaje de notificacion -->
                 <div class=" col-xs-offset-3 offset-3 col-6 col-xs-6 m-t-25">
                     @include('flash::message')

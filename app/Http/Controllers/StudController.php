@@ -51,11 +51,11 @@ class StudController extends Controller
 
     Public Static Function LimpiarStudFromUrl($url = '')
     {
-        $dom = strtolower($_SERVER['HTTP_HOST']);
+        $dom = isset($_SERVER['HTTP_HOST']) ? strtolower($_SERVER['HTTP_HOST']) : 'localhost';
         $st = User::where(['domain' => $dom])->first();
         if (!empty($st)) {
             $stud = $st->Yeguada();
-            $slug = $stud->slug;
+            $slug = $stud ? $stud->slug : '';
             $url = str_replace("?slug=$slug", "", $url);
             $url = str_replace("?stud=$slug", "", $url);
             //$url = str_replace("$slug", "", $url);
@@ -450,7 +450,7 @@ class StudController extends Controller
 
         $dom = null;
         if (!empty($host)) {
-            $dom = User::where(['domain' => $_SERVER['HTTP_HOST']])->first();
+            $dom = User::where(['domain' => $host])->first();
         }
         return $dom;
     }
@@ -1692,8 +1692,8 @@ return redirect($url);
 
     function StudConDominio()
     {
-        $j = $_SERVER['HTTP_HOST'];
-        $dom = User::where(['domain' => $_SERVER['HTTP_HOST']])->first();
+        $j = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'localhost';
+        $dom = User::where(['domain' => $j])->first();
         $s = null;
         if (!empty($dom)) {
             $s = $dom;

@@ -7291,7 +7291,7 @@ Favicon successfully generated. <a href="' . $directory . $strip_ext . '.ico" ta
 
         //$host = $_SERVER
         //rutas_cliente
-        $dom = strtolower($_SERVER['HTTP_HOST']);
+        $dom = isset($_SERVER['HTTP_HOST']) ? strtolower($_SERVER['HTTP_HOST']) : 'localhost';
         $st = User::where(['domain' => $dom])->first();
         if (!empty($st)) {
             $base = 'rutas_cliente.';

@@ -21,7 +21,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         \Illuminate\Support\Facades\URL::forceScheme('https');
-        request()->server->set('HTTPS', 'on');
         Schema::defaultStringLength(191);
         $loader = \Illuminate\Foundation\AliasLoader::getInstance();
         $loader->alias('Funciones', \App\Http\Controllers\Functions::class);

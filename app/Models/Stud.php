@@ -242,8 +242,18 @@ class Stud extends Model
 
     public function getPhone()
     {
-        $user = $this->user()->first();
-        return $user ? [$user->phone] : [];
+        $p = Directory::where(['type' => 3, 'tableid' => $this->id])
+            ->where('phone', '!=', 0)
+            ->whereNotNull('phone')
+            ->get()
+            ->toArray();
+
+        return $p;
+    }
+
+    public function TieneTelefonos()
+    {
+        return count($this->getPhone()) > 0;
     }
 
     public function getLat()

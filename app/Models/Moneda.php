@@ -89,4 +89,9 @@ class Moneda extends Model
     {
         return $query->where('small', $smal);
     }
+
+    public function scopeCambio($query, $smal = "EUR")
+    {
+        return $query->select('valor')->where('small', $smal);
+    }
 }

@@ -58,23 +58,25 @@ $yeguada = $horse->getStud();
             <div class="pull-left row">
                 <div class="col-md-6 col-sm-6 col-xs-12 ">
                 @if(!empty($horse->getStudPhone()))
-                    <?php $ph = $horse->getStudPhone(); ?>
-                    @if(isset($ph[0]))
-                        <?php $ph = Phone::find($ph[0]['id']); ?>
+                    @php
+                        $phList = $horse->getStudPhone();
+                        $phObj = null;
+                        if (is_array($phList) && isset($phList[0])) {
+                            $firstPhone = $phList[0];
+                            if (is_array($firstPhone) && isset($firstPhone['id'])) {
+                                $phObj = \App\Models\Directory::find($firstPhone['id']);
+                            }
+                        }
+                    @endphp
+                    @if($phObj)
                         <!-- Email Modal -->
-
-                            <a href="tel:{!! $ph->getFormatNumberOnly() !!}" class="btn btn-block pull-left btn-phone number "
-                               data-last="111111X">
-                                <i class="fa fa-phone">
-                                </i>
-                                {!! $ph->FormatNumber()!!}
-                                {{--
-               <i class="fa fa-phone">
-               </i> 0320<span>XXXXXXX</span>
-               --}}
-                            </a>
-                        @endif
+                        <a href="tel:{!! $phObj->getFormatNumberOnly() !!}" class="btn btn-block pull-left btn-phone number "
+                           data-last="111111X">
+                            <i class="fa fa-phone"></i>
+                            {!! $phObj->FormatNumber() !!}
+                        </a>
                     @endif
+                @endif
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <a data-toggle="modal" data-target=".price-quote" href="javascript:void(0)"

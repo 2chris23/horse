@@ -182,8 +182,16 @@ class PortalController extends Controller
         } elseif ($colombia == true) {
             /*Para mexico nada mas*/
             $country = Country::Corto('CO')->first()->id;
-        }
-        $multiplo = Moneda::Cambio($moneda)->first()->valor;
+        $f_img = [
+            url('landing/images/slider/1/2.jpg'),
+            url('landing/images/slider/1/6.jpg'),
+            url('landing/images/slider/1/9.jpg'),
+            url('landing/images/slider/1/8.jpg'),
+        ];
+        $imagen = $f_img[rand(0, 3)];
+
+        $monedaObj = Moneda::Cambio($moneda)->first();
+        $multiplo = $monedaObj ? $monedaObj->valor : 1;
         if (!empty($pricemin)) {
             $pricemin = $multiplo * $pricemin;
         }
@@ -758,7 +766,8 @@ $c=[];
         $horses = $sql->paginate(25);
         //$horses = $sql->get();
 
-        return view('portal.listas.listing-5', compact('horses', 'country', 'state'));
+        $imagen = url('landing/images/slider/1/2.jpg');
+        return view('portal.listas.listing-5', compact('horses', 'country', 'state', 'imagen'));
     }
 
     public function index5(Request $r)

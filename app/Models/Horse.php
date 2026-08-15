@@ -647,4 +647,239 @@ class Horse extends Model
     {
         return $this->hasOne(SlugCaballo::class, 'horse_id', 'id');
     }
+
+    public function ObtenerPrecioEurSql($t = 0)
+    {
+        if ($this->tosold != 1 && $this->tocubri != 1) {
+            return null;
+        }
+
+        $Coins = \Session::get('moneda');
+        $Coins = empty($Coins) ? 'EUR' : $Coins;
+
+        $mon = Moneda::select('valor', 'simbolo', 'small')
+            ->where('status', 1)
+            ->get();
+
+        $ts = '';
+        $da = ($t == 1) ? '`horses`.`cubri` as cubri,' : '`horses`.`price` as price,';
+
+        for ($i = 0; $i < count($mon); $i++) {
+            $ts .= ($t == 1) ?
+                " ROUND((ROUND((`horses`.`cubri`/`monedas`.`valor`),2)*" . $mon[$i]->valor . "),2) AS `moneda_" . strtoupper($mon[$i]->small) . "` "
+                :
+                " ROUND((ROUND((`horses`.`price`/`monedas`.`valor`),2)*" . $mon[$i]->valor . "),2) AS `moneda_" . strtoupper($mon[$i]->small) . "` ";
+            if (($i + 1) != count($mon)) {
+                $ts .= ",";
+            }
+        }
+
+        $ts = '`horses`.`id` as id, ' . $da
+            . ' `horses`.`monedabase` as monedabase, `monedas`.`nombre` as nombremoneda, `monedas`.`simbolo` as simbolo, `monedas`.`small` as small, `monedas`.`valor` as valor, ' . $ts;
+
+        $f = DB::table('horses')
+            ->select(DB::raw($ts))
+            ->join('monedas', function ($join) {
+                $join->on('horses.monedabase', '=', 'monedas.small');
+            })
+            ->where('status', 1)
+            ->where('horses.id', $this->id)
+            ->first();
+
+        return $f;
+    }
+
+    public function RecargarFb()
+    {
+        $s = $this->getYeguada();
+        $envi = \Config::get('app.env');
+        if ($envi != 'local') {
+            $fa = $this->GetUrlLenguaje();
+            foreach ($fa as $k => $v) {
+                Functions::ReloadFacebook($v);
+            }
+            $fa = $this->GetUrlPortalLenguaje();
+            foreach ($fa as $k => $v) {
+                Functions::ReloadFacebook($v);
+            }
+        }
+    }
+
+    public function GetUrlLenguaje($ll = null)
+    {
+        $lngo = App::getLocale();
+        $lng = ['es', 'en', 'de', 'fr', 'it', 'nl', 'pt'];
+        $d = [];
+        $stud = $this->stud()->first();
+        if (empty($ll)) {
+            for ($i = 0; $i < count($lng); $i++) {
+                $l = $lng[$i];
+                App::setLocale($l);
+                $d[$l] = route('MyHorseDetailed', ['stud' => $stud->slug ?? '', 'horse' => $this->ObtenerSlug()]);
+            }
+        } else {
+            App::setLocale($ll);
+            $d[$ll] = route('MyHorseDetailed', ['stud' => $stud->slug ?? '', 'horse' => $this->ObtenerSlug()]);
+        }
+        App::setLocale($lngo);
+        return $d;
+    }
+
+    public function GetUrlPortalLenguaje()
+    {
+        $lngo = App::getLocale();
+        $lng = ['es', 'en', 'de', 'fr', 'it', 'nl', 'pt'];
+        $d = [];
+        for ($i = 0; $i < count($lng); $i++) {
+            $l = $lng[$i];
+            App::setLocale($l);
+            $d[$l] = route('portalcaballo', ['slug' => $this->ObtenerSlug()]);
+        }
+        App::setLocale($lngo);
+        return $d;
+    }
+
+    public function GetAllSlug()
+    {
+        return $this->SlugNuevo()->first();
+    }
+
+    public function scopeCaballosAzar($query, $studs_id, $take = 6, $horse = null, $fav = false)
+    {
+        $f = $query->where('studs_id', $studs_id);
+        if (!empty($horse)) {
+            $f = $f->where('id', '!=', $horse);
+        }
+        if ($fav == true) {
+            $f = $f->where('favorite', '!=', 1);
+        }
+        return $f->inRandomOrder()->take($take);
+    }
+
+    public function scopeFavoritoYeguada($query, Stud $stud, Horse $horse = null)
+    {
+        if (empty($horse)) {
+            return $query->where('favorite', 1)->where('studs_id', $stud->id);
+        } else {
+            return $query->where('favorite', 1)->where('studs_id', $stud->id)->where('id', '!=', $horse->id);
+        }
+    }
+
+    public function scopeCubriciones($query, Stud $stud)
+    {
+        return $query->where([
+            'tocubri' => 1,
+            'studs_id' => $stud->id,
+        ])->whereIn('sex', [0, 1, 4]);
+    }
+
+    public function VerificarCubricion($cubribol = 0)
+    {
+        if (in_array($this->sex, [0, 1, 4])) {
+            $this->tocubri = $cubribol;
+        } else {
+            $this->tocubri = 0;
+        }
+        return $this;
+    }
+
+    public function scopeCubricion($query)
+    {
+        return $query->where('tocubri', 1)->whereIn('sex', [0, 1, 4]);
+    }
+
+    public function scopeCaballosNoId($query, Horse $horse)
+    {
+        return $query->where('id', '!=', $horse->id)->where('studs_id', $horse->studs_id);
+    }
+
+    public function scopeAzar($query)
+    {
+        return $query->inRandomOrder();
+    }
+
+    public function scopeCaballos($query, Stud $stud)
+    {
+        return $query->where('studs_id', $stud->id);
+    }
+
+    public function scopeEnVenta($query, Stud $stud)
+    {
+        return $query->where('studs_id', $stud->id)->where(['tosold' => 1, 'sold' => 0]);
+    }
+
+    public function scopeVentaPublica($query)
+    {
+        return $query->where(['tosold' => 1, 'publish' => 1, 'sold' => 0]);
+    }
+
+    public function scopeBuscarPorAlzada($query, $min = 50, $max = 150)
+    {
+        return $query->whereBetween('raised', [$min, $max]);
+    }
+
+    public function scopeBuscarPorPrecio($query, $min = 0, $max = 50000000)
+    {
+        return $query->whereBetween('price', [$min, $max]);
+    }
+
+    public function scopeBuscarPorYeguadas($query, $yeguadas = [])
+    {
+        return $query->whereIn('studs_id', $yeguadas);
+    }
+
+    public function scopeBuscarPorSexos($query, $sexos = [])
+    {
+        return $query->whereIn('sex', $sexos);
+    }
+
+    public function ActualizarBusqueda()
+    {
+        $busqueda = BuscarCaballo::where('horse_id', $this->id)->first();
+        if (empty($busqueda)) {
+            $busqueda = new BuscarCaballo();
+            $busqueda->setHorseId($this->id);
+        }
+        $busqueda->LlenarData($this)->save();
+    }
+
+    public function ActualizarSlug()
+    {
+        $busqueda = SlugCaballo::where('horse_id', $this->id)->first();
+        if (empty($busqueda)) {
+            $busqueda = new SlugCaballo();
+            $busqueda->setHorseId($this->id);
+        }
+        $busqueda->LlenarData($this)->save();
+    }
+
+    public function GetInternacionalizacion()
+    {
+        $obj = [];
+        $lngalterno = '';
+        $lsd = '';
+
+        $lngo = App::getLocale();
+        $lng = ['es', 'en', 'de', 'fr', 'it', 'nl', 'pt'];
+        $ln = \Config::get('lenguaje');
+        $stud = $this->stud()->first();
+        for ($i = 0; $i < count($lng); $i++) {
+            $l = $lng[$i];
+            App::setLocale($l);
+            $u = route('MyHorseDetailed', ['stud' => $stud->slug ?? '', 'horse' => $this->ObtenerSlug()]);
+            $u = str_replace("/$lngo/", "/$l/", $u);
+            $ts = [];
+            $lngalterno .= "<link rel=\"alternate\" hreflang=\"$l\" href=\"$u\" />";
+            $lsd .= "$l,";
+            $ts['cod'] = $l;
+            $ts['link'] = $u;
+            $ts['name'] = $ln[$l] ?? $l;
+            $obj[$i] = $ts;
+        }
+        App::setLocale($lngo);
+        $sal['lngalterno'] = $lngalterno;
+        $sal['lsd'] = $lsd;
+        $sal['menu'] = $obj;
+        return $sal;
+    }
 }

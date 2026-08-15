@@ -340,7 +340,7 @@ if ($asoc == true) {
                                                     </figure>
                                                     {{--<div class="carousel-caption d-none d-md-block">
 
-                                                        <a href="{!! route('horse.edit',['id'=>$hrs->id]) !!}"
+                                                        <a href="{!! url('#') !!}"
                                                            class="linkh">
                                                             {!! $hrs->name !!}
 
@@ -368,7 +368,7 @@ if ($asoc == true) {
                                     </div>
                                 </div>
                                 <div class="col-4 text-right">
-                                    <a href="{!! route('fotos.index') !!}" class="none">
+                                    <a href="{!! url('#') !!}" class="none">
                                         <h3 id="widget_count1">{!!count($fot) !!}</h3>
 
                                         <p>
@@ -385,7 +385,7 @@ if ($asoc == true) {
                 @endif
                 {{--
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 m-t-20">
-                    <a href="{!! route('video.index') !!}" class="none">
+                    <a href="{!! url('#') !!}" class="none">
                         <div class="card card-np ">
                             <div class="pull-left sales_icons fotosimg">
                                 <img src="{!! $urlfotos !!}" alt="" class="img-fluid placefoto">
@@ -468,7 +468,7 @@ if ($asoc == true) {
                                     </div>
                                 </div>
                                 <div class="col-4 text-right">
-                                    <a href="{!! route('videos.index') !!}" class="none">
+                                    <a href="{!! url('#') !!}" class="none">
                                         <h3 id="widget_count1">{!!count($fot) !!}</h3>
 
                                         <p>
@@ -487,7 +487,7 @@ if ($asoc == true) {
                 {{-- NUEVO CABALLO --}}
                 {{--
                 <div class="col-xl-2 col-lg-4 col-md-6 col-sm-12 col-12 m-t-20">
-                    <a href="{!! route('horse.create') !!}">
+                    <a href="{!! url('#') !!}">
                         <div class="card card-np card-112 ">
                             <div class="row">
                                 <div class=" sales_icons1 col-7">
@@ -505,7 +505,7 @@ if ($asoc == true) {
                 --}}
                 {{-- Yeguada --}}
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 m-t-20">
-                    <a href="{!! route('yeguadas.index') !!}">
+                    <a href="{!! url('#') !!}">
                         <div class="card card-np card-112">
                             <div class="pull-left sales_icons">
                                 <i class="fa fa-address-book"> </i>
@@ -523,7 +523,7 @@ if ($asoc == true) {
                 </div>
                 {{--Yeguadas Pagas --}}
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 m-t-20">
-                    <a href="{!! route('yeguadas.index') !!}">
+                    <a href="{!! url('#') !!}">
                         <div class="card card-np card-112">
                             <div class="pull-left sales_icons">
                                 <i class="fa fa-address-book"> </i>
@@ -573,13 +573,13 @@ if ($asoc == true) {
                 {{--
                   $d['name'] = trans('users.service');
             $d['icon'] = '<i class="fa fa-briefcase"> </i>';
-            $d['url'] = route('servicios.index');
+            $d['url'] = url('#');
 
 
                 --}}
                 {{-- VENTAS --}}
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 m-t-20">
-                    <a href="{!! route('ventas.index') !!}">
+                    <a href="{!! url('#') !!}">
                         <div class="card card-np card-112">
                             <div class="pull-left sales_icons">
                                 <i class="fa fa-line-chart"></i>
@@ -596,7 +596,7 @@ if ($asoc == true) {
 
                 {{-- Yeguada --}}
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 m-t-20">
-                    <a href="{!! route('clientes.index') !!}">
+                    <a href="{!! url('#') !!}">
                         <div class="card card-np card-112">
                             <div class="pull-left sales_icons">
                                 <i class="fa fa-address-card"> </i>

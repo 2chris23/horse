@@ -101,10 +101,10 @@ if (!empty(\Auth::user())) {
     <link type="text/css" rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.2.0/min/dropzone.min.css"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet"/>
-    {!!Html::script("https://foliotek.github.io/Croppie/bower_components/exif-js/exif.js")!!}
+    <script src="https://foliotek.github.io/Croppie/bower_components/exif-js/exif.js"></script>
     {{--
-    {!!Html::script("cropper/canvas-toBlob.js")!!}
-    {!!Html::script("cropper/Blob.js")!!}
+    <script src="{!! url('cropper/canvas-toBlob.js') !!}"></script>
+    <script src="{!! url('cropper/Blob.js') !!}"></script>
     --}}
     {{--<script src="//cdn.ckeditor.com/4.6.2/full/ckeditor.js"></script>--}}
     <link rel="stylesheet" href="{!! url('assets/switchery/switchery.min.css') !!}" type="text/css">

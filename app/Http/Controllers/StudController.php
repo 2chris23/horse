@@ -328,12 +328,15 @@ class StudController extends Controller
             $d = true;
         }
 
+        if (empty($id)) {
+            return app(PortalController::class)->index(request());
+        }
+
         if (empty($data)) {
             $sms = trans('error.NoFoundEle');
             \Session::flash('error', $sms);
             flash($sms)->error();
-            return response()->redirectTo(route('portal'), 301);
-            return redirect()->back();
+            return redirect()->route('portal');
         }
 
         $user = $data['user'];

@@ -13,7 +13,7 @@ Route::group([
     'middleware' => [
         'Compresion',
         'localize',
-        'localizationRedirect',
+        
         'localeSessionRedirect',
         'localeViewPath'
     ],
@@ -27,7 +27,7 @@ Route::group([
 Route::group([
     'domain' => Config('aplication.host'),
     'prefix' => LaravelLocalization::setLocale(),
-    'middleware' => ['Compresion', 'localize', 'localizationRedirect', 'localeSessionRedirect', 'localeViewPath'], 'ttl' => 60], function () {
+    'middleware' => ['Compresion', 'localize',  'localeSessionRedirect', 'localeViewPath'], 'ttl' => 60], function () {
 
 
     /***/

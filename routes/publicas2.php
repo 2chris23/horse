@@ -2,7 +2,7 @@
 Route::group([
     'domain' => Config('aplication.host'),
     'prefix' => LaravelLocalization::setLocale(),
-    'middleware' => ['Compresion', 'localize', 'localizationRedirect', 'localeSessionRedirect', 'localeViewPath'], 'ttl' => 60], function () {
+    'middleware' => ['Compresion', 'localize',  'localeSessionRedirect', 'localeViewPath'], 'ttl' => 60], function () {
     /*LaravelLocalization::transRoute('rutas_publicas.')*/
 
     Route::get(LaravelLocalization::transRoute('rutas_publicas.JsTablaCaballo'), 'PublicController@RetornaJsTabla')->name('JsTablaCaballo');

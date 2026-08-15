@@ -2,7 +2,7 @@
 /*LaravelLocalization::transRoute('rutas_publicas.')*/
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
-    'middleware' => ['Compresion', 'localize', 'localizationRedirect'], 'ttl' => 60], function () {
+    'middleware' => ['Compresion', 'localize', ], 'ttl' => 60], function () {
     Route::get('/tablehorse.js', 'PublicController@RetornaJsTabla')->name('JsTablaCaballo');
     Route::get('/{slug}', 'StudController@ClientDetail')->name('MyPage');
     Route::get('/{slug}/Contacto', 'StudController@ClientContact')->name('MyContact');

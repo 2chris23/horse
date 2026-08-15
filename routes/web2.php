@@ -83,12 +83,12 @@ Route::group(['ttl' => 60], function () {
             /*'prefix' => LaravelLocalization::setLocale(),*/
             'middleware' => [
                 'localize',
-                'localizationRedirect'
+                
             ] // Route translate middleware
         ], function () {
         //dd(LaravelLocalization::getCurrentLocale());
         //LaravelLocalization::setLocale('en');
-        //'localizationRedirect',
+        //
 
         Route::get(LaravelLocalization::transRoute('rutas.FacebookPost'), 'FacebookController@Programas1dia')->name('PublicacionesProgramadasFb');
         Route::get(LaravelLocalization::transRoute('rutas.FacebookProg'), 'FacebookController@ProgramarCaballoDia')->name('PublicacionesProgramadasFbDia');

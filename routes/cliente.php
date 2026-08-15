@@ -102,7 +102,7 @@ Route::group(
         'middleware' => [
             'CompresionMax',
             'localize',
-            'localizationRedirect',
+            
             'localeSessionRedirect',
             'localeViewPath'
         ], 'ttl' => 60], function () {
@@ -133,7 +133,7 @@ Route::group(
 Route::group([
     'domain' => Config('aplication.host'),
     'prefix' => LaravelLocalization::setLocale(),
-    'middleware' => ['Compresion', 'localize', 'localizationRedirect', 'localeSessionRedirect', 'localeViewPath'], 'ttl' => 60], function () {
+    'middleware' => ['Compresion', 'localize',  'localeSessionRedirect', 'localeViewPath'], 'ttl' => 60], function () {
     /***/
     /***/
     /******************* PORTAL DE BUSQUEDA *********************/

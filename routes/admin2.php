@@ -1,6 +1,6 @@
 <?php
 Route::group(['ttl' => 60,
-    'middleware' => ['localize', 'localizationRedirect'] // Route translate middleware
+    'middleware' => ['localize', ] // Route translate middleware
 ], function () {
 
     /*Galeria de video http://unitegallery.net/*/

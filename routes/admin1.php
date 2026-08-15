@@ -1,7 +1,7 @@
 <?php
 Route::group(['ttl' => 60,
     'prefix' => LaravelLocalization::setLocale() . "/panel/",
-    'middleware' => ['localize', 'localizationRedirect'] // Route translate middleware
+    'middleware' => ['localize', ] // Route translate middleware
 ], function () {
 
     /*Galeria de video http://unitegallery.net/*/

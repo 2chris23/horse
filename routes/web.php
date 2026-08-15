@@ -340,8 +340,7 @@ Route::group(['ttl' => 60], function () {
     Route::get('/publicidad', 'PortalController@PublicidadIndex')->name('PublicidadIndex');
     /*Se quedan abajo para que se evalie de ultimo*/
     /*
-    'prefix' => LaravelLocalization::setLocale() . "/panel/",
-    'middleware' => ['localize', 'localizationRedirect'] // Route translate middleware
+    'middleware' => ['localize'] // Route translate middleware
     */
     /*****************************************/
     /*****************************************/
@@ -349,7 +348,7 @@ Route::group(['ttl' => 60], function () {
 
     Route::group([
         'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => ['Compresion', 'localize', 'localizationRedirect'], 'ttl' => 60], function () {
+        'middleware' => ['Compresion', 'localize', ], 'ttl' => 60], function () {
         Route::get('/tablehorse.js', 'PublicController@RetornaJsTabla');
         Route::get('/{slug}', 'StudController@ClientDetail');
         Route::get('/{slug}/Contacto', 'StudController@ClientContact');

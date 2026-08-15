@@ -32,44 +32,15 @@
 @if(!empty($horse))
     class="tooltip {!! $class !!} "
     @if(!empty($p))
-        @if($horse->price !=0)
+        @if($horse->price != 0)
             data-slugp = "{!! $horse->slug !!}"
             data-urlmoneda="{!! route('MonedaCaballo')."/".$horse->slug !!}"
         @endif
     @endif
     @if(!empty($c))
-        @if($horse->price !=0)
+        @if($horse->price != 0)
             data-slugc = "{!! $horse->slug !!}"
             data-urlcubri="{!! route('CubricionCaballo')."/".$horse->slug !!}"
         @endif
     @endif
-
-@else
-    {{--
-    @if(!empty($monedasactivas))
-        @if(!empty($precio))
-            @if($precio !=0)
-                @if(!empty($ccs))
-                    rel="tooltip"
-                    data-html="true"
-                    data-toggle="tooltip"
-                    data-placement="auto"
-                    data-toggle="popover"
-                    data-trigger="hover"
-
-
-
-                    title=" @foreach($monedasactivas as $k=>$v) {!! Funciones::AjustarNumeroMil(Funciones::currencyConverter($v, $precio),0) !!} {!! $v !!}
-                    <br> @endforeach "
-                    data-title=" @foreach($monedasactivas as $k=>$v) {!! Funciones::AjustarNumeroMil(Funciones::currencyConverter($v, $precio),0) !!} {!! $v !!}
-                    <br> @endforeach "
-                    data-content=" @foreach($monedasactivas as $k=>$v) {!! Funciones::AjustarNumeroMil(Funciones::currencyConverter($v, $precio),0) !!} {!! $v !!}
-                    <br> @endforeach "
-
-
-                @endif
-            @endif
-        @endif
-    @endif
-    --}}
 @endif

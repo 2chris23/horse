@@ -184,6 +184,12 @@ class User extends Authenticatable
         return \App\Models\Notification::NotificacionesUsuarioNew($this->id)->orderby('id', 'desc')->get();
     }
 
+    public function getUrlAdminLogo()
+    {
+        // TODO: Port Photo model and proper relation
+        return asset('images/default-avatar.png');
+    }
+
     public function getNotifications()
     {
         return \App\Models\Notification::NotificacionesUsuario($this->id)->orderby('id', 'desc')->get();

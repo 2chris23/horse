@@ -182,6 +182,8 @@ class PortalController extends Controller
         } elseif ($colombia == true) {
             /*Para mexico nada mas*/
             $country = Country::Corto('CO')->first()->id;
+        }
+
         $f_img = [
             url('landing/images/slider/1/2.jpg'),
             url('landing/images/slider/1/6.jpg'),

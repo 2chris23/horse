@@ -375,7 +375,7 @@ Route::group(['ttl' => 60], function () {
         //Route::get('/{slug}/Horse/{v?}/{type?}', function($slug,$v,$type){echo "$slug  $v  $type";})->name('MyHorses');/*Revisar este*/
         Route::get('/{slug}', 'StudController@ClientDetail')->name('MyPageBase');
         Route::get('/{stud}/detalle/{horse?}', 'StudController@DetailedHorse')->name('MyHorseDetailedBase');
-        Route::get('/Caballo/{slug?}', 'PortalController@caballo')->name('portalcaballobase');
+        Route::get('/Caballo/{slug?}', 'PortalController@caballo')->name('portalcaballo');
     //});
 
     Route::group(['middleware' => "Compresion", 'XFrame'], function () {

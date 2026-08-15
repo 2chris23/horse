@@ -1482,21 +1482,15 @@ class Functions extends Controller
     {
         $moneda = Moneda::where('small', $to)->first();
         if (empty($moneda)) return null;
-        $compara = Carbon::parse($moneda->updated_at);
-        $ck = $compara->diffInDays();
-        if ($ck > 5) {
-            $cd = Functions::currencyConverter1($moneda->small);
-            $moneda->valor = $cd;
-            $moneda->push();
+
+        $valor = $moneda->valor;
+        if (empty($valor) || $valor <= 0) {
+            $valor = 1.0;
         }
-        if ($moneda->valor == 0) {
-            $cd = Functions::currencyConverter1($moneda->small);
-            $moneda->valor = $cd;
-            $moneda->push();
-        }
-        $cantidad = str_replace('.', '', $cantidad);
+
+        $cantidad = str_replace('.', '', (string)$cantidad);
         $cantidad = str_replace(',', '.', $cantidad);
-        $rate = $cantidad * $moneda->valor;
+        $rate = (float)$cantidad * (float)$valor;
 
         return $rate;
     }

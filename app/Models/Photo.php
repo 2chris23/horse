@@ -31,7 +31,33 @@ class Photo extends Model
 
     public function getUrl()
     {
-        return $this->url;
+        $d = $this->url;
+        if (empty($d)) {
+            if (!empty($this->name)) {
+                $f = $this->getFolder();
+                return url($f . $this->name);
+            }
+            return url('portal_/images/posting/car-4.jpg');
+        }
+        if (str_starts_with($d, 'http://')) {
+            $d = 'https://' . substr($d, 7);
+        }
+        return $d;
+    }
+
+    public function getFolder()
+    {
+        $t = $this->type;
+        $f = '';
+        $adm = \Config::get('aplication.adminimage', 'adm');
+        if ($t == 2) $f = "uploads/" . \Config::get('aplication.fotoyeguada', 'studs') . "/";
+        if ($t == 3) $f = "uploads/" . \Config::get('aplication.fotoyeguada', 'studs') . "/";
+        if ($t == 4) $f = "uploads/" . \Config::get('aplication.fotohorse', 'horses') . "/";
+        if ($t == 5) $f = "uploads/" . \Config::get('aplication.fotoslider', 'slider') . "/";
+        if ($t == 7) $f = "uploads/" . \Config::get('aplication.fotofront', 'front') . "/";
+        if ($t == 8) $f = "uploads/" . \Config::get('aplication.facebook', 'facebook') . "/";
+        if ($t == 10) $f = "uploads/" . $adm . "/";
+        return $f;
     }
 
     public function setUrl($url)

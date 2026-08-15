@@ -122,14 +122,9 @@ class LoginController extends Controller
     {
 
         if (\Auth::check()) {
-            //$this->redirectTo = redirect()->intended(static::getAppUrl())->getTargetUrl();
-
-            $this->redirectTo = 'app.' . config('session.domain');
-            //Session::put('session_id',Session::getId());
-            return redirect()->intended(static::getAppUrl())->getTargetUrl();
+            return redirect()->intended(route('landinghome'))->getTargetUrl();
         } else {
-
-            return $this->redirectTo;
+            return '/';
         }
     }
 

@@ -161,4 +161,21 @@ class User extends Authenticatable
     {
         return Horse::where('users_id', $this->id)->get();
     }
+
+    public function Asociado()
+    {
+        if ($this->type == 2) {
+            return true;
+        }
+        return false;
+    }
+
+    public function ControlAsociado()
+    {
+        if ($this->Asociado() != true) {
+            return null;
+        }
+
+        return \App\Models\ControlAsociado::where('user_id', $this->id)->first();
+    }
 }

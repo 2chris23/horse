@@ -22,10 +22,28 @@ class AppServiceProvider extends ServiceProvider
     {
         \Illuminate\Support\Facades\URL::forceScheme('https');
         Schema::defaultStringLength(191);
-        \Illuminate\Foundation\AliasLoader::getInstance()->alias('Funciones', \App\Http\Controllers\Functions::class);
-        \Illuminate\Foundation\AliasLoader::getInstance()->alias('Phone', \App\Models\Directory::class);
-        \Illuminate\Foundation\AliasLoader::getInstance()->alias('Directory', \App\Models\Directory::class);
-        \Illuminate\Foundation\AliasLoader::getInstance()->alias('Recaptcha', \App\Helpers\Recaptcha::class);
+        $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+        $loader->alias('Funciones', \App\Http\Controllers\Functions::class);
+        $loader->alias('Functions', \App\Http\Controllers\Functions::class);
+        $loader->alias('Publico', \App\Http\Controllers\PublicController::class);
+        $loader->alias('StudController', \App\Http\Controllers\StudController::class);
+        $loader->alias('Phone', \App\Models\Directory::class);
+        $loader->alias('Directory', \App\Models\Directory::class);
+        $loader->alias('Recaptcha', \App\Helpers\Recaptcha::class);
+        $loader->alias('Horse', \App\Models\Horse::class);
+        $loader->alias('Horses', \App\Models\Horse::class);
+        $loader->alias('Stud', \App\Models\Stud::class);
+        $loader->alias('Photo', \App\Models\Photo::class);
+        $loader->alias('Video', \App\Models\Video::class);
+        $loader->alias('Moneda', \App\Models\Moneda::class);
+        $loader->alias('Country', \App\Models\Country::class);
+        $loader->alias('City', \App\Models\City::class);
+        $loader->alias('Color', \App\Models\Color::class);
+        $loader->alias('State', \App\Models\State::class);
+        $loader->alias('Raza', \App\Models\Raza::class);
+        $loader->alias('Sex', \App\Models\Sex::class);
+        $loader->alias('BuscarCaballo', \App\Models\BuscarCaballo::class);
+        $loader->alias('User', \App\Models\User::class);
 
         // Auto-alias legacy App\Model\* to App\Models\*
         spl_autoload_register(function ($class) {

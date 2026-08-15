@@ -648,6 +648,28 @@ class Horse extends Model
         return $this->hasOne(SlugCaballo::class, 'horse_id', 'id');
     }
 
+    public function visitantes()
+    {
+        $v = $this->hasOne(Visitacaballo::class, 'horse_id', 'id')->first();
+        if (empty($v)) {
+            $v = new Visitacaballo();
+            $v->setHorseId($this->id);
+            $v->save();
+        }
+        return $v;
+    }
+
+    public function byPortal()
+    {
+        return $this->visitantes()->setPortal();
+    }
+
+    public function getVisitantes()
+    {
+        $t = $this->visitantes()->getVisitas();
+        return empty($t) ? 0 : $t;
+    }
+
     public function ObtenerPrecioEurSql($t = 0)
     {
         if ($this->tosold != 1 && $this->tocubri != 1) {

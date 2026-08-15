@@ -162,7 +162,7 @@ if (!empty(\Auth::user())) {
      title="{!! trans('popover.support.titulo') !!}"
      data-content="{!! trans('popover.support.contenido') !!}"
 >
-    <a href="{!! route('tickets.index') !!}" class="btn btn-warning ">
+    <a href="{!! url('#') !!}" class="btn btn-warning ">
         {!! trans('soporte.texto') !!}
     </a>
 </div>
@@ -406,7 +406,7 @@ if (!empty(\Auth::user())) {
 <script src="{!! url('assets/tooltip/js/tooltipster.bundle.min.js') !!}"></script>
 <script type="text/javascript" src="{!! route('lazy.js') !!}"></script>
 <script type="text/javascript" src="{{route('PanelJs')}}"></script>
-<script type="text/javascript" src="{{route('JsTablaCaballo')}}"></script>
+<script type="text/javascript" src="{!! url('#') !!}"></script>
 @yield('bottomjs')
 @if(!empty($error_envio_contrasena))
     {{-- Error cuando no se puede mandar el correo al usuario y debe cambiar la contraseña --}}

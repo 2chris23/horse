@@ -38,7 +38,7 @@
                 d.append(k, $(v).attr('data-getprice'));
             });
 
-            axios.post("{!! url('#') !!}", d).then(function (data) {
+            axios.post("{!! route('ObtenerPrecioCaballos') !!}", d).then(function (data) {
                 var horses = data.data.horses;
 
                 $.each(horses, function (k, v) {
@@ -63,7 +63,7 @@
                 d.append(k, $(v).attr('data-getcubri'));
             });
 
-            axios.post("{!! url('#') !!}", d).then(function (data) {
+            axios.post("{!! route('ObtenerCubricionCaballos') !!}", d).then(function (data) {
                 var horses = data.data.horses;
                 $.each(horses, function (k, v) {
                     s = $('[data-getcubri="' + v.slug + '"]');
@@ -81,7 +81,7 @@
             });
 
 
-            axios.post("{!! url('#') !!}", ptool).then(function (data) {
+            axios.post("{!! route('ObtenerPreciosCaballos') !!}", ptool).then(function (data) {
                 var horses = data.data.horses;
 
                 $.each(horses, function (k, v) {
@@ -111,7 +111,7 @@
             $.each(sa, function (k, v) {
                 ctool.append(k, $(v).attr('data-slugc'));
             });
-            axios.post("{!! url('#') !!}", ctool).then(function (data) {
+            axios.post("{!! route('ObtenerCubricionesCaballos') !!}", ctool).then(function (data) {
                 var horses = data.data.horses;
                 $.each(horses, function (k, v) {
                     s = $('[data-slugc="' + v.slug + '"]');

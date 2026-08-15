@@ -41,6 +41,8 @@ class Photo extends Model
         }
         if (str_starts_with($d, 'http://')) {
             $d = 'https://' . substr($d, 7);
+        } elseif (!str_starts_with($d, 'https://') && !str_starts_with($d, '//')) {
+            $d = url($d);
         }
         return $d;
     }

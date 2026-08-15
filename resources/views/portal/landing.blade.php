@@ -229,6 +229,7 @@ $l = url(\Config::get('logos.fbhws'));
                                             <div class="image">
                                                 <figure class="h-313-234">
                                                     <img itemprop="image" alt="{!! $alttext !!}" src="{!! $url !!}"
+                                                         onerror="this.onerror=null;this.src='{!! url('portal_/images/posting/car-4.jpg') !!}';"
                                                          class="img-responsive m-w-313 ">
                                                 </figure>
                                                 @if($venta == 1)

@@ -85,7 +85,10 @@ $(ElPai).on('change', function () {
 });
 $(window).on('load', function () {
     if ($(ElPai).val() != null || $(ElPai).val() != 0) {
-        $(ElPai).val(pai).trigger('change');
+        if (typeof pai !== 'undefined' && pai !== null) {
+            $(ElPai).val(pai);
+        }
+        $(ElPai).trigger('change');
     }
 });
 

@@ -66,18 +66,26 @@
         <div class="clearfix visible-xs-block"></div>
         <div class="col-lg-7 col-md-7 col-sm-7 no-padding">
             <div class="ad-archive-desc">
-                <div data-getprice="{!! $v->slug !!}" class="horse-special-price">
+                <div data-getprice="{!! $v->slug !!}" 
+                     @if(empty($precio))
+                         class="horse-special-price"
+                     @else
+                         @include('backend.common.toolmoneda', ['horse' => $v, 'p' => 1, 'class' => 'horse-special-price'])
+                     @endif
+                >
                     @if(empty($precio))
                         <span class="consulta">
                             {!! trans('users.pricecheck') !!}
                         </span>
-                    @else
-                        @include('backend.common.toolmoneda', ['horse' => $v, 'p' => 1, 'class' => 'horse-special-price'])
                     @endif
                 </div>
 
                 <!-- Title -->
-                <a href="{!! $link !!}">
+                <a href="{!! $link !!}"
+                   @if($v->sold == 0)
+                       @include('backend.common.toolmoneda', ['horse' => $v, 'p' => 1])
+                   @endif
+                >
                     <h3>{!! $titulo !!}</h3>
                 </a>
 

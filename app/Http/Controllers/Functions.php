@@ -266,7 +266,7 @@ class Functions extends Controller
         $s = [];
         /*
         $d['name'] = trans('users.home');
-        //$d['url'] = url('#');
+        //$d['url'] = route('home');
         $d['url'] = "#!";
         $d['disable'] = true;
         $s[count($s)] = $d;
@@ -275,7 +275,7 @@ class Functions extends Controller
         /*********************/
         /*
         $d['name'] = "Mi pagina";
-        $d['url'] = url('#');
+        $d['url'] = route('MyPage', ['id' => $user->id]);
         $s[count($s)] = $d;
         $d = [];
         */
@@ -291,20 +291,20 @@ class Functions extends Controller
             /*********************/
             $d['name'] = trans('portal.home');
             $d['icon'] = '<i class="fa fa-sitemap"> </i>';
-            $d['url'] = url('#');
+            $d['url'] = route('iniciocliente');
             $d['other'] = ' data-toggle="popover" data-trigger="hover" title="' . trans('popover.menu.diseno.titulo') . '" data-content="' . trans('popover.menu.diseno.contenido') . '"';
             $s[count($s)] = $d;
             $d = [];
             /*********************/
             $d['name'] = trans('users.desing');
             $d['icon'] = '<i class="fa fa-desktop"> </i>';
-            $d['url'] = url('#');
+            $d['url'] = route('gallery.index');
             $d['other'] = ' data-toggle="popover" data-trigger="hover" title="' . trans('popover.menu.diseno.titulo') . '" data-content="' . trans('popover.menu.diseno.contenido') . '"';
             $s[count($s)] = $d;
             $d = [];
             /*********************/
             $d['name'] = trans('stud.menu.caption');
-            $d['url'] = url('#');
+            $d['url'] = route('stud.create');
             $d['other'] = ' data-toggle="popover" data-trigger="hover" title="' . trans('popover.menu.stud.titulo') . '" data-content="' . trans('popover.menu.stud.contenido') . '"';
             $s[count($s)] = $d;
             $d = [];
@@ -312,15 +312,15 @@ class Functions extends Controller
             $d['name'] = trans('horse.menu.caption');
             $d['icon'] = '<i class="fa fa-pagelines"> </i>';
             $d['icon'] = '<i class="fa icon-black-head-horse-side-view-with-horsehair"> </i>';
-            $d['url'] = url('#');
+            $d['url'] = route('caballoc.index');
             $d['other'] = ' data-toggle="popover" data-trigger="hover" title="' . trans('popover.menu.horse.titulo') . '" data-content="' . trans('popover.menu.horse.contenido') . '"';
-            //$d['url'] = url('#');
+            //$d['url'] = route('horse.create');
             $s[count($s)] = $d;
             $d = [];
             /*********************/
             $d['name'] = trans('users.sell');
             $d['icon'] = '<i class="fa fa-line-chart"> </i>';
-            $d['url'] = url('#');
+            $d['url'] = route('sell.create');
             $d['other'] = ' data-toggle="popover" data-trigger="hover" title="' . trans('popover.menu.sell.titulo') . '" data-content="' . trans('popover.menu.sell.contenido') . '"';
             $s[count($s)] = $d;
 
@@ -331,7 +331,7 @@ class Functions extends Controller
             $d['name'] = trans('photo.menu.caption');
             $d['icon'] = '<i class="fa fa-camera"> </i>';
             $d['other'] = ' data-toggle="popover" data-trigger="hover" title="' . trans('popover.menu.photos.titulo') . '" data-content="' . trans('popover.menu.photos.contenido') . '"';
-            $d['url'] = url('#');
+            $d['url'] = route('photo.index');
             $s[count($s)] = $d;
             $d = [];
             /*********************/
@@ -339,7 +339,7 @@ class Functions extends Controller
             $d['name'] = trans('video.menu.caption');
             $d['icon'] = '<i class="fa fa-video-camera"> </i>';
             $d['other'] = ' data-toggle="popover" data-trigger="hover" title="' . trans('popover.menu.video.titulo') . '" data-content="' . trans('popover.menu.video.contenido') . '"';
-            $d['url'] = url('#');
+            $d['url'] = route('video.index');
 
             $s[count($s)] = $d;
             $d = [];
@@ -354,7 +354,7 @@ class Functions extends Controller
             */
             /*********************/
             $d['name'] = trans('users.interestcontact');
-            $d['url'] = url('#');
+            $d['url'] = route('StudClientes.index');
             /*$d['url'] = "#!";*/
             $d['icon'] = '<i class="fa fa-address-card"> </i>';
             $d['other'] = ' data-toggle="popover" data-trigger="hover" title="' . trans('popover.menu.contact.titulo') . '" data-content="' . trans('popover.menu.contact.contenido') . '"';
@@ -362,7 +362,7 @@ class Functions extends Controller
             $d = [];
             /************************************************/
             $d['name'] = trans('facebook.menu');
-            $d['url'] = url('#');
+            $d['url'] = route('ObtenerPagina');
             /*$d['url'] = "#!";*/
             $d['icon'] = '<i class="fa fa-facebook"> </i>';
             $d['other'] = ' data-toggle="popover" data-trigger="hover" title="' . trans('popover.facebookm.titulo') . '" data-content="' . trans('popover.facebookm.contenido') . '"';
@@ -384,19 +384,19 @@ class Functions extends Controller
 
             $d['name'] = trans('users.sell');
             $d['icon'] = '<i class="fa fa-line-chart"> </i>';
-            $d['url'] = url('#');
+            $d['url'] = route('ventas.index');
             $d['other'] = ' data-toggle="popover" data-trigger="hover" title="' . trans('popover.menu.adminsell.titulo') . '" data-content="' . trans('popover.menu.adminsell.contenido') . '"';
             $s[count($s)] = $d;
             $d = [];
 
             $d['name'] = trans('users.service');
             $d['icon'] = '<i class="fa fa-briefcase"> </i>';
-            $d['url'] = url('#');
+            $d['url'] = route('servicios.index');
             $d['other'] = ' data-toggle="popover" data-trigger="hover" title="' . trans('popover.menu.adminservicios.titulo') . '" data-content="' . trans('popover.menu.adminservicios.contenido') . '"';
             $s[count($s)] = $d;
             $d = [];
             $d['name'] = trans('users.clientes');
-            $d['url'] = url('#');
+            $d['url'] = route('yeguadas.index');
             $d['icon'] = '<i class="fa fa-address-book"> </i>';
             $d['other'] = ' data-toggle="popover" data-trigger="hover" title="' . trans('popover.menu.adminstud.titulo') . '" data-content="' . trans('popover.menu.adminstud.contenido') . '"';
 
@@ -405,7 +405,7 @@ class Functions extends Controller
 
             $d['name'] = trans('users.clientesposible');
             $d['icon'] = '<i class="fa fa-address-card"> </i>';
-            $d['url'] = url('#');
+            $d['url'] = route('clientes.index');
             $d['other'] = ' data-toggle="popover" data-trigger="hover" title="' . trans('popover.menu.admincontact.titulo') . '" data-content="' . trans('popover.menu.admincontact.contenido') . '"';
             $s[count($s)] = $d;
             $d = [];
@@ -414,35 +414,35 @@ class Functions extends Controller
             $d['name'] = trans('horse.menu.caption');
             $d['icon'] = '<i class="fa fa-pagelines"> </i>';
             $d['icon'] = '<i class="fa icon-black-head-horse-side-view-with-horsehair"> </i>';
-            $d['url'] = url('#');
+            $d['url'] = route('caballo.index');
             $d['other'] = ' data-toggle="popover" data-trigger="hover" title="' . trans('popover.menu.adminhorse.titulo') . '" data-content="' . trans('popover.menu.adminhorse.contenido') . '"';
-            //$d['url'] = url('#');
+            //$d['url'] = route('horse.create');
             $s[count($s)] = $d;
             $d = [];
 
             $d['name'] = trans('photo.menu.caption');
             $d['icon'] = '<i class="fa fa-camera"> </i>';
-            $d['url'] = url('#');
+            $d['url'] = route('fotos.index');
             $d['other'] = ' data-toggle="popover" data-trigger="hover" title="' . trans('popover.menu.adminphotos.titulo') . '" data-content="' . trans('popover.menu.adminphotos.contenido') . '"';
             $s[count($s)] = $d;
             $d = [];
 
             $d['name'] = trans('video.menu.caption');
             $d['icon'] = '<i class="fa fa-video-camera"> </i>';
-            $d['url'] = url('#');
+            $d['url'] = route('videos.index');
             $d['other'] = ' data-toggle="popover" data-trigger="hover" title="' . trans('popover.menu.adminvideo.titulo') . '" data-content="' . trans('popover.menu.adminvideo.contenido') . '"';
             $s[count($s)] = $d;
             $d = [];
 
             $d['name'] = trans('facebook.menu');
-            $d['url'] = url('#');
+            $d['url'] = route('FacebookAdmin');
             $d['icon'] = '<i class="fa fa-facebook"> </i>';
             $d['other'] = ' data-toggle="popover" data-trigger="hover" title="' . trans('popover.facebookm.titulo') . '" data-content="' . trans('popover.facebookm.contenido') . '"';
             $s[count($s)] = $d;
             $d = [];
 
             $d['name'] = "Asociados";
-            $d['url'] = url('#');
+            $d['url'] = route('Asociados.index');
             $d['icon'] = '<i class="fa fa-facebook"> </i>';
             $d['other'] = ' data-toggle="popover" data-trigger="hover" title="' . trans('popover.facebookm.titulo') . '" data-content="' . trans('popover.facebookm.contenido') . '"';
             $s[count($s)] = $d;
@@ -461,20 +461,20 @@ class Functions extends Controller
 
             $d['name'] = trans('users.sell');
             $d['icon'] = '<i class="fa fa-line-chart"> </i>';
-            $d['url'] = url('#');
+            $d['url'] = route('asoc.ventas.index');
             $d['other'] = ' data-toggle="popover" data-trigger="hover" title="' . trans('popover.menu.adminsell.titulo') . '" data-content="' . trans('popover.menu.adminsell.contenido') . '"';
             $s[count($s)] = $d;
             $d = [];
             /*
             $d['name'] = trans('users.service');
             $d['icon'] = '<i class="fa fa-briefcase"> </i>';
-            $d['url'] = url('#');
+            $d['url'] = route('asoc.servicios.index');
             $d['other'] = ' data-toggle="popover" data-trigger="hover" title="' . trans('popover.menu.adminservicios.titulo') . '" data-content="' . trans('popover.menu.adminservicios.contenido') . '"';
             $s[count($s)] = $d;
             $d = [];
             */
             $d['name'] = trans('users.clientes');
-            $d['url'] = url('#');
+            $d['url'] = route('asoc.yeguadas.index');
             $d['icon'] = '<i class="fa fa-address-book"> </i>';
             $d['other'] = ' data-toggle="popover" data-trigger="hover" title="' . trans('popover.menu.adminstud.titulo') . '" data-content="' . trans('popover.menu.adminstud.contenido') . '"';
 
@@ -483,7 +483,7 @@ class Functions extends Controller
             /*
             $d['name'] = trans('users.clientesposible');
             $d['icon'] = '<i class="fa fa-address-card"> </i>';
-            $d['url'] = url('#');
+            $d['url'] = route('asoc.clientes.index');
             $d['other'] = ' data-toggle="popover" data-trigger="hover" title="' . trans('popover.menu.admincontact.titulo') . '" data-content="' . trans('popover.menu.admincontact.contenido') . '"';
             $s[count($s)] = $d;
             $d = [];
@@ -493,29 +493,29 @@ class Functions extends Controller
             $d['name'] = trans('horse.menu.caption');
             $d['icon'] = '<i class="fa fa-pagelines"> </i>';
             $d['icon'] = '<i class="fa icon-black-head-horse-side-view-with-horsehair"> </i>';
-            $d['url'] = url('#');
+            $d['url'] = route('asoc.caballo.index');
             $d['other'] = ' data-toggle="popover" data-trigger="hover" title="' . trans('popover.menu.adminhorse.titulo') . '" data-content="' . trans('popover.menu.adminhorse.contenido') . '"';
-            //$d['url'] = url('#');
+            //$d['url'] = route('horse.create');
             $s[count($s)] = $d;
             $d = [];
             /*
                         $d['name'] = trans('photo.menu.caption');
                         $d['icon'] = '<i class="fa fa-camera"> </i>';
-                        $d['url'] = url('#');
+                        $d['url'] = route('asoc.fotos.index');
                         $d['other'] = ' data-toggle="popover" data-trigger="hover" title="' . trans('popover.menu.adminphotos.titulo') . '" data-content="' . trans('popover.menu.adminphotos.contenido') . '"';
                         $s[count($s)] = $d;
                         $d = [];
 
                         $d['name'] = trans('video.menu.caption');
                         $d['icon'] = '<i class="fa fa-video-camera"> </i>';
-                        $d['url'] = url('#');
+                        $d['url'] = route('asoc.videos.index');
                         $d['other'] = ' data-toggle="popover" data-trigger="hover" title="' . trans('popover.menu.adminvideo.titulo') . '" data-content="' . trans('popover.menu.adminvideo.contenido') . '"';
                         $s[count($s)] = $d;
                         $d = [];
             */
             /*
             $d['name'] = trans('facebook.menu');
-            $d['url'] = url('#');
+            $d['url'] = route('asoc.FacebookAdmin');
             $d['icon'] = '<i class="fa fa-facebook"> </i>';
             $d['other'] = ' data-toggle="popover" data-trigger="hover" title="' . trans('popover.facebookm.titulo') . '" data-content="' . trans('popover.facebookm.contenido') . '"';
             $s[count($s)] = $d;
@@ -523,7 +523,7 @@ class Functions extends Controller
             */
             /*
             $d['name'] = "Asociados";
-            $d['url'] = url('#');
+            $d['url'] = route('asoc.Asociados.index');
             $d['icon'] = '<i class="fa fa-facebook"> </i>';
             $d['other'] = ' data-toggle="popover" data-trigger="hover" title="' . trans('popover.facebookm.titulo') . '" data-content="' . trans('popover.facebookm.contenido') . '"';
             $s[count($s)] = $d;
@@ -543,7 +543,7 @@ class Functions extends Controller
     {
         $s = [];
         $d['name'] = "Mi pagina";
-        $d['url'] = url('#');
+        $d['url'] = route('MyPage', ['id' => \Auth::user()->id, 'slug' => \Auth::user()->Slug()]);
         array_push($s, $d);
         $d = [];
 
@@ -555,23 +555,23 @@ class Functions extends Controller
         /*********************/
         $d['name'] = trans('stud.menu.caption');
         $d['icon'] = '<i class="fa fa-files-o"> </i>';
-        $d['url'] = url('#');
+        $d['url'] = route('stud.create');
         array_push($s, $d);
         $d = [];
         $b1 = [
             'name' => trans('stud.menu.index'),
-            'url' => url('#'),
+            'url' => route('stud.create'),
             'icon' => '<i class="fa fa-home"> </i>',
         ];
 
         $b2 = [
             'name' => trans('stud.menu.create'),
-            'url' => url('#'),
+            'url' => route('stud.create'),
             'icon' => '<i class="fa fa-home"> </i>',
         ];
         $b3 = [
             'name' => trans('stud.menu.edit'),
-            'url' => url('#'),
+            'url' => route('stud.edit'),
             'icon' => '<i class="fa fa-home"> </i>',
         ];
         $d['buttons'] = [
@@ -582,23 +582,23 @@ class Functions extends Controller
         /*********************/
         $d['name'] = trans('horse.menu.caption');
         $d['icon'] = '<i class="fa fa-pagelines"> </i>';
-        $d['url'] = url('#');
+        $d['url'] = route('caballoc.index');
         array_push($s, $d);
         $d = [];
         $b1 = [
             'name' => trans('horse.menu.index'),
-            'url' => url('#'),
+            'url' => route('caballoc.index'),
             'icon' => '<i class="fa fa-home"> </i>',
         ];
 
         $b2 = [
             'name' => trans('horse.menu.create'),
-            'url' => url('#'),
+            'url' => route('horse.create'),
             'icon' => '<i class="fa fa-home"> </i>',
         ];
         $b3 = [
             'name' => trans('horse.menu.edit'),
-            'url' => url('#'),
+            'url' => route('horse.edit'),
             'icon' => '<i class="fa fa-home"> </i>',
         ];
         $d['buttons'] = [
@@ -617,18 +617,18 @@ class Functions extends Controller
         $d = [];
         $b1 = [
             'name' => trans('photo.menu.index'),
-            'url' => url('#'),
+            'url' => route('photo.index'),
             'icon' => '<i class="fa fa-home"> </i>',
         ];
 
         $b2 = [
             'name' => trans('photo.menu.create'),
-            'url' => url('#'),
+            'url' => route('photo.create'),
             'icon' => '<i class="fa fa-home"> </i>',
         ];
         $b3 = [
             'name' => trans('photo.menu.edit'),
-            'url' => url('#'),
+            'url' => route('photo.edit'),
             'icon' => '<i class="fa fa-home"> </i>',
         ];
         $d['buttons'] = [
@@ -647,18 +647,18 @@ class Functions extends Controller
 
         $b1 = [
             'name' => trans('video.menu.index'),
-            'url' => url('#'),
+            'url' => route('video.index'),
             'icon' => '<i class="fa fa-home"> </i>',
         ];
 
         $b2 = [
             'name' => trans('video.menu.create'),
-            'url' => url('#'),
+            'url' => route('video.create'),
             'icon' => '<i class="fa fa-home"> </i>',
         ];
         $b3 = [
             'name' => trans('video.menu.edit'),
-            'url' => url('#'),
+            'url' => route('video.edit'),
             'icon' => '<i class="fa fa-home"> </i>',
         ];
         $d['buttons'] = [
@@ -689,18 +689,18 @@ class Functions extends Controller
 
         $b1 = [
             'name' => trans('country.menu.index'),
-            'url' => url('#'),
+            'url' => route('country.index'),
             'icon' => '<i class="fa fa-home"> </i>',
         ];
 
         $b2 = [
             'name' => trans('country.menu.create'),
-            'url' => url('#'),
+            'url' => route('country.create'),
             'icon' => '<i class="fa fa-home"> </i>',
         ];
         $b3 = [
             'name' => trans('country.menu.edit'),
-            'url' => url('#'),
+            'url' => route('country.edit'),
             'icon' => '<i class="fa fa-home"> </i>',
         ];
         $d['buttons'] = [
@@ -719,18 +719,18 @@ class Functions extends Controller
 
         $b1 = [
             'name' => trans('state.menu.index'),
-            'url' => url('#'),
+            'url' => route('state.index'),
             'icon' => '<i class="fa fa-home"> </i>',
         ];
 
         $b2 = [
             'name' => trans('state.menu.create'),
-            'url' => url('#'),
+            'url' => route('state.create'),
             'icon' => '<i class="fa fa-home"> </i>',
         ];
         $b3 = [
             'name' => trans('state.menu.edit'),
-            'url' => url('#'),
+            'url' => route('state.edit'),
             'icon' => '<i class="fa fa-home"> </i>',
         ];
         $d['buttons'] = [
@@ -750,18 +750,18 @@ class Functions extends Controller
 
         $b1 = [
             'name' => trans('city.menu.index'),
-            'url' => url('#'),
+            'url' => route('city.index'),
             'icon' => '<i class="fa fa-home"> </i>',
         ];
 
         $b2 = [
             'name' => trans('city.menu.create'),
-            'url' => url('#'),
+            'url' => route('city.create'),
             'icon' => '<i class="fa fa-home"> </i>',
         ];
         $b3 = [
             'name' => trans('city.menu.edit'),
-            'url' => url('#'),
+            'url' => route('city.edit'),
             'icon' => '<i class="fa fa-home"> </i>',
         ];
         $d['buttons'] = [
@@ -780,18 +780,18 @@ class Functions extends Controller
 
         $b1 = [
             'name' => trans('users.menu.index'),
-            'url' => url('#'),
+            'url' => route('users.index'),
             'icon' => '<i class="fa fa-home"> </i>',
         ];
 
         $b2 = [
             'name' => trans('users.menu.create'),
-            'url' => url('#'),
+            'url' => route('users.create'),
             'icon' => '<i class="fa fa-home"> </i>',
         ];
         $b3 = [
             'name' => trans('users.menu.edit'),
-            'url' => url('#'),
+            'url' => route('users.edit'),
             'icon' => '<i class="fa fa-home"> </i>',
         ];
         $d['buttons'] = [
@@ -1860,7 +1860,7 @@ cellpadding=\"0\" style=\"letter-spacing: 2px;width: 100%;font-size: 13px; font-
         $objeto['$nombre'] = $nombre;
         $objeto['uri'] = $uri;
         if (!empty($nombre)) {
-            $wd = url('#');
+            $wd = route($nombre, $parametros);
         } else {
             $wd = $uri;
         }
@@ -1892,7 +1892,7 @@ cellpadding=\"0\" style=\"letter-spacing: 2px;width: 100%;font-size: 13px; font-
         /*DA PROBLEMAS CON TENER EL NOMBRE DE RUTA*/
 
         /*
-        Route::dispatchTourl('#'));
+        Route::dispatchToRoute(Request::create($url));
         $route = Route::currentRouteName();
         dd($ruta);
         */
@@ -2301,7 +2301,7 @@ Favicon successfully generated. <a href="' . $directory . $strip_ext . '.ico" ta
 
     public function DecodeIpapi(Request $r)
     {
-        return redirect()->url('#');
+        return redirect()->route('portal');
         // 112 165
         $c = Country::find(55)->AjustarTraduccion()->push();
         dd($c);
@@ -7331,8 +7331,8 @@ Favicon successfully generated. <a href="' . $directory . $strip_ext . '.ico" ta
             $pere = array_flip($para);
         }
         */
-        $og = url('#');
-        $bas = url('#');
+        $og = route($nombre, $parametros);
+        $bas = route($nombre, $parametros, false);
 
         $o = trans($base . $nombre);
 //dd($parametros);
@@ -7375,8 +7375,8 @@ Favicon successfully generated. <a href="' . $directory . $strip_ext . '.ico" ta
                         App::setLocale($l);
                         //trans()
 
-                        $bes = url('#')
-                        //$bas = url('#');
+                        $bes = Route(LaravelLocalization::transRoute('rutas_publicas.listaportal')
+                        //$bas = route('MyHorsesV1',$parametros);
 
 
                         //$bes = str_replace($para,$pere,$uri);

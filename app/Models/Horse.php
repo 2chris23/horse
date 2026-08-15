@@ -793,45 +793,7 @@ class Horse extends Model
         return $query->where('id', '!=', $horse->id)->where('studs_id', $horse->studs_id);
     }
 
-    public function scopeAzar($query)
-    {
-        return $query->inRandomOrder();
-    }
 
-    public function scopeCaballos($query, Stud $stud)
-    {
-        return $query->where('studs_id', $stud->id);
-    }
-
-    public function scopeEnVenta($query, Stud $stud)
-    {
-        return $query->where('studs_id', $stud->id)->where(['tosold' => 1, 'sold' => 0]);
-    }
-
-    public function scopeVentaPublica($query)
-    {
-        return $query->where(['tosold' => 1, 'publish' => 1, 'sold' => 0]);
-    }
-
-    public function scopeBuscarPorAlzada($query, $min = 50, $max = 150)
-    {
-        return $query->whereBetween('raised', [$min, $max]);
-    }
-
-    public function scopeBuscarPorPrecio($query, $min = 0, $max = 50000000)
-    {
-        return $query->whereBetween('price', [$min, $max]);
-    }
-
-    public function scopeBuscarPorYeguadas($query, $yeguadas = [])
-    {
-        return $query->whereIn('studs_id', $yeguadas);
-    }
-
-    public function scopeBuscarPorSexos($query, $sexos = [])
-    {
-        return $query->whereIn('sex', $sexos);
-    }
 
     public function ActualizarBusqueda()
     {

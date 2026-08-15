@@ -25,6 +25,7 @@ return Application::configure(basePath: dirname(__DIR__))
         },
     )
     ->withMiddleware(function (Middleware $middleware) {
+        $middleware->trustProxies(at: '*');
         $middleware->alias([
             'Compresion' => \App\Http\Middleware\Compresion::class,
             'CompresionMax' => \App\Http\Middleware\CompresionMax::class,

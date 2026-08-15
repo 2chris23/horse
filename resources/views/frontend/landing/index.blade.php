@@ -233,7 +233,7 @@ $favicon= url(\Config::get('logos.favicon256'));
 <!-- SLIDER -->
     {{-- @include('frontend.landing.partials.slider') --}}
     <div class="col-xs-12 m-t-90"></div>
-@if(count(session('flash_notification', collect())->toArray()) !=0)
+@if(collect(session('flash_notification'))->count() != 0)
 
         <div class=" col-xs-offset-3 col-xs-6 ">
             @include('flash::message')

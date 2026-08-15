@@ -2166,7 +2166,7 @@ En definitiva, otro ejemplar de la filosofía de Yeguada Juan Vázquez, no sólo
             /*AJUSTE DE MONEDAS*/
             $t = Moneda::select('nombre', 'simbolo', 'small', 'valor')->where('status', 1)->get()->toArray();
             \Session::put('monedas', $t);
-            \Session::put('monedas', $t);
+            $monedas = $t;
         }
         $Coins = empty($Coins) ? 'EUR' : strtoupper($Coins);
         $sal = [];

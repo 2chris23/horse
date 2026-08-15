@@ -25,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
         \Illuminate\Foundation\AliasLoader::getInstance()->alias('Funciones', \App\Http\Controllers\Functions::class);
         \Illuminate\Foundation\AliasLoader::getInstance()->alias('Phone', \App\Models\Directory::class);
         \Illuminate\Foundation\AliasLoader::getInstance()->alias('Directory', \App\Models\Directory::class);
+        \Illuminate\Foundation\AliasLoader::getInstance()->alias('Recaptcha', \App\Helpers\Recaptcha::class);
 
         // Auto-alias legacy App\Model\* to App\Models\*
         spl_autoload_register(function ($class) {

@@ -1,14 +1,13 @@
 <?php
 
-$fa = $_SERVER['HTTP_HOST'];
+$fa = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'localhost';
 
 
 Route::group(
     [
-        'domain' => $_SERVER['HTTP_HOST'],
-    ], function () {
-    $stud = User::where(['domain' => $_SERVER['HTTP_HOST']])->first()->Yeguada()->slug;
-    $slug = $stud;
+        'domain' => $fa,
+    ], function () use ($fa) {
+
 
     Route::group(['middleware' => "CompresionMax"], function () {
 

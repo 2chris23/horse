@@ -231,7 +231,7 @@ $favicon= url(\Config::get('logos.favicon256'));
 
 
 <!-- SLIDER -->
-    @include('frontend.landing.partials.slider')
+    {{-- @include('frontend.landing.partials.slider') --}}
     <div class="col-xs-12 m-t-90"></div>
 @if(count(session('flash_notification', collect())->toArray()) !=0)
 
@@ -564,8 +564,7 @@ $favicon= url(\Config::get('logos.favicon256'));
     </div>
 
     <div class="clearfix space90">
-    </div>
-    @include('frontend.landing.partials.registro')
+    </div>    {{-- @include('frontend.landing.partials.registro') --}}
 
     <div class="container padding70">
         <div class="text-center " id="4">

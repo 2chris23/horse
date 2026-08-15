@@ -29,6 +29,21 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'Compresion' => \App\Http\Middleware\Compresion::class,
             'CompresionMax' => \App\Http\Middleware\CompresionMax::class,
+            'XFrame' => \App\Http\Middleware\XFrame::class,
+            'Autentificado' => \App\Http\Middleware\Authenticate::class,
+            'Admin' => \App\Http\Middleware\Admin::class,
+            'Firstlog' => \App\Http\Middleware\Firstlog::class,
+            'Asociado' => \App\Http\Middleware\AsociadoMiddleware::class,
+            'StudPaid' => \App\Http\Middleware\StudPaid::class,
+            'Expira' => \App\Http\Middleware\ExpirationTime::class,
+            'TimeZone' => \App\Http\Middleware\TimeZone::class,
+
+            /**** LaravelLocalization Middlewares ****/
+            'localize' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
+            'localizationRedirect' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
+            'localeSessionRedirect' => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
+            'localeCookieRedirect' => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
+            'localeViewPath' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

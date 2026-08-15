@@ -31,7 +31,7 @@
                         name="country"
 
                         data-placeholder="{{trans('stud.placeholder.country')}}">
-                    @if(count($principales != 0))
+                    @if(count($principales ?? []) > 0)
                         <optgroup label="{!! trans('users.recomended') !!}">
                             @foreach($principales as $k=>$v)
                                 <option data-tokens="{!! $v['id'] !!}" value="{!! $v['id'] !!}"
@@ -51,7 +51,7 @@
                             @endforeach
                         </optgroup>
                     @endif
-                    @if(count($secundarios != 0))
+                    @if(count($secundarios ?? []) > 0)
                         <optgroup label="_______________________">
                             @foreach($secundarios as $k=>$v)
                                 <option data-tokens="{!! $v['id'] !!}" value="{!! $v['id'] !!}"

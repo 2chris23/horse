@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Cviebrock\EloquentSluggable\Sluggable;
 use App\Http\Controllers\Functions;
+use App\Models\Directory;
 
 class Stud extends Model
 {
@@ -447,5 +448,45 @@ class Stud extends Model
     public function getHorsesId()
     {
         return $this->horses()->pluck('id')->toArray();
+    }
+    public function getPhoneFormat()
+    {
+        $p = Directory::where(['type' => 3, 'tableid' => $this->id])->get();
+        $temp = null;
+        foreach ($p as $k => $v) {
+            if (!empty($temp)) {
+                $ext_t = $temp->ext;
+                $ext_c = $temp->country_code;
+
+                $p_t = $v->ext;
+                $p_c = $v->country_code;
+
+                if ($v->phone == $temp->phone) {
+                    if (!empty($ext_t) and empty($p_t)) $v->setExt($ext_t)->push();
+                    if (empty($ext_t) and !empty($p_t)) $temp->setExt($p_t)->push();
+
+                    if (!empty($ext_c) and empty($p_t)) $v->setCountryCode($ext_c)->push();
+                    if (empty($ext_c) and !empty($p_t)) $temp->setCountryCode($p_c)->push();
+                }
+            }
+            $temp = $v;
+        }
+        $p = Directory::where(['type' => 3, 'tableid' => $this->id])->groupby('phone')->get();
+
+        $to = "";
+        foreach ($p as $k => $v) {
+            if (!empty($v)) {
+                $s = Functions::RetornaNumero($v->getPhone());
+                $t = sprintf("%s %s %s %s %s",
+                    substr($s, 0, 2),
+                    substr($s, 2, 3),
+                    substr($s, 5, 3),
+                    substr($s, 8, 3),
+                    substr($s, 11));
+                $to = "+$t<br>";
+            }
+        }
+
+        return $to;
     }
 }

@@ -76,7 +76,7 @@
                                                          alt="avatar1">
                                                 </div>
                                                 <div class="col-10 message-data">
-                                                    <a href="{!! route('notifi.show',['id'=>$v->id]) !!}">
+                                                    <a href="{!! url('#') !!}">
                                                         <strong>{!! trans('notification.'.$v->getAsunto()) !!}</strong>
                                                         {!! $v->getCorreo() !!}
                                                         <br>
@@ -210,7 +210,7 @@
                                     --}}
                                 </div>
                                 <div class="popover-footer">
-                                    <a href="{!! route('notifi.index') !!}" class="text-white">
+                                    <a href="{!! url('#') !!}" class="text-white">
                                         {!! trans('notification.inbox') !!}
                                     </a>
                                 </div>
@@ -226,7 +226,7 @@
 
                             <a class="btn btn-default btn-sm"
                                {{--@if(\Auth::user()->isAdm()) href="{!! route('soporte.index') !!}" @else href="{!! route('support.index') !!}"@endif>--}}
-                               href="{!! route('tickets.index') !!}">
+                               href="{!! url('#') !!}">
                                 {{--href="#!" >--}}
                                 <i
                                         class="fa fa-wrench">

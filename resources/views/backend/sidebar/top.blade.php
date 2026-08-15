@@ -453,18 +453,18 @@
                                 <a class="dropdown-item title" href="#">
                                     HWS Admin
                                 </a>
-                                <a class="dropdown-item" href="{!! route('user.profile') !!}">
+                                <a class="dropdown-item" href="{!! url('#') !!}">
                                     <i class="fa fa-user">
                                     </i>
                                     {!! trans('users.myaccount') !!}
                                 </a>
-                                <a class="dropdown-item" href="{!! route('notifi.index') !!}">
+                                <a class="dropdown-item" href="{!! url('#') !!}">
                                     <i class="fa fa-envelope-o fa-1x"></i>
                                     {!! trans('notification.inbox') !!}
 
                                 </a>
                                 <a class="dropdown-item"
-                                   href="{!! route('tickets.index') !!}">
+                                   href="{!! url('#') !!}">
                                     <i
                                             class="fa fa-wrench">
                                     </i>
@@ -472,12 +472,12 @@
                                 </a>
                                 @if(\Auth::user()->isAdm()==true)
 
-                                    <a href="{!! route('OpcionesAdmin') !!}" class="dropdown-item">
+                                    <a href="{!! url('#') !!}" class="dropdown-item">
                                         <i class="fa fa-cogs"></i>
                                         {!! trans('users.options') !!}
                                     </a>
                                 @else
-                                    <a href="{!! route('options.index') !!}" class="dropdown-item">
+                                    <a href="{!! url('#') !!}" class="dropdown-item">
                                         <i class="fa fa-cogs"></i>
                                         {!! trans('users.options') !!}
                                     </a>

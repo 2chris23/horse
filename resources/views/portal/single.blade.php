@@ -1449,22 +1449,24 @@
                                 {!! trans('portal.emailcontact') !!}
                             </button>
                         @if(!empty($horse->getStudPhone()))
-                            <?php $ph = $horse->getStudPhone(); ?>
-                            @if(isset($ph[0]))
-                                <?php $ph = Phone::find($ph[0]['id']); ?>
-                                <!-- Email Modal -->
+                            <?php 
+                            $phArray = $horse->getStudPhone(); 
+                            $ph = null;
+                            if (isset($phArray[0])) {
+                                $phId = is_array($phArray[0]) ? ($phArray[0]['id'] ?? null) : $phArray[0];
+                                $ph = $phId ? \App\Models\Directory::find($phId) : null;
+                            }
+                            ?>
+                            @if(!empty($ph))
+                                <!-- Phone button -->
                                     <button
-                                            {{--onclick="Llamar({!! $ph->getFormatNumberOnly() !!},this)"--}}
                                             class="btn-block btn-contact contactPhone number" data-last="111111X">
                                         <a href="tel:{{ $ph->getFormatNumberOnly() }}" class="text-black">
                                             {!! $ph->FormatNumber()!!}
                                         </a>
-                                        {{--
-                                        <span>XXXXXXX</span>
-                                        --}}
                                     </button>
-                                @endif
                             @endif
+                        @endif
                         </div>
                         <!-- Price info block -->
                         <div class="ad-listing-price mone"

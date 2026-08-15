@@ -23,6 +23,8 @@ class AppServiceProvider extends ServiceProvider
         \Illuminate\Support\Facades\URL::forceScheme('https');
         Schema::defaultStringLength(191);
         \Illuminate\Foundation\AliasLoader::getInstance()->alias('Funciones', \App\Http\Controllers\Functions::class);
+        \Illuminate\Foundation\AliasLoader::getInstance()->alias('Phone', \App\Models\Directory::class);
+        \Illuminate\Foundation\AliasLoader::getInstance()->alias('Directory', \App\Models\Directory::class);
 
         // Auto-alias legacy App\Model\* to App\Models\*
         spl_autoload_register(function ($class) {

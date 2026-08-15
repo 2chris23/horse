@@ -410,6 +410,11 @@ $l = url(\Config::get('logos.fbhws'));
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
 @endif
+<script>
+    var pai = typeof pai !== 'undefined' ? pai : 0;
+    var edo = typeof edo !== 'undefined' ? edo : 0;
+    var ciu = typeof ciu !== 'undefined' ? ciu : 0;
+</script>
 <script type="text/javascript" src="{!!url('assets/js/localidad.min.js')!!}"></script>
 </body>
 </html>

@@ -328,6 +328,14 @@ class StudController extends Controller
             $d = true;
         }
 
+        if (empty($data)) {
+            $sms = trans('error.NoFoundEle');
+            \Session::flash('error', $sms);
+            flash($sms)->error();
+            return response()->redirectTo(route('portal'), 301);
+            return redirect()->back();
+        }
+
         $user = $data['user'];
         $stud = $data['stud'];
         $studphoto = $data['studphoto'];
@@ -339,14 +347,6 @@ class StudController extends Controller
         $studphotoinstalations = $data['studphotoinstalations'];
         $persona = $data['persona'];
         $error = $data['error'];
-
-        if (empty($data)) {
-            $sms = trans('error.NoFoundEle');
-            \Session::flash('error', $sms);
-            flash($sms)->error();
-            return response()->redirectTo(route('portal'), 301);
-            return redirect()->back();
-        }
 
 
         /*

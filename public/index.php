@@ -35,23 +35,30 @@ require __DIR__.'/../vendor/autoload.php';
 $app = require_once __DIR__.'/../bootstrap/app.php';
 
 $request = Request::capture();
-$response = $app->handle($request);
 
-if (isset($_GET['show_redirect']) || (isset($_SERVER['REQUEST_URI']) && str_contains($_SERVER['REQUEST_URI'], 'ping'))) {
-    if ($response->isRedirection()) {
-        header('Content-Type: text/plain; charset=utf-8');
-        echo "=== REDIRECT INTERCEPTED ===\n";
-        echo "Status Code: " . $response->getStatusCode() . "\n";
-        echo "Target Location: " . $response->headers->get('Location') . "\n";
-        echo "Current URL: " . $request->fullUrl() . "\n";
-        echo "Scheme: " . $request->getScheme() . "\n";
-        echo "isSecure: " . ($request->isSecure() ? 'YES' : 'NO') . "\n";
-        echo "Matched Route: " . ($request->route() ? $request->route()->getName() . ' (' . $request->route()->uri() . ')' : 'NONE') . "\n";
-        exit;
-    }
+try {
+    $response = $app->handleRequest($request);
+} catch (\Throwable $e) {
+    header('Content-Type: text/plain; charset=utf-8');
+    echo "=== FATAL EXCEPTION IN LARAVEL ===\n";
+    echo "Message: " . $e->getMessage() . "\n";
+    echo "File: " . $e->getFile() . " (" . $e->getLine() . ")\n";
+    echo "Trace:\n" . $e->getTraceAsString() . "\n";
+    exit;
+}
+
+if ($response->isRedirection() && (isset($_GET['debug']) || isset($_GET['show_redirect']) || isset($_GET['diag']))) {
+    header('Content-Type: text/plain; charset=utf-8');
+    echo "=== REDIRECT INTERCEPTED ===\n";
+    echo "Status Code: " . $response->getStatusCode() . "\n";
+    echo "Target Location: " . $response->headers->get('Location') . "\n";
+    echo "Current URL: " . $request->fullUrl() . "\n";
+    echo "Scheme: " . $request->getScheme() . "\n";
+    echo "isSecure: " . ($request->isSecure() ? 'YES' : 'NO') . "\n";
+    exit;
 }
 
 $response->send();
-$app->terminate($request, $response);
+
 
 

@@ -22,10 +22,12 @@ class AppServiceProvider extends ServiceProvider
     {
         try {
             \Illuminate\Support\Facades\URL::forceScheme('https');
+            \Illuminate\Support\Facades\View::share('errors', new \Illuminate\Support\ViewErrorBag());
         } catch (\Throwable $e) {
             // Ignore during early bootstrap
         }
         Schema::defaultStringLength(191);
+
 
         $loader = \Illuminate\Foundation\AliasLoader::getInstance();
         $loader->alias('Funciones', \App\Http\Controllers\Functions::class);

@@ -43,9 +43,12 @@ if ($path === 'login' && $request->isMethod('get')) {
     $kernel->bootstrap();
     $app->instance('request', $request);
     \Illuminate\Support\Facades\Request::swap($request);
-    echo view('auth.login')->render();
+    $errors = new \Illuminate\Support\ViewErrorBag();
+    \Illuminate\Support\Facades\View::share('errors', $errors);
+    echo view('auth.login', ['errors' => $errors])->render();
     exit;
 }
+
 
 
 $app->handleRequest($request);

@@ -1,7 +1,13 @@
 <?php
 
+if (isset($_SERVER['REQUEST_URI']) && str_contains($_SERVER['REQUEST_URI'], 'ping')) {
+    header('Content-Type: text/plain; charset=utf-8');
+    die("PING_DIRECT_IN_INDEX_PHP_OK");
+}
+
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
+
 
 define('LARAVEL_START', microtime(true));
 

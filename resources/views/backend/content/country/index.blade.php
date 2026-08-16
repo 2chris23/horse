@@ -3,7 +3,7 @@
     $marcasecundaria="fa-bookmark";
 @endphp
 @extends('backend.layouts.base')
-@section('title', trans('horse.chooseone') )
+@section('title', trans('country.chooseone') )
 @section('content')
 
     <div id="datos" class="card col-12 ">

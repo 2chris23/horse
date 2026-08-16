@@ -93,6 +93,15 @@ class User extends Authenticatable
 
     // ── Helper Methods ───────────────────────────────────────────
 
+    public function Personal()
+    {
+        $p = Personal::where('users_id', $this->id)->first();
+        if (empty($p) && !empty($this->email)) {
+            $p = Personal::where('email', $this->email)->first();
+        }
+        return $p ?? new Personal();
+    }
+
     public function Yeguada()
     {
         $d = Stud::where('users_id', $this->id)->first();

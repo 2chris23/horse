@@ -19,7 +19,7 @@
                     id="input_horse_raza"
                     name="raza"
                     placeholder="{{trans('stud.placeholder.country')}}">
-                @if(count($principales != 0))
+                @if(count($principales) != 0)
                     <optgroup label="{!! trans('users.recomended') !!}">
                         @foreach(\App\Http\Controllers\PublicController::ArrayRazaPrincipal() as $k=>$v)
                             <option data-tokens="{!! $v['id'] !!}" value="{!! $v['id'] !!}"

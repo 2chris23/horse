@@ -153,15 +153,17 @@ class HomeController extends Controller
 
         $buscar = \Config::get('aplication.host');
         $sub_app = \Config::get('aplication.sub_app');
-        $r = str_replace($buscar, '', $_SERVER['SERVER_NAME']);
+        $serverHost = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : (isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : '');
+        $r = str_replace($buscar, '', $serverHost);
         $user = \Auth::user();
         if (empty($user)) {
-            if ($r == $sub_app) {
+            if (str_starts_with(strtolower($serverHost), 'app.') || $r == $sub_app) {
                 return view('frontend.landing.index');
             } else {
                 return redirect()->route('portal');
             }
         } else {
+
 
             if ($user->isAdm()) {
                 return view('admin.landing');

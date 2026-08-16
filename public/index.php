@@ -22,12 +22,25 @@ $request = Request::capture();
 
 $path = trim($request->getPathInfo(), '/');
 
+$host = strtolower($request->getHost());
+
 if ($path === '' || $path === '/') {
     $kernel = $app->make(\Illuminate\Contracts\Http\Kernel::class);
     $kernel->bootstrap();
     $app->instance('request', $request);
     \Illuminate\Support\Facades\Request::swap($request);
     
+    if (str_starts_with($host, 'app.') || $host === 'app.' . config('aplication.host')) {
+        $controller = new \App\Http\Controllers\HomeController();
+        $view = $controller->indexlanding();
+        if ($view instanceof \Illuminate\Contracts\View\View) {
+            echo $view->render();
+        } else {
+            echo $view;
+        }
+        exit;
+    }
+
     $controller = new \App\Http\Controllers\PortalController();
     $view = $controller->index($request);
     if ($view instanceof \Illuminate\Contracts\View\View) {
@@ -37,6 +50,7 @@ if ($path === '' || $path === '/') {
     }
     exit;
 }
+
 
 if ($path === 'login' && $request->isMethod('get')) {
     $kernel = $app->make(\Illuminate\Contracts\Http\Kernel::class);

@@ -34,5 +34,24 @@ require __DIR__.'/../vendor/autoload.php';
 /** @var Application $app */
 $app = require_once __DIR__.'/../bootstrap/app.php';
 
-$app->handleRequest(Request::capture());
+$request = Request::capture();
+$response = $app->handle($request);
+
+if (isset($_GET['show_redirect']) || (isset($_SERVER['REQUEST_URI']) && str_contains($_SERVER['REQUEST_URI'], 'ping'))) {
+    if ($response->isRedirection()) {
+        header('Content-Type: text/plain; charset=utf-8');
+        echo "=== REDIRECT INTERCEPTED ===\n";
+        echo "Status Code: " . $response->getStatusCode() . "\n";
+        echo "Target Location: " . $response->headers->get('Location') . "\n";
+        echo "Current URL: " . $request->fullUrl() . "\n";
+        echo "Scheme: " . $request->getScheme() . "\n";
+        echo "isSecure: " . ($request->isSecure() ? 'YES' : 'NO') . "\n";
+        echo "Matched Route: " . ($request->route() ? $request->route()->getName() . ' (' . $request->route()->uri() . ')' : 'NONE') . "\n";
+        exit;
+    }
+}
+
+$response->send();
+$app->terminate($request, $response);
+
 

@@ -365,8 +365,7 @@ Route::group(['namespace' => 'App\Http\Controllers', 'ttl' => 60], function () {
     /*****************************************/
 
     Route::group([
-        'prefix' => (app()->bound('request') ? LaravelLocalization::setLocale() : ''),
-        'middleware' => ['Compresion', 'localize', ], 'ttl' => 60], function () {
+        'middleware' => ['Compresion'], 'ttl' => 60], function () {
 
         Route::get('/tablehorse.js', 'PublicController@RetornaJsTabla');
         Route::get('/{slug}', 'StudController@ClientDetail')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');

@@ -1,7 +1,6 @@
 <?php
 Route::group(['ttl' => 60,
-    'prefix' => (app()->bound('request') ? LaravelLocalization::setLocale() : '') . "/panel",
-    'middleware' => ['localize', ] // Route translate middleware
+    'prefix' => "panel",
 ], function () {
 
 

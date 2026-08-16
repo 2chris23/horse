@@ -19,6 +19,9 @@ $app = require_once __DIR__ . '/../bootstrap/app.php';
 $kernel = $app->make(\Illuminate\Contracts\Http\Kernel::class);
 
 $request = \Illuminate\Http\Request::create('https://horsesworldsale.com/', 'GET');
+$app->instance('request', $request);
+\Illuminate\Support\Facades\Request::swap($request);
+\Illuminate\Support\Facades\URL::setRequest($request);
 
 set_error_handler(function($severity, $message, $file, $line) {
     echo "\n[PHP ERROR ($severity)]: $message in $file:$line\n";
@@ -32,6 +35,7 @@ try {
     $kernel->bootstrap();
     echo "Step 1: Kernel bootstrapped successfully!\n";
 } catch (\Throwable $e) {
+
     echo "FATAL EXCEPTION DURING KERNEL BOOTSTRAP:\n";
     echo "Message: " . $e->getMessage() . "\n";
     echo "File: " . $e->getFile() . " (Line " . $e->getLine() . ")\n";

@@ -1,0 +1,1 @@
+<?php echo 'PHP WORKS. HTTPS=' . (isset($_SERVER['HTTPS']) ? $_SERVER['HTTPS'] : 'NOT SET') . ' PORT=' . $_SERVER['SERVER_PORT'] . ' HOST=' . $_SERVER['HTTP_HOST'] . ' URI=' . $_SERVER['REQUEST_URI']; ?>

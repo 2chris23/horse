@@ -38,4 +38,14 @@ if ($path === '' || $path === '/') {
     exit;
 }
 
+if ($path === 'login' && $request->isMethod('get')) {
+    $kernel = $app->make(\Illuminate\Contracts\Http\Kernel::class);
+    $kernel->bootstrap();
+    $app->instance('request', $request);
+    \Illuminate\Support\Facades\Request::swap($request);
+    echo view('auth.login')->render();
+    exit;
+}
+
+
 $app->handleRequest($request);

@@ -16,8 +16,9 @@ Route::get('/admin', function () {
 });
 
 Route::get('/panel', function () {
-    return redirect('/panel/caballo');
+    return redirect('/panel/Caballos');
 });
+
 
 Route::group(['namespace' => 'App\Http\Controllers', 'ttl' => 60], function () {
 

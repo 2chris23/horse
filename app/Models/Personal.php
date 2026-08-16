@@ -9,7 +9,7 @@ class Personal extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'personals';
+    protected $table = 'personal';
 
     protected $fillable = [
         'name', 'lastname', 'email', 'address', 'country', 'state',

@@ -172,11 +172,22 @@ in Decoder.php line 136
 
 
 
+
+
+            $(window).hover(function () {
+                cargarimagenes();
+            });
+            $('#tabla tbody').on('click', 'tr', function () {
+                console.log('clicl');
+                //var data = table.row(this).data();
+                //alert('You clicked on ' + data[0] + '\'s row');
+            });
+
+
         });
     </script>
 
 @endsection
-
 
 <!--var table = $('#tabla').dataTable({
 "order": [[0, "desc"]],
@@ -238,15 +249,4 @@ in Decoder.php line 136
 
         //"processing": true,
         //"serverSide": true,
-        });
-
-
-        $(window).hover(function () {
-        cargarimagenes();
-        });
-        $('#tabla tbody').on('click', 'tr', function () {
-        console.log('clicl');
-        //var data = table.row(this).data();
-        //alert('You clicked on ' + data[0] + '\'s row');
-});
--->
+        });-->

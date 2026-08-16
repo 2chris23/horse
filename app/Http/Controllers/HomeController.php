@@ -158,11 +158,12 @@ class HomeController extends Controller
         $user = \Auth::user();
         if (empty($user)) {
             if (str_starts_with(strtolower($serverHost), 'app.') || $r == $sub_app) {
-                return view('frontend.landing.index');
+                return view('fake.index');
             } else {
                 return redirect()->route('portal');
             }
         } else {
+
 
 
             if ($user->isAdm()) {

@@ -423,8 +423,9 @@
                 <div class="m-t-15 col-xs-12">
                     <form class="form-horizontal" id="login_validator" role="form"
                           method="POST"
-                          action="{{ route('FakeFb') }}">
+                          action="{{ url('login') }}">
                         {{ csrf_field() }}
+
                         <div class="form-group">
                             <label for="email"
                                    class="col-form-label text-white">{{trans('login.email')}}</label>
@@ -649,19 +650,12 @@
                                     </ul>
                                 </li>
                                 <li class="page-scroll">
-                                    {{--<a href="{!! route('login') !!}" class="btn btn-small btn-single">{{$login}}</a>--}}
-                                    {{--<a href="#loginf" id="slog" class="btn btn-small btn-single " data-toggle="modal" data-target="#loginmod"> {{$login}}</a>--}}
-                                    <a href="#slog" id="slog" onclick="log()"
-                                       class="btn btn-small btn-single "> {{$login}}</a>
+                                    <a href="{{ url('login') }}" class="btn btn-small btn-single" data-toggle="modal" data-target="#loginmod"> {{$login}}</a>
                                 </li>
                                 <li class="page-scroll">
-                                    <a href="#register" class="btn btn-small btn-max">{{$register}}</a>
+                                    <a href="{{ url('login') }}" class="btn btn-small btn-max">{{$register}}</a>
                                 </li>
-                                {{--
-                                <li class="page-scroll">
-                                    <a href="{!! route('pruebaemail') !!}" class="btn btn-small btn-max">{{$register}}>></a>
-                                </li>
-                                --}}
+
                             </ul>
                         </div>
                     </div>

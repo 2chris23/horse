@@ -77,9 +77,10 @@ $l = url(\Config::get('logos.fbhws'));
      ])
     <script>
         window.token = '{!! csrf_token() !!}';
-        window.UrlEstado = "{!! route('state.ajax') !!}";
-        window.UrlCiudad = "{!! route('city.ajax') !!}";
-        window.urlorder = '{!! route('photo.changeorder') !!}';
+        window.UrlEstado = "{!! Route::has('state.ajax') ? route('state.ajax') : url('/state/ajax') !!}";
+        window.UrlCiudad = "{!! Route::has('city.ajax') ? route('city.ajax') : url('/city/ajax') !!}";
+        window.urlorder = '{!! Route::has('photo.changeorder') ? route('photo.changeorder') : url('/CambioOrden') !!}';
+
 
         function DisableElement(el) {
             $(el).prop('disabled', true);

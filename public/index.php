@@ -43,6 +43,8 @@ if (isset($_GET['step'])) {
         if ($step === 4) {
             $app = require_once __DIR__.'/../bootstrap/app.php';
             $request = Request::capture();
+            $kernel = $app->make(\Illuminate\Contracts\Http\Kernel::class);
+            $kernel->bootstrap();
             $router = $app->make('router');
             $route = $router->getRoutes()->match($request);
             die("STEP 4: Matched route: " . ($route->getName() ?: $route->uri()) . "\nAction: " . $route->getActionName() . "\nMiddleware: " . json_encode($route->gatherMiddleware()));

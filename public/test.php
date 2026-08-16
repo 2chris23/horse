@@ -1,46 +1,41 @@
 <?php
-// Test que arranca Laravel paso a paso para encontrar donde falla
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-echo "STEP 1: PHP OK\n";
-echo "HTTPS=" . ($_SERVER['HTTPS'] ?? 'NOT SET') . "\n";
+require __DIR__.'/../vendor/autoload.php';
 
-echo "STEP 2: Loading autoloader...\n";
+// Capture any headers set during bootstrap
+register_shutdown_function(function() {
+    echo "\n--- SHUTDOWN ---\n";
+    echo "HEADERS SENT: \n";
+    foreach (headers_list() as $h) {
+        echo "  $h\n";
+    }
+});
+
+// Prevent any exit() from killing without output
+ob_start();
+
+$app = require_once __DIR__.'/../bootstrap/app.php';
+
+echo "APP BOOTED\n";
+
+// Check if there's a cached config causing issues
+$configPath = __DIR__.'/../bootstrap/cache/config.php';
+echo "CACHED CONFIG EXISTS: " . (file_exists($configPath) ? 'YES' : 'NO') . "\n";
+
+$routesPath = __DIR__.'/../bootstrap/cache/routes-v7.php';
+echo "CACHED ROUTES EXISTS: " . (file_exists($routesPath) ? 'YES' : 'NO') . "\n";
+
+// Check the config value that routes depend on
 try {
-    require __DIR__.'/../vendor/autoload.php';
-    echo "STEP 2: OK\n";
+    $app->make('Illuminate\Contracts\Console\Kernel')->bootstrap();
+    echo "APLICATION HOST CONFIG: " . config('aplication.host') . "\n";
+    echo "APP_URL: " . config('app.url') . "\n";
+    echo "APP_ENV: " . config('app.env') . "\n";
 } catch (\Throwable $e) {
-    echo "STEP 2 CRASH: " . $e->getMessage() . "\n";
-    die();
+    echo "CONFIG CRASH: " . $e->getMessage() . "\n";
 }
 
-echo "STEP 3: Loading bootstrap/app.php...\n";
-try {
-    $app = require_once __DIR__.'/../bootstrap/app.php';
-    echo "STEP 3: OK\n";
-} catch (\Throwable $e) {
-    echo "STEP 3 CRASH: " . $e->getMessage() . " in " . $e->getFile() . ":" . $e->getLine() . "\n";
-    die();
-}
-
-echo "STEP 4: Making HTTP Kernel...\n";
-try {
-    $kernel = $app->make(\Illuminate\Contracts\Http\Kernel::class);
-    echo "STEP 4: OK\n";
-} catch (\Throwable $e) {
-    echo "STEP 4 CRASH: " . $e->getMessage() . " in " . $e->getFile() . ":" . $e->getLine() . "\n";
-    die();
-}
-
-echo "STEP 5: Handling /ping request...\n";
-try {
-    $request = \Illuminate\Http\Request::create('/ping', 'GET');
-    $request->server->set('HTTPS', 'on');
-    $response = $kernel->handle($request);
-    echo "STEP 5: OK - Status=" . $response->getStatusCode() . "\n";
-    echo "STEP 5: Location=" . ($response->headers->get('Location') ?? 'NONE') . "\n";
-    echo "STEP 5: Body=" . substr($response->getContent(), 0, 200) . "\n";
-} catch (\Throwable $e) {
-    echo "STEP 5 CRASH: " . $e->getMessage() . " in " . $e->getFile() . ":" . $e->getLine() . "\n";
-}
+$content = ob_get_clean();
+echo $content;

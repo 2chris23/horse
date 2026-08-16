@@ -1,9 +1,10 @@
 <?php
-Route::group(['ttl' => 60,
-    'prefix' => (app()->bound('request') ? LaravelLocalization::setLocale() : '') . "/associated",
+Route::group([
+    'prefix' => "associated",
     'as' => 'asoc.',
     'middleware' => 'Asociado'
 ], function () {
+
 
 
 

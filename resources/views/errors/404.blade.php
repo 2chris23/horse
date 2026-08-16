@@ -3,16 +3,18 @@ $mensaje = isset($mensaje) ? $mensaje : null;
 $t = \Session::all();
 $error = null;
 $flash = null;
+$app = null; // Fix undefined variable $app
 if (isset($t['app'])) {
     $app = $t['app'];
     \Session::put('app', $app);
 }
 if (isset($t['Error'])) {
-    $error = $t['Error'];
+    // Fix: Cannot access offset of type array on array
+    // If Error in session is an array, convert to string so it can be used as array key below
+    $error = is_array($t['Error']) ? json_encode($t['Error']) : $t['Error']; 
     \Session::put('Error', $error);
     $e = ['sms' => $error, $error => 0];
     \Session::put('flash_message', $e);
-    //flash($error)->error();
 }
 if (isset($t['flash_notification'])) {
     $flash = $t['flash_notification'];
@@ -20,23 +22,13 @@ if (isset($t['flash_notification'])) {
 }
 $url = ($app == 'true') ? 'http://app.' . \Config::get('aplication.host') : 'http://' . \Config::get('aplication.host');
 \Session::put('url', $url);
-// dd(\Session::all());
-if (isset($timezone)) {
-    if (!empty($timezone)) {
-        \Session::put('timezone', $timezone);
-    }
-}
-if (isset($currency)) {
-    if (!empty($currency)) {
-        \Session::put('currency', $currency);
-    }
-}
-/*
-    if(!empty( $url)){ header("Location: $url");}
-    elseif(!empty( $host)){ header("Location: $host");}
-    */
 
-//die();
+if (isset($timezone) && !empty($timezone)) {
+    \Session::put('timezone', $timezone);
+}
+if (isset($currency) && !empty($currency)) {
+    \Session::put('currency', $currency);
+}
 ?>
 
 @extends('backend.layouts.fakelanding')

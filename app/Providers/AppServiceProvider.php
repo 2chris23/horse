@@ -20,8 +20,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        try {
-            \Illuminate\Support\Facades\URL::forceScheme('https');
+            if ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https')) {
+                \Illuminate\Support\Facades\URL::forceScheme('https');
+            }
             \Illuminate\Support\Facades\View::share('errors', new \Illuminate\Support\ViewErrorBag());
             \Illuminate\Support\Facades\View::share('etiquetalabel', 'col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 text-sm-left text-md-left text-lg-right ');
             \Illuminate\Support\Facades\View::share('tiquetainput', 'col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 ');

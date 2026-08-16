@@ -28,6 +28,23 @@ class AppServiceProvider extends ServiceProvider
         }
         Schema::defaultStringLength(191);
 
+        $router = $this->app->make('router');
+        $router->aliasMiddleware('Compresion', \App\Http\Middleware\Compresion::class);
+        $router->aliasMiddleware('CompresionMax', \App\Http\Middleware\CompresionMax::class);
+        $router->aliasMiddleware('XFrame', \App\Http\Middleware\XFrame::class);
+        $router->aliasMiddleware('Autentificado', \App\Http\Middleware\Authenticate::class);
+        $router->aliasMiddleware('Admin', \App\Http\Middleware\Admin::class);
+        $router->aliasMiddleware('Firstlog', \App\Http\Middleware\Firstlog::class);
+        $router->aliasMiddleware('Asociado', \App\Http\Middleware\AsociadoMiddleware::class);
+        $router->aliasMiddleware('StudPaid', \App\Http\Middleware\StudPaid::class);
+        $router->aliasMiddleware('Expira', \App\Http\Middleware\ExpirationTime::class);
+        $router->aliasMiddleware('TimeZone', \App\Http\Middleware\TimeZone::class);
+        $router->aliasMiddleware('localize', \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class);
+        $router->aliasMiddleware('localizationRedirect', \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class);
+        $router->aliasMiddleware('localeSessionRedirect', \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class);
+        $router->aliasMiddleware('localeCookieRedirect', \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class);
+        $router->aliasMiddleware('localeViewPath', \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class);
+
 
         $loader = \Illuminate\Foundation\AliasLoader::getInstance();
         $loader->alias('Funciones', \App\Http\Controllers\Functions::class);

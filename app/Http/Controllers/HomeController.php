@@ -188,11 +188,13 @@ class HomeController extends Controller
 
     public static function CambioUrlIdioma($url, $leng = null)
     {
-        $htt = "http://";
+        $htt = "https://";
+        $http = "http://";
         if (empty($leng)) {
             $leng = App::getLocale();
         }
-        $st = str_replace($htt, '', $url);
+        // Strip both http:// and https://
+        $st = str_replace([$htt, $http], '', $url);
         $ex = explode("/", $st);
         $da = '';
         //dd($ex);
@@ -203,7 +205,6 @@ class HomeController extends Controller
                 $da = $da . $ex[$i] . "/";
             }
         }
-
 
         return ($htt.$da);
 

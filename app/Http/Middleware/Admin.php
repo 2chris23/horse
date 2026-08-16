@@ -33,27 +33,15 @@ class Admin
     public function handle($request, Closure $next)
     {
 
-        $user = $this->auth->user();
-        $url = route('landinghome') . "#register";
-        if ($this->auth->guest()) {
+        if ($this->auth->guest() || empty($user)) {
             if ($request->ajax()) {
                 return response('Unauthorized.', 401);
             } else {
                 $request->session()->flash('message', trans('text.nologin'));
-                //return redirect()->route('login');
-                return redirect($url);
+                return redirect()->route('login');
             }
         }
 
-        if(empty($user)){
-            if ($request->ajax()) {
-                return response('Unauthorized.', 401);
-            } else {
-                $request->session()->flash('message', trans('text.nologin'));
-                //return redirect()->route('login');
-                return redirect($url);
-            }
-        }
 
         if ($user->type != 0) {
             if ($request->ajax()) {

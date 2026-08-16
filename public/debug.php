@@ -6,78 +6,52 @@ error_reporting(E_ALL);
 
 header('Content-Type: text/html; charset=utf-8');
 
-echo "<h1>HWS DIRECT VIEW TEST (portal.landing)</h1><pre>";
+echo "<h1>HWS ROUTE & VIEW TEST (login & panel)</h1><pre>";
 
 require __DIR__ . '/../vendor/autoload.php';
 
-// Force HTTPS
 $_SERVER['HTTPS'] = 'on';
 $_SERVER['SERVER_PORT'] = 443;
+$_SERVER['HTTP_X_FORWARDED_PROTO'] = 'https';
+$_SERVER['HTTP_X_FORWARDED_SSL'] = 'on';
 
 /** @var \Illuminate\Foundation\Application $app */
 $app = require_once __DIR__ . '/../bootstrap/app.php';
 $kernel = $app->make(\Illuminate\Contracts\Http\Kernel::class);
 
-$request = \Illuminate\Http\Request::create('https://horsesworldsale.com/', 'GET');
-$app->instance('request', $request);
+$kernel->bootstrap();
 
-set_error_handler(function($severity, $message, $file, $line) {
-    echo "\n[PHP ERROR ($severity)]: $message in $file:$line\n";
-});
+echo "Step 1: Kernel Bootstrapped!\n";
 
-set_exception_handler(function(\Throwable $e) {
-    echo "\n[UNCAUGHT EXCEPTION]: " . $e->getMessage() . " in " . $e->getFile() . ":" . $e->getLine() . "\n" . $e->getTraceAsString() . "\n";
-});
-
+echo "\n--- TESTING /login ROUTE MATCH ---\n";
 try {
-    $kernel->bootstrap();
-    \Illuminate\Support\Facades\Request::swap($request);
-    echo "Step 1: Kernel bootstrapped successfully!\n";
-} catch (\Throwable $e) {
-
-
-    echo "FATAL EXCEPTION DURING KERNEL BOOTSTRAP:\n";
-    echo "Message: " . $e->getMessage() . "\n";
-    echo "File: " . $e->getFile() . " (Line " . $e->getLine() . ")\n";
-    echo "Trace:\n" . $e->getTraceAsString() . "\n";
-    exit;
-}
-
-echo "Step 2: Inspecting route match...\n";
-try {
-    $testReq = \Illuminate\Http\Request::create('https://horsesworldsale.com/', 'GET');
+    $loginReq = \Illuminate\Http\Request::create('https://horsesworldsale.com/login', 'GET');
     $router = $app->make(\Illuminate\Routing\Router::class);
-    $matchedRoute = $router->getRoutes()->match($testReq);
-    echo "Matched Route URI: " . $matchedRoute->uri() . "\n";
-    echo "Matched Route Name: " . ($matchedRoute->getName() ?? 'none') . "\n";
-    echo "Matched Route Action: " . $matchedRoute->getActionName() . "\n";
-    echo "Matched Route Middleware: " . implode(', ', $matchedRoute->gatherMiddleware()) . "\n";
+    $matchedRoute = $router->getRoutes()->match($loginReq);
+    echo "Matched URI: " . $matchedRoute->uri() . "\n";
+    echo "Matched Name: " . ($matchedRoute->getName() ?? 'none') . "\n";
+    echo "Matched Action: " . $matchedRoute->getActionName() . "\n";
+    echo "Matched Middleware: " . implode(', ', $matchedRoute->gatherMiddleware()) . "\n";
 } catch (\Throwable $e) {
-    echo "ERROR IN ROUTE MATCH:\n" . $e->getMessage() . "\n";
+    echo "ERROR MATCHING /login: " . $e->getMessage() . "\n";
 }
 
-
+echo "\n--- TESTING auth.login VIEW RENDER ---\n";
 try {
-    $horses = \App\Models\Horse::VentaPublica()->orderby('id', 'desc')->take(18)->get();
-    echo "Step 3: Database query for horses successful! Count: " . count($horses) . "\n";
+    $viewHtml = view('auth.login')->render();
+    echo "SUCCESS: auth.login view rendered (" . strlen($viewHtml) . " bytes)\n";
 } catch (\Throwable $e) {
-    echo "Step 3 FAILED (Database query): " . $e->getMessage() . "\n" . $e->getTraceAsString() . "\n";
+    echo "ERROR RENDERING auth.login: " . $e->getMessage() . " in " . $e->getFile() . ":" . $e->getLine() . "\n";
 }
 
+echo "\n--- TESTING /panel/caballo ROUTE MATCH ---\n";
 try {
-    echo "Step 4: Rendering portal.landing view...\n";
-    $html = view('portal.landing', compact('horses'))->render();
-    echo "Step 4 SUCCESS! Rendered " . strlen($html) . " bytes of HTML!\n\n";
-    echo "</pre><hr><h2>RENDERED HTML PREVIEW:</h2>" . $html;
-    exit;
+    $panelReq = \Illuminate\Http\Request::create('https://horsesworldsale.com/panel/caballo', 'GET');
+    $matchedRoute2 = $router->getRoutes()->match($panelReq);
+    echo "Matched URI: " . $matchedRoute2->uri() . "\n";
+    echo "Matched Name: " . ($matchedRoute2->getName() ?? 'none') . "\n";
+    echo "Matched Action: " . $matchedRoute2->getActionName() . "\n";
+    echo "Matched Middleware: " . implode(', ', $matchedRoute2->gatherMiddleware()) . "\n";
 } catch (\Throwable $e) {
-    echo "\n=== FATAL ERROR RENDERING BLADE VIEW ===\n";
-    echo "Message: " . $e->getMessage() . "\n";
-    echo "File: " . $e->getFile() . " (Line " . $e->getLine() . ")\n";
-    echo "Trace:\n" . $e->getTraceAsString() . "\n</pre>";
-    exit;
+    echo "ERROR MATCHING /panel/caballo: " . $e->getMessage() . "\n";
 }
-
-
-
-

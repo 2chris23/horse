@@ -33,17 +33,15 @@ class Authenticate
      */
     public function handle($request, Closure $next)
     {
-        $url = route('home') . "#register";
-
         if ($this->auth->guest()) {
             if ($request->ajax()) {
                 return response('Unauthorized.', 401);
             } else {
                 $request->session()->flash('message', trans('text.nologin'));
-                //return redirect()->route('login');
-                return redirect($url);
+                return redirect()->route('login');
             }
         }
         return $next($request);
     }
+
 }

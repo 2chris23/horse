@@ -27,62 +27,8 @@ $spa = !empty($spa)?$spa:false;
 $colombia = !empty($colombia)?$colombia:false;
 @endphp
 
-<div id="loginmod" class="modal  fade" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-body col-xs-12 login2_border login_section_top">
-                <div class="close-log">
-                    <button type="button" class="close close-btn" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="login_logo login_border_radius1">
-                    <h3 class="text-center text-white">
-                        <img src="{!!url('logo.png')!!}" alt="{!! Config::get('app.name') !!}"
-                             class="admire_logo"><br/>
-                        <span class="m-t-15">{{trans('landing.login')}}</span>
-                    </h3>
-                </div>
-                <div class="m-t-15 col-xs-12">
-                    <form class="form-horizontal" id="login_validator" role="form"
-                          method="POST"
-                          action="{{ url('login') }}">
-                        {{ csrf_field() }}
-                        <div class="form-group">
-                            <label for="email"
-                                   class="col-form-label text-white">{{trans('landing.email')}}</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control b_r_20" id="email" name="email"
-                                       placeholder="{{trans('landing.placeholder.email')  }}">
-                                <span class="input-group-addon"> <i class="fa fa-envelope text-white"></i> </span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="password"
-                                   class="col-form-label text-white">{{trans('landing.password')}}</label>
-                            <div class="input-group">
-                                <input type="password" class="form-control b_r_20 pwd" id="password" name="password"
-                                       placeholder="{{trans('landing.placeholder.password')  }}">
-                                <span class="input-group-addon"> <i class="fa fa-key text-white"></i> </span>
-                            </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="text-center">
-                                    <button type="submit"
-                                            class="btn btn-success btn-block b_r_20 m-t-20 sendlog">{{trans('landing.login')}}</button>
-                                </div>
-                            </div>
-                        </div>
 
-                    </form>
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-</div><!--modal-->
 {{-- Menu de app --}}
 
 <div class="transparent-header mobile-custom">
@@ -242,16 +188,17 @@ $colombia = !empty($colombia)?$colombia:false;
 
                             @if(empty(\Auth::user()))
                                 <li>
-                                    <a href="{{ url('login') }}" data-toggle="modal" data-target="#loginmod">
+                                    <a href="{{ url('login') }}">
                                         <i class="fa fa-sign-in"></i> {!! trans('portal.login') !!}
                                     </a>
                                 </li>
                                 <li>
-                                    <a rel="nofollow" href="{{ url('login') }}" data-toggle="modal" data-target="#loginmod">
+                                    <a rel="nofollow" href="{{ url('login') }}">
                                         <i class="fa fa-unlock" aria-hidden="true"></i> {!! trans('portal.register') !!}
                                     </a>
                                 </li>
                             @else
+
 
                                 <li>
                                     <a href="{{ url('/panel/caballo') }}" rel="nofollow">

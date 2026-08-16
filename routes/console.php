@@ -75,15 +75,8 @@ Artisan::command('hws:test-all', function () {
             \Illuminate\Support\Facades\Request::swap($req);
 
             $route = app('router')->getRoutes()->match($req);
-
-            if ($route->isControllerAction()) {
-                $controllerClass = $route->getControllerClass();
-                $method = $route->getActionMethod();
-                $controller = app($controllerClass);
-                $result = $controller->callAction($method, $route->parametersWithoutNulls());
-            } else {
-                $result = $route->run();
-            }
+            $route->bind($req);
+            $result = $route->run();
 
             $content = '';
             if ($result instanceof \Illuminate\Contracts\View\View) {

@@ -12,6 +12,9 @@ Artisan::command('inspire', function () {
 });
 
 Artisan::command('hws:test-all', function () {
+    \Illuminate\Support\Facades\Artisan::call('view:clear');
+    \Illuminate\Support\Facades\Artisan::call('cache:clear');
+
     $this->info("=================================================");
     $this->info("   HORSES WORLD SALE - SUITE DE TEST INTEGRAL   ");
     $this->info("=================================================\n");

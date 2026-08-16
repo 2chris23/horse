@@ -41,7 +41,23 @@ if (isset($_SERVER['REQUEST_URI']) && str_contains($_SERVER['REQUEST_URI'], 'pin
 /** @var Application $app */
 $app = require_once __DIR__.'/../bootstrap/app.php';
 
-$app->handleRequest(Request::capture());
+$request = Request::capture();
+$response = $app->handleRequest($request);
+
+if ($response->isRedirection()) {
+    header('Content-Type: text/plain; charset=utf-8');
+    echo "=== REDIRECT INTERCEPTED ON ROOT ===\n";
+    echo "Status: " . $response->getStatusCode() . "\n";
+    echo "Target Location: " . $response->headers->get('Location') . "\n";
+    echo "Request URL: " . $request->fullUrl() . "\n";
+    echo "Request Path: " . $request->path() . "\n";
+    echo "Matched Route: " . ($request->route() ? ($request->route()->getName() ?: $request->route()->uri()) : 'NONE') . "\n";
+    echo "Action: " . ($request->route() ? $request->route()->getActionName() : 'NONE') . "\n";
+    exit;
+}
+
+$response->send();
+
 
 
 

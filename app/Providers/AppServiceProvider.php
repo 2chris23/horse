@@ -20,14 +20,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
-            try {
-                \Illuminate\Support\Facades\URL::forceScheme('https');
-            } catch (\Throwable $e) {
-                // Ignore during early bootstrap
-            }
+        try {
+            \Illuminate\Support\Facades\URL::forceScheme('https');
+        } catch (\Throwable $e) {
+            // Ignore during early bootstrap
         }
         Schema::defaultStringLength(191);
+
         $loader = \Illuminate\Foundation\AliasLoader::getInstance();
         $loader->alias('Funciones', \App\Http\Controllers\Functions::class);
         $loader->alias('Functions', \App\Http\Controllers\Functions::class);

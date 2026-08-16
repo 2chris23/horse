@@ -64,6 +64,8 @@ Artisan::command('hws:test-all', function () {
     $passed = 0;
     $failed = 0;
 
+    $router = app('router');
+
     foreach ($routesToTest as $item) {
         $uri = $item['uri'];
         $desc = $item['desc'];
@@ -73,7 +75,8 @@ Artisan::command('hws:test-all', function () {
             app()->instance('request', $req);
             \Illuminate\Support\Facades\Request::swap($req);
 
-            $response = app()->handle($req);
+            $matched = $router->getRoutes()->match($req);
+            $response = $router->dispatch($req);
             $status = $response->getStatusCode();
 
             if ($status >= 200 && $status < 400) {

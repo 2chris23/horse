@@ -1,7 +1,13 @@
 <?php
 
+if (isset($_GET['diag']) || isset($_GET['debug_diag'])) {
+    header('Content-Type: text/plain; charset=utf-8');
+    die("DIAG_INDEX_OK - public/index.php reached successfully!\nHTTPS: " . ($_SERVER['HTTPS'] ?? 'none') . "\nHOST: " . ($_SERVER['HTTP_HOST'] ?? 'none') . "\nPORT: " . ($_SERVER['SERVER_PORT'] ?? 'none'));
+}
+
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
+
 
 define('LARAVEL_START', microtime(true));
 

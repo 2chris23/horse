@@ -10,7 +10,7 @@
                    style=" width: 56%;">
             <select class=" form-control editable selfix w-p-30" data-style="btn-primary" id="dom_extension"
                     name="dom_extension" placeholder="" aria-describedby="basic-addon3 ">
-                @if(count($principales != 0))
+                @if(count($principales) != 0)
                     @foreach($principales as $k=>$v)
                         <option data-tokens="{!! $v !!}" value="{!! $v !!}" @if($extension == $v) selected @endif>
                             {!! $v !!}

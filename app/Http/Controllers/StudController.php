@@ -333,11 +333,9 @@ class StudController extends Controller
         }
 
         if (empty($data)) {
-            $sms = trans('error.NoFoundEle');
-            \Session::flash('error', $sms);
-            flash($sms)->error();
-            return redirect()->route('portal');
+            abort(404);
         }
+
 
         $user = $data['user'];
         $stud = $data['stud'];

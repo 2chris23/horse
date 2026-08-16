@@ -11,7 +11,16 @@ Route::get('/reset-admin-password-temp', function () {
 
 
 
+Route::get('/admin', function () {
+    return redirect('/login');
+});
+
+Route::get('/panel', function () {
+    return redirect('/panel/caballo');
+});
+
 Route::group(['namespace' => 'App\Http\Controllers', 'ttl' => 60], function () {
+
 
 
 //Dropify

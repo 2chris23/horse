@@ -242,28 +242,23 @@ $colombia = !empty($colombia)?$colombia:false;
 
                             @if(empty(\Auth::user()))
                                 <li>
-                                    <a href="{!! route('landinghome') !!}/#login"
-                                    >
-                                        {{--<a href="{!! route('landinghome') !!}">--}}
-                                        <i class="fa fa-sign-in">
-
-                                        </i> {!! trans('portal.login') !!}</a>
+                                    <a href="{{ url('login') }}" data-toggle="modal" data-target="#loginmod">
+                                        <i class="fa fa-sign-in"></i> {!! trans('portal.login') !!}
+                                    </a>
                                 </li>
                                 <li>
-                                    <a rel="nofollow" href="{!! route('landinghome') !!}/#register">
-                                        <i class="fa fa-unlock" aria-hidden="true">
-                                        </i> {!! trans('portal.register') !!}
+                                    <a rel="nofollow" href="{{ url('login') }}" data-toggle="modal" data-target="#loginmod">
+                                        <i class="fa fa-unlock" aria-hidden="true"></i> {!! trans('portal.register') !!}
                                     </a>
                                 </li>
                             @else
 
                                 <li>
-
-                                    <a href="{!! route('landinghome') !!}" rel="nofollow">
-                                        <i class="fa fa-sign-in">
-                                        </i> {!! trans('portal.panel') !!}
+                                    <a href="{{ url('/panel/caballo') }}" rel="nofollow">
+                                        <i class="fa fa-sign-in"></i> {!! trans('portal.panel') !!}
                                     </a>
                                 </li>
+
                                 <li>
                                     <a href="{{ route('logout') }}" rel="nofollow"
                                        onclick="event.preventDefault();

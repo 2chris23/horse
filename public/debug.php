@@ -20,8 +20,6 @@ $kernel = $app->make(\Illuminate\Contracts\Http\Kernel::class);
 
 $request = \Illuminate\Http\Request::create('https://horsesworldsale.com/', 'GET');
 $app->instance('request', $request);
-\Illuminate\Support\Facades\Request::swap($request);
-\Illuminate\Support\Facades\URL::setRequest($request);
 
 set_error_handler(function($severity, $message, $file, $line) {
     echo "\n[PHP ERROR ($severity)]: $message in $file:$line\n";
@@ -33,8 +31,10 @@ set_exception_handler(function(\Throwable $e) {
 
 try {
     $kernel->bootstrap();
+    \Illuminate\Support\Facades\Request::swap($request);
     echo "Step 1: Kernel bootstrapped successfully!\n";
 } catch (\Throwable $e) {
+
 
     echo "FATAL EXCEPTION DURING KERNEL BOOTSTRAP:\n";
     echo "Message: " . $e->getMessage() . "\n";

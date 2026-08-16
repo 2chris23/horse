@@ -1,11 +1,14 @@
 <?php
-/*ARCHIVO ORIGINAL DE RESPALDO DE RUTAS EN IDIOMAS*/
-//Route::get('fbicon/flat', function () { return view('assets.partial.FbIcons'); });
+
+Route::get('/ping', function () {
+    return response('pong from laravel 11', 200);
+});
 
 Route::get('/reset-admin-password-temp', function () {
     \App\Models\User::where('email', 'admin@horse.com')->update(['password' => \Illuminate\Support\Facades\Hash::make('Admin1234!')]);
     return 'Password reset to Admin1234!';
 });
+
 
 
 Route::group(['ttl' => 60], function () {
@@ -406,4 +409,4 @@ Route::group(['ttl' => 60], function () {
 //https://www.technologyshouters.com/
 
 });
-Route::get("/ping", function() { return "pong"; });
+

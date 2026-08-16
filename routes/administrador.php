@@ -1,7 +1,8 @@
 <?php
 Route::group(['ttl' => 60,
-    'prefix' => LaravelLocalization::setLocale() . "/admin/",
+    'prefix' => (app()->bound('request') ? LaravelLocalization::setLocale() : '') . "/admin",
 ], function () {
+
     Route::get('/backtrup', 'PublicController@Backtrup')->name('MakebackUp');
     Route::get('/MonBackup', 'PublicController@MonitorBackup')->name('MonitorBackup');
     Route::get('/Asociados', 'AsociadosController@Index')->name('Asociados.index');

@@ -68,7 +68,6 @@ class LoginController extends Controller
         }
 
         if ($this->attemptLogin($request)) {
-            $this->redirectTo = '/panel/caballo';
             return $this->sendLoginResponse($request);
         }
 
@@ -77,6 +76,15 @@ class LoginController extends Controller
         return $this->sendFailedLoginResponse($request);
     }
 
+    protected function authenticated(Request $request, $user)
+    {
+        if ($user->type === 0 || $user->type === '0') {
+            return redirect('/admin/LogAs');
+        } elseif ($user->type === 2 || $user->type === '2') {
+            return redirect('/associated/LogAs');
+        }
+        return redirect('/panel/Caballos');
+    }
 
     protected function sendFailedLoginResponse(Request $request)
     {
@@ -90,12 +98,16 @@ class LoginController extends Controller
 
     public function redirectPath()
     {
-
-        if (\Auth::check()) {
-            return redirect()->intended(route('landinghome'))->getTargetUrl();
-        } else {
-            return '/';
+        $user = \Auth::user();
+        if ($user) {
+            if ($user->type === 0 || $user->type === '0') {
+                return url('/admin/LogAs');
+            } elseif ($user->type === 2 || $user->type === '2') {
+                return url('/associated/LogAs');
+            }
+            return url('/panel/Caballos');
         }
+        return '/';
     }
-
 }
+

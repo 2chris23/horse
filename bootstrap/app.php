@@ -14,7 +14,17 @@ return Application::configure(basePath: dirname(__DIR__))
             Route::middleware('web')
                 ->namespace('App\Http\Controllers')
                 ->group(base_path('routes/admin.php'));
+            Route::middleware('web')
+                ->namespace('App\Http\Controllers')
+                ->group(base_path('routes/administrador.php'));
+            Route::middleware('web')
+                ->namespace('App\Http\Controllers')
+                ->group(base_path('routes/asociado.php'));
+            Route::middleware('web')
+                ->namespace('App\Http\Controllers')
+                ->group(base_path('routes/cliente.php'));
         },
+
     )
 
     ->withMiddleware(function (Middleware $middleware) {

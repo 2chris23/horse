@@ -1,9 +1,10 @@
 <?php
 Route::group(['ttl' => 60,
-    'prefix' => LaravelLocalization::setLocale() . "/associated/",
+    'prefix' => (app()->bound('request') ? LaravelLocalization::setLocale() : '') . "/associated",
     'as' => 'asoc.',
     'middleware' => 'Asociado'
 ], function () {
+
 
 
     Route::get('/LogAs', 'AdministradorController@MostrarUsuarios')->name('LoginAs');

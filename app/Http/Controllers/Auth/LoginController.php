@@ -40,7 +40,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->redirectTo = '/panel/caballo';
+        $this->redirectTo = '/panel/Caballos';
         $this->middleware('guest', ['except' => 'logout']);
     }
 

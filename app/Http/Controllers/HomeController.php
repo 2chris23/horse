@@ -151,26 +151,18 @@ class HomeController extends Controller
         }
         LaravelLocalization::setLocale(App::getLocale());
 
-        $buscar = \Config::get('aplication.host');
-        $sub_app = \Config::get('aplication.sub_app');
-        $serverHost = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : (isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : '');
-        $r = str_replace($buscar, '', $serverHost);
         $user = \Auth::user();
         if (empty($user)) {
-            if (str_starts_with(strtolower($serverHost), 'app.') || $r == $sub_app) {
-                return view('fake.index');
-            } else {
-                return redirect()->route('portal');
-            }
+            return view('fake.index');
         } else {
-
-
-
             if ($user->isAdm()) {
-                return view('admin.landing');
+                return redirect('/admin/LogAs');
             } elseif ($user->Asociado()) {
-                return view('admin.landing');
+                return redirect('/associated/LogAs');
             }
+            return redirect('/panel/Caballos');
+        }
+
 
             //$ruta =LaravelLocalization::getLocalizedURL(App::getLocale(), route('iniciocliente'));
             //$ruta =LaravelLocalization::getURLFromRouteNameTranslated(App::getLocale(), route('iniciocliente'));

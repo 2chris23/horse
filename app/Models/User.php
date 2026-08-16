@@ -71,7 +71,7 @@ class User extends Authenticatable
         return $this->hasMany(Stud::class, 'users_id');
     }
 
-    public function personal()
+    public function personalInfo()
     {
         return $this->hasOne(Personal::class, 'users_id');
     }
@@ -101,6 +101,7 @@ class User extends Authenticatable
         }
         return $p ?? new Personal();
     }
+
 
     public function Yeguada()
     {

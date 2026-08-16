@@ -11,7 +11,7 @@ Route::get('/reset-admin-password-temp', function () {
 
 
 
-Route::group(['ttl' => 60], function () {
+Route::group(['namespace' => 'App\Http\Controllers', 'ttl' => 60], function () {
 
 
 //Dropify

@@ -6,23 +6,13 @@ use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Support\Facades\Route;
 
 return Application::configure(basePath: dirname(__DIR__))
-
     ->withRouting(
+        web: __DIR__.'/../routes/web.php',
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
-        then: function () {
-            // Cargar archivo principal de rutas web
-            Route::middleware('web')
-                ->namespace('App\Http\Controllers')
-                ->group(base_path('routes/web.php'));
-
-            // Cargar rutas del panel admin
-            Route::middleware('web')
-                ->namespace('App\Http\Controllers')
-                ->group(base_path('routes/admin.php'));
-        },
     )
     ->withMiddleware(function (Middleware $middleware) {
+
         $middleware->trustProxies(at: '*');
         $middleware->alias([
             'Compresion' => \App\Http\Middleware\Compresion::class,

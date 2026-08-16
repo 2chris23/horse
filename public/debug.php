@@ -6,6 +6,7 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 header('Content-Type: text/plain; charset=utf-8');
+http_response_code(200);
 
 echo "====================================================\n";
 echo "       HORSES WORLD SALE - SYSTEM DEBUG CONSOLE     \n";
@@ -30,7 +31,9 @@ try {
 try {
     /** @var \Illuminate\Foundation\Application $app */
     $app = require_once __DIR__ . '/../bootstrap/app.php';
-    echo "[OK] bootstrap/app.php loaded successfully.\n";
+    $kernel = $app->make(\Illuminate\Contracts\Http\Kernel::class);
+    $kernel->bootstrap();
+    echo "[OK] bootstrap/app.php & HTTP Kernel bootstrapped successfully.\n";
 } catch (\Throwable $e) {
     die("[FATAL ERROR IN BOOTSTRAP/APP.PHP]\n" . $e->getMessage() . "\n" . $e->getTraceAsString());
 }
@@ -78,6 +81,11 @@ try {
     echo "Trace:\n" . $e->getTraceAsString() . "\n";
 }
 
+// Remove any Location header that handleRequest might have set in the global header list
+header_remove('Location');
+http_response_code(200);
+
 echo "\n====================================================\n";
 echo "                 DEBUG COMPLETED                    \n";
 echo "====================================================\n";
+

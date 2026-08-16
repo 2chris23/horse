@@ -1835,9 +1835,13 @@ cellpadding=\"0\" style=\"letter-spacing: 2px;width: 100%;font-size: 13px; font-
         return $rgb;
     }
 
-    Public static function MetodosPorRoute(\Illuminate\Routing\Route $ruta)
+    public static function MetodosPorRoute(?\Illuminate\Routing\Route $ruta = null)
     {
+        if (empty($ruta)) {
+            return ['parametro' => [], 'lenguaje' => \Illuminate\Support\Facades\App::getLocale(), '$nombre' => '', 'uri' => '', 'lng' => []];
+        }
         $lng = [
+
             0 => 'es',
             1 => 'en',
             2 => 'de',
@@ -7286,8 +7290,12 @@ Favicon successfully generated. <a href="' . $directory . $strip_ext . '.ico" ta
 
     }
 
-    public function GetInternacionalizacion(\Illuminate\Routing\Route $ruta, $base = 'rutas_publicas.')
+    public function GetInternacionalizacion(?\Illuminate\Routing\Route $ruta = null, $base = 'rutas_publicas.')
     {
+        if (empty($ruta)) {
+            return [];
+        }
+
 
         //$host = $_SERVER
         //rutas_cliente

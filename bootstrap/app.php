@@ -18,12 +18,8 @@ return Application::configure(basePath: dirname(__DIR__))
             Route::namespace('App\Http\Controllers')
                 ->group(base_path('routes/admin.php'));
         },
-
-
-
-
     )
-
+    ->withMiddleware(function (Middleware $middleware) {
         $middleware->trustProxies(
             at: '*',
             headers: \Illuminate\Http\Request::HEADER_X_FORWARDED_FOR |

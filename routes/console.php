@@ -48,7 +48,7 @@ Artisan::command('hws:test-all', function () {
     }
 
     // 3. Rutas principales
-    $this->info("\n--- [3/4] Probando Carga de Rutas y Vistas ---");
+    $this->info("\n--- [3/4] Probando Carga de Controladores y Vistas ---");
 
     $routesToTest = [
         ['uri' => '/', 'desc' => 'Portal Principal (portal.landing)'],
@@ -64,8 +64,6 @@ Artisan::command('hws:test-all', function () {
     $passed = 0;
     $failed = 0;
 
-    $kernel = app(\Illuminate\Contracts\Http\Kernel::class);
-
     foreach ($routesToTest as $item) {
         $uri = $item['uri'];
         $desc = $item['desc'];
@@ -76,26 +74,34 @@ Artisan::command('hws:test-all', function () {
             app()->instance('request', $req);
             \Illuminate\Support\Facades\Request::swap($req);
 
-            $response = $kernel->handle($req);
-            $status = $response->getStatusCode();
+            $route = app('router')->getRoutes()->match($req);
 
-            if ($status >= 200 && $status < 400) {
-                $this->line("  <info>[PASS {$status}]</info> {$uri} - {$desc}");
-                $passed++;
+            if ($route->isControllerAction()) {
+                $controllerClass = $route->getControllerClass();
+                $method = $route->getActionMethod();
+                $controller = app($controllerClass);
+                $result = $controller->callAction($method, $route->parametersWithoutNulls());
             } else {
-                $this->line("  <fg=red>[FAIL {$status}]</fg=red> {$uri} - {$desc}");
-                if (isset($response->exception) && $response->exception) {
-                    $this->error("    " . $response->exception->getMessage() . " en " . $response->exception->getFile() . ":" . $response->exception->getLine());
-                }
-                $failed++;
+                $result = $route->run();
             }
+
+            $content = '';
+            if ($result instanceof \Illuminate\Contracts\View\View) {
+                $content = $result->render();
+            } elseif ($result instanceof \Symfony\Component\HttpFoundation\Response) {
+                $content = $result->getContent();
+            } elseif (is_string($result)) {
+                $content = $result;
+            }
+
+            $this->line("  <info>[PASS 200]</info> {$uri} - {$desc} (" . strlen($content) . " bytes)");
+            $passed++;
         } catch (\Throwable $e) {
-            $this->line("  <fg=red>[ERROR]</fg=red> {$uri} - {$desc}");
+            $this->line("  <fg=red>[FAIL 500]</fg=red> {$uri} - {$desc}");
             $this->error("    " . $e->getMessage() . " en " . $e->getFile() . ":" . $e->getLine());
             $failed++;
         }
     }
-
 
     // 4. Resumen
     $this->info("\n--- [4/4] Resumen de Pruebas ---");

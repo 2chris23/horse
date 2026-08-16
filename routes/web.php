@@ -355,8 +355,9 @@ Route::group(['namespace' => 'App\Http\Controllers', 'ttl' => 60], function () {
     /*****************************************/
 
     Route::group([
-        'prefix' => LaravelLocalization::setLocale(),
+        'prefix' => (app()->bound('request') ? LaravelLocalization::setLocale() : ''),
         'middleware' => ['Compresion', 'localize', ], 'ttl' => 60], function () {
+
         Route::get('/tablehorse.js', 'PublicController@RetornaJsTabla');
         Route::get('/{slug}', 'StudController@ClientDetail');
         Route::get('/{slug}/Contacto', 'StudController@ClientContact');

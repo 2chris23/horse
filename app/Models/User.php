@@ -169,6 +169,36 @@ class User extends Authenticatable
         return $r ? $r->getLogo() : url('img/admin.jpg');
     }
 
+    public function getUrlAdminLogo()
+    {
+        $d = $this->getAdminLogo();
+        return (!empty($d)) ? str_replace("\\", "/", (string)$d->getUrl()) : url('img/admin.jpg');
+    }
+
+    public function getAdminLogo()
+    {
+        $d = null;
+        if ($this->type == 0) {
+            $d = Photo::where(['type' => 10, 'tableid' => $this->id])->first();
+            if (empty($d)) {
+                $d = new Photo(['type' => 10, 'tableid' => $this->id]);
+            }
+            return $d;
+        }
+        return $d ?? new Photo(['type' => 10, 'tableid' => $this->id]);
+    }
+
+    public function getCountryCode()
+    {
+        return $this->country_code ?? '';
+    }
+
+    public function getExt()
+    {
+        return $this->ext ?? '';
+    }
+
+
     public function CaballosPublicadosPorRaza($raza = null)
     {
         if (empty($raza)) {

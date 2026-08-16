@@ -57,6 +57,11 @@ if(\Auth::user()->isAdm() != true){
 </script>--}}
 @endsection
 @section('content')
+@php
+    $etiquetalabel = "col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 text-sm-left text-md-left text-lg-right ";
+    $tiquetainput = " col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 ";
+    $Monedas = \App\Http\Controllers\PublicController::ArrayMonedas();
+@endphp
     <script>
         var dasdas = null;
     </script>

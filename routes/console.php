@@ -72,10 +72,10 @@ Artisan::command('hws:test-all', function () {
 
         try {
             $req = Request::create('https://horsesworldsale.com' . $uri, 'GET');
+            $req->setLaravelSession(app('session')->driver());
             app()->instance('request', $req);
             \Illuminate\Support\Facades\Request::swap($req);
 
-            $matched = $router->getRoutes()->match($req);
             $response = $router->dispatch($req);
             $status = $response->getStatusCode();
 
@@ -84,6 +84,9 @@ Artisan::command('hws:test-all', function () {
                 $passed++;
             } else {
                 $this->line("  <fg=red>[FAIL {$status}]</fg=red> {$uri} - {$desc}");
+                if (isset($response->exception) && $response->exception) {
+                    $this->error("    " . $response->exception->getMessage() . " en " . $response->exception->getFile() . ":" . $response->exception->getLine());
+                }
                 $failed++;
             }
         } catch (\Throwable $e) {

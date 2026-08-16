@@ -162,28 +162,6 @@ class HomeController extends Controller
             }
             return redirect('/panel/Caballos');
         }
-
-
-            //$ruta =LaravelLocalization::getLocalizedURL(App::getLocale(), route('iniciocliente'));
-            //$ruta =LaravelLocalization::getURLFromRouteNameTranslated(App::getLocale(), route('iniciocliente'));
-            /*
-            $url = url(App::getLocale() . "/" . LaravelLocalization::transRoute('rutas_admin.panel') . "/" . LaravelLocalization::transRoute('rutas_admin.iniciocliente'));
-            dd($url);
-            */
-            $ruta = self::CambioUrlIdioma(route('iniciocliente'));
-
-            return redirect($ruta);
-
-            return redirect()->route('iniciocliente');
-            return redirect()->route('gallery.index');
-            return view('backend.index');
-            return view('blank');
-            return redirect()->route('blank');
-            return redirect()->route('horse.create');
-            return redirect()->route('caballoc.index');
-        }
-        return redirect()->route('blank');
-        return redirect()->route('caballoc.index');
     }
 
     public static function CambioUrlIdioma($url, $leng = null)

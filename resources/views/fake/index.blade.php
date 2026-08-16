@@ -461,82 +461,11 @@
 <div class="cliearfix"></div>
 <div class="outer-wrapper">
     <div class="header-wrap">
-    {{-- HEADER -- >
-        <header id="header-main">
-        <div class="container">
-            <div class="navbar yamm navbar-default">
-                <div class="navbar-header">
-                    <button type="button" data-toggle="collapse" data-target="#navbar-collapse-1" class="navbar-toggle">
-                    <span class="icon-bar">
-</span>
-                    <span class="icon-bar">
-</span>
-                    <span class="icon-bar">
-</span>
-                    </button>
-                    <a href="index.html" class="navbar-brand">
-<img src="{{$logobasic}}" width="40" alt=""/>
-</a>
-                </div>
-                {{-- SEARCH -- >
-                <div class="header-x pull-right">
-                    <div class="s-search">
-                        <div class="ss-trigger">
-<i class="icon-search2">
-</i>
-</div>
-                        <div class="ss-content">
-                            <span class="ss-close icon-cross2">
-</span>
-                            <div class="ssc-inner">
-                                <form>
-                                    <input type="text" placeholder="Type Search text here...">
-                                    <button type="submit">
-<i class="icon-search2">
-</i>
-</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="navbar-collapse-1" class="navbar-collapse collapse navbar-right">
-                    <ul class="nav navbar-nav">
-                        <li class="page-scroll">
-<a href="#page-top">Home</a>
-</li>
-                        <li class="page-scroll">
-<a href="#1">About Us</a>
-</li>
-                        <li class="page-scroll">
-<a href="#2">Services</a>
-</li>
-                        <li class="page-scroll">
-<a href="#3">Portfolio</a>
-</li>
-                        <li class="page-scroll">
-<a href="#4">Features</a>
-</li>
-                        <li class="page-scroll">
-<a href="#6">Latest Product</a>
-</li>
-                        <li class="page-scroll">
-<a href="#5">Blog</a>
-</li>
-                        <li class="page-scroll">
-<a href="#7">Contact</a>
-</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
---}}
         <div id="header-main-sticky-wrapper" class="sticky-wrapper"
-             style="height: 50px; background:#f8f8f8 !important;">
-            <header id="header-main">
+             style="background:#fff !important; width:100%; position: relative; z-index: 1000; border-bottom: 1px solid #eee; padding: 5px 0;">
+            <header id="header-main" style="background:#fff !important;">
                 <div class="container">
-                    <div class="navbar yamm navbar-default">
+                    <div class="navbar yamm navbar-default" style="background:transparent; border:none; margin-bottom:0;">
                         <div class="navbar-header">
                             <button type="button" data-toggle="collapse" data-target="#navbar-collapse-1"
                                     class="navbar-toggle">
@@ -544,10 +473,11 @@
                                 <span class="icon-bar"> </span>
                                 <span class="icon-bar"> </span>
                             </button>
-                            <a href="#" class="navbar-brand">
-                                <img src="{!! $logo !!}" style="     width: 130px;margin-top: 2px;" alt="">
+                            <a href="{{ url('/') }}" class="navbar-brand">
+                                <img src="{!! $logo !!}" style="max-height: 40px; margin-top: 2px;" alt="Logo">
                             </a>
                         </div>
+
                         {{-- SEARCH --}}
                         {{--
                         <div class="header-x pull-right">

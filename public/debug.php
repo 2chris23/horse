@@ -43,16 +43,19 @@ try {
     exit;
 }
 
-echo "Step 2: Testing kernel handle request directly...\n";
+echo "Step 2: Inspecting route match...\n";
 try {
     $testReq = \Illuminate\Http\Request::create('https://horsesworldsale.com/', 'GET');
-    $res = $kernel->handle($testReq);
-    echo "Kernel Response Status: " . $res->getStatusCode() . "\n";
-    echo "Kernel Response Location: " . ($res->headers->get('Location') ?? 'none') . "\n";
-    echo "Kernel Response Content Length: " . strlen($res->getContent()) . "\n";
+    $router = $app->make(\Illuminate\Routing\Router::class);
+    $matchedRoute = $router->getRoutes()->match($testReq);
+    echo "Matched Route URI: " . $matchedRoute->uri() . "\n";
+    echo "Matched Route Name: " . ($matchedRoute->getName() ?? 'none') . "\n";
+    echo "Matched Route Action: " . $matchedRoute->getActionName() . "\n";
+    echo "Matched Route Middleware: " . implode(', ', $matchedRoute->gatherMiddleware()) . "\n";
 } catch (\Throwable $e) {
-    echo "ERROR IN KERNEL HANDLE:\n" . $e->getMessage() . " at " . $e->getFile() . ":" . $e->getLine() . "\n" . $e->getTraceAsString() . "\n";
+    echo "ERROR IN ROUTE MATCH:\n" . $e->getMessage() . "\n";
 }
+
 
 try {
     $horses = \App\Models\Horse::VentaPublica()->orderby('id', 'desc')->take(18)->get();

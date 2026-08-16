@@ -31,12 +31,12 @@ try {
 try {
     /** @var \Illuminate\Foundation\Application $app */
     $app = require_once __DIR__ . '/../bootstrap/app.php';
-    $kernel = $app->make(\Illuminate\Contracts\Http\Kernel::class);
-    $kernel->bootstrap();
-    echo "[OK] bootstrap/app.php & HTTP Kernel bootstrapped successfully.\n";
+    $app->boot();
+    echo "[OK] bootstrap/app.php loaded and $app->boot() executed successfully.\n";
 } catch (\Throwable $e) {
     die("[FATAL ERROR IN BOOTSTRAP/APP.PHP]\n" . $e->getMessage() . "\n" . $e->getTraceAsString());
 }
+
 
 echo "\n3. TESTING DATABASE CONNECTION:\n";
 try {

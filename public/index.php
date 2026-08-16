@@ -1,8 +1,11 @@
 <?php
 
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
-
 
 define('LARAVEL_START', microtime(true));
 
@@ -25,31 +28,36 @@ require __DIR__.'/../vendor/autoload.php';
 
 if (isset($_GET['step'])) {
     header('Content-Type: text/plain; charset=utf-8');
-    $step = (int)$_GET['step'];
-    if ($step === 1) die("STEP 1: Reached index.php");
-    if ($step === 2) {
-        $app = require_once __DIR__.'/../bootstrap/app.php';
-        die("STEP 2: Bootstrapped app.php successfully!");
-    }
-    if ($step === 3) {
-        $app = require_once __DIR__.'/../bootstrap/app.php';
-        $request = Request::capture();
-        die("STEP 3: Captured Request successfully! Scheme: " . $request->getScheme() . " Path: " . $request->path() . " FullUrl: " . $request->fullUrl());
-    }
-    if ($step === 4) {
-        $app = require_once __DIR__.'/../bootstrap/app.php';
-        $request = Request::capture();
-        $router = $app->make('router');
-        $route = $router->getRoutes()->match($request);
-        die("STEP 4: Matched route: " . ($route->getName() ?: $route->uri()) . "\nAction: " . $route->getActionName() . "\nMiddleware: " . json_encode($route->gatherMiddleware()));
-    }
-    if ($step === 5) {
-        $app = require_once __DIR__.'/../bootstrap/app.php';
-        $request = Request::capture();
-        $response = $app->handleRequest($request);
-        die("STEP 5: handleRequest completed!\nResponse class: " . get_class($response) . "\nStatus: " . $response->getStatusCode() . "\nLocation: " . ($response->headers->get('Location') ?? 'none'));
+    try {
+        $step = (int)$_GET['step'];
+        if ($step === 1) die("STEP 1: Reached index.php");
+        if ($step === 2) {
+            $app = require_once __DIR__.'/../bootstrap/app.php';
+            die("STEP 2: Bootstrapped app.php successfully!");
+        }
+        if ($step === 3) {
+            $app = require_once __DIR__.'/../bootstrap/app.php';
+            $request = Request::capture();
+            die("STEP 3: Captured Request successfully! Scheme: " . $request->getScheme() . " Path: " . $request->path() . " FullUrl: " . $request->fullUrl());
+        }
+        if ($step === 4) {
+            $app = require_once __DIR__.'/../bootstrap/app.php';
+            $request = Request::capture();
+            $router = $app->make('router');
+            $route = $router->getRoutes()->match($request);
+            die("STEP 4: Matched route: " . ($route->getName() ?: $route->uri()) . "\nAction: " . $route->getActionName() . "\nMiddleware: " . json_encode($route->gatherMiddleware()));
+        }
+        if ($step === 5) {
+            $app = require_once __DIR__.'/../bootstrap/app.php';
+            $request = Request::capture();
+            $response = $app->handleRequest($request);
+            die("STEP 5: handleRequest completed!\nResponse class: " . get_class($response) . "\nStatus: " . $response->getStatusCode() . "\nLocation: " . ($response->headers->get('Location') ?? 'none'));
+        }
+    } catch (\Throwable $e) {
+        die("=== STEP ERROR DETECTED ===\nMessage: " . $e->getMessage() . "\nFile: " . $e->getFile() . ":" . $e->getLine() . "\n\nTrace:\n" . $e->getTraceAsString());
     }
 }
+
 
 
 // Bootstrap Laravel and handle the request...

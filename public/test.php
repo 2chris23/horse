@@ -1,25 +1,35 @@
 <?php
-// NO Laravel - solo lectura de archivos
-echo "=== WEB.PHP en servidor ===\n";
-$lines = file(__DIR__.'/../routes/web.php');
-echo "Total lineas: " . count($lines) . "\n";
-for ($i = 0; $i < 15; $i++) {
-    if (isset($lines[$i])) echo ($i+1) . ": " . $lines[$i];
+// NO Laravel boot - pure PHP file reads
+
+echo "=== MAINTENANCE MODE CHECK ===\n";
+$maintenance = __DIR__.'/../storage/framework/maintenance.php';
+if (file_exists($maintenance)) {
+    echo "MAINTENANCE.PHP EXISTS!\n";
+    echo file_get_contents($maintenance);
+} else {
+    echo "maintenance.php: NOT FOUND (good)\n";
 }
 
-echo "\n=== FIRSTLOG MIDDLEWARE ===\n";
-$f = __DIR__.'/../app/Http/Middleware/Firstlog.php';
-if (file_exists($f)) echo file_get_contents($f);
-else echo "No existe\n";
+echo "\n=== ALL FILES IN storage/framework/ ===\n";
+$dir = __DIR__.'/../storage/framework/';
+foreach (scandir($dir) as $f) {
+    if ($f !== '.' && $f !== '..') {
+        echo $f . "\n";
+    }
+}
 
-echo "\n=== AUTHENTICATE MIDDLEWARE ===\n";
-$f2 = __DIR__.'/../app/Http/Middleware/Authenticate.php';
-if (file_exists($f2)) echo file_get_contents($f2);
-else echo "No existe\n";
+echo "\n=== CURRENT .env key values ===\n";
+$env = __DIR__.'/../.env';
+if (file_exists($env)) {
+    foreach (file($env) as $line) {
+        if (preg_match('/^(APP_URL|APP_ENV|APP_KEY|APP_DEBUG)=/', $line)) {
+            echo trim($line) . "\n";
+        }
+    }
+}
 
-echo "\n=== TODOS LOS PROVIDERS ===\n";
-$providerDir = __DIR__.'/../app/Providers/';
-foreach (glob($providerDir . '*.php') as $p) {
-    echo "\n--- " . basename($p) . " ---\n";
-    echo file_get_contents($p);
+echo "\n=== bootstrap/cache/ files ===\n";
+$cache = __DIR__.'/../bootstrap/cache/';
+foreach (glob($cache . '*') as $f) {
+    echo basename($f) . " (" . date('Y-m-d H:i:s', filemtime($f)) . ")\n";
 }

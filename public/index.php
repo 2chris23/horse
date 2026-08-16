@@ -1,9 +1,16 @@
 <?php
 
-use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
+
+// Determine if the application is in maintenance mode...
+if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
+    require $maintenance;
+}
+
+// Register the Composer autoloader...
+require __DIR__.'/../vendor/autoload.php';
 
 // Force HTTPS detection when behind proxy or on production domain
 if (
@@ -16,49 +23,6 @@ if (
     $_SERVER['SERVER_PORT'] = 443;
 }
 
-if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
-    require $maintenance;
-}
-
-require __DIR__.'/../vendor/autoload.php';
-
-if (isset($_SERVER['REQUEST_URI']) && str_contains($_SERVER['REQUEST_URI'], 'ping')) {
-    header('Content-Type: text/plain; charset=utf-8');
-    echo "=== LARAVEL PIPELINE TRACE FOR /ping ===\n";
-    /** @var Application $app */
-    $app = require_once __DIR__.'/../bootstrap/app.php';
-    $request = Request::capture();
-
-    $response = $app->handleRequest($request);
-    echo "Response Status: " . $response->getStatusCode() . "\n";
-    echo "Target Location: " . ($response->headers->get('Location') ?? 'none') . "\n";
-    echo "Content Preview: " . substr($response->getContent(), 0, 300) . "\n";
-    exit;
-}
-
-
 // Bootstrap Laravel and handle the request...
-/** @var Application $app */
-$app = require_once __DIR__.'/../bootstrap/app.php';
-
-$request = Request::capture();
-$response = $app->handleRequest($request);
-
-if ($response->isRedirection()) {
-    header('Content-Type: text/plain; charset=utf-8');
-    echo "=== REDIRECT INTERCEPTED ON ROOT ===\n";
-    echo "Status: " . $response->getStatusCode() . "\n";
-    echo "Target Location: " . $response->headers->get('Location') . "\n";
-    echo "Request URL: " . $request->fullUrl() . "\n";
-    echo "Request Path: " . $request->path() . "\n";
-    echo "Matched Route: " . ($request->route() ? ($request->route()->getName() ?: $request->route()->uri()) : 'NONE') . "\n";
-    echo "Action: " . ($request->route() ? $request->route()->getActionName() : 'NONE') . "\n";
-    exit;
-}
-
-$response->send();
-
-
-
-
-
+(require_once __DIR__.'/../bootstrap/app.php')
+    ->handleRequest(Request::capture());

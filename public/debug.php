@@ -43,18 +43,28 @@ try {
     exit;
 }
 
-
+echo "Step 2: Testing kernel handle request directly...\n";
 try {
-    $horses = \App\Models\Horse::VentaPublica()->orderby('id', 'desc')->take(18)->get();
-    echo "Step 2: Database query for horses successful! Count: " . count($horses) . "\n";
+    $testReq = \Illuminate\Http\Request::create('https://horsesworldsale.com/', 'GET');
+    $res = $kernel->handle($testReq);
+    echo "Kernel Response Status: " . $res->getStatusCode() . "\n";
+    echo "Kernel Response Location: " . ($res->headers->get('Location') ?? 'none') . "\n";
+    echo "Kernel Response Content Length: " . strlen($res->getContent()) . "\n";
 } catch (\Throwable $e) {
-    echo "Step 2 FAILED (Database query): " . $e->getMessage() . "\n" . $e->getTraceAsString() . "\n";
+    echo "ERROR IN KERNEL HANDLE:\n" . $e->getMessage() . " at " . $e->getFile() . ":" . $e->getLine() . "\n" . $e->getTraceAsString() . "\n";
 }
 
 try {
-    echo "Step 3: Rendering portal.landing view...\n";
+    $horses = \App\Models\Horse::VentaPublica()->orderby('id', 'desc')->take(18)->get();
+    echo "Step 3: Database query for horses successful! Count: " . count($horses) . "\n";
+} catch (\Throwable $e) {
+    echo "Step 3 FAILED (Database query): " . $e->getMessage() . "\n" . $e->getTraceAsString() . "\n";
+}
+
+try {
+    echo "Step 4: Rendering portal.landing view...\n";
     $html = view('portal.landing', compact('horses'))->render();
-    echo "Step 3 SUCCESS! Rendered " . strlen($html) . " bytes of HTML!\n\n";
+    echo "Step 4 SUCCESS! Rendered " . strlen($html) . " bytes of HTML!\n\n";
     echo "</pre><hr><h2>RENDERED HTML PREVIEW:</h2>" . $html;
     exit;
 } catch (\Throwable $e) {
@@ -64,6 +74,7 @@ try {
     echo "Trace:\n" . $e->getTraceAsString() . "\n</pre>";
     exit;
 }
+
 
 
 

@@ -1864,7 +1864,11 @@ cellpadding=\"0\" style=\"letter-spacing: 2px;width: 100%;font-size: 13px; font-
         $objeto['$nombre'] = $nombre;
         $objeto['uri'] = $uri;
         if (!empty($nombre)) {
-            $wd = route($nombre, $parametros);
+            try {
+                $wd = route($nombre, $parametros);
+            } catch (\Exception $e) {
+                $wd = \Request::url();
+            }
         } else {
             $wd = $uri;
         }

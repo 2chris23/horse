@@ -1,6 +1,13 @@
 <?php
 
 Route::get('/ping', function () {
+    \Illuminate\Support\Facades\Log::critical('PING_ROUTE_HIT', [
+        'url'    => request()->fullUrl(),
+        'scheme' => request()->getScheme(),
+        'secure' => request()->isSecure(),
+        'locale' => app()->getLocale(),
+        'forceSchemeUrl' => app('url')->to('/'),
+    ]);
     return response('pong from laravel 11', 200);
 });
 

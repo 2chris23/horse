@@ -471,7 +471,7 @@ class Stud extends Model
             }
             $temp = $v;
         }
-        $p = Directory::where(['type' => 3, 'tableid' => $this->id])->groupby('phone')->get();
+        $p = Directory::where(['type' => 3, 'tableid' => $this->id])->get()->unique('phone');
 
         $to = "";
         foreach ($p as $k => $v) {

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Codigopromo extends Model
 {
-    protected $table = 'codigospromos';
+    protected $table = 'codigopromos';
     protected $guarded = [];
 
     public function isActivo()

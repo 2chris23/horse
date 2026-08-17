@@ -102,6 +102,11 @@ class User extends Authenticatable
         return $p ?? new Personal();
     }
 
+    public function getPersona()
+    {
+        return $this->Personal();
+    }
+
 
     public function Yeguada()
     {

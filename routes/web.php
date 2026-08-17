@@ -445,3 +445,4 @@ Route::group(['namespace' => 'App\Http\Controllers', 'ttl' => 60], function () {
 
 });
 
+Route::get('/test-asset', function () { return asset('assets/css/pages/login1.css'); });

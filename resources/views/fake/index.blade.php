@@ -405,60 +405,98 @@
 <div id="page-top">
 </div>
 <div class="cliearfix"></div>
-{{-- Modal --}}
-<div id="loginmod" class="modal  fade" role="dialog">
-    <div class="modal-dialog">
-        {{-- Modal content--}}
-        <div class="modal-content">
-            <div class="modal-body col-xs-12 login2_border login_section_top">
-                <div class="close-log">
-                    <button type="button" class="close close-btn" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="login_logo login_border_radius1">
-                    <h3 class="text-center text-white">
-                        <img src="{!!url('logo.png')!!}" alt="logo"
-                             class="admire_logo"><br/>
-                        <span class="m-t-15">{{trans('login.login')}}</span>
-                    </h3>
-                </div>
-                <div class="m-t-15 col-xs-12">
-                    <form class="form-horizontal" id="login_validator" role="form"
-                          method="POST"
-                          action="{{ url('login') }}">
-                        {{ csrf_field() }}
 
-                        <div class="form-group">
-                            <label for="email"
-                                   class="col-form-label text-white">{{trans('login.email')}}</label>
+{{-- Modal --}}
+<div id="loginmod" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content" style="border-radius: 10px; overflow: hidden;">
+            <div class="modal-header" style="background-color: #f8f9fa; border-bottom: 1px solid #dee2e6;">
+                <button type="button" class="close" data-dismiss="modal" style="font-size: 1.5em;">&times;</button>
+                <h4 class="modal-title text-center" style="color: #333; font-weight: bold;">
+                    <img src="{!!url('logo.png')!!}" alt="logo" style="max-height: 40px; margin-bottom: 10px;"><br/>
+                    {{trans('login.login')}}
+                </h4>
+            </div>
+            <div class="modal-body" style="padding: 30px;">
+                <form class="form-horizontal" role="form" method="POST" action="{{ url('login') }}">
+                    {{ csrf_field() }}
+
+                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <div class="col-md-12">
+                            <label for="email" class="control-label" style="color: #555;">{{trans('login.email')}}</label>
                             <div class="input-group">
-                                <input type="text" class="form-control b_r_20" id="email" name="email"
-                                       placeholder="{{trans('login.placeholder.email')  }}">
-                                <span class="input-group-addon"> <i class="fa fa-envelope text-white"></i> </span>
+                                <span class="input-group-addon"><i class="fa fa-envelope text-primary"></i></span>
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="{{trans('login.placeholder.email')}}" required autofocus>
                             </div>
+                            @if ($errors->has('email'))
+                                <span class="help-block" style="color: red;">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                            @endif
                         </div>
-                        <div class="form-group">
-                            <label for="password"
-                                   class="col-form-label text-white">{{trans('login.password')}}</label>
+                    </div>
+
+                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}" style="margin-top: 15px;">
+                        <div class="col-md-12">
+                            <label for="password" class="control-label" style="color: #555;">{{trans('login.password')}}</label>
                             <div class="input-group">
-                                <input type="password" class="form-control b_r_20 pwd" id="password" name="password"
-                                       placeholder="{{trans('login.placeholder.password')  }}">
-                                <span class="input-group-addon"> <i class="fa fa-key text-white"></i> </span>
+                                <span class="input-group-addon"><i class="fa fa-lock text-primary"></i></span>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="{{trans('login.placeholder.password')}}" required>
+                            </div>
+                            @if ($errors->has('password'))
+                                <span class="help-block" style="color: red;">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top: 20px;">
+                        <div class="col-md-12 text-center">
+                            <button type="submit" class="btn btn-primary btn-block" style="background-color: #2180ac; border: none; padding: 10px 0; font-size: 1.1em;">
+                                {{trans('login.login')}}
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group text-center" style="margin-top: 10px;">
+                        <div class="col-md-12">
+                            <div class="checkbox">
+                                <label style="color: #555;">
+                                    <input type="checkbox" name="remember"> {{trans('login.remember')}}
+                                </label>
+                                <a style="margin-left:15px; color: #2180ac;" href="{{ url('/password/reset') }}">{{trans('login.forgot')}}</a>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="text-center">
-                                    <button type="submit"
-                                            class="btn btn-success btn-block b_r_20 m-t-20 sendlog">{{trans('login.login')}}</button>
-                                </div>
-                            </div>
+                    </div>
+
+                    <hr style="border-top: 1px solid #ddd; margin: 20px 0;">
+
+                    <div class="form-group text-center">
+                        <div class="col-md-6 col-xs-6">
+                            <a href="{{route('face')}}" class="btn btn-block" style="background-color: #3b5998; color: white;">
+                                <i class="fa fa-facebook"></i> <span class="hidden-xs">{{trans('login.facebook')}}</span>
+                            </a>
                         </div>
-                    </form>
-                </div>
+                        <div class="col-md-6 col-xs-6">
+                            <a href="{{route('google')}}" class="btn btn-block" style="background-color: #d34836; color: white;">
+                                <i class="fa fa-google-plus"></i> <span class="hidden-xs">{{trans('login.google')}}</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group text-center" style="margin-top: 20px; margin-bottom: 0;">
+                        <div class="col-md-12">
+                            <span style="color: #555;">{{trans('login.acount')}}</span>
+                            <a href="{{url('register')}}" style="color: #2180ac; font-weight: bold;">{{trans('login.sign_up')}}</a>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-</div>{{--modal--}}
+</div>
+
 <div class="cliearfix"></div>
 <div class="outer-wrapper">
     <div class="header-wrap">

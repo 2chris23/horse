@@ -526,16 +526,7 @@
                                     <a href="#5">Blog</a>
                                 </li>
                                 --}}
-                                {{--}}
-                                <li class="page-scroll">
-                                    {{-- <a href="#7" class="btn btn-small btn-max">Iniciar sesión</a> --}}
-                                    <img src="{!! $espanol !!}" alt=""
-                                         style="    max-width: 30px; max-height: 30px; margin-top: 10px;">
-                                    <img src="{!! $english  !!}" alt=""
-                                         style="    max-width: 30px;max-height: 30px; margin-top: 10px;">
-                                </li>
-                                <li class="page-scroll">
-                                --}}
+
                                 <li class="page-scroll dropdown">
                                     <a href="https://www.smartsupp.com/es/features#" id="langsDropdown"
                                        class="account-lang dropdown-toggle" data-toggle="dropdown" style="    margin-top: 4px;">

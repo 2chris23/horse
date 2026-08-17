@@ -6,8 +6,8 @@
     $lang = \Session::get('lang');
     if (empty($lang)) {
         $lang = 'es';
-        \Session::set('lang', $lang);
-        \Session::set('applocale', $lang);
+        \Session::put('lang', $lang);
+        \Session::put('applocale', $lang);
     }
     App::setLocale($lang);
 
@@ -196,3 +196,4 @@
 </body>
 @yield('modal')
 </html>
+

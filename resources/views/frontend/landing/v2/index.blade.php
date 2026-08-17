@@ -18,8 +18,8 @@ data-duration-out="2"
       $lang = \Session::get('lang');
       if (empty($lang)) {
           $lang = 'es';
-          \Session::set('lang', $lang);
-          \Session::set('applocale', $lang);
+          \Session::put('lang', $lang);
+          \Session::put('applocale', $lang);
       }
       App::setLocale($lang);
 
@@ -577,4 +577,5 @@ data-duration-out="2"
 <script src="{!!route('JsTheme2',['slug'=>$stud->slug]) !!}"></script>
 </body>
 </html>
+
 

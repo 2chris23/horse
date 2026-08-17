@@ -1,0 +1,264 @@
+@extends('frontend.landing.studs.base',['user'=>$user,'stud'=>$stud])
+@section('title', 'Contactos')
+@php
+    $logo =$stud->getLogo();
+    $phones= $stud->getPhone();
+    $totaltel = count($phones);
+
+        $logobasic= url("landing/images/basic/logo.png");
+
+            $espanol =  url("landing/img/es.png");
+            $english =  url("landing/img/en.png");
+
+            /*slider*/
+            $dummy = url("landing/images/dummy.png");
+            /*slider 1*/
+            $text1 = "LA APLICACIÓN DE CABALLOS QUE TE HARA LAS COSAS MÄS FACIL PARA GESTIONAR TU NEGOCIO";
+            $stext1 ="¡INSCRÍBETE CON NOSOTROS YA!";
+
+            $text2 = '2 LA APLICACIÓN DE CABALLOS QUE TE HARA LAS COSAS MÄS FACIL PARA GESTIONAR TU NEGOCIO';
+            $stext2 ='LAS COSAS MÄS FACIL PARA GESTIONAR TU NEGOCIO';
+
+            $horseapp ='LA APLICACIÖN DE CABALLOS QUE TE HARA LAS COSAS MÄS FACIL PARA GESTIONAR TU NEGOCIO';
+            $horseinscription ="¡INSCRÍBETE CON NOSOTROS YA!";
+
+            $tittlehorsewordsale ='Horses Word Sale';
+            $contenido ="Este contenido es de prueba";
+            $contenido2 ="Caballos, ventas";
+            $login = "Iniciar sesion";
+            $imgother3 = url("landing/images/other/3.png");
+
+    $d[0]= url("landing/images/slider/1/2.jpg");
+    $d[1]= url("landing/images/slider/1/1.jpg");
+    $d[2]= url('frontend/img/slides/s3.jpg');
+    $d[3]= url('frontend/img/gallery/img-2.jpg');
+    $d[4]= url('frontend/img/gallery/img-3.jpg');
+    $d[5]= url('frontend/img/gallery/img-4.jpg');
+    $d[6]= url('frontend/img/gallery/img-5.jpg');
+    $d[7]= url('frontend/img/slides/s1.jpg');
+    $d[8]= url('frontend/img/slides/s2.jpg');
+    $d[9]= url('frontend/img/slides/s3.jpg');
+
+    $text[0]= "{!! trans('users.fake.0') !!}";
+    $text[1]= "{!! trans('users.fake.1') !!}";
+    $text[2]= "{!! trans('users.fake.2') !!}";
+    $text[3]= "{!! trans('users.fake.3') !!}";
+    $text[4]= "";
+    $text[5]= "";
+    $text[6]= "";
+    $text[7]= "";
+    $text[8]= "";
+    $text[9]= "";
+    $stext[0]= "{!! trans('users.fake.0') !!}";
+    $stext[1]= "{!! trans('users.fake.1') !!}";
+    $stext[2]= "{!! trans('users.fake.2') !!}";
+    $stext[3]= "{!! trans('users.fake.3') !!}";
+    $stext[4]= "";
+    $stext[5]= "";
+    $stext[6]= "";
+    $stext[7]= "";
+    $stext[8]= "";
+    $stext[9]= "";
+
+@endphp
+@section('content')
+    @include('frontend.landing.studs.partials.principal',['stud'=>$stud,'titulo'=>'Contacto','texto'=>'Comunicate con nostros'])
+
+
+    <!-- contact wrapper -->
+
+    <div class="contact-page-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="row">
+
+                        <div class="col-xs-12 col-md-6 {{--no-pad-left--}}" style="padding-bottom: 40px;">
+
+                            @include('frontend.landing.studs.partials.mapa',['lat'=>$stud->lat,'lng'=>$stud->lng])
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <div class="col-xs-12 text-center"><h4 class="m-b-15">DATOS DE CONTACTO</h4></div>
+                            <div class="col-xs-12 col-md-6 widget">
+
+                                <div class="col-xs-2 no-pad-left" style="padding-bottom: 65px;">
+                                    <i class="m-t-15 fa  inverso fa-phone inverso"></i>
+                                </div>
+                                @foreach($stud->getPhoneModel() as $k=> $v)
+                                    @if($v->isNull() !== true)
+                                        <div class="col-xs-10 text-left m-t-10 no-pad">
+                                    <span class="text-left " style="font-size: 20px">
+                                        {!! $v->FormatNumber() !!}
+                                        {{--+34 647 456 789--}}
+                                        </span>
+                                        </div>
+                                    @endif
+
+                                @endforeach
+                            </div>
+                            <div class="col-xs-12 col-md-6 widget">
+                                <div class="col-xs-2">
+                                    <i class="m-t-15 fa  inverso fa-envelope" style="font-size: 20px"></i>
+                                </div>
+                                <div class="col-xs-10 m-t-10 text-left">
+                                    <span class="text-left" style="font-size: 20px">
+                                        {!! $persona->getEmail() !!}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6 widget m-b-10">
+                                <div class="col-xs-2">
+                                    <i class="fa inverso fa-map-marker m-t-15" style="font-size: 20px"></i>
+                                </div>
+                                <div class="col-xs-10 m-t-10 text-left">
+                                    <span class="text-left" style="font-size: 20px">
+                                        {!! $stud->getAddress()!!}
+                                    </span>
+                                </div>
+                            </div>
+                            @if(!empty($stud->getFacebook()->getUrlPage()))
+                                <div class="col-xs-2  widget ">
+                                    <div class="col-xs-2">
+                                        <a href="{!! $stud->getFacebook()->getUrlPage() !!}" target="_blank">
+                                            <i class="m-t-15 fa  inverso fa-facebook " style="font-size: 20px"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            @endif
+                            @if(!empty($stud->getTwitter()->getUrlPage()))
+                                <div class="col-xs-2  widget">
+                                    <div class="col-xs-2">
+                                        <a href="{!! $stud->getTwitter()->getUrlPage() !!}" target="_blank">
+                                            <i class="m-t-15 fa  inverso fa-twitter   " style="font-size: 20px"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            @endif
+                            {{--
+                            @if(!empty($stud->getGoogle()->getUrlPage()))
+                            <div class="col-xs-2  widget">
+                                <div class="col-xs-2">
+                                    <a href="{!! $stud->getGoogle()->getUrlPage() !!}" target="_blank">
+                                        <i class="m-t-15 fa  inverso fa-google-plus-official    "
+                                           style="font-size: 20px"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            @endif
+                            --}}
+                            @if(!empty($stud->getInstagram()->getUrlPage()))
+                                <div class="col-xs-2  widget">
+                                    <div class="col-xs-2">
+                                        <a href="{!! $stud->getInstagram()->getUrlPage() !!}" target="_blank">
+                                            <i class="m-t-15 fa  fa-instagram    "
+                                               style="font-size: 20px"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            @endif
+                            @if(!empty($stud->getPinterest()->getUrlPage()))
+                                <div class="col-xs-2  widget">
+                                    <div class="col-xs-2">
+                                        <a href="{!! $stud->getPinterest()->getUrlPage() !!}" target="_blank">
+                                            <i class="m-t-15 fa  inverso fa-pinterest     " style="font-size: 20px"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            @endif
+
+                            @if(!empty($stud->getYoutube()->getUrlPage()))
+                                <div class="col-xs-2  widget">
+                                    <div class="col-xs-2">
+                                        <a href="{!! $stud->getYoutube()->getUrlPage() !!}" target="_blank">
+                                            <i class="m-t-15 fa   fa-youtube     " style="font-size: 20px"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            @endif
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+
+                    <div class="comment-form-wrapper contact-from clearfix">
+                        <div class="widget-title ">
+                            <h4>Contacta con nostros</h4>
+                            <p>
+
+                                Para cualquier consulta póngase en contacto con nosotros rellenando el siguiente
+                                formulario,
+                                estaremos encantados de atenderle. Gracias por su interés.
+
+                            </p>
+                        </div>
+                        <div class="contact-message col-12">
+                            <form id="contact-form" action="{!! route('contacto.accion') !!}" method="post">
+                                <input type="hidden" value="{!! csrf_token() !!}" id="_token" name="_token">
+                                <div class="col-xs-12 col-md-5">
+                                    <div class="col-xs-12 form-control">
+                                        <div class="single-input field col-xs-12 form-control">
+                                            <label for="name">Nombre y apellido</label>
+                                            <input name="name" class="form_control" type="text"
+                                                   placeholder="nombre y apellido">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <div class="single-input field col-xs-12 form-control">
+                                            <label for="email">Correo Electronico</label>
+                                            <input name="email" class="form_control" type="text"
+                                                   placeholder="correo electronico (opcional)">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <div class="single-input field col-xs-12 form-control">
+                                            <label for="name">Numero de telefono</label>
+                                            <input name="phone" class="form_control" type="tel"
+                                                   placeholder="">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-xs-12 col-md-7">
+                                    <div class="col-xs-12">
+                                        <div class="single-input field col-xs-12 form-control">
+                                            <label for="name">Mensaje</label>
+                                            <textarea name="message" class="form_control"
+                                                      placeholder="escribe tu mensaje"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <div class="send-button field col-xs-12 form-control">
+                                            <button type="submit" class="btn btn-big btn-solid">
+                                                {{-- <i class="fa fa-paper-plane"></i> --}}
+                                                <span>
+                                                    Enviar
+                                                </span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{--
+    <div class="contact-map-area">
+        <div class="map-area">
+            <div id="map"></div>
+        </div>
+    </div>
+    --}}
+@endsection
+
+@section('js')
+
+
+@endsection

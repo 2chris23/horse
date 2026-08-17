@@ -1,0 +1,646 @@
+{{--}}
+http://www.yeguadasotogil.com/portfolio/nicaro-ii/
+
+http://kodesolution.com/demo/personal/j/horseman/v2.0/demo/page-horse-details.html
+
+http://kodesolution.com/demo/personal/m/equestrianpress/v2.0/demo/page-horse-details.html
+
+http://preview.themeforest.net/item/horse-club-equestrian-wordpress-theme/full_screen_preview/13623589?_ga=2.163215733.871107145.1508385431-1991273181.1500082262
+
+http://yeguadajuanvazquez.com/caballos_ficha.php?c=1&id=8
+
+https://www.coches.net/renault-megane-intens-energy-dci-110-5p-diesel-2016-en-valencia-33550068-covo.aspx
+
+https://www.ventadecaballos.es/remachilla-de-agui-yegua-6-anos-hija-de-remache-/caballos/52308
+
+https://www.equinenow.com/horse-ad-1166862
+--}}
+@extends('frontend.landing.studs.base',['user'=>$user,'stud'=>$stud])
+@section('title', 'Detalles ')
+@php
+
+    $logo =$stud->getLogo();
+
+
+        $logobasic= url("landing/images/basic/logo.png");
+
+            $espanol =  url("landing/img/es.png");
+            $english =  url("landing/img/en.png");
+
+            /*slider*/
+            $dummy = url("landing/images/dummy.png");
+            /*slider 1*/
+            $text1 = "LA APLICACIÓN DE CABALLOS QUE TE HARA LAS COSAS MÄS FACIL PARA GESTIONAR TU NEGOCIO";
+            $stext1 ="¡INSCRÍBETE CON NOSOTROS YA!";
+
+            $text2 = '2 LA APLICACIÓN DE CABALLOS QUE TE HARA LAS COSAS MÄS FACIL PARA GESTIONAR TU NEGOCIO';
+            $stext2 ='LAS COSAS MÄS FACIL PARA GESTIONAR TU NEGOCIO';
+
+            $horseapp ='LA APLICACIÖN DE CABALLOS QUE TE HARA LAS COSAS MÄS FACIL PARA GESTIONAR TU NEGOCIO';
+            $horseinscription ="¡INSCRÍBETE CON NOSOTROS YA!";
+
+            $tittlehorsewordsale ='Horses Word Sale';
+            $contenido ="Este contenido es de prueba";
+            $contenido2 ="Caballos, ventas";
+            $login = "Iniciar sesion";
+            $imgother3 = url("landing/images/other/3.png");
+
+    $d[0]= url("landing/images/slider/1/2.jpg");
+    $d[1]= url("landing/images/slider/1/1.jpg");
+    $d[2]= url('frontend/img/slides/s3.jpg');
+    $d[3]= url('frontend/img/gallery/img-2.jpg');
+    $d[4]= url('frontend/img/gallery/img-3.jpg');
+    $d[5]= url('frontend/img/gallery/img-4.jpg');
+    $d[6]= url('frontend/img/gallery/img-5.jpg');
+    $d[7]= url('frontend/img/slides/s1.jpg');
+    $d[8]= url('frontend/img/slides/s2.jpg');
+    $d[9]= url('frontend/img/slides/s3.jpg');
+
+    $text[0]= "{!! trans('users.fake.0') !!}";
+    $text[1]= "{!! trans('users.fake.1') !!}";
+    $text[2]= "{!! trans('users.fake.2') !!}";
+    $text[3]= "{!! trans('users.fake.3') !!}";
+    $text[4]= "";
+    $text[5]= "";
+    $text[6]= "";
+    $text[7]= "";
+    $text[8]= "";
+    $text[9]= "";
+    $stext[0]= "{!! trans('users.fake.0') !!}";
+    $stext[1]= "{!! trans('users.fake.1') !!}";
+    $stext[2]= "{!! trans('users.fake.2') !!}";
+    $stext[3]= "{!! trans('users.fake.3') !!}";
+    $stext[4]= "";
+    $stext[5]= "";
+    $stext[6]= "";
+    $stext[7]= "";
+    $stext[8]= "";
+    $stext[9]= "";
+$text[0]= "{!! trans('users.fake.0') !!}";
+$text[1]= "{!! trans('users.fake.1') !!}";
+$text[2]= "{!! trans('users.fake.2') !!}";
+$text[3]= "{!! trans('users.fake.3') !!}";
+$stext[0]= "{!! trans('users.fake.0') !!}";
+$stext[1]= "{!! trans('users.fake.1') !!}";
+$stext[2]= "{!! trans('users.fake.2') !!}";
+$stext[3]= "{!! trans('users.fake.3') !!}";
+
+
+for($i = 0;$i<20;$i++){
+$d[$i]= url('img/horse/'.($i+1).'.jpg');
+$t[$i] = $text[rand(0,3)];
+$st[$i] = $stext[rand(0,3)];
+}
+
+$gallery1 = true;
+$gallery2 = false;
+$gallery3 = true;
+$nada = "#!";
+
+$fotos = $horse->getPhotoModel();
+$nombre = $horse-> getName();
+$doma = $horse-> getDoma();
+$raza = $horse-> getRaza();
+$precio = $horse-> getPrice();
+$bday = $horse-> getBirthdate();
+$raised = $horse-> getRaised();
+$ParaVender= $horse->getTosold();
+$vendido= $horse->getSold();
+$yeguada= $horse->getStud();
+$sex= $horse->getSex();
+//$fotos = Photo::find(39);
+if($vendido == false)$vendido = 0;
+if($ParaVender == false)$ParaVender = 0;
+if($doma == false)$doma = 0;
+$linklo =route('MyHorseDetailed',['stud'=>$stud->slug,'horse'=>$horse->id]);
+
+
+@endphp
+
+@section('csstop')
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <style>
+        /*
+        .grid-item {
+            float: left;
+            width: 80px;
+            height: 60px;
+            border: 2px solid hsla(0, 0%, 0%, 0.5);
+        }
+*/
+        .grid-item--width2 {
+            width: 160px;
+        }
+
+        .grid-item--height2 {
+            height: 140px;
+        }
+
+        /* fluid 5 columns */
+        .grid-sizer,
+        .grid-item {
+            width: 20%;
+        }
+
+        /* 2 columns */
+        .grid-item--width2 {
+            width: 40%;
+        }
+
+        .p-l-7 {
+            padding-left: 10px;
+            margin-top: 5px;
+        }
+
+        .img-fixed {
+            border-radius: 50px;
+            max-height: 80px;
+            max-width: 80px;
+        }
+
+        .recent-posts > div > .image-wrapper > img {
+            height: 100px;
+            width: auto;
+        }
+
+        article + [data-readmore-toggle], article[data-readmore] {
+            display: block;
+            width: 100%;
+        }
+
+        article[data-readmore] {
+            transition: height 500ms;
+            overflow: hidden;
+        }
+    </style>
+@endsection
+@section('content')
+
+
+
+    <!-- basic-slider start -->
+    <!-- Banner -->
+    @include('frontend.landing.studs.partials.principal',['stud'=>$stud,'titulo'=>'Caballos','texto'=>'Nuestros Animales'])
+    {{--
+    {!! dd($horse) !!}
+        "id" => 2
+        "name" => "Gorrion"
+        "raised" => 1.0
+        "birthdate" => "2012-10-09"
+        "raza" => 1
+        "doma" => 1
+        "sex" => 1
+        "stud" => "1"
+        "tosold" => 1
+        "sold" => 0
+        "price" => 50.5
+        "users_id" => 2
+        "created_by" => 2
+        "updated_by" => 0
+        "deleted_by" => 0
+        "deleted_at" => null
+        "created_at" => null
+        "updated_at" => null
+
+        --}}
+    <!-- Blog-Wrapper -->
+    {{--
+
+    --}}
+    <div class="blog-page-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="sidebar-wrapper col-md-4">
+                    <div class="sidebar">
+                        {{--
+                        <div class="search-bar">
+                            <form action="{!! $nada !!}">
+                                <div class="field">
+                                    <input type="text" name="search" placeholder="Type and Hit Enter">
+                                    <button>
+                                        <i class="fa fa-search">
+                                        </i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        --}}
+                        <div class="widget">
+                            <div class="widget-title">
+                                {{--$fotos;$nombre;$doma;$raza;$precio;$bday;$raised;$ParaVender;$vendido;$yeguada;$sex--}}
+                                <h4>{!! $horse->getName() !!}</h4>
+                                <div class="sep">
+                                    <div class="sep-inside">
+                                    </div>
+                                </div>
+                                <div class="image-wrapper m-t-15 col-xs-12">
+                                    @if($fotos->first() !== null)
+                                        <img src="{!! $fotos->first()->getUrl() !!}" alt="" class="img-responsive">
+                                    @endif
+                                </div>
+                                @include('frontend.landing.studs.partials.tabladetalle',['horse'=>$horse])
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        {{--
+                        <div class="widget m-t-15">
+                            <div class="widget-title">
+                                <h4>Caballos</h4>
+                                <div class="sep">
+                                    <div class="sep-inside">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="categories">
+                                <a href="{!! route('MyHorses',['id'=>$user->id,'type'=>1,'slug'=>$user->getMySlug()]) !!}">Sementales<span></span></a>
+                                <a href="{!! route('MyHorses',['id'=>$user->id,'type'=>2,'slug'=>$user->getMySlug()]) !!}">Capados<span></span></a>
+                                <a href="{!! route('MyHorses',['id'=>$user->id,'type'=>3,'slug'=>$user->getMySlug()]) !!}">Yeguas<span></span></a>
+                                <a href="{!! route('MyHorses',['id'=>$user->id,'type'=>4,'slug'=>$user->getMySlug()]) !!}">Potros<span></span></a>
+                                <a href="{!! route('MyHorses',['id'=>$user->id,'type'=>5,'slug'=>$user->getMySlug()]) !!}">Potras<span></span></a>
+                            </div>
+                        </div>
+                        --}}
+                        {{--
+                        <div class="widget">
+                            <div class="widget-title">
+                                <h4>Recent Posts</h4>
+                                <div class="sep">
+                                    <div class="sep-inside">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="recent-posts clearfix">
+                                @foreach ($d as $k=>$v)
+                                    @if($k<5)
+                                        @php($titulo = rand(0,4))
+                                        @include('frontend.landing.studs.partials.recent',[
+                                        'link'=>null,
+                                        'url'=>$v,
+                                        'titulo'=>$text[$titulo],
+
+                                        ])
+                                    @endif
+                                @endforeach
+
+                                {{--
+                                <div class="post clearfix">
+                                    <div class="image-wrapper">
+                                        <div class="mask">
+                                            <a href="{!! $nada !!}">
+                                                <i class="fa fa-link">
+                                                </i>
+                                            </a>
+                                        </div>
+                                        <img src="{!! $d[1] !!}" alt="" style="max-height: 200px;">
+                                    </div>
+                                    <div class="info-block">
+                                        <a href="{!! $nada !!}">
+                                            <h4>How insurers are using connected</h4>
+                                        </a>
+                                        <div class="meta">
+                                            <p>
+                                                <i class="fa fa-user">
+                                                </i>WorkHub</p>
+                                            <span>|</span>
+                                            <p>
+                                                <i class="fa fa-clock-o">
+                                                </i>12 Aug, 2017</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="post clearfix">
+                                    <div class="image-wrapper">
+                                        <div class="mask">
+                                            <a href="{!! $nada !!}">
+                                                <i class="fa fa-link">
+                                                </i>
+                                            </a>
+                                        </div>
+                                        <img src="{!! $d[2] !!}" alt="" style="max-height: 200px;">
+                                    </div>
+                                    <div class="info-block">
+                                        <a href="{!! $nada !!}">
+                                            <h4>How insurers are using connected</h4>
+                                        </a>
+                                        <div class="meta">
+                                            <p>
+                                                <i class="fa fa-user">
+                                                </i>WorkHub</p>
+                                            <span>|</span>
+                                            <p>
+                                                <i class="fa fa-clock-o">
+                                                </i>15 May, 2017</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                **}}
+                            </div>
+
+                        </div>
+                        --}}
+                        {{--
+                        <div class="widget">
+                            <div class="widget-title">
+                                <h4>Tags</h4>
+                                <div class="sep">
+                                    <div class="sep-inside">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tags">
+                                <a href="{!! $nada !!}">
+                                    <span>business</span>
+                                </a>
+                                <a href="{!! $nada !!}">
+                                    <span>clean</span>
+                                </a>
+                                <a href="{!! $nada !!}">
+                                    <span>company</span>
+                                </a>
+                                <a href="{!! $nada !!}">
+                                    <span>consulting</span>
+                                </a>
+                                <a href="{!! $nada !!}">
+                                    <span>corporate</span>
+                                </a>
+                                <a href="{!! $nada !!}">
+                                    <span>blog</span>
+                                </a>
+                                <a href="{!! $nada !!}">
+                                    <span>minimal</span>
+                                </a>
+                                <a href="{!! $nada !!}">
+                                    <span>marketing</span>
+                                </a>
+                                <a href="{!! $nada !!}">
+                                    <span>portfolio</span>
+                                </a>
+                                <a href="{!! $nada !!}">
+                                    <span>services</span>
+                                </a>
+                            </div>
+                        </div>
+                        --}}
+                    </div>
+                </div>
+                <div class="blog-posts col-md-8">
+                    <div class="blog-post single-post">
+                        <a href="{!! $nada !!}">
+                            <h2>Proveniente de la yeguada <strong>{!! $yeguada !!}</strong></h2>
+                        </a>
+                        <div class="meta">
+                            {{--<h5>
+                                <i class="fa fa-user">
+                                </i>
+                                <a href="{!! $nada !!}">WorkHub</a>
+                            </h5>--}}
+                            <h5>
+                                <i class="fa fa-clock-o">
+                                </i>
+                                <a href="{!! $nada !!}">{!! Funciones::AjustarFechaDmy($bday) !!}</a>
+                            </h5>
+                            {{--
+                            <h5>
+                                <i class="fa fa-folder-open">
+                                </i>
+                                <a href="{!! $nada !!}">Business</a>
+                            </h5>
+                            <h5>
+                                <i class="fa fa-comment">
+                                </i>
+                                <a href="{!! $nada !!}">23 Comments</a>
+                            </h5>
+                            --}}
+                        </div>
+                        {{--
+                        <div class="img-wrapper">
+                            <img class="img-responsive" src="{!! $d[3] !!}" alt="" style="max-height: 200px;">
+                        </div>
+                        --}}
+
+
+                        <p class="first">{!! $horse->getDescripcion() !!}</p>
+                        @include('frontend.landing.studs.partials.galeriadetalle',['fotos'=>$fotos])
+                    </div>
+
+
+                    {{--
+                    <h4 class="subheader">Lorem Ipsum The Cite</h4>
+                    <blockquote>
+                        <i class="fa fa-quote-left">
+                        </i>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic deserunt unde ratione odio
+                            temporibus officiis, nemo. Aperiam commodi, sapiente cul totam!</p>
+                    </blockquote>
+                    --}}
+
+
+                    <div class="single-post-footer">
+                        {{--
+                        <div class="tags clearfix">
+                            <a href="{!! $nada !!}">
+                                <span>business</span>
+                            </a>
+                            <a href="{!! $nada !!}">
+                                <span>finance</span>
+                            </a>
+                            <a href="{!! $nada !!}">
+                                <span>marketing</span>
+                            </a>
+                        </div>
+                        --}}
+
+                        <div class="author">
+                            {{--
+                            <article>
+                                <img src="{!! $stud->getLogo() !!}" alt="" style="max-height: 200px;">
+                                <div class="info-block">
+                                    <h4>{!! $stud->getName() !!}</h4>
+
+                                    <p>{!! $stud->getDescription() !!}</p>
+
+
+                                </div>
+                            </article>
+                            --}}
+                            <div class="social-media clearfix">
+                                <a name="fb_share" type="button"
+                                   href="{!! Funciones::CompartirFacebook($stud->getName(),$linklo) !!}"
+                                   target="_blank">
+                                    <i class="fa fa-facebook">
+                                    </i>
+                                </a>
+                                {{--
+                                <a href="{!! $stud->getFacebook()!!}">
+
+                                </a>
+                                <a href="{!! Funciones::CompartirGoogle($linklo) !!}" target="_blank">
+                                    <i class="fa fa-google-plus">
+                                    </i>
+                                </a>
+                                --}}
+
+                                {{--http://twitter.com/share?text=<TITLE>&url=<URL>--}}
+                                {{--<a href="{!! $stud->getTwitter() !!}">--}}
+                                <a href="{!! Funciones::CompartirTwitter($stud->getName(),$linklo) !!}"
+                                   target="_blank">
+                                    <i class="fa fa-twitter">
+                                    </i>
+                                </a>
+
+                                <a href="{!! Funciones::CompartirPinterest($stud->getName(),$linklo) !!}"
+                                   target="_blank">
+                                    <i class="fa fa-pinterest">
+                                    </i>
+                                </a>
+                                {{--
+                                <a href="{!! $stud->getYoutube() !!}">
+                                    <i class="fa fa-youtube">
+                                    </i>
+                                </a>
+                                --}}
+                                {{--
+                                <a href="{!! $nada !!}">
+                                    <i class="fa fa-linkedin">
+                                    </i>
+                                </a>
+                                --}}
+                            </div>
+                        </div>
+                        {{--
+                        <div class="comments-wrapper">
+                            <div class="widget-title">
+                                <h4>There are 61 comments</h4>
+                                <div class="sep">
+                                    <div class="sep-inside">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comments">
+                                <div class="comment replayed ">
+                                   <img class="img-responsive img-rounded img-fixed"src="{!! $d[5] !!}" alt="" >
+                                    <div class="info-block">
+                                        <h4 class="user">Maura Daniels<span>2 days ago</span>
+                                        </h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque quas cum,
+                                            culpa eum expedita soluta! Ipsum voluptatibus nesciunt tenetur, est vero
+                                            culpa ipsam modi officia.</p>
+                                        <button class="btn btn-min btn-solid">
+                                            <span>Replay</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="comment replay">
+                                   <img class="img-responsive img-rounded img-fixed"src="{!! $d[7] !!}" alt="" >
+                                    <div class="info-block">
+                                        <h4 class="user">Tom Petterson<span>7 hours ago</span>
+                                        </h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum, natus!</p>
+                                        <button class="btn btn-min btn-solid">
+                                            <span>Replay</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="comment">
+                                   <img class="img-responsive img-rounded img-fixed"src="{!! $d[8] !!}" alt="" >
+                                    <div class="info-block">
+                                        <h4 class="user">Vincent Lewis<span>4 days ago</span>
+                                        </h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque quas cum,
+                                            culpa eum expedita soluta! Ipsum voluptatibus nesciunt tenetur, est vero
+                                            culpa ipsam modi officia.</p>
+                                        <button class="btn btn-min btn-solid">
+                                            <span>Replay</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="comment">
+
+                                   <img class="img-responsive img-rounded img-fixed"src="{!! $d[9] !!}" alt="" >
+
+                                    <div class="info-block">
+                                        <h4 class="user">Vincent Lewis <span>6 days ago</span>
+                                        </h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque quas cum,
+                                            culpa eum expedita soluta! Ipsum voluptatibus nesciunt tenetur, est vero
+                                            culpa ipsam modi officia.</p>
+                                        <button class="btn btn-min btn-solid">
+                                            <span>Replay</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+--}}
+                        {{--
+                        <div class="comment-form-wrapper">
+
+                            <div class="widget-title">
+                                <h4>Leave a comment</h4>
+                                <div class="sep">
+                                    <div class="sep-inside">
+                                    </div>
+                                </div>
+                            </div>
+                            <form class="comment-form" action="{!! $nada !!}"
+                                  name="comment">
+                                <div class="field">
+                                    <h4>Name</h4>
+                                    <input type="text" name="name">
+                                </div>
+                                <div class="field">
+                                    <h4>E-mail</h4>
+                                    <input type="email" name="e-mail">
+                                </div>
+                                <div class="field">
+                                    <h4>Website</h4>
+                                    <input type="url" name="website">
+                                </div>
+                                <div class="field">
+                                    <h4>Message</h4>
+                                    <textarea name="messgae">
+</textarea>
+                                </div>
+                                <div class="field">
+                                    <button class="btn btn-min btn-solid">Send Comment</button>
+                                </div>
+                            </form>
+                        </div>
+                        --}}
+                    </div>
+                </div>
+                <!-- sidebar -->
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+@endsection
+
+@section('js')
+    {{--
+    <script src="{!! url('mosaic/jquery.mosaicflow.min.js') !!}"> </script>
+    --}}
+    <script>
+        var $grid = $('.grid').imagesLoaded(function () {
+            // init Masonry after all images have loaded
+            $grid.masonry({
+                // options...
+                itemSelector: '.grid-item', // use a separate class for itemSelector, other than .col-
+                columnWidth: '.grid-sizer',
+                percentPosition: true
+            });
+        });
+
+        $('article').readmore({
+            speed: 500, collapsedHeight: 400,
+            moreLink: '<a href="#">Lee mas</a>',
+            lessLink: '<a href="#">Lee Menos</a>',
+        });
+    </script>
+
+@endsection

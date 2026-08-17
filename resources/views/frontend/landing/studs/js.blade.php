@@ -490,10 +490,10 @@
                             $lat=$stud->lat;
                             $lng=$stud->lng;
                             $lat = (!empty($lat))?$lat:-33.8688;
-                            {{--//$lat = (!empty($lat))?$lat:38.366511900000000;
-                            //$lng = (!empty($lng ))?$lng :-0.459893999999963;--}}
+                            // $lat = (!empty($lat))?$lat:38.366511900000000;
+                            // $lng = (!empty($lng ))?$lng :-0.459893999999963;
                             $lng = (!empty($lng ))?$lng :151.2195;
-                            {{--//$zoom = (!empty($zoom))?$zoom:16;--}}
+                            // $zoom = (!empty($zoom))?$zoom:16;
                             $zoom = 11;
 
                         @endphp

@@ -1,10 +1,7 @@
 @php($gallery2 = false)
 @if(!empty($stud))
     @php($colorcoorp = $stud->getColor())
-    @if(empty($stud))
-        <script>
-            @endif
-            var token = "{!! csrf_token() !!}";
+    var token = "{!! csrf_token() !!}";
 
             function getPrice(v, d) {
                 $(v).append(d.precio + " <span class=\"coinl \">" + d.moneda + "</span>");
@@ -581,10 +578,4 @@
 
             }
 
-            @if(empty($stud))
-
-        </script>
-
-
-    @endif
 @endif

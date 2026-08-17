@@ -56,12 +56,12 @@
     <link rel="stylesheet" href="{!! url('landing/js/magnific-popup/magnific-popup.css') !!}">
     <link rel="stylesheet" href="{!! url('landing/css/style.css') !!}">
     {{-- Google Fonts --}}
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
           rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Raleway:400,200,100,300,500,600,700,800,900' rel='stylesheet'
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,200,100,300,500,600,700,800,900' rel='stylesheet'
           type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Dosis:400,200,300,500,600,700,800' rel='stylesheet'
+    <link href='https://fonts.googleapis.com/css?family=Dosis:400,200,300,500,600,700,800' rel='stylesheet'
           type='text/css'>
     {{-- Icon Fonts --}}
     <link rel="stylesheet" href="{!! url('landing/css/icomoon/style.css') !!}" type="text/css">
@@ -302,14 +302,15 @@
             background: rgba(255, 255, 255, 0.5);
         }
         .login2_border {
-            /*background: transparent;*/
-            background: transparent;
-            background-image: url(http://www.albertvalleyturf.com.au/wp-content/uploads/2017/06/oz-tuff-2.jpg);
+            background-color: #2180ac;
+            background-image: url("{{ asset('assets/img/login.jpg') }}");
+            background-size: cover;
+            background-position: center;
         }
         {{--
         .flotante {
             /*http://www.albertvalleyturf.com.au/wp-content/uploads/2017/06/oz-tuff-2.jpg*/
-            background-image: url(http://www.albertvalleyturf.com.au/wp-content/uploads/2017/06/oz-tuff-2.jpg);
+            background-image: url("{{ asset('assets/img/login.jpg') }}");
             border-radius: 10px;
             width: 320px;
             /*clear: both;*/

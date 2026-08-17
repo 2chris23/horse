@@ -185,6 +185,17 @@ class Stud extends Model
         return url('img/admin.jpg');
     }
 
+    public function getFavUrl()
+    {
+        $c = url(\Config::get('logos.favicon16'));
+        if (!empty($this->fav)) {
+            $favfol = \Config::get('aplication.favicon');
+            $folder2 = "uploads/" . $favfol . "/" . $this->fav;
+            $c = url($folder2);
+        }
+        return $c;
+    }
+
     public function getLogoClear()
     {
         return $this->logo;
@@ -362,6 +373,51 @@ class Stud extends Model
             return false;
         }
         return true;
+    }
+
+    public function getTwitter()
+    {
+        $d = \App\Models\SocialNetwork::Twitter($this->id, $this->users_id)->first();
+        if (empty($d)) {
+            $d = new \App\Models\SocialNetwork(['stud_id' => $this->id, 'user_id' => $this->users_id, 'type' => 1]);
+        }
+        return $d;
+    }
+
+    public function getFacebook()
+    {
+        $d = \App\Models\SocialNetwork::Facebook($this->id, $this->users_id)->first();
+        if (empty($d)) {
+            $d = new \App\Models\SocialNetwork(['stud_id' => $this->id, 'user_id' => $this->users_id, 'type' => 2]);
+        }
+        return $d;
+    }
+
+    public function getPinterest()
+    {
+        $d = \App\Models\SocialNetwork::Pinterest($this->id, $this->users_id)->first();
+        if (empty($d)) {
+            $d = new \App\Models\SocialNetwork(['stud_id' => $this->id, 'user_id' => $this->users_id, 'type' => 3]);
+        }
+        return $d;
+    }
+
+    public function getInstagram()
+    {
+        $d = \App\Models\SocialNetwork::Instagram($this->id, $this->users_id)->first();
+        if (empty($d)) {
+            $d = new \App\Models\SocialNetwork(['stud_id' => $this->id, 'user_id' => $this->users_id, 'type' => 5]);
+        }
+        return $d;
+    }
+
+    public function getYoutube()
+    {
+        $d = \App\Models\SocialNetwork::Youtube($this->id, $this->users_id)->first();
+        if (empty($d)) {
+            $d = new \App\Models\SocialNetwork(['stud_id' => $this->id, 'user_id' => $this->users_id, 'type' => 6]);
+        }
+        return $d;
     }
 
     public function setTitulo($titulo)

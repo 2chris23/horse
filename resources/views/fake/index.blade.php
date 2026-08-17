@@ -474,12 +474,12 @@
 
                     <div class="form-group text-center">
                         <div class="col-md-6 col-xs-6">
-                            <a href="{{route('face')}}" class="btn btn-block" style="background-color: #3b5998; color: white;">
+                            <a href="#" class="btn btn-block" style="background-color: #3b5998; color: white;">
                                 <i class="fa fa-facebook"></i> <span class="hidden-xs">{{trans('login.facebook')}}</span>
                             </a>
                         </div>
                         <div class="col-md-6 col-xs-6">
-                            <a href="{{route('google')}}" class="btn btn-block" style="background-color: #d34836; color: white;">
+                            <a href="#" class="btn btn-block" style="background-color: #d34836; color: white;">
                                 <i class="fa fa-google-plus"></i> <span class="hidden-xs">{{trans('login.google')}}</span>
                             </a>
                         </div>

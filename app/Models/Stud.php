@@ -420,6 +420,76 @@ class Stud extends Model
         return $d;
     }
 
+    public function getFacebookId()
+    {
+        return $this->getFbcontact();
+    }
+
+    public function getDomainWExtension()
+    {
+        $d = $this->getDomain();
+        if (!empty($d)) {
+            $dominios = \App\Http\Controllers\PublicController::ArrayDominio();
+            $encontrado = null;
+            $ts = $this->getDominioExtension();
+            foreach ($dominios as $k => $v) {
+                $da = \App\Http\Controllers\Functions::BuscarEnString($ts, $v);
+                if ($da == true) {
+                    $encontrado = $ts;
+                }
+            }
+            if (!empty($encontrado)) {
+                return str_replace($encontrado, '', $d);
+            } else {
+                return $d;
+            }
+        }
+        return null;
+    }
+
+    public function getDomain()
+    {
+        $user = \App\Models\User::find($this->users_id);
+        if ($user) {
+            $d = $user->domain;
+            $d = str_replace("_", '', $d);
+            $d = str_replace("-", '', $d);
+            $d = str_replace(" ", '', $d);
+            return $d;
+        }
+        return null;
+    }
+
+    public function getDominioExtension()
+    {
+        $d = $this->getDomain();
+        if (!empty($d)) {
+            $ta = explode('.', $d);
+            $ts = "." . $ta[count($ta) - 1];
+            return $ts;
+        }
+        return null;
+    }
+
+    public function getFront()
+    {
+        $d = \App\Models\Photo::Front($this->id)->first();
+        if (!$d) {
+            $d = new \App\Models\Photo();
+        }
+        return $d;
+    }
+
+    public function getFirstHorseBySex($sex)
+    {
+        return \App\Models\Horse::where(['studs_id' => $this->id, 'sex' => $sex])->first();
+    }
+
+    public function getFirstHorse()
+    {
+        return \App\Models\Horse::where(['studs_id' => $this->id])->first();
+    }
+
     public function setTitulo($titulo)
     {
         $this->titulo = $titulo;

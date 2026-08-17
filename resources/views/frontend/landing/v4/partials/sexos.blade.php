@@ -1,4 +1,6 @@
-@php($sexos = $stud->Horses()->select('sex', DB::raw('count(*) as total'))->groupby('sex')->get()->toArray())
+@php
+    $sexos = $stud->Horses()->select('sex', DB::raw('count(*) as total'))->groupby('sex')->get()->toArray();
+@endphp
 
 <section class="section-deals borde-top">
     <div class="container">
@@ -14,7 +16,7 @@
 
                 @foreach($sexos as $k=>$v)
 
-                    @php
+                    <?php
                         if(isset($v)){
                             $ts = $v['sex'];
                             $gd = $stud->Horses()->where(['sex'=>$ts])->get() ;
@@ -42,7 +44,7 @@
                         }else{
                             $img ='';
                         }
-                    @endphp
+                    ?>
                     <div class="col-xs-12 col-sm-6">
                         <div class="item item-deal mh-300">
                             <div class="img">

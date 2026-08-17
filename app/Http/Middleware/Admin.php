@@ -32,6 +32,7 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
+        $user = $this->auth->user();
 
         if ($this->auth->guest() || empty($user)) {
             if ($request->ajax()) {

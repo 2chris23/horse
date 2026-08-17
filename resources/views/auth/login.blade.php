@@ -101,7 +101,7 @@
                         <div class="col-md-12">
                             <div class="checkbox">
                                 <label style="color: #555;">
-                                    <input type="checkbox" name="remember"> {{trans('login.remember')}}
+                                    <input type="checkbox" name="remember"> {{trans('login.keeplog')}}
                                 </label>
                                 <a style="margin-left:15px; color: #2180ac;" href="{{ url('/password/reset') }}">{{trans('login.forgot')}}</a>
                             </div>
@@ -125,8 +125,8 @@
                     
                     <div class="form-group text-center" style="margin-top: 20px; margin-bottom: 0;">
                         <div class="col-md-12">
-                            <span style="color: #555;">{{trans('login.acount')}}</span>
-                            <a href="{{url('register')}}" style="color: #2180ac; font-weight: bold;">{{trans('login.sign_up')}}</a>
+                            <span style="color: #555;">{{trans('login.noacc')}}</span>
+                            <a href="{{url('register')}}" style="color: #2180ac; font-weight: bold;">{{trans('login.signup')}}</a>
                         </div>
                     </div>
                 </form>

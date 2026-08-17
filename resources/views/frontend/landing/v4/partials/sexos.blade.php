@@ -16,7 +16,8 @@
 
                 @foreach($sexos as $k=>$v)
 
-                    <?php
+                    @php
+                        $g = 0;
                         if(isset($v)){
                             $ts = $v['sex'];
                             $gd = $stud->Horses()->where(['sex'=>$ts])->get() ;
@@ -27,24 +28,27 @@
                         }
                         $k = $k +1;
 
-
-                        if($g ==1){
+                        $ws = null;
+                        if($g == 1){
                             $rnd = $v['total'];
                             $ws = $stud->Horses()->where(['sex'=>$ts])->first();
-                        }elseif($g!=0){
+                        }elseif($g != 0){
                             $gs = $gd;
                             $gs = $stud->Horses()->where(['sex'=>$ts])->get();
                             $ws = $gs[rand(0,count($gs)-1)];
                         }
 
-                        $p = $ws->getPhotoFirstModel();
-                        if(!empty($p)){
-                            $img = $p->getUrl();
-                            //$img = $p->Base64(290);
-                        }else{
+                        if(!empty($ws)) {
+                            $p = $ws->getPhotoFirstModel();
+                            if(!empty($p)){
+                                $img = $p->getUrl();
+                            }else{
+                                $img ='';
+                            }
+                        } else {
                             $img ='';
                         }
-                    ?>
+                    @endphp
                     <div class="col-xs-12 col-sm-6">
                         <div class="item item-deal mh-300">
                             <div class="img">

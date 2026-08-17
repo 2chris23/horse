@@ -64,13 +64,15 @@ $sexos = Publico::Arraysexs();
                     <ul class="menu">
                         @include('frontend.landing.studs.partials.languaje')
                         
-                        @php($s=(Funciones::BuscarEnString($actual,$user->getMySlug())==true
-                        and Funciones::BuscarEnString($actual,'Instalaciones')!=true)
-                        and Funciones::BuscarEnString($actual,'Horse')!=true
-                        and Funciones::BuscarEnString($actual,'Ventas')!=true
-                        and Funciones::BuscarEnString($actual,'Galeria')!=true
-                        and Funciones::BuscarEnString($actual,'Contacto')!=true
-                        ?'active':null)
+                        @php
+                            $s = (Funciones::BuscarEnString($actual,$user->getMySlug())==true
+                                and Funciones::BuscarEnString($actual,'Instalaciones')!=true
+                                and Funciones::BuscarEnString($actual,'Horse')!=true
+                                and Funciones::BuscarEnString($actual,'Ventas')!=true
+                                and Funciones::BuscarEnString($actual,'Galeria')!=true
+                                and Funciones::BuscarEnString($actual,'Contacto')!=true
+                            ) ? 'active' : null;
+                        @endphp
                         <li class="{!! $s !!}">
                             <a href="{!! route('MyPage',['slug'=>$user->getMySlug()]) !!}">{!! trans('stud.home') !!}</a>
                         </li>

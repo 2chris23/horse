@@ -612,6 +612,52 @@ class Stud extends Model
     {
         return $this->horses()->pluck('id')->toArray();
     }
+    public function getPhoneModel()
+    {
+        $p = Directory::where(['type' => 3, 'tableid' => $this->id])->where('phone', '!=', 0)->QuitarBug()->whereNotNull('phone')->get();
+        $temp = null;
+        foreach ($p as $k => $v) {
+            if (!empty($temp)) {
+                $ext_t = $temp->ext;
+                $ext_c = $temp->country_code;
+
+                $p_t = $v->ext;
+                $p_c = $v->country_code;
+
+                if ($v->phone == $temp->phone) {
+                    if (!empty($ext_t) and empty($p_t)) $v->setExt($ext_t)->push();
+                    if (empty($ext_t) and !empty($p_t)) $temp->setExt($p_t)->push();
+
+                    if (!empty($ext_c) and empty($p_t)) $v->setCountryCode($ext_c)->push();
+                    if (empty($ext_c) and !empty($p_t)) $temp->setCountryCode($p_c)->push();
+                }
+            }
+            $temp = $v;
+        }
+        $p = Directory::where(['type' => 3, 'tableid' => $this->id])->QuitarBug()->get()->unique('phone');
+        return $p;
+    }
+
+    public function getNewPhone()
+    {
+        $p = new Directory(['type' => 3, 'tableid' => $this->id]);
+        return $p;
+    }
+
+    /**
+     * @param string $number
+     */
+    public function setPhone($number, $id = null)
+    {
+        if (empty($id)) {
+            $phone = new Directory(['tableid' => $this->id, 'type' => 3, 'phone' => null]);
+        } else {
+            $phone = Directory::find($id);
+        }
+        $phone->setPhone($number)->push();
+        return $this;
+    }
+
     public function getPhoneFormat()
     {
         $p = Directory::where(['type' => 3, 'tableid' => $this->id])->get();

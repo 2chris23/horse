@@ -201,7 +201,7 @@ $colombia = !empty($colombia)?$colombia:false;
 
 
                                 <li>
-                                    <a href="{{ url('/panel/caballo') }}" rel="nofollow">
+                                    <a href="{{ url('/panel/Caballos') }}" rel="nofollow">
                                         <i class="fa fa-sign-in"></i> {!! trans('portal.panel') !!}
                                     </a>
                                 </li>

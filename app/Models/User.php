@@ -243,5 +243,20 @@ class User extends Authenticatable
     {
         return \App\Models\Notification::NotificacionesUsuario($this->id)->orderby('id', 'desc')->get();
     }
+    public function getMySlug()
+    {
+        $d = $this->Yeguada();
+
+        $s = null;
+        if (!empty($d)) {
+            $s = $d->slug;
+            if (empty($s)) {
+                $d->push();
+                $s = $d->slug;
+            }
+        }
+
+        return $s;
+    }
 }
 

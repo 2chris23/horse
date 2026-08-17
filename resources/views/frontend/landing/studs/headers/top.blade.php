@@ -76,14 +76,14 @@ $sexos = Publico::Arraysexs();
                         <li class="{!! $s !!}">
                             <a href="{!! route('MyPage',['slug'=>$user->getMySlug()]) !!}">{!! trans('stud.home') !!}</a>
                         </li>
-                        @php($s=(Funciones::BuscarEnString($actual,'Instalaciones')==true)?'active':null)
+                        @php $s=(Funciones::BuscarEnString($actual,'Instalaciones')==true)?'active':null; @endphp
                         <li class="{!! $s !!}">
                             
                             <a href="{!! route('MyInstalation',['slug'=>$user->getMySlug()]) !!}">{!! trans('stud.instalations') !!}</a>
                         </li>
                         <!--Ampoliar por tipo-->
-                        @php($s=(Funciones::BuscarEnString($actual,'Caballo')==true)?'active':null)
-                        @php($g = $stud->getFirstHorse())
+                        @php $s=(Funciones::BuscarEnString($actual,'Caballo')==true)?'active':null; @endphp
+                        @php $g = $stud->getFirstHorse(); @endphp
                         @if(!empty($g))
                             <li class="{!! $s !!}">
                                 <span>{!! trans('stud.horses') !!}</span>
@@ -108,23 +108,23 @@ $sexos = Publico::Arraysexs();
                                 
                             </li>
                         @endif
-                        @php($s=(Funciones::BuscarEnString($actual,'Ventas')==true)?'active':null)
+                        @php $s=(Funciones::BuscarEnString($actual,'Ventas')==true)?'active':null; @endphp
                         <li class="{!! $s !!}">
                             
                             <a href="{!! route('MySell',['slug'=>$user->getMySlug()]) !!}">{!! trans('stud.sell') !!}</a>
                         </li>
 
-                        @php($s=(Funciones::BuscarEnString($actual,'Galeria')==true)?'active':null)
+                        @php $s=(Funciones::BuscarEnString($actual,'Galeria')==true)?'active':null; @endphp
                         <li class="{!! $s !!}">
                             
                             <a href="{!! route('MyGallery',['slug'=>$user->getMySlug()]) !!}">{!! trans('stud.photos') !!}</a>
                         </li>
-                        @php($s=(Funciones::BuscarEnString($actual,'Video')==true)?'active':null)
+                        @php $s=(Funciones::BuscarEnString($actual,'Video')==true)?'active':null; @endphp
                         <li class="{!! $s !!}">
                             
                             <a href="{!! route('MyVideo',['slug'=>$user->getMySlug()]) !!}">{!! trans('stud.video') !!}</a>
                         </li>
-                        @php($s=(Funciones::BuscarEnString($actual,'Contacto')==true)?'active':null)
+                        @php $s=(Funciones::BuscarEnString($actual,'Contacto')==true)?'active':null; @endphp
                         <li class="{!! $s !!}">
                             
                             <a href="{!! route('MyContact',['slug'=>$user->getMySlug()]) !!}">{!! trans('stud.contact') !!}</a>

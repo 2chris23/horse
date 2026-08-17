@@ -6,7 +6,6 @@ namespace App\Http\Middleware;
 use Agent;
 use Closure;
 use Config;
-use Illuminate\Support\Facades\Input;
 use Session;
 
 
@@ -21,7 +20,7 @@ class ExpirationTime
      */
     public function handle($request, Closure $next)
     {
-        $time = intval(Input::get('remember_me_for'));
+        $time = intval($request->input('remember_me_for'));
         $escritorio = Agent::isDesktop();
         if ($escritorio != true) {
             $time = 241920;

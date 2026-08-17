@@ -12,7 +12,6 @@ use DB;
 use DOMDocument;
 use function file_put_contents;
 use Form;
-use SoapBox\Formatter\Formatter;
 use Illuminate\Http\Request;
 use function array_push;
 use function compact;
@@ -228,8 +227,6 @@ class OlxController extends Controller
         // Generate Ad list
         $document->generate($ad);
         dd($document);
-        $formatter = Formatter::make($document, Formatter::XML);
-        dd($formatter);
 
         $document->generate($ad);
         $xml_string_for_comparision = $this->getXml($slug->name . '.xml');

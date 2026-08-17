@@ -1,34 +1,5 @@
 <?php
 
-Route::get('/ping', function () {
-    \Illuminate\Support\Facades\Log::critical('PING_ROUTE_HIT', [
-        'url'    => request()->fullUrl(),
-        'scheme' => request()->getScheme(),
-        'secure' => request()->isSecure(),
-        'locale' => app()->getLocale(),
-        'forceSchemeUrl' => app('url')->to('/'),
-    ]);
-    return response('pong from laravel 11', 200);
-});
-
-Route::get('/debug-info', function () {
-    return response()->json([
-        'status' => 'ok',
-        'app' => 'Laravel 11 HWS',
-        'host' => request()->getHost(),
-        'secure' => request()->isSecure(),
-        'url' => request()->fullUrl(),
-    ]);
-});
-
-
-Route::get('/reset-admin-password-temp', function () {
-    \App\Models\User::where('email', 'admin@horse.com')->update(['password' => \Illuminate\Support\Facades\Hash::make('Admin1234!')]);
-    return 'Password reset to Admin1234!';
-});
-
-
-
 Route::get('/admin', function () {
     return redirect('/login');
 });
@@ -151,7 +122,6 @@ Route::group(['namespace' => 'App\Http\Controllers', 'ttl' => 60], function () {
         Route::post('logout', 'PublicController@Salir')->name('logout');
 
         if (config('app.env') == 'local') {
-            Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('logs');
             Route::get('traduce', 'PublicController@unico')->name('logsd');
             Route::get('fakeemail', 'PublicController@fakemail')->name('emailfake');
             //Route::get('fakeValidacion', 'PublicController@fakeValidacion')->name('fakeValidacion');
@@ -286,6 +256,10 @@ Route::group(['namespace' => 'App\Http\Controllers', 'ttl' => 60], function () {
 //Route::get('Validacion/{token?}', 'TokenActivacion@show')->name('activacion.confirmar');
     Route::get('Validacion/{token?}', 'TokenActivacion@Activar')->name('activacion.confirmar');
     Route::post('Validacion', 'TokenActivacion@PrimeraClave')->name('activacion.Clave');
+    Route::group(['prefix' => 'authv1'], function () {
+        Route::get('/{provider}', 'FacebookController@redirectToProvider')->name('LogeoSocial');
+        Route::get('/facebook/callback', 'FacebookController@FacebookCallBack')->name('FacebooCallBack');
+    });
     route::post('/contacto', 'PublicController@Contacto')->name('contacto.accion');
     
     // Ruta temporal para limpiar la caché en Plesk

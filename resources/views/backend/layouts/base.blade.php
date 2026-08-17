@@ -7,7 +7,7 @@
 $mac = Agent::isSafari();
 $axios = true;
 $user = (empty($user)) ? \Auth::user() : $user;
-use App\User;
+use App\Models\User;
 $error_envio_contrasena = \Session::get('error_correo');/*Error para no envio de contraseña y validacion al correo*/
 $lang = \Session::get('lang');
 if (empty($lang)) {

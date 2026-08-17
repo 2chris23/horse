@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Model\Country;
+use App\Models\Country;
 use Closure;
 use Illuminate\Support\Facades\App;
 use function strlen;

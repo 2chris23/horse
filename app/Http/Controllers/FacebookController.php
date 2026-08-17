@@ -1533,13 +1533,13 @@ class FacebookController extends Controller
     public function Programas1dia()
     {
         
-        $errores = App\Model\ErrorControl::where('created_at', '<', Carbon::now()->subMonth(3)->format('Y-m-d'))->get();
+        $errores = App\Models\ErrorControl::where('created_at', '<', Carbon::now()->subMonth(3)->format('Y-m-d'))->get();
         foreach($errores as $k=>$v){
             $v->delete();
         }
 
 
-        $errores = App\Model\Inicio::where('created_at', '<', Carbon::now()->subMonth(3)->format('Y-m-d'))->where('users_id',0)->get();
+        $errores = App\Models\Inicio::where('created_at', '<', Carbon::now()->subMonth(3)->format('Y-m-d'))->where('users_id', 0)->get();
         foreach($errores as $k=>$v){
             $v->delete();
         }

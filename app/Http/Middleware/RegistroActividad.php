@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Agent;
 use App\Http\Controllers\Functions;
-use App\Model\Inicio;
+use App\Models\Inicio;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 

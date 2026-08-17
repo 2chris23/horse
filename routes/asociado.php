@@ -67,7 +67,7 @@ Route::group([
     });
     Route::group(['prefix' => 'Usuario'], function () {
         //Route::get('/', 'AdministradorController@YeguadasIndex')->name('yeguadas.index');
-        //Route::get('/Editar/{id?}', 'AdministradorController@EditarUsuario')->name('usuario.edit');
+        Route::get('/Editar/{id?}', 'AdministradorController@EditarUsuario')->name('usuario.edit');
         Route::post('/save', 'AdministradorController@NuevoUsuarioSave')->name('usuario.save');
         Route::get('/Nuevo', 'AdministradorController@NuevoUsuario')->name('usuario.create');
         Route::post('/Nuevo', 'AdministradorController@NuevoUsuarioUpdate')->name('usuario.update');
@@ -148,22 +148,7 @@ Route::group([
     route::get("Imagenes", "AdministradorController@FixImagenes")->name('ProcesarImagen');
     route::get("Opciones", "AdministradorController@OpcionesAdmin")->name('OpcionesAdmin');
     route::get("Iconos", "AdministradorController@Iconos")->name('iconos');
-    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('logs');
     Route::get('traduce/{lng?}/{gr?}', 'PublicController@TransG1')->name('traducir1');
-    //Route::get('unico/{lng?}/{file?}', 'PublicController@unico')->name('traducir1');
-    Route::group(['prefix' => 'Traduccion'], function () {
-        /*
-        Route::post('/add/{group}', '\Barryvdh\TranslationManager\Controller@postAdd')->name('traducir2');
-        Route::post('/delete/{group}/{key}', '\Barryvdh\TranslationManager\Controller@postDelete')->name('traducir3');
-        Route::post('/edit/{group}', '\Barryvdh\TranslationManager\Controller@postEdit')->name('traducir4');
-        Route::post('/find', '\Barryvdh\TranslationManager\Controller@postFind')->name('traducir5');
-        Route::post('/import', '\Barryvdh\TranslationManager\Controller@postImport')->name('traducir6');
-        Route::post('/publish/{group}', '\Barryvdh\TranslationManager\Controller@postPublish')->name('traducir7');
-        Route::get('/view/{group?}', '\Barryvdh\TranslationManager\Controller@getView')->name('traducir8');
-        Route::post('/{group?}', '\Barryvdh\TranslationManager\Controller@getIndex')->name('traducir9');
-        */
-        Route::get('/', '\Barryvdh\TranslationManager\Controller@getIndex')->name('traducir1');
-    });
     Route::get('admin/FakeMail', 'MailController@FakeMail')->name('FakeMail');
     Route::get('/FakeNot/{notification?}', 'MailController@ContactoMail')->name('fakenotifi');
     Route::get('/Monedas/llenar', 'MonedasController@LlenarBase')->name('Monedas.inicial');

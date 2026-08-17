@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Model\Moneda;
+use App\Models\Moneda;
 use Closure;
 
 class Monedas

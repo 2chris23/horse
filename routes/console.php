@@ -15,6 +15,8 @@ Artisan::command('hws:test-all', function () {
     \Illuminate\Support\Facades\Artisan::call('view:clear');
     \Illuminate\Support\Facades\Artisan::call('cache:clear');
 
+    \App\Http\Middleware\RegisterRouteAliases::register();
+
     $this->info("=================================================");
     $this->info("   HORSES WORLD SALE - SUITE DE TEST INTEGRAL   ");
     $this->info("=================================================\n");

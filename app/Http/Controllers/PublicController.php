@@ -441,7 +441,7 @@ class PublicController extends Controller
         echo $d;
         /*
         echo "<br>";
-        \Artisan::call(' scout:import "App\Model\Country"');
+        \Artisan::call(' scout:import "App\Models\Country"');
         $d =  nl2br(\Artisan::output());
         echo $d;
         */

@@ -11,18 +11,17 @@ use App\Models\SlugCaballo;
 use App\Models\State;
 use App\Models\User;
 use Carbon\Carbon;
-use ClassPreloader\Config;
 use DOMDocument;
 use File;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Collection as Collection;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 use MaxMind\Db\Reader\InvalidDatabaseException as InvalidDatabaseException;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
-use SoapBox\Formatter\Formatter;
 use Stevebauman\Purify\Purify as Purify;
 use Storage;
 use function array_push;
@@ -2113,7 +2112,10 @@ Favicon successfully generated. <a href="' . $directory . $strip_ext . '.ico" ta
 
         $td = self::ArrayCdata($Array, $excluirCdata, $xml);
         $_id = $Array['ad']['id'];
-        $tex = Formatter::make($td, Formatter::XML)->toXml();
+        $root = $xml->createElement('xml');
+        $xml->appendChild($root);
+        self::arrayToDomNodes($xml, $td, $root);
+        $tex = $xml->saveXML();
         $tex = str_replace('&lt;', '<', $tex);
         $tex = str_replace('&gt;', '>', $tex);
         $folder = public_path() . DS;
@@ -2160,6 +2162,52 @@ Favicon successfully generated. <a href="' . $directory . $strip_ext . '.ico" ta
         }
         return $xml;
 
+    }
+
+    /**
+     * Construye nodos DOM desde un array (equivalente a SoapBox\Formatter
+     * sin depender de esa libreria). Los valores que empiezan por
+     * "<![CDATA[" se insertan como secciones CDATA reales.
+     */
+    private static function arrayToDomNodes(DOMDocument $xml, array $array, \DOMElement $parent)
+    {
+        foreach ($array as $k => $v) {
+            $parts = preg_split('/\s+/', (string) $k, 2);
+            $nodeName = $parts[0];
+            $attrs = isset($parts[1]) ? $parts[1] : null;
+
+            if (is_array($v)) {
+                $el = $xml->createElement($nodeName);
+                self::applyNodeAttributes($el, $attrs);
+                $parent->appendChild($el);
+                self::arrayToDomNodes($xml, $v, $el);
+            } elseif (is_string($v) && strpos($v, '<![CDATA[') === 0) {
+                $el = $xml->createElement($nodeName);
+                self::applyNodeAttributes($el, $attrs);
+                $el->appendChild($xml->createCDATASection(substr($v, 9, -3)));
+                $parent->appendChild($el);
+            } else {
+                $el = $xml->createElement($nodeName);
+                self::applyNodeAttributes($el, $attrs);
+                $el->appendChild($xml->createTextNode((string) $v));
+                $parent->appendChild($el);
+            }
+        }
+    }
+
+    /**
+     * Aplica atributos en formato "clave=\"valor\"" a un elemento DOM.
+     */
+    private static function applyNodeAttributes(\DOMElement $el, $attrs = null)
+    {
+        if (empty($attrs)) {
+            return;
+        }
+        if (preg_match_all('/([a-zA-Z0-9_\-:]+)="([^"]*)"/', $attrs, $m)) {
+            foreach ($m[1] as $i => $name) {
+                $el->setAttribute($name, $m[2][$i]);
+            }
+        }
     }
 
     public function ArrayCdata($Array = [], $excluir = [], $xml = null)

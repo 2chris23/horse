@@ -327,6 +327,43 @@ class Stud extends Model
         return $this->titulo;
     }
 
+    public function getTituloWeb()
+    {
+        $d = $this->titulo;
+        if (empty($d)) {
+            $d = $this->name;
+        }
+        return $d;
+    }
+
+    public function getPhotosModel()
+    {
+        return \App\Models\Photo::Gallery($this->id)->get();
+    }
+
+    public function getPhotosModelInv()
+    {
+        return \App\Models\Photo::Galleryinv($this->id)->get();
+    }
+
+    public function getSliders()
+    {
+        $d = \App\Models\Photo::Slider($this->id)->get();
+        if (count($d) == 0) {
+            $d = collect([new \App\Models\Photo()]); // Wrap in collection so $sliders[0] works in view
+        }
+        return $d;
+    }
+
+    public function hasSlider()
+    {
+        $d = \App\Models\Photo::Slider($this->id)->get();
+        if (count($d) == 0) {
+            return false;
+        }
+        return true;
+    }
+
     public function setTitulo($titulo)
     {
         $this->titulo = $titulo;

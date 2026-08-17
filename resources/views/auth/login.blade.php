@@ -1,142 +1,139 @@
 <?php $logo = url('logo.png'); ?>
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>{{trans('login.pagtittle')}} | Horse Sell World</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="shortcut icon" href="{!!url(\Config::get('logos.favicon48')) !!}"/>
     <!--Global styles -->
-    <link type="text/css" rel="stylesheet" href="{{asset('assets/css/components.min.css')}}"/>
-    <link type="text/css" rel="stylesheet" href="{{asset('assets/css/custom.min.css')}}"/>
-    <!--End of Global styles -->
-    <!--Plugin styles-->
-    <link type="text/css" rel="stylesheet"
-          href="{{asset('assets/vendors/bootstrapValidator/dist/css/bootstrapValidator.min.css')}}"/>
-    <link type="text/css" rel="stylesheet" href="{{asset('assets/vendors/wow/css/animate.css')}}"/>
-    <!--End of Plugin styles-->
-    <link type="text/css" rel="stylesheet" href="{{asset('assets/css/pages/login1.css')}}"/>
+    <link type="text/css" rel="stylesheet" href="{{asset('landing/css/bootstrap.min.css')}}"/>
+    <link type="text/css" rel="stylesheet" href="{{asset('landing/css/font-awesome.min.css')}}"/>
+    <style>
+        body {
+            background-color: #2180ac;
+            background-image: url('{{asset("img/login.jpg")}}');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        .login-box {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            padding: 30px;
+            width: 100%;
+            max-width: 500px;
+        }
+        .login-logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .login-logo img {
+            max-height: 50px;
+            margin-bottom: 10px;
+        }
+        .login-logo h4 {
+            color: #333;
+            font-weight: bold;
+            margin-top: 0;
+        }
+    </style>
 </head>
 <body>
 
-<div class="container wow fadeInDown" data-wow-delay="0.5s" data-wow-duration="2s">
+<div class="container">
     <div class="row">
-        <div class="col-lg-8 push-lg-2 col-md-10 push-md-1 col-sm-10 push-sm-1 login_top_bottom">
-            <div class="row">
-                <div class="col-lg-8 push-lg-2 col-md-10 push-md-1 col-sm-12">
-                    <div class="login_logo login_border_radius1">
-                        <h3 class="text-xs-center">
-                            <img src="{{$logo}}" alt="josh logo" class="admire_logo">
-                            <span class="text-white">
-                                {{trans('login.tittle') }} &nbsp;<br/>
-                                {{trans('login.subtittle') }}
-                            </span>
-                        </h3>
-                    </div>
-                    <div class="bg-white login_content login_border_radius">
-                        <form id="login_validator" method="POST" action="{{url('login')}}" class="login_validator">
-                            {{ csrf_field() }}
-                            <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="email" class="form-control-label"> {{trans('login.email')}}</label>
-                                <div class="input-group">
-                                    <span class="input-group-addon input_email"><i
-                                                class="fa fa-envelope text-primary"></i></span>
-                                    <input type="email" class="form-control  form-control-md" id="email" name="email"
-                                           placeholder="{{trans('login.placeholder.email')  }}">
-                                </div>
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                            <!--</h3>-->
-                            <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label for="password" class="form-control-label">{{trans('login.password')}}
-                                </label>
-                                <div class="input-group">
-                                    <span class="input-group-addon addon_password"><i
-                                                class="fa fa-lock text-primary"></i></span>
-                                    <input type="password" class="form-control form-control-md" id="password"
-                                           name="password" placeholder="{{trans('login.placeholder.password')  }}">
-                                </div>
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <button type="submit" class="btn btn-primary btn-block login_button">
-                                            {{trans('login.login')}}
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <label class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input form-control">
-                                        <span class="custom-control-indicator"></span>
-                                        <a class="custom-control-description">
-
-                                            {{trans('login.keeplog')}}
-                                        </a>
-                                    </label>
-                                </div>
-                                <div class="col-xs-6 text-xs-right forgot_pwd">
-                                    <a href="{{URL::to('forgot_password1')}}"
-                                       class="custom-control-description forgottxt_clr">
-
-                                        {{trans('login.forgot')}}
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-lg-6 col-sm-6 m-t-10">
-                                    <div class="icon-white btn-facebook icon_padding loginpage_border">
-                                        <i class="fa fa-facebook" aria-hidden="true"></i>
-                                        <span class="text-white icon_padding text-center question_mark">
-                                        {{trans('login.facebook')}}</span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-sm-6 pull-lg-right m-t-10">
-                                    <div class="icon-white btn-google icon_padding loginpage_border">
-                                        <i class="fa fa-google-plus" aria-hidden="true"></i>
-                                        <span class="text-white icon_padding question_mark">
-                                            {{trans('login.google')}}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-control-label">
-                                {{trans('login.noacc')}} </label>
-                            <a href='{{ url('register')}}' class="text-primary"><b>{{trans('login.signup')}}</b></a>
-                        </div>
-                    </div>
+        <div class="col-md-12">
+            <div class="login-box" style="margin: 0 auto;">
+                <div class="login-logo">
+                    <img src="{{$logo}}" alt="logo"><br/>
+                    <h4>{{trans('login.login')}}</h4>
                 </div>
+                
+                <form class="form-horizontal" role="form" method="POST" action="{{ url('login') }}">
+                    {{ csrf_field() }}
+
+                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <div class="col-md-12">
+                            <label for="email" class="control-label" style="color: #555;">{{trans('login.email')}}</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope text-primary"></i></span>
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="{{trans('login.placeholder.email')}}" required autofocus>
+                            </div>
+                            @if ($errors->has('email'))
+                                <span class="help-block" style="color: red;">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}" style="margin-top: 15px;">
+                        <div class="col-md-12">
+                            <label for="password" class="control-label" style="color: #555;">{{trans('login.password')}}</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock text-primary"></i></span>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="{{trans('login.placeholder.password')}}" required>
+                            </div>
+                            @if ($errors->has('password'))
+                                <span class="help-block" style="color: red;">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top: 20px;">
+                        <div class="col-md-12 text-center">
+                            <button type="submit" class="btn btn-primary btn-block" style="background-color: #2180ac; border: none; padding: 10px 0; font-size: 1.1em;">
+                                {{trans('login.login')}}
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group text-center" style="margin-top: 10px;">
+                        <div class="col-md-12">
+                            <div class="checkbox">
+                                <label style="color: #555;">
+                                    <input type="checkbox" name="remember"> {{trans('login.remember')}}
+                                </label>
+                                <a style="margin-left:15px; color: #2180ac;" href="{{ url('/password/reset') }}">{{trans('login.forgot')}}</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr style="border-top: 1px solid #ddd; margin: 20px 0;">
+
+                    <div class="form-group text-center">
+                        <div class="col-md-6 col-xs-6">
+                            <a href="#" class="btn btn-block" style="background-color: #3b5998; color: white;">
+                                <i class="fa fa-facebook"></i> <span class="hidden-xs">{{trans('login.facebook')}}</span>
+                            </a>
+                        </div>
+                        <div class="col-md-6 col-xs-6">
+                            <a href="#" class="btn btn-block" style="background-color: #d34836; color: white;">
+                                <i class="fa fa-google-plus"></i> <span class="hidden-xs">{{trans('login.google')}}</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group text-center" style="margin-top: 20px; margin-bottom: 0;">
+                        <div class="col-md-12">
+                            <span style="color: #555;">{{trans('login.acount')}}</span>
+                            <a href="{{url('register')}}" style="color: #2180ac; font-weight: bold;">{{trans('login.sign_up')}}</a>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
-<!-- global js -->
-<script type="text/javascript" src="{{asset('assets/js/jquery.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('assets/js/tether.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-<!-- end of global js-->
-<!--Plugin js-->
-<script type="text/javascript"
-        src="{{asset('assets/vendors/bootstrapValidator/dist/js/bootstrapValidator.min.js')}}"></script>
 
-<script type="text/javascript" src="{{asset('assets/vendors/wow/js/wow.min.js')}}"></script>{{--Reempla--}}
-<!--End of plugin js-->
-<script type="text/javascript" src="{{asset('assets/js/pages/login1.js')}}"></script>
 </body>
-
 </html>

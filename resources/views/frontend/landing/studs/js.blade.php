@@ -1,6 +1,10 @@
-@php($gallery2 = false)
+@php
+    $gallery2 = false;
+@endphp
 @if(!empty($stud))
-    @php($colorcoorp = $stud->getColor())
+    @php
+        $colorcoorp = $stud->getColor();
+    @endphp
     var token = "{!! csrf_token() !!}";
 
             function getPrice(v, d) {
@@ -486,7 +490,7 @@
             var principio = $('.principio');
 
             if ($('#maps').val() !== undefined) {
-                        @php
+                        <?php
                             $lat=$stud->lat;
                             $lng=$stud->lng;
                             $lat = (!empty($lat))?$lat:-33.8688;
@@ -495,8 +499,7 @@
                             $lng = (!empty($lng ))?$lng :151.2195;
                             // $zoom = (!empty($zoom))?$zoom:16;
                             $zoom = 11;
-
-                        @endphp
+                        ?>
                 var markers = [];
                 var lat = parseFloat({!! $lat !!});
                 var lng = parseFloat({!! $lng !!});

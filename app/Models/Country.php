@@ -6,10 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Http\Controllers\Functions;
 use Illuminate\Support\Facades\Session;
+use Laravel\Scout\Searchable;
 
 class Country extends Model
 {
     use SoftDeletes;
+    use Searchable;
 
     protected $table = 'country';
     

@@ -7,11 +7,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Cviebrock\EloquentSluggable\Sluggable;
 use App\Http\Controllers\Functions;
 use App\Models\Directory;
+use Laravel\Scout\Searchable;
 
 class Stud extends Model
 {
     use SoftDeletes;
     use Sluggable;
+    use Searchable;
 
     protected $table = 'studs';
     public $incrementing = true;

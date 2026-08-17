@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Functions;
+use Laravel\Scout\Searchable;
 
 class BuscarCaballo extends Model
 {
+    use Searchable;
 
     protected $table = 'buscar_caballo';
     

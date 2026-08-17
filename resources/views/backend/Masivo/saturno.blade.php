@@ -39,7 +39,7 @@ foreach ($stud->getPhoneModel() as $k => $v) {
     }
 }
 $correoyeguada = $stud->getEmail();
-$mipagina = route('MyPageBase', ['slug' => $stud->slug]);
+$mipagina = route('MyPage', ['slug' => $stud->slug]);
 if (strlen($decsripcionyeguada > 150)) {
     $decsripcionyeguada .= '...';
 }
@@ -64,7 +64,7 @@ $colorbotones = " #2da4a8";
 $colorbotones = " orange";
 $colorbotones = $stud->getColor();
 $coloryeguada = $colorbotones;
-$mipagina = route('MyPageBase', ['slug' => $stud->slug]);
+$mipagina = route('MyPage', ['slug' => $stud->slug]);
 $titulo = $stud->getName();
 /*
 $dominio = $stud->getDomain();
@@ -132,7 +132,7 @@ if (!empty($work)) {
         if (isset($basecaballo)) {
             $linkcaballo = $basecaballo . $work->slug;
         } else {
-            $linkcaballo = route('MyHorseDetailedBase', ['stud' => $stud->slug, 'horse' => $work->slug]);
+            $linkcaballo = route('MyHorseDetailed', ['stud' => $stud->slug, 'horse' => $work->slug]);
         }
     }
 

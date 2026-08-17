@@ -325,7 +325,7 @@ class HorseController extends Controller
                     $fa = $fa[App::getLocale()];
                 }
 
-                $link = route('MyHorseDetailedBase', ['stud' => \Auth::user()->Yeguada()->slug, 'horse' => $fa]);
+                $link = route('MyHorseDetailed', ['stud' => \Auth::user()->Yeguada()->slug, 'horse' => $fa]);
                 $text = Functions::CompartirFacebook($horse->name, $link);
                 $data['facebook'] = $text;
                 \Session::flash('facebook', $link);

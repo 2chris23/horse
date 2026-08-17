@@ -1,7 +1,7 @@
 @php($trabajo =isset($trabajo)?$trabajo:false)
     @php
         if($trabajo == true){
-        $url =route('MyPageBase',['stud'=>$stud->slug]);
+        $url =route('MyPage',['stud'=>$stud->slug]);
         }else{
         $url = null;
         }

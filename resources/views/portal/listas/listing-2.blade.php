@@ -1,4 +1,4 @@
-﻿<?php $horses = Horse::where('id','!=',0)->get(); ?>
+<?php $horses = Horse::where('id','!=',0)->get(); ?>
 @extends('portal.base')
 @section('content')
          <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->

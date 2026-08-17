@@ -1,4 +1,4 @@
-﻿@php
+@php
     $f[0]=url('landing/images/slider/1/1.jpg');
         $f[1]=url('landing/images/slider/1/2.jpg');
         $f[2]=url('landing/images/slider/1/3.JPG');

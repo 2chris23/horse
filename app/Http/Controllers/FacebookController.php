@@ -1294,7 +1294,7 @@ class FacebookController extends Controller
                 $abc = $caballo->GetUrlLenguaje();
                 if (!empty($abc)) {
                     $urlcaballo = $abc[$llaa];
-                    $urlcaballo = route('MyHorseDetailedBase', ['stud' => $stud->slug, 'horse' => $urlcaballo]);
+                    $urlcaballo = route('MyHorseDetailed', ['stud' => $stud->slug, 'horse' => $urlcaballo]);
                 }
 
 
@@ -1302,7 +1302,7 @@ class FacebookController extends Controller
                 $abc = $caballo->ObtenerSlug();
                 if (!empty($abc)) {
                     $urlcaballo = $abc[$llaa];
-                    $urlcaballo = route('MyHorseDetailedBase', ['stud' => $stud->slug, 'horse' => $urlcaballo]);
+                    $urlcaballo = route('MyHorseDetailed', ['stud' => $stud->slug, 'horse' => $urlcaballo]);
                 }
                 $urlcaballo = route('portalcaballobase', ['slug' => $urlcaballo]);
             }
@@ -1350,7 +1350,7 @@ class FacebookController extends Controller
                     $caballo = Horses::find($caballos[$i]);
                     $stud = $caballo->getYeguada();
                     $caballo->RecargarFb();
-                    $urlcaballo = route('MyHorseDetailedBase', ['stud' => $stud->slug, 'horse' => $caballo->GetUrlLenguaje()]);
+                    $urlcaballo = route('MyHorseDetailed', ['stud' => $stud->slug, 'horse' => $caballo->GetUrlLenguaje()]);
                     $fb['link'] = $urlcaballo;
                     $fb['published'] = $publicado;
                     $fb['scheduled_publish_time'] = $fechaini;
@@ -1392,7 +1392,7 @@ class FacebookController extends Controller
                     $caballo = Horses::find($caballos[$i]);
                     $stud = $caballo->getYeguada();
                     $caballo->RecargarFb();
-                    $urlcaballo = route('MyHorseDetailedBase', ['stud' => $stud->slug, 'horse' => $caballo->GetUrlLenguaje()]);
+                    $urlcaballo = route('MyHorseDetailed', ['stud' => $stud->slug, 'horse' => $caballo->GetUrlLenguaje()]);
                     $fb['link'] = $urlcaballo;
                     $fb['published'] = $publicado;
                     $fb['scheduled_publish_time'] = $fechaini;
@@ -2045,7 +2045,7 @@ class FacebookController extends Controller
                         $stud = $caballo->getYeguada();
                         $caballo->RecargarFb();
                         if ($adm != true) {
-                            $urlcaballo = route('MyHorseDetailedBase', ['stud' => $stud->slug, 'horse' => $caballo->ObtenerSlug()]);
+                            $urlcaballo = route('MyHorseDetailed', ['stud' => $stud->slug, 'horse' => $caballo->ObtenerSlug()]);
 
                         } else {
                             $urlcaballo = route('portalcaballobase', ['slug' => $caballo->ObtenerSlug()]);

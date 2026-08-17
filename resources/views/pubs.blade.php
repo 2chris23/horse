@@ -4,7 +4,7 @@
 @php
     $studId = (\Config::get('app.env') == 'local') ? 1 : 6;
     $yte = \App\Models\Stud::find($studId);
-    $linkbaner = $yte ? route('MyPageBase', ['slug' => $yte->slug]) : url('/');
+    $linkbaner = $yte ? route('MyPage', ['slug' => $yte->slug]) : url('/');
 @endphp
 
 <?php $baner = url('portal_/images/banner-1.png'); ?>

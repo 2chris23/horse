@@ -124,7 +124,7 @@
         @endif
         <li>
             <a href="#!"
-               onclick="ComparteFb('{!! route('MyHorseDetailedBase',['stud'=>\Auth::user()->Yeguada()->slug,'horse'=>$modelo->slug]) !!}','{!! $modelo->getName() !!}')"
+               onclick="ComparteFb('{!! route('MyHorseDetailed',['stud'=>\Auth::user()->Yeguada()->slug,'horse'=>$modelo->slug]) !!}','{!! $modelo->getName() !!}')"
                data-toggle="popover" data-trigger="hover" data-placement="left"
                title="{!! trans('popover.addshare.titulo') !!}"
                data-content="{!! trans('popover.addshare.contenido',['name'=>$modelo->name ]) !!}"
@@ -162,7 +162,7 @@
         <li>{{--
             <a href="#!"
 
-               onclick="Visitas('{!! route('MyHorseDetailedBase',['stud'=>\Auth::user()->Yeguada()->slug,'horse'=>$modelo->slug]) !!}',{!! $modelo->getVisitantes()!!},'{!! $modelo->name !!}')"
+               onclick="Visitas('{!! route('MyHorseDetailed',['stud'=>\Auth::user()->Yeguada()->slug,'horse'=>$modelo->slug]) !!}',{!! $modelo->getVisitantes()!!},'{!! $modelo->name !!}')"
                *--}}
             <a href="{!! route('MyHorseDetailed',['stud'=>\Auth::user()->Yeguada()->slug,'horse'=>$modelo->slug]) !!}" target="_blank"
                data-toggle="popover" data-trigger="hover" data-placement="left"
@@ -181,7 +181,7 @@
         <li>{{--
             <a href="#!"
 
-               onclick="Visitas('{!! route('MyHorseDetailedBase',['stud'=>\Auth::user()->Yeguada()->slug,'horse'=>$modelo->slug]) !!}',{!! $modelo->getVisitantes()!!},'{!! $modelo->name !!}')"
+               onclick="Visitas('{!! route('MyHorseDetailed',['stud'=>\Auth::user()->Yeguada()->slug,'horse'=>$modelo->slug]) !!}',{!! $modelo->getVisitantes()!!},'{!! $modelo->name !!}')"
                *--}}
 
         </li>

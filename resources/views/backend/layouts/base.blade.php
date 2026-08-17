@@ -250,9 +250,9 @@ if (!empty(\Auth::user())) {
 
                                         <!-- boton web -->
                                             <a class="btn glow_button btn-warning"
-                                               {{-- href="#" onclick="newTab('{!! route('MyPageBase', ['slug'=>\Auth::user()->Yeguada()->slug]) !!}')">--}}
-                                               href="{!! route('MyPageBase', ['slug'=>\Auth::user()->Yeguada()->slug]) !!}"
-                                               {{--href="{!! route('MyPageBase', ['slug'=>\Auth::user()->Yeguada()->id]) !!}"--}}
+                                               {{-- href="#" onclick="newTab('{!! route('MyPage', ['slug'=>\Auth::user()->Yeguada()->slug]) !!}')">--}}
+                                               href="{!! route('MyPage', ['slug'=>\Auth::user()->Yeguada()->slug]) !!}"
+                                               {{--href="{!! route('MyPage', ['slug'=>\Auth::user()->Yeguada()->id]) !!}"--}}
                                                target="_blank">
                                                 <i class="fa fa-globe" data-pack="default" data-tags="">
                                                 </i>

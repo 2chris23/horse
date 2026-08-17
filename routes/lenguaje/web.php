@@ -141,8 +141,8 @@ Route::group(['ttl' => 60], function () {
     Route::get('/{slug}/working', 'TrabajoController@index')->name('TrabajoIndex');
     Route::post('/{slug}/working', 'TrabajoController@indexpost')->name('TrabajoIndexPost');
     Route::group(['domain' => \Config::get('aplication.host')], function () {
-        Route::get('/{slug?}', 'StudController@ClientDetail')->name('MyPageBase');
-        Route::get('/{stud?}/detalle/{horse?}', 'StudController@DetailedHorse')->name('MyHorseDetailedBase');
+        Route::get('/{slug?}', 'StudController@ClientDetail')->name('MyPage');
+        Route::get('/{stud?}/detalle/{horse?}', 'StudController@DetailedHorse')->name('MyHorseDetailed');
         Route::get('/Caballo/{slug?}', 'PortalController@caballo')->name('portalcaballobase');
     });
     Route::group(['middleware' => "Compresion"], function () {

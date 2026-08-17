@@ -1347,7 +1347,7 @@ En definitiva, otro ejemplar de la filosofía de Yeguada Juan Vázquez, no sólo
         $Yeguadas = Stud::all();
         foreach ($Yeguadas as $stud) {
             //$link =route('MyHorseDetailed',['stud'=>$stud->slug,'horse'=>$horse_venta->slug]);
-            $link = route('MyPageBase', ['slug' => $stud->slug]);
+            $link = route('MyPage', ['slug' => $stud->slug]);
             $link2 = route('MyPage', ['slug' => $stud->slug]);
             //Con Yeguada, pero ahorita no intereza asi
             $ff = $stud->getPhotosModel();
@@ -1401,7 +1401,7 @@ En definitiva, otro ejemplar de la filosofía de Yeguada Juan Vázquez, no sólo
         }
         foreach ($horse_ventas as $horse_venta) {
             //$link =route('MyHorseDetailed',['stud'=>$stud->slug,'horse'=>$horse_venta->slug]);
-            $link = route('MyHorseDetailedBase', ['horse' => $horse_venta->GetUrlLenguaje(), 'stud' => $horse_venta->getYeguada()->slug]);
+            $link = route('MyHorseDetailed', ['horse' => $horse_venta->GetUrlLenguaje(), 'stud' => $horse_venta->getYeguada()->slug]);
             //Con Yeguada, pero ahorita no intereza asi
             $ff = $horse_venta->getPhotoModel();
             $imagen = [];
@@ -1478,7 +1478,7 @@ En definitiva, otro ejemplar de la filosofía de Yeguada Juan Vázquez, no sólo
         if (!empty($horse)) {
             $stud = Stud::find($horse->studs_id);
             if (!empty($stud)) {
-                $url = route('MyHorseDetailedBase', ['stud' => $stud->slug, 'horse' => $horse->GetUrlLenguaje()]);
+                $url = route('MyHorseDetailed', ['stud' => $stud->slug, 'horse' => $horse->GetUrlLenguaje()]);
                 $s = Functions::facebookDebugger($url);
             }
         }

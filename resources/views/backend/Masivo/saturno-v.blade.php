@@ -33,7 +33,7 @@
 
 
             $correoyeguada=$stud->getEmail();
-            $mipagina = route('MyPageBase',['slug'=>$stud->slug]);
+            $mipagina = route('MyPage',['slug'=>$stud->slug]);
             if(strlen($decsripcionyeguada > 150)){
                 $decsripcionyeguada.='...';
             }
@@ -55,7 +55,7 @@
             $colorbotones = " orange";
             $colorbotones = $stud->getColor();
             $coloryeguada = $colorbotones;
-            $mipagina = route('MyPageBase',['slug'=>$stud->slug]);
+            $mipagina = route('MyPage',['slug'=>$stud->slug]);
             $titulo = $stud->getName() ;
             /*
             $dominio = $stud->getDomain();
@@ -108,7 +108,7 @@
                 if(isset($basecaballo)){
                     $linkcaballo = $basecaballo.$work->slug;
                 }else{
-                    $linkcaballo = route('MyHorseDetailedBase',['stud'=>$stud->slug,'horse'=>$work->slug]);
+                    $linkcaballo = route('MyHorseDetailed',['stud'=>$stud->slug,'horse'=>$work->slug]);
                 }
                 $color = $work->getColorString();
                 $descripcion=$raza;

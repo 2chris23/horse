@@ -97,7 +97,7 @@
     <div class="menu row justify-content-md-center align-items-center">
         <div class="col-md-1 p-0 h-100">
             <div class="seccion pt-4">
-                <a rel="nofollow" href="{!! route('MyPageBase',['stud'=>$stud->slug]) !!}">
+                <a rel="nofollow" href="{!! route('MyPage',['stud'=>$stud->slug]) !!}">
                     <div class=""><i class="fa fa-home fa-2x"></i></div>
                 </a>
             </div>
@@ -132,7 +132,7 @@
         </div>
         <div class="col-md-1 p-0 h-100">
             <div class="seccion pt-4">
-                <a rel="nofollow" href="{!! route('MyPageBase',['stud'=>$stud->slug]) !!}">
+                <a rel="nofollow" href="{!! route('MyPage',['stud'=>$stud->slug]) !!}">
                     <div class=""><i class="fa fa-flag fa-2x"></i></div>
                 </a>
             </div>
@@ -142,10 +142,10 @@
     otro menu..
 
     <nav class="navbar navbar-expand-md bg-madera container-fluid menubar text-uppercase">
-        <a rel="nofollow" href="{!! route('MyPageBase',['stud'=>$stud->slug]) !!}" class="d-block d-md-none">
+        <a rel="nofollow" href="{!! route('MyPage',['stud'=>$stud->slug]) !!}" class="d-block d-md-none">
             <div class=""><i class="fa fa-home fa-2x"></i></div>
         </a>
-        <a rel="nofollow" href="{!! route('MyPageBase',['stud'=>$stud->slug]) !!}" class="d-block d-md-none">
+        <a rel="nofollow" href="{!! route('MyPage',['stud'=>$stud->slug]) !!}" class="d-block d-md-none">
             <div class=""><i class="fa fa-flag fa-2x"></i></div>
         </a>
         <button class="navbar-toggler bg-madera bars" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

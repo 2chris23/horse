@@ -15,7 +15,7 @@
                 <div class="separacion"></div>
 
 
-                <li class="web">Web: <a rel="nofollow" href="{!! route('MyPageBase',['stud'=>$stud->slug]) !!}">www.ranchosierrahelada.es</a>
+                <li class="web">Web: <a rel="nofollow" href="{!! route('MyPage',['stud'=>$stud->slug]) !!}">www.ranchosierrahelada.es</a>
                 </li>
                 <div class="separacion"></div>
             </ul>

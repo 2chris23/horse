@@ -15,7 +15,7 @@ $colorbotones = " background-color: rgb(45, 164, 168)";
 $colorbotones = " #2da4a8";
 $colorbotones = " orange";
 $colorbotones = $stud->getColor();
-$mipagina = route('MyPageBase',['slug'=>$stud->slug]);
+$mipagina = route('MyPage',['slug'=>$stud->slug]);
 $titulo = $stud->getName() ;
 /*
 $dominio = $stud->getDomain();
@@ -360,7 +360,7 @@ echo $converted_currency;
                                             if(isset($basecaballo)){
                                                 $linkcaballo = $basecaballo.$work->slug;
                                             }else{
-                                                $linkcaballo = route('MyHorseDetailedBase',['stud'=>$stud->slug,'horse'=>$work->slug]);
+                                                $linkcaballo = route('MyHorseDetailed',['stud'=>$stud->slug,'horse'=>$work->slug]);
                                             }
                                             $color = $work->getColorString();
                                             $descripcion=$raza;

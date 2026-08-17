@@ -415,8 +415,6 @@ Route::group(['namespace' => 'App\Http\Controllers', 'ttl' => 60], function () {
         /*****************************************/
         Route::get('/{slug}/Vista2', 'StudController@ClientDetail2')->name('MyPage223')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
         //Route::get('/{slug}/Horse/{v?}/{type?}', function($slug,$v,$type){echo "$slug  $v  $type";})->name('MyHorses');/*Revisar este*/
-        Route::get('/{slug}', 'StudController@ClientDetail')->name('MyPageBase')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
-        Route::get('/{stud}/detalle/{horse?}', 'StudController@DetailedHorse')->name('MyHorseDetailedBase')->where('stud', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
         Route::get('/Caballo/{slug?}', 'PortalController@caballo')->name('portalcaballo');
     //});
 

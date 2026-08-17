@@ -378,7 +378,7 @@
 
             {{--
             $("#SocialShare").jsSocials({
-                url: "{!! route('MyPageBase',['slug'=>$stud->slug]) !!}",
+                url: "{!! route('MyPage',['slug'=>$stud->slug]) !!}",
                 text: '{!! $stud->getName() !!}',
                 showLabel: false,
                 showCount: "inside",

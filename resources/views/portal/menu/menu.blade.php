@@ -182,9 +182,6 @@ $colombia = !empty($colombia)?$colombia:false;
 
                             @endphp
 
-                            {{--<?php $apk = Agent::getHttpHeader("AndroidApp"); ?>
-                            <?php $apk = !empty($apk)?$apk:false; ?>
-                            --}}
 
                             @if(empty(\Auth::user()))
                                 <li>

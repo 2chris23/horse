@@ -391,7 +391,7 @@ Route::group(['namespace' => 'App\Http\Controllers', 'ttl' => 60], function () {
     Route::group([
         'middleware' => ['Compresion'], 'ttl' => 60], function () {
 
-        Route::get('/tablehorse.js', 'PublicController@RetornaJsTabla');
+        Route::get('/tablehorse.js', 'PublicController@RetornaJsTabla')->name('JsTablaCaballo');
         Route::get('/{slug}', 'StudController@ClientDetail')->name('MyPage')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
         Route::get('/{slug}/Contacto', 'StudController@ClientContact')->name('MyContact')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
         Route::get('/{slug}/Galeria', 'StudController@ClientGallery')->name('MyGallery')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');

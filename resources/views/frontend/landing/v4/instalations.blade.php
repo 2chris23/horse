@@ -1,5 +1,5 @@
 @extends('frontend.landing.v4.base')
-@section('title', {!! trans('stud.instalations') !!})
+@section('title', trans('stud.instalations'))
 @section('fbheader')
     @include('meta',
     [

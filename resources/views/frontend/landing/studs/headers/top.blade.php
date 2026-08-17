@@ -1,5 +1,6 @@
 @php
-    use App\Model\Stud;$logobasic= url("landing/images/basic/logo.png");
+    use App\Models\Stud;
+    $logobasic = url("landing/images/basic/logo.png");
         //$logo =$stud->getLogo();
         $espanol =  url("landing/img/es.png");
         $english =  url("landing/img/en.png");
@@ -62,7 +63,7 @@ $sexos = Publico::Arraysexs();
 
                     <ul class="menu">
                         @include('frontend.landing.studs.partials.languaje')
-                        {{--@include('frontend.landing.studs.partials.moneda')--}}
+                        
                         @php($s=(Funciones::BuscarEnString($actual,$user->getMySlug())==true
                         and Funciones::BuscarEnString($actual,'Instalaciones')!=true)
                         and Funciones::BuscarEnString($actual,'Horse')!=true
@@ -75,7 +76,7 @@ $sexos = Publico::Arraysexs();
                         </li>
                         @php($s=(Funciones::BuscarEnString($actual,'Instalaciones')==true)?'active':null)
                         <li class="{!! $s !!}">
-                            {{--<a href="{!! route('MyInstalation',['id'=>$user->id,'slug'=>$user->getMySlug()]) !!}">{!! trans('stud.instalations') !!}</a>--}}
+                            
                             <a href="{!! route('MyInstalation',['slug'=>$user->getMySlug()]) !!}">{!! trans('stud.instalations') !!}</a>
                         </li>
                         <!--Ampoliar por tipo-->
@@ -92,70 +93,45 @@ $sexos = Publico::Arraysexs();
                                         @if($k!=0)
                                             @if(!empty($h))
                                                 <li>
-                                                    {{--<a href="{!! route('MyHorses',['id'=>$user->id,'slug'=>$user->getMySlug(),'type'=>$k,'v'=>0]) !!}">{!! $v !!}</a>--}}
+                                                    
                                                     <a href="{!! route('MyHorses',['slug'=>$user->getMySlug(),'type'=>$k,'v'=>0]) !!}">{!! $v !!}</a>
                                                 </li>
                                             @endif
                                         @endif
                                     @endforeach
-                                    {{--
-                                    <li>
-                                        <a href="{!! route('MyHorses',['id'=>$user->id,'slug'=>$user->getMySlug(),'type'=>1,'v'=>0]) !!}">Sementales</a>
-                                    </li>
-                                    <li>
-                                        <a href="{!! route('MyHorses',['id'=>$user->id,'slug'=>$user->getMySlug(),'type'=>2,'v'=>0]) !!}">Capados</a>
-                                    </li>
-                                    <li>
-                                        <a href="{!! route('MyHorses',['id'=>$user->id,'slug'=>$user->getMySlug(),'type'=>3,'v'=>0]) !!}">Yeguas</a>
-                                    </li>
-                                    <li>
-                                        <a href="{!! route('MyHorses',['id'=>$user->id,'slug'=>$user->getMySlug(),'type'=>3,'v'=>0]) !!}">Potros</a>
-                                    </li>
-                                    <li>
-                                        <a href="{!! route('MyHorses',['id'=>$user->id,'slug'=>$user->getMySlug(),'type'=>3,'v'=>0]) !!}">Potras</a>
-                                    </li>
-                                    --}}
+                                    
 
-                                    {{--<li>
-    <a href=""class="active">Service Detail</a>
-    </li>--}}
+                                    
                                 </ul>
-                                {{--Route::get('/{id?}/caballos/{type?}','StudController@ClientGallery')->name('MyHorses');--}}
+                                
                             </li>
                         @endif
                         @php($s=(Funciones::BuscarEnString($actual,'Ventas')==true)?'active':null)
                         <li class="{!! $s !!}">
-                            {{--<a href="{!! route('MySell',['id'=>$user->id,'slug'=>$user->getMySlug()]) !!}">{!! trans('stud.sell') !!}</a>--}}
+                            
                             <a href="{!! route('MySell',['slug'=>$user->getMySlug()]) !!}">{!! trans('stud.sell') !!}</a>
                         </li>
 
                         @php($s=(Funciones::BuscarEnString($actual,'Galeria')==true)?'active':null)
                         <li class="{!! $s !!}">
-                            {{--<a href="{!! route('MyGallery',['id'=>$user->id,'slug'=>$user->getMySlug()]) !!}">{!! trans('stud.photos') !!}</a>--}}
+                            
                             <a href="{!! route('MyGallery',['slug'=>$user->getMySlug()]) !!}">{!! trans('stud.photos') !!}</a>
                         </li>
                         @php($s=(Funciones::BuscarEnString($actual,'Video')==true)?'active':null)
                         <li class="{!! $s !!}">
-                            {{--}}<a href="{!! route('MyVideo',['id'=>$user->id,'slug'=>$user->getMySlug()]) !!}">{!! trans('stud.video') !!}</a>--}}
+                            
                             <a href="{!! route('MyVideo',['slug'=>$user->getMySlug()]) !!}">{!! trans('stud.video') !!}</a>
                         </li>
                         @php($s=(Funciones::BuscarEnString($actual,'Contacto')==true)?'active':null)
                         <li class="{!! $s !!}">
-                            {{----<a href="{!! route('MyContact',['slug'=>$user->getMySlug(),'id'=>$user->id]) !!}">{!! trans('stud.contact') !!}</a>--}}
+                            
                             <a href="{!! route('MyContact',['slug'=>$user->getMySlug()]) !!}">{!! trans('stud.contact') !!}</a>
                         </li>
 
 
                     </ul>
                 </div>
-                {{--}}
-                <div class="col-md-1 col-xs-6">
-                    <div id="search-toggle">
-                        <i class="fa fa-search">
-</i>
-                    </div>
-                </div>
-                --}}
+                
             </div>
         </div>
 
@@ -169,7 +145,7 @@ $sexos = Publico::Arraysexs();
                                 <nav id="mobile-nav">
                                     <ul>
                                         @include('frontend.landing.studs.partials.languaje')
-                                        {{--@include('frontend.landing.studs.partials.moneda')--}}
+                                        
                                         <li>
                                             <a href="{!! route('MyPage',['slug'=>$user->getMySlug()]) !!}">{!! trans('stud.home') !!}</a>
                                         </li>
@@ -193,24 +169,7 @@ $sexos = Publico::Arraysexs();
                                                         @endif
                                                     @endif
                                                 @endforeach
-                                                {{--
-                                                <li>
-                                                    <a href="{!! route('MyHorses',['id'=>$user->id,'slug'=>$user->getMySlug(),'type'=>1]) !!}">Sementales</a>
-
-                                                </li>
-                                                <li>
-                                                    <a href="{!! route('MyHorses',['id'=>$user->id,'slug'=>$user->getMySlug(),'type'=>2]) !!}">Capados</a>
-                                                </li>
-                                                <li>
-                                                    <a href="{!! route('MyHorses',['id'=>$user->id,'slug'=>$user->getMySlug(),'type'=>3]) !!}">Yeguas</a>
-                                                </li>
-                                                <li>
-                                                    <a href="{!! route('MyHorses',['id'=>$user->id,'slug'=>$user->getMySlug(),'type'=>3]) !!}">Potros</a>
-                                                </li>
-                                                <li>
-                                                    <a href="{!! route('MyHorses',['id'=>$user->id,'slug'=>$user->getMySlug(),'type'=>3]) !!}">Potras</a>
-                                                </li>
-                                                --}}
+                                                
 
                                             </ul>
                                         </li>
@@ -238,3 +197,4 @@ $sexos = Publico::Arraysexs();
         <!--[ MOBILE-MENU-AREA END  ]-->
     </nav>
 </header>
+

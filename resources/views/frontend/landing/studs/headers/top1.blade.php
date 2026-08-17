@@ -1,5 +1,5 @@
 @php
-    use App\Model\Stud;$logobasic= url("landing/images/basic/logo.png");
+    use App\Models\Stud;$logobasic= url("landing/images/basic/logo.png");
         //$logo =$stud->getLogo();
         $espanol =  url("landing/img/es.png");
         $english =  url("landing/img/en.png");

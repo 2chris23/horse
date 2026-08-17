@@ -212,13 +212,13 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php
+                                @php
                                 if (!isset($pagos)) {
 
-                                    $pagos = App\Model\Orden::where('id', '!=', 0)->get();
+                                    $pagos = App\Models\Orden::where('id', '!=', 0)->get();
                                 }
 
-                                ?>
+                                @endphp
                                 @foreach($pagos as $c)
 
                                     <tr>

@@ -595,7 +595,7 @@
                             </div>
                             <div class="text-right">
                                 <h3 id="widget_count1 " class="">
-                                    {!! count(App\Model\Sell::where('user_id',\Auth::user()->id)->get()) !!}
+                                    {!! count(App\Models\Sell::where('user_id',\Auth::user()->id)->get()) !!}
                                 </h3>
                                 <p>
                                     {!! trans('portal.sell') !!}

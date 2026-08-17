@@ -10,7 +10,7 @@
         $class = (isset($class))?$class:'';
         $p = (isset($p))?$p:null;
         $c = (isset($c))?$c:null;
-        //$monedasactivas = App\Model\Moneda::where('status',1)->get()->pluck('small');
+        //$monedasactivas = App\Models\Moneda::where('status',1)->get()->pluck('small');
         $monedasactivas = null;
         /*
         if(!empty($Coins)  ) {

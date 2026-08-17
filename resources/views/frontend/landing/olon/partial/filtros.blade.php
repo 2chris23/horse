@@ -18,7 +18,7 @@
                 @foreach($sexos as $k=>$v)
                     <div class="tab-pane fade" id="s-{!! $v['sex'] !!}">
                         <div class="tab-pro-slider trending-product owl-carousel">
-                            @php($sex = \App\Model\Horse::where(['sex'=>$v['sex'],'studs_id'=>$stud->id])->get())
+                            @php($sex = \App\Models\Horse::where(['sex'=>$v['sex'],'studs_id'=>$stud->id])->get())
                             @php($dsf = count($sex))
                             @for($i = 0;$i < $dsf;$i++)
                                 @php

@@ -1,5 +1,5 @@
 <?php
-use App\Model\ControlAsociado;
+use App\Models\ControlAsociado;
 $asocia = ControlAsociado::BuscarAsociado($user)->first();
 if (empty($asocia)) {
     $asocia = new ControlAsociado();

@@ -1,6 +1,6 @@
 @php
-    use App\Model\Servicio;
-use App\Model\Codigopromo;
+    use App\Models\Servicio;
+use App\Models\Codigopromo;
 @endphp
 <?php $etiquetalabel = "col-xs-12 col-sm-12 col-md-12 col-lg-3 text-sm-left text-md-left text-lg-right "; ?>
 <?php $tiquetainput = " col-xs-12 col-sm-12 col-md-12 col-lg-9 "; ?>
@@ -449,7 +449,7 @@ Mensualidad
                                 </thead>
                                 <tbody>
                                 @php
-                                    use App\Model\Orden;
+                                    use App\Models\Orden;
                                     $pagos = Orden::where('id','!=',0)->get();
 
                                 @endphp

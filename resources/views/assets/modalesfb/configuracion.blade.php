@@ -1,7 +1,7 @@
 <?php $etiquetalabel = "col-xs-12 col-sm-12 col-md-12 col-lg-3 text-sm-left text-md-left text-lg-right col-12"; ?>
 <?php $tiquetainput = "col-xs-12 col-sm-12 col-md-12 col-lg-8 col-12"; ?>
 @php
-    use App\Model\Autopostconf;$user = \Auth::user();
+    use App\Models\Autopostconf;$user = \Auth::user();
     $adm = $user->isAdm();
    
     if($adm == true){

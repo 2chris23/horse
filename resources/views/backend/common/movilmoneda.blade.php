@@ -6,7 +6,7 @@
     $detalle  = isset($detalle)?0:1;
 
     $precio = (isset($precio))?$precio:null;
-    $monedasactivas = App\Model\Moneda::where('status',1)->get()->pluck('small');
+    $monedasactivas = App\Models\Moneda::where('status',1)->get()->pluck('small');
     if(!empty($Coins)  ) {
         if(!empty($precio)){
             if($precio!=0){

@@ -89,7 +89,7 @@
                                                     {!! Funciones::RellenarCeros($c->id) !!}
                                                 @elseif($k == "lastlogin")
                                                     <span >
-                                                    {!!  Funciones::AjustarFechaDmySlashHms(App\Model\Inicio::where('users_id',$c->getUsersId())->orderby('created_at','desc')->first()->updated_at) !!}
+                                                    {!!  Funciones::AjustarFechaDmySlashHms(App\Models\Inicio::where('users_id',$c->getUsersId())->orderby('created_at','desc')->first()->updated_at) !!}
                                                         </span>
                                                 @elseif($k == "name")
 
@@ -124,8 +124,8 @@
                                             </td>
                                         @endforeach
                                         <td class="@if($i == 1) activo @else inactivo @endif"
-                                            @if(!empty(App\Model\Inicio::where('users_id',$c->getUsersId())->first())) data-toggle="tooltip" title="
-                                            Ultima vez en linea: {!! Funciones::AjustarFechaDmySlashHms(App\Model\Inicio::where('users_id',$c->getUsersId())->orderby('created_at','desc')->first()->updated_at) !!} " @endif
+                                            @if(!empty(App\Models\Inicio::where('users_id',$c->getUsersId())->first())) data-toggle="tooltip" title="
+                                            Ultima vez en linea: {!! Funciones::AjustarFechaDmySlashHms(App\Models\Inicio::where('users_id',$c->getUsersId())->orderby('created_at','desc')->first()->updated_at) !!} " @endif
                                         >
                                             <i class="fa fa-check-square f-20 " aria-hidden="true"></i>
                                         </td>

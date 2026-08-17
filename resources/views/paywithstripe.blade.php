@@ -16,7 +16,7 @@
 @section('content')
     @php
 
-        $stud = new \App\Model\Stud();
+        $stud = new \App\Models\Stud();
     $titulo = "Proximamente";
     $contenido = "Este contenido pronto estara disponible";
     @endphp

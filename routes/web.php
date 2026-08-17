@@ -392,24 +392,24 @@ Route::group(['namespace' => 'App\Http\Controllers', 'ttl' => 60], function () {
         'middleware' => ['Compresion'], 'ttl' => 60], function () {
 
         Route::get('/tablehorse.js', 'PublicController@RetornaJsTabla');
-        Route::get('/{slug}', 'StudController@ClientDetail')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
-        Route::get('/{slug}/Contacto', 'StudController@ClientContact')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
-        Route::get('/{slug}/Galeria', 'StudController@ClientGallery')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
-        Route::get('/{slug}/Galeria2', 'StudController@ClientGallery2')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
-        Route::get('/{slug}/Galeria2c', 'StudController@ClientGallery2config')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
-        Route::get('/{slug}/Video', 'StudController@ClientVideo')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
-        Route::get('/{slug}/Instalaciones', 'StudController@ClientInstalation')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
-        Route::get('/{slug}/Instalaciones2', 'StudController@ClientInstalationCentro')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
-        Route::get('/{slug}/Ventas/', 'StudController@ClientSell')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
-        Route::get('/{slug}/Ventas/{horse?}', 'StudController@DetailedHorseVenta')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
+        Route::get('/{slug}', 'StudController@ClientDetail')->name('MyPage')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
+        Route::get('/{slug}/Contacto', 'StudController@ClientContact')->name('MyContact')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
+        Route::get('/{slug}/Galeria', 'StudController@ClientGallery')->name('MyGallery')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
+        Route::get('/{slug}/Galeria2', 'StudController@ClientGallery2')->name('MyGallery2')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
+        Route::get('/{slug}/Galeria2c', 'StudController@ClientGallery2config')->name('MyGallery2config')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
+        Route::get('/{slug}/Video', 'StudController@ClientVideo')->name('MyVideo')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
+        Route::get('/{slug}/Instalaciones', 'StudController@ClientInstalation')->name('MyInstalation')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
+        Route::get('/{slug}/Instalaciones2', 'StudController@ClientInstalationCentro')->name('MyInstalation2')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
+        Route::get('/{slug}/Ventas/', 'StudController@ClientSell')->name('MySell')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
+        Route::get('/{slug}/Ventas/{horse?}', 'StudController@DetailedHorseVenta')->name('MySellHorse')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
         Route::get('/{stud?}/detalle/{horse?}', 'StudController@DetailedHorse')->name('MyHorseDetailed')->where('stud', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
     });
     //Route::group(['middleware' => ['Compresion']], function () {
 
-        Route::get('/{slug}/Caballo', 'StudController@ClientHorses')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
-        Route::get('/{slug}/working', 'TrabajoController@index')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
-        Route::post('/{slug}/working', 'TrabajoController@indexpost')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
-        Route::get('/{slug}/Caballo/{v?}/{type?}', 'StudController@ClientHorses')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
+        Route::get('/{slug}/Caballo', 'StudController@ClientHorses')->name('MyHorses_1')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
+        Route::get('/{slug}/working', 'TrabajoController@index')->name('MyWorking')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
+        Route::post('/{slug}/working', 'TrabajoController@indexpost')->name('MyWorkingPost')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
+        Route::get('/{slug}/Caballo/{v?}/{type?}', 'StudController@ClientHorses')->name('MyHorses')->where('slug', '^(?!admin|panel|associated|login|register|logout|api|debug).*$');
         /*****************************************/
         /*****************************************/
         /*****************************************/

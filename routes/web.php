@@ -108,6 +108,12 @@ Route::group(['namespace' => 'App\Http\Controllers', 'ttl' => 60], function () {
 
         Route::group(['domain' => 'app.' . Config('aplication.host')], function () {
             route::get('/', 'HomeController@indexlanding')->name('landinghome');
+            
+            Route::get('/clear-cache', function() {
+                \Artisan::call('view:clear');
+                \Artisan::call('cache:clear');
+                return 'Caché de vistas y sistema limpiado correctamente.';
+            });
         });
         Route::get('/', 'PortalController@index')->name('portal');
         Route::group(['middleware' => "CompresionMax"], function () {

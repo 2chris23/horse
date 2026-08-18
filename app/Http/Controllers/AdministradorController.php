@@ -731,6 +731,7 @@ setName($r->nombreplan_es)->
 
     public function GaleriaShow($id)
     {
+        $user = \Auth::user();
         $stud = Stud::find($id);
         $gallery = $stud->getPhotos();/*generales*/
         $gallery = $stud->getPhotosInv();/*generales*/

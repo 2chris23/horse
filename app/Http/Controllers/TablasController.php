@@ -112,7 +112,7 @@ if(isset($r->length)){
                             $b[$k] = Functions::RellenarCeros($c->id);
                         } elseif ($k == "img") {
                             //$i = 0;
-                            $p = Photo::Horse($c->id)->first();
+                            $p = Photo::where('type', 4)->where('tableid', $c->id)->first();
                             if (!empty($p)) {
                                 $ta = view('backend.common.galleryimage', [
                                     'titulo' => $p->getName(),

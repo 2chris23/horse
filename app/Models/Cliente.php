@@ -207,10 +207,30 @@ class Cliente extends Model
             $temp = $v;
         }
 
-        $p = Directory::where(['type' => 4, 'tableid' => $this->id])->groupBy('phone')->get();
+        // MySQL con ONLY_FULL_GROUP_BY rechaza SELECT * + GROUP BY phone.
+        // Se desactiva strict mode solo para esta query (la intencion es
+        // obtener un registro unico por telefono).
+        $connection = \DB::connection();
+        $previousStrict = true;
+        try {
+            $connection->setStrictMode(false);
+            $p = Directory::where(['type' => 4, 'tableid' => $this->id])->groupBy('phone')->get();
+        } finally {
+            $connection->setStrictMode($previousStrict);
+        }
 
         return $p;
     }
+
+    public function getNewPhone()
+    {
+        return new Directory(['type' => 4, 'tableid' => $this->id]);
+    }
+
+    public function setPhone($number, $id = null)
+    {
+        if (empty($id)) {
+            $te = Directory::where(['phone' => $number, 'type' => 4, 'tableid' => $this->id])->first();
 
     public function getNewPhone()
     {

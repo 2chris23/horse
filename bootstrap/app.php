@@ -26,6 +26,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->trustProxies(at: '*');
 
         $middleware->web(prepend: [
+            \App\Http\Middleware\ForceHttps::class,
             \App\Http\Middleware\RegisterRouteAliases::class,
         ]);
 

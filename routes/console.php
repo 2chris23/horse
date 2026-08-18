@@ -67,7 +67,7 @@ Artisan::command('hws:test-all', function () {
         ['uri' => '/admin/Yeguadas', 'desc' => 'Panel Admin - Yeguadas/Clientes'],
         ['uri' => '/admin/Clientes', 'desc' => 'Panel Admin - Clientes'],
         ['uri' => '/admin/Caballos', 'desc' => 'Panel Admin - Caballos'],
-        ['uri' => '/panel/Caballos.json', 'desc' => 'Panel Admin - AJAX Caballos (DataTable)'],
+        ['uri' => '/panel/CaballoIndex.json', 'desc' => 'Panel Admin - AJAX Caballos (DataTable)'],
         ['uri' => '/panel/Caballos', 'desc' => 'Panel Ganadero - Listado Caballos'],
         ['uri' => '/panel/Caballos/Nuevo', 'desc' => 'Panel Ganadero - Publicar Caballo'],
         ['uri' => '/panel/MiPerfil', 'desc' => 'Panel Ganadero - Mi Perfil'],

@@ -236,6 +236,65 @@ class Cliente extends Model
         return $this;
     }
 
+    public function getClientesSocial()
+    {
+        return ClientesSocial::where('cliente_id', $this->id)->get();
+    }
+
+    public function getTwitter()
+    {
+        $d = ClientesSocial::Twitter($this->id)->first();
+        if (empty($d)) {
+            $d = new ClientesSocial(['cliente_id' => $this->id, 'type' => 1]);
+        }
+        return $d;
+    }
+
+    public function getFacebook()
+    {
+        $d = ClientesSocial::Facebook($this->id)->first();
+        if (empty($d)) {
+            $d = new ClientesSocial(['cliente_id' => $this->id, 'type' => 2]);
+        }
+        return $d;
+    }
+
+    public function getPinterest()
+    {
+        $d = ClientesSocial::Pinterest($this->id)->first();
+        if (empty($d)) {
+            $d = new ClientesSocial(['cliente_id' => $this->id, 'type' => 3]);
+        }
+        return $d;
+    }
+
+    public function getGoogle()
+    {
+        $d = ClientesSocial::Google($this->id)->first();
+        if (empty($d)) {
+            $d = new ClientesSocial(['cliente_id' => $this->id, 'type' => 4]);
+        }
+        return $d;
+    }
+
+    public function getInstagram()
+    {
+        $d = ClientesSocial::Instagram($this->id)->first();
+        if (empty($d)) {
+            $d = new ClientesSocial(['cliente_id' => $this->id, 'type' => 5]);
+        }
+        return $d;
+    }
+
+    public function getYoutube()
+    {
+        $d = ClientesSocial::Youtube($this->id)->first();
+        if (empty($d)) {
+            $d = new ClientesSocial(['cliente_id' => $this->id, 'type' => 6]);
+        }
+        return $d;
+    }
+
     public function redes()
     {
         $d = [];

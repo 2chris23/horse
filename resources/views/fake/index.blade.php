@@ -613,7 +613,7 @@
                                     <a href="{{ url('login') }}" class="btn btn-small btn-single" data-toggle="modal" data-target="#loginmod"> {{$login}}</a>
                                 </li>
                                 <li class="page-scroll">
-                                    <a href="{{ url('register') }}" class="btn btn-small btn-max">{{$register}}</a>
+                                    <a href="#register" class="btn btn-small btn-max">{{$register}}</a>
                                 </li>
 
                             </ul>
@@ -1133,7 +1133,6 @@
     </div>
     <div class="clearfix space90">
     </div>
-    {{--
     <div class="container padding70">
         <div class="text-center space40" id="register">
             <div class="row">
@@ -1200,7 +1199,6 @@
             </div>
         </div>
     </div>
---}}
     <div class="container padding70">
         <div class="text-center " id="4">
             <h2 class="title uppercase">Crea tu página web en un segundo</h2>

@@ -120,6 +120,16 @@ class Horse extends Model
         return $this->hasMany(Video::class, 'tableid', 'id')->where('type', 4);
     }
 
+    public function reportes()
+    {
+        return $this->hasMany(Reporte::class, 'horse_id', 'id');
+    }
+
+    public function Reporte()
+    {
+        return Reporte::where('horse_id', $this->id);
+    }
+
     public function Colors()
     {
         return $this->belongsTo(Color::class, 'color', 'id');

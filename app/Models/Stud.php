@@ -64,6 +64,11 @@ class Stud extends Model
         return Photo::gallery($this->id)->get()->toArray();
     }
 
+    public function getPhotosInv()
+    {
+        return self::getPhotosModelInv()->toArray();
+    }
+
     public function getInstalationsGallery()
     {
         return Photo::instalations($this->id)->get()->toArray();
@@ -175,6 +180,39 @@ class Stud extends Model
     public function setMoneda($moneda = 'EUR')
     {
         $this->moneda = $moneda;
+        return $this;
+    }
+
+    public function DiasDeSuscipcion()
+    {
+        $sus = $this->subcritiondate;
+        $hoy = \Carbon\Carbon::now();
+
+        if (!empty($sus)) {
+            $sus = \Carbon\Carbon::parse($sus);
+        } else {
+            $sus = \Carbon\Carbon::parse('2018-01-20');
+        }
+
+        $t = $sus->diffInDays($hoy, false);
+
+        return ($t * 1) - 1;
+    }
+
+    public function getSubcritiondate()
+    {
+        $sus = $this->subcritiondate;
+
+        if (empty($sus)) return '2018-01-20';
+
+        return \App\Http\Controllers\Functions::AjustarFechaYmd($this->subcritiondate);
+    }
+
+    public function setSubcritiondate($date = null)
+    {
+        if (empty($date)) return $this;
+        $date = \App\Http\Controllers\Functions::AjustarFechaYmd($date);
+        $this->subcritiondate = $date;
         return $this;
     }
 
@@ -359,6 +397,32 @@ class Stud extends Model
         return \App\Models\Photo::Galleryinv($this->id)->get();
     }
 
+    public function getVideosModel()
+    {
+        return \App\Models\Video::where(['type' => 3, 'tableid' => $this->id])->orderBy('orden')->get();
+    }
+
+    public function getVideos()
+    {
+        return $this->getVideosModel()->toArray();
+    }
+
+    public function getNewVideos()
+    {
+        return new \App\Models\Video(['type' => 3, 'tableid' => $this->id]);
+    }
+
+    public function setVideos($url, $description = null, $id = null)
+    {
+        if (empty($id)) {
+            $video = new \App\Models\Video(['tableid' => $this->id, 'type' => 3]);
+        } else {
+            $video = \App\Models\Video::find($id);
+        }
+        $video->setVideoYoutube($url)->setDesription($description)->push();
+        return $this;
+    }
+
     public function getSliders()
     {
         $d = \App\Models\Photo::Slider($this->id)->get();
@@ -400,6 +464,15 @@ class Stud extends Model
         $d = \App\Models\SocialNetwork::Pinterest($this->id, $this->users_id)->first();
         if (empty($d)) {
             $d = new \App\Models\SocialNetwork(['stud_id' => $this->id, 'user_id' => $this->users_id, 'type' => 3]);
+        }
+        return $d;
+    }
+
+    public function getGoogle()
+    {
+        $d = \App\Models\SocialNetwork::Google($this->id, $this->users_id)->first();
+        if (empty($d)) {
+            $d = new \App\Models\SocialNetwork(['stud_id' => $this->id, 'user_id' => $this->users_id, 'type' => 4]);
         }
         return $d;
     }

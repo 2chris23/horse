@@ -179,6 +179,24 @@ class Video extends Model
         return "https://i1.ytimg.com/vi/" . $vid . "/hqdefault.jpg";
     }
 
+    public function getNameYoutubeVideo()
+    {
+        ini_set('max_execution_time', 600);
+        $url = "http://www.youtube.com/watch?v=" . $this->url;
+
+        $doc = new \DOMDocument();
+        $doc->preserveWhiteSpace = FALSE;
+        try {
+            $doc->loadHTMLFile($url);
+            $title_div = $doc->getElementById('eow-title');
+            $title = \App\Http\Controllers\Functions::LimpiarTexto($title_div->nodeValue);
+        } catch (\ErrorException $e) {
+            $title = '';
+        }
+
+        return $title;
+    }
+
     public function scopeNormal($query, $stud_id)
     {
         return $query->where(['tableid' => $stud_id, 'type' => 3])->orderBy('orden');

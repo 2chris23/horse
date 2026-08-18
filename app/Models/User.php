@@ -258,5 +258,45 @@ class User extends Authenticatable
 
         return $s;
     }
+
+    public function setVideo($url)
+    {
+        $v = $this->getVideo();
+        $v->setVideoYoutube($url)->push();
+        return $this;
+    }
+
+    public function getVideo()
+    {
+        $d = \App\Models\Video::where(['tableid' => $this->id, 'type' => 0])->first();
+        if (empty($d)) {
+            $d = new \App\Models\Video(['tableid' => $this->id, 'type' => 0]);
+        }
+        return $d;
+    }
+
+    public function getStudsId()
+    {
+        return $this->studs_id;
+    }
+
+    public function getSubcritiondate()
+    {
+        $d = \App\Models\Stud::find($this->getStudsId());
+        $t = null;
+        if (!empty($d)) {
+            $t = $d->getSubcritiondate();
+        }
+        return \App\Http\Controllers\Functions::AjustarFechaDmy($t);
+    }
+
+    public function setSubcritiondate($date = null)
+    {
+        $d = \App\Models\Stud::find($this->getStudsId());
+        if (!empty($d)) {
+            $d->setSubcritiondate($date)->push();
+        }
+        return $this;
+    }
 }
 

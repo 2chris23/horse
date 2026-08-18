@@ -180,6 +180,11 @@ class Photo extends Model
         return $query->where(['type' => 2, 'tableid' => $stud_id])->orderBy('order', 'asc');
     }
 
+    public function scopeGalleryinv($query, $stud_id)
+    {
+        return $query->where(['type' => 2, 'tableid' => $stud_id])->orderBy('order', 'desc');
+    }
+
     public function scopeInstalations($query, $stud_id)
     {
         return $query->where(['type' => 3, 'tableid' => $stud_id])->orderBy('order', 'asc');

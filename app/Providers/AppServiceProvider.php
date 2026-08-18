@@ -12,7 +12,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton('blade.compiler', function ($app) {
+            return new \App\Support\HwsBladeCompiler(
+                $app['files'],
+                $app['config']['view.compiled']
+            );
+        });
     }
 
     /**

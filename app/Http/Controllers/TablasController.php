@@ -9,7 +9,6 @@ use App\Models\Stud;
 use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
-use Yajra\Datatables\Facades\Datatables;
 use function str_replace;
 use function view;
 
@@ -163,8 +162,21 @@ if(isset($r->length)){
         }
         //$t1 = (new Functions())->MicroTiempo("TIEMPO RORLA ", $TOTALTIME) - $TOTALTIME;
         if (!empty($r)) {
-            //$f =json_encode($prueba);
-            $f = Datatables::of($prueba)->make(true);
+            // El paquete yajra/laravel-datatables no esta instalado; se genera
+            // la respuesta JSON con el formato esperado por DataTables
+            // (serverSide) con paginacion manual sobre la coleccion.
+            $draw = (int) $r->input('draw', 0);
+            $start = (int) $r->input('start', 0);
+            $length = (int) $r->input('length', 25);
+            $total = $prueba->count();
+            $data = $prueba->slice($start, $length)->values()->all();
+
+            $f = response()->json([
+                'draw' => $draw,
+                'recordsTotal' => $total,
+                'recordsFiltered' => $total,
+                'data' => $data,
+            ]);
 
         } else {
             $f = $prueba;

@@ -779,6 +779,11 @@ class Stud extends Model
         return $this->hasOne(Marcaagua::class, 'stud_id', 'id');
     }
 
+    public function contacto()
+    {
+        return $this->hasMany(Contacto::class, 'studs_id', 'id');
+    }
+
     public function Marca()
     {
         $s = $this->MarcaAgua()->first();

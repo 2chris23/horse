@@ -119,6 +119,7 @@ class AppServiceProvider extends ServiceProvider
         $loader->alias('Sex', \App\Models\Sex::class);
         $loader->alias('BuscarCaballo', \App\Models\BuscarCaballo::class);
         $loader->alias('User', \App\Models\User::class);
+        $loader->alias('Socialite', \Laravel\Socialite\Facades\Socialite::class);
 
         // Auto-alias legacy App\Model\* to App\Models\*
         spl_autoload_register(function ($class) {

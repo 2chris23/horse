@@ -35,4 +35,13 @@ return [
         ],
     ],
 
+    'facebook' => [
+        'app_id' => env('FACEBOOK_APP_ID', '260261811093896'),
+        'app_secret' => env('FACEBOOK_APP_SECRET', 'e187bab0c860245f535742d8f882866e'),
+        'client_token' => env('FACEBOOK_CLIENT_TOKEN', '67741d946b419efb08e46fb624da5157'),
+        'client_id' => env('FACEBOOK_CLIENT_ID', '260261811093896'),
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET', 'e187bab0c860245f535742d8f882866e'),
+        'redirect' => env('FACEBOOK_REDIRECT', 'https://app.horsesworldsale.com/authv1/facebook/callback'),
+    ],
+
 ];

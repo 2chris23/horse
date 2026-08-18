@@ -207,17 +207,10 @@ class Cliente extends Model
             $temp = $v;
         }
 
-        // MySQL con ONLY_FULL_GROUP_BY rechaza SELECT * + GROUP BY phone.
-        // Se desactiva strict mode solo para esta query (la intencion es
-        // obtener un registro unico por telefono).
-        $connection = \DB::connection();
-        $previousStrict = true;
-        try {
-            $connection->setStrictMode(false);
-            $p = Directory::where(['type' => 4, 'tableid' => $this->id])->groupBy('phone')->get();
-        } finally {
-            $connection->setStrictMode($previousStrict);
-        }
+        // MySQL strict mode (ONLY_FULL_GROUP_BY) se desactiva globalmente en
+        // config/database.php (strict => false), replicando el comportamiento
+        // original de Laravel 5 para agrupar por telefono.
+        $p = Directory::where(['type' => 4, 'tableid' => $this->id])->groupBy('phone')->get();
 
         return $p;
     }

@@ -199,4 +199,29 @@ class Photo extends Model
     {
         return $query->where(['type' => 10, 'tableid' => $admin_id])->orderBy('order', 'asc');
     }
+
+    public function Size()
+    {
+        $t = public_path($this->getFolder() . $this->name);
+        $kb = 0;
+        try {
+            $bytes = \Illuminate\Support\Facades\File::size($t);
+            $kb = $bytes / 1024;
+        } catch (\ErrorException $e) {
+            $bytes = 0;
+        }
+        if (is_numeric($kb)) {
+            try {
+                $kb = number_format($kb, 2, '.', ' ') * 1;
+            } catch (\ErrorException $e) {
+                $kb = 0;
+                $kb = number_format($kb, 2, '.', ' ') * 1;
+            }
+        } else {
+            $kb = 0;
+            $kb = number_format($kb, 2, '.', ' ') * 1;
+        }
+
+        return $kb;
+    }
 }

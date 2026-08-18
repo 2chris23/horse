@@ -231,16 +231,6 @@ class Cliente extends Model
     {
         if (empty($id)) {
             $te = Directory::where(['phone' => $number, 'type' => 4, 'tableid' => $this->id])->first();
-
-    public function getNewPhone()
-    {
-        return new Directory(['type' => 4, 'tableid' => $this->id]);
-    }
-
-    public function setPhone($number, $id = null)
-    {
-        if (empty($id)) {
-            $te = Directory::where(['phone' => $number, 'type' => 4, 'tableid' => $this->id])->first();
             if (empty($te)) {
                 $phone = new Directory(['tableid' => $this->id, 'type' => 4]);
             } else {

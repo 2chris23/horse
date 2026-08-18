@@ -1,0 +1,13 @@
+<footer id="footer">
+    <div class="copyright">
+        <div class="container">
+            <p>2014 &copy; All rights reserved. Powered by <a href="#">UOUapps</a></p>
+            <ul class="list-inline">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</footer> <!-- end #footer -->

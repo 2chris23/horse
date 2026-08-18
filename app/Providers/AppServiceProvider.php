@@ -12,6 +12,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        if (!function_exists('array_except')) {
+            function array_except($array, $keys)
+            {
+                return \Illuminate\Support\Arr::except($array, $keys);
+            }
+        }
+
         $this->app->singleton('blade.compiler', function ($app) {
             return new \App\Support\HwsBladeCompiler(
                 $app['files'],

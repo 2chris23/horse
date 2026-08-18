@@ -3,7 +3,7 @@
     $marcaprimaria="fa-bookmark";
     $marcasecundaria="fa-bookmark";
 @endphp
-@section('title', trans('horse.chooseone') )
+@section('title', trans('horse.Tittle') )
 @section('content')
 
     <div id="datos" class="card col-12 ">

@@ -901,6 +901,8 @@ class FacebookController extends Controller
             return self::ListarPaginas();
         }
 
+        $social = $sociales;
+
         if ($adm == true) {
             $publicaciones = Facebookpost::where([
                 'user_post' => $user->id,

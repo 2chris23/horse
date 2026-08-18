@@ -1,5 +1,5 @@
 @extends('backend.layouts.base')
-@section('title', trans('horse.chooseone') )
+@section('title', trans('horse.Tittle') )
 
 @section('topjs')
     <link type="text/css" rel="stylesheet" href="{!! url('assets/vendors/select2/css/select2.min.css') !!}"/>

@@ -1,5 +1,5 @@
 @extends('backend.layouts.base')
-@section('title', trans('horse.chooseone') )
+@section('title', trans('horse.Tittle') )
 
 @section('topcss')
     <link type="text/css" rel="stylesheet"

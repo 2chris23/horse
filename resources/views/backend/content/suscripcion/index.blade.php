@@ -3,7 +3,7 @@
 @php($stud = $user->getSubcritiondate())
 
 @extends('backend.layouts.base')
-{{--@section('title', trans('horse.chooseone') )--}}
+{{--@section('title', trans('horse.Tittle') )--}}
 @section('title', trans('Titulos.SuscripcionStud'))
 {{--@section('pagetitle', '<i class="fa fa-pagelines"></i>  '.trans('sell.new') )--}}
 @section('topcss')

@@ -1,5 +1,5 @@
 @extends('backend.layouts.base')
-@section('title', trans('horse.chooseone') )
+@section('title', trans('horse.Tittle') )
 @section('content')
     <div class="table-responsive noSwipe">
         <table class="table table-striped table-hover">

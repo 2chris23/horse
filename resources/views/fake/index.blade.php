@@ -1150,10 +1150,10 @@
                                        id="name" name="name" class="form-control nm1"/>
                             </div>
                             <div class="alert alert-warning @if($error !=1) hidden @endif " id="nameerror">
-                                <em> @if($error ==1) {!! $smss !!} @endif </em></div>
+                                <em> @if($error ==1) {!! $sms !!} @endif </em></div>
                         </div>
                     </div>
-                    {{-- Correo -- }}
+                    {{-- Correo --}}
                     <div class="form-group row">
                         <div class="col-sm-12">
                             <div class="input-group">
@@ -1162,7 +1162,7 @@
                                        id="email" class="form-control pwd1" required/>
                             </div>
                             <div class="alert alert-warning @if($error !=2) hidden @endif " id="emailerror">
-                                <em> @if($error ==2) {!! $smss !!} @endif </em></div>
+                                <em> @if($error ==2) {!! $sms !!} @endif </em></div>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -1173,7 +1173,7 @@
                                        name="tel" id="tel" class="form-control pwd3 numbers"/>
                             </div>
                             <div class="alert alert-warning @if($error !=3) hidden @endif " id="telerror">
-                                <em> @if($error ==3) {!! $smss !!} @endif </em></div>
+                                <em> @if($error ==3) {!! $sms !!} @endif </em></div>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -1185,7 +1185,7 @@
                                        name="domain" id="domain" class="form-control pwd2 "/>
                             </div>
                             <div class="alert alert-warning @if($error !=4) hidden @endif " id="domerror">
-                                <em> @if($error ==4) {!! $smss !!} @endif </em></div>
+                                <em> @if($error ==4) {!! $sms !!} @endif </em></div>
                         </div>
                     </div>
                     <div class="form-group row">

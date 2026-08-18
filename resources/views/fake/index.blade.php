@@ -613,7 +613,7 @@
                                     <a href="{{ url('login') }}" class="btn btn-small btn-single" data-toggle="modal" data-target="#loginmod"> {{$login}}</a>
                                 </li>
                                 <li class="page-scroll">
-                                    <a href="{{ url('login') }}" class="btn btn-small btn-max">{{$register}}</a>
+                                    <a href="{{ url('register') }}" class="btn btn-small btn-max">{{$register}}</a>
                                 </li>
 
                             </ul>

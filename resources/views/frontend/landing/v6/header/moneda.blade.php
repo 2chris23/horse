@@ -6,6 +6,7 @@
     </a>
     <ul class="moneda text-left dropdown-menu">
         <?php ($Monedas = \Session::get('monedas')); ?>
+        <?php if (empty($Monedas)) { $Monedas = []; } ?>
         <?php $__currentLoopData = $Monedas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k=>$v): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <li>
                 

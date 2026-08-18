@@ -773,4 +773,16 @@ class Stud extends Model
 
         return $to;
     }
+
+    public function MarcaAgua()
+    {
+        return $this->hasOne(Marcaagua::class, 'stud_id', 'id');
+    }
+
+    public function Marca()
+    {
+        $s = $this->MarcaAgua()->first();
+        if (empty($s)) return false;
+        return true;
+    }
 }

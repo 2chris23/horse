@@ -210,7 +210,7 @@
                                     --}}
                                 </div>
                                 <div class="popover-footer">
-                                    <a href="{!! url('Panel/Notificaciones') !!}" class="text-white">
+                                    <a href="{!! route('notifi.index') !!}" class="text-white">
                                         {!! trans('notification.inbox') !!}
                                     </a>
                                 </div>
@@ -225,8 +225,7 @@
                         >
 
                             <a class="btn btn-default btn-sm"
-                               {{--@if(\Auth::user()->isAdm()) href="{!! route('soporte.index') !!}" @else href="{!! route('support.index') !!}"@endif--}}
-                               href="{!! url('Panel/Soporte') !!}">
+                               href="{!! route('support.index') !!}">
                                 {{--href="#!" >--}}
                                 <i
                                         class="fa fa-wrench">
@@ -453,18 +452,18 @@
                                 <a class="dropdown-item title" href="#">
                                     HWS Admin
                                 </a>
-                                <a class="dropdown-item" href="{!! url('Panel/MiPerfil') !!}">
+                                <a class="dropdown-item" href="{!! route('user.profile') !!}">
                                     <i class="fa fa-user">
                                     </i>
                                     {!! trans('users.myaccount') !!}
                                 </a>
-                                <a class="dropdown-item" href="{!! url('Panel/Notificaciones') !!}">
+                                <a class="dropdown-item" href="{!! route('notifi.index') !!}">
                                     <i class="fa fa-envelope-o fa-1x"></i>
                                     {!! trans('notification.inbox') !!}
 
                                 </a>
                                 <a class="dropdown-item"
-                                   href="{!! url('Panel/Soporte') !!}">
+                                   href="{!! route('support.index') !!}">
                                     <i
                                             class="fa fa-wrench">
                                     </i>
@@ -472,12 +471,12 @@
                                 </a>
                                 @if(\Auth::user()->isAdm()==true)
 
-                                    <a href="{!! url('Administrador/Opciones') !!}" class="dropdown-item">
+                                    <a href="{!! route('OpcionesAdmin') !!}" class="dropdown-item">
                                         <i class="fa fa-cogs"></i>
                                         {!! trans('users.options') !!}
                                     </a>
                                 @else
-                                    <a href="{!! url('Panel/Opciones') !!}" class="dropdown-item">
+                                    <a href="{!! route('options.index') !!}" class="dropdown-item">
                                         <i class="fa fa-cogs"></i>
                                         {!! trans('users.options') !!}
                                     </a>

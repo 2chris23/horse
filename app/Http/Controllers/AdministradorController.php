@@ -1326,7 +1326,7 @@ setName($r->nombreplan_es)->
     {
         $usuario = $r->usuario;
         \Auth::loginUsingId($usuario);
-        return redirect()->route('landinghome');
+        return redirect()->route('home');
     }
 
     public function MostrarUsuariosGet(User $id = null)
@@ -1336,7 +1336,7 @@ setName($r->nombreplan_es)->
             return redirect('/');
         }
         \Auth::loginUsingId($id->id);
-        return redirect()->route('landinghome');
+        return redirect()->route('home');
     }
 }
 

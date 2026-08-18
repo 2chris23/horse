@@ -505,4 +505,9 @@ class Country extends Model
         }
         return $this;
     }
+
+    public function scopeCorto($query, $shortname = 'ES')
+    {
+        return $query->where('shortname', $shortname);
+    }
 }

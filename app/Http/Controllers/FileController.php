@@ -56,7 +56,7 @@ class FileController extends Controller
         try {
             Storage::move($nombre, $target);
         } catch (FileExistsException $e) {
-            FileController::Borrar($nombre);
+            FileController::Borrar_File($nombre);
             $s = false;
             if (File::exists($file)) {
                 $s = true;

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Laravel\Scout\Searchable;
 use App\Http\Controllers\Functions;
 use App\Http\Controllers\PublicController;
 
@@ -15,6 +16,7 @@ class Horse extends Model
 {
     use SoftDeletes;
     use Sluggable;
+    use Searchable;
 
     protected $table = 'horses';
     public $incrementing = true;

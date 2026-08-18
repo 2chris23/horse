@@ -212,7 +212,7 @@ $favicon = url('assets/img/logo1.ico');
 
     </script>
     <link rel="stylesheet" href="{!! url('assets/tooltip/css/tooltipster.bundle.min.css') !!}">
-    <link rel="stylesheet" type="text/css" href="{!! route('CssTheme0',['stud'=>$stud->slug]) !!}"/>
+    <link rel="stylesheet" type="text/css" href="{!! route('CssTheme0',['slug'=>$stud->slug]) !!}"/>
 </head>
 <body>
     

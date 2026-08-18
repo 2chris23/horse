@@ -36,12 +36,7 @@ class RegisterRouteAliases
         $known = method_exists($routes, 'getRoutesByName') ? $routes->getRoutesByName() : [];
 
         $map = [
-            'MyPage'            => 'MyPageBase',
-            'MyGallery2config'  => 'MyGallery2post',
-            'MySellHorse'       => 'MySellDetailSell',
-            'MyHorses_1'        => 'MyHorsesV1',
-            'MyWorking'         => 'TrabajoIndex',
-            'MyWorkingPost'     => 'TrabajoIndexPost',
+            'MyPage' => 'MyPageBase',
         ];
 
         $clones = [];

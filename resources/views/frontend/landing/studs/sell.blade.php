@@ -121,7 +121,7 @@ $error = (!empty(\Session::get('error') ))?\Session::get('error') :null;
                         //$color = (!empty($color))?$color->name:null;
     $link =route('MyHorseDetailed',['stud'=>$stud->slug,'horse'=>$v->slug]);
 
-                        if($venta == 1) $link =route('MySellDetailSell',['stud'=>$stud->slug,'horse'=>$v->slug]);
+                        if($venta == 1) $link =route('MySellDetailSell',['slug'=>$stud->slug,'horse'=>$v->slug]);
 
                         @endphp
                         {{-- {!! dd($v) !!} Route::get('/{stud?}/{horse?}', 'StudController@DetailedHorse')->name('MyHorseDetailed');--}}

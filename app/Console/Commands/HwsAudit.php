@@ -28,6 +28,26 @@ class HwsAudit extends Command
     private $warnings = 0;
     private $checks = 0;
 
+    /**
+     * Rutas relativas (prefijos o ficheros) que son codigo muerto: no se
+     * renderizan desde ninguna ruta/controlador activo. El auditor las ignora.
+     */
+    private $deadViews = [
+        'vendor/ticketit/',                 // paquete no instalado
+        'frontend/landing/olon/',           // nunca se renderiza (themes 1-7 -> v1-v6)
+        'fake/',                            // rutas FakeFb comentadas
+        'backend/sidebar/index.blade.php',  // base.blade.php solo incluye top/general/rigth
+        'backend/sidebar/general2.blade.php',
+        'backend/content/user/index.blade.php',  // rutas users.* comentadas en admin.php
+        'backend/content/user/create.blade.php',
+        'backend/content/user/show.blade.php',
+        'backend/layouts/fakelandingfirst.blade.php', // nadie lo extiende
+        'auth/registerorg.blade.php',       // layouts.app sin ruta
+        'backend/auth/registerorg.blade.php',
+        'backend/home.blade.php',           // ruta home comentada
+        'admin/content/horse/index2.blade.php', // HorseController@index2 comentado
+    ];
+
     public function handle()
     {
         $only = $this->option('views') || $this->option('routes') || $this->option('methods') || $this->option('compile') || $this->option('http') || $this->option('http-all');
@@ -57,6 +77,32 @@ class HwsAudit extends Command
     }
 
     /**
+     * Elimina comentarios Blade ({{-- --}}) y bloques/líneas comentadas PHP
+     * (/* *\/ y //) para no contarlos como código real.
+     */
+    private function stripComments($content)
+    {
+        $content = preg_replace('/\{\{--.*?--\}\}/s', '', $content);
+        $content = preg_replace('#/\*.*?\*/#s', '', $content);
+        $content = preg_replace('/^\s*\/\/.*$/m', '', $content);
+        return $content;
+    }
+
+    /**
+     * ¿Es una ruta de vista muerta (no renderizable)?
+     */
+    private function isDeadView($relPath)
+    {
+        $rel = str_replace('\\', '/', $relPath);
+        foreach ($this->deadViews as $dead) {
+            if ($rel === $dead || str_starts_with($rel, $dead)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Seccion 1: Vistas referenciadas pero inexistentes.
      * Detecta @include, @extends, $__env->make(), view(), View::make() con string literal.
      */
@@ -67,10 +113,15 @@ class HwsAudit extends Command
         $files = (new Finder())->in($viewsDir)->name('*.blade.php')->files();
         $referenced = [];
         $scanned = 0;
+        $ignored = 0;
 
         foreach ($files as $f) {
             $scanned++;
-            $content = file_get_contents($f->getRealPath());
+            if ($this->isDeadView($f->getRelativePathname())) {
+                $ignored++;
+                continue;
+            }
+            $content = $this->stripComments(file_get_contents($f->getRealPath()));
             $patterns = [
                 "/@include\s*\(\s*'([^']+)'/",
                 "/@include\s*\(\s*\"([^\"]+)\"/",
@@ -104,7 +155,7 @@ class HwsAudit extends Command
             }
         }
 
-        $this->line("  Vistas Blade escaneadas: {$scanned}");
+        $this->line("  Vistas Blade escaneadas: {$scanned}" . ($ignored ? " (ignoradas muertas: {$ignored})" : ""));
         $this->line("  Vistas referenciadas (unicas): " . count($unique));
         if (empty($missing)) {
             $this->line("  <info>[OK] Todas las vistas referenciadas existen.</info>");
@@ -123,14 +174,21 @@ class HwsAudit extends Command
     private function checkRoutes()
     {
         $this->info("\n--- [2] Rutas: route('name', [...]) ---");
+        // Registrar alias de rutas (p.ej. MyPage -> MyPageBase) como en el pipeline HTTP
+        \App\Http\Middleware\RegisterRouteAliases::register();
         $viewsDir = resource_path('views');
         $files = (new Finder())->in($viewsDir)->name('*.blade.php')->files();
         $routeNames = [];
         $scanned = 0;
+        $ignored = 0;
 
         foreach ($files as $f) {
             $scanned++;
-            $content = file_get_contents($f->getRealPath());
+            if ($this->isDeadView($f->getRelativePathname())) {
+                $ignored++;
+                continue;
+            }
+            $content = $this->stripComments(file_get_contents($f->getRealPath()));
             // route('Name') y route('Name', [...])
             if (preg_match_all("/route\s*\(\s*'([^']+)'(?:\s*,\s*(\[.*?\]))?/", $content, $m, PREG_OFFSET_CAPTURE)) {
                 foreach ($m[1] as $idx => $nameMatch) {

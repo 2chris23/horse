@@ -152,7 +152,7 @@ $sexos = Publico::Arraysexs();
                                             <a href="{!! route('MyPage',['slug'=>$user->getMySlug()]) !!}">{!! trans('stud.home') !!}</a>
                                         </li>
                                         <li>
-                                            <a href="{!! route('MyInstalation',['id'=>$user->id,'slug'=>$user->getMySlug()]) !!}">{!! trans('stud.instalations') !!}</a>
+                                            <a href="{!! route('MyInstalation',['slug'=>$user->getMySlug()]) !!}">{!! trans('stud.instalations') !!}</a>
                                         </li>
                                         <li>
                                             <a href="#">{!! trans('stud.horses') !!}</a>
@@ -165,7 +165,7 @@ $sexos = Publico::Arraysexs();
                                                     @if($k!=0)
                                                         @if(!empty($h))
                                                             <li>
-                                                                <a href="{!! route('MyHorses',['id'=>$user->id,'slug'=>$user->getMySlug(),'type'=>$k,'v'=>0]) !!}">{!! $v !!}</a>
+                                                                <a href="{!! route('MyHorses',['slug'=>$user->getMySlug(),'type'=>$k,'v'=>0]) !!}">{!! $v !!}</a>
                                                             </li>
 
                                                         @endif
@@ -176,17 +176,17 @@ $sexos = Publico::Arraysexs();
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="{!! route('MySell',['id'=>$user->id,'slug'=>$user->getMySlug()]) !!}">{!! trans('stud.sell') !!}</a>
+                                            <a href="{!! route('MySell',['slug'=>$user->getMySlug()]) !!}">{!! trans('stud.sell') !!}</a>
                                         </li>
                                         <li>
-                                            <a href="{!! route('MyGallery',['id'=>$user->id,'slug'=>$user->getMySlug()]) !!}">{!! trans('stud.photos') !!}</a>
+                                            <a href="{!! route('MyGallery',['slug'=>$user->getMySlug()]) !!}">{!! trans('stud.photos') !!}</a>
                                         </li>
                                         <li>
-                                            <a href="{!! route('MyVideo',['id'=>$user->id,'slug'=>$user->getMySlug()]) !!}">{!! trans('stud.video') !!}</a>
+                                            <a href="{!! route('MyVideo',['slug'=>$user->getMySlug()]) !!}">{!! trans('stud.video') !!}</a>
                                         </li>
 
                                         <li>
-                                            <a href="{!! route('MyContact',['id'=>$user->id,'slug'=>$user->getMySlug()]) !!}">{!! trans('stud.contact') !!}</a>
+                                            <a href="{!! route('MyContact',['slug'=>$user->getMySlug()]) !!}">{!! trans('stud.contact') !!}</a>
                                         </li>
                                     </ul>
                                 </nav>

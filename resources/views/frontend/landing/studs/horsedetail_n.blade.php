@@ -471,7 +471,7 @@
                                                                 </div>
                                                                     <a
                                                                             class="btn-fake"
-                                                                            href="{!! route('MyContact',['id'=>$user->id,'slug'=>$user->getMySlug()]) !!}">
+                                                                            href="{!! route('MyContact',['slug'=>$user->getMySlug()]) !!}">
                                                                         Solicitar mas informacion
                                                                     </a>
 

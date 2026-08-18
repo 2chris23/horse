@@ -882,9 +882,9 @@ data-target=".price-quote"
                             {{--volver --}}
                             <a
                                     @if($venta == 1)
-                                    href="{!! route('MySell',['id'=>$user->id,'slug'=>$user->getMySlug(),'v'=>1]) !!}"
+                                    href="{!! route('MySell',['slug'=>$user->getMySlug()]) !!}"
                                     @else
-                                    href="{!! route('MyHorses',['id'=>$user->id,'slug'=>$user->getMySlug(),'type'=>$tipo,'v'=>0]) !!}"
+                                    href="{!! route('MyHorses',['slug'=>$user->getMySlug(),'type'=>$tipo,'v'=>0]) !!}"
                                     @endif
                                     class="btn-block btn-contact  volver" style=" ">
                                 <i class="fa fa-chevron-left" aria-hidden="true"></i>

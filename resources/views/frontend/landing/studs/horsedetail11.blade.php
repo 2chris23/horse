@@ -532,7 +532,7 @@
                                 </table>
                                 <div class="col-xs-12 m-t-10" style="padding-bottom: 10px">
                                     <a
-                                            href="{!! route('MyContact',['id'=>$user->id,'slug'=>$user->getMySlug()]) !!}">
+                                            href="{!! route('MyContact',['slug'=>$user->getMySlug()]) !!}">
                                         Solicitar mas informacion
                                     </a>
 

@@ -476,9 +476,9 @@
             <div class="row">
                 <a
                         @if($venta == 1)
-                        href="{!! route('MySell',['id'=>$user->id,'slug'=>$user->getMySlug(),'v'=>1]) !!}"
+                        href="{!! route('MySell',['slug'=>$user->getMySlug()]) !!}"
                         @else
-                        href="{!! route('MyHorses',['id'=>$user->id,'slug'=>$user->getMySlug(),'type'=>$tipo,'v'=>0]) !!}"
+                        href="{!! route('MyHorses',['slug'=>$user->getMySlug(),'type'=>$tipo,'v'=>0]) !!}"
                         @endif
                         class="volver" style=" ">
                     <i class="fa fa-chevron-left" aria-hidden="true"></i>
@@ -712,7 +712,7 @@
                                 <div class="col-xs-12 m-t-10 text-center"
                                      style="padding-bottom: 10px; @if($ParaVender == 0)margin-top: 100px !important;@endif">
                                     <a
-                                            href="{!! route('MyContact',['id'=>$user->id,'slug'=>$user->getMySlug()]) !!}">
+                                            href="{!! route('MyContact',['slug'=>$user->getMySlug()]) !!}">
                                         {!! trans('stud.horsedetail.moreinfo') !!}
                                     </a>
                                 </div>

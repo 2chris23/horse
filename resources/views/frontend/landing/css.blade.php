@@ -339,22 +339,20 @@
             }
         }
 
-        .modal-dialog {
-            margin-top: 100px;
+        /* Modal login fix: override legacy margin-top that splits the modal */
+        #loginmod .modal-dialog {
+            margin: 30px auto !important;
+            max-width: 420px !important;
         }
 
         .close-log {
             background: rgb(255, 255, 255);
-            /* z-index: 99999; */
             border-radius: 21px;
-            /* border-color: rgb(255, 0, 0); */
-            /*border: 1px rgb(255, 255, 255) solid;*/
             padding-bottom: 21px;
             float: right;
             height: 31px;
             width: 33px;
             margin-top: -40px;
-            /* margin-left: -19px; */
             margin-right: -43px;
         }
 
@@ -470,7 +468,6 @@
             margin-top: 10px;
         }
 
-        /**/
         .login2_border {
             background: rgba(255, 255, 255, 0.5);
             padding: 25px 30px 20px 30px;
@@ -654,12 +651,6 @@
             background: rgba(255, 255, 255, 0.5);
         }
 
-        .login2_border {
-            /*background: transparent;*/
-            background: transparent;
-            background-image: url(http://www.albertvalleyturf.com.au/wp-content/uploads/2017/06/oz-tuff-2.jpg);
-        }
-
         @media (min-width: 320px) {
             .flotante {
                 top: 175px;
@@ -675,73 +666,32 @@
 
         @media (min-width: 576px) {
             .flotante {
-                /*left: 18%;*/
-                /*left : 10px;*/
-                /*float: right;*/
                 top: 180px;
             }
         }
 
         @media (min-width: 768px) {
             .flotante {
-                /*right: 100px;*/
-                /*left : 10px;*/
-                /*float: right;*/
                 top: 19px;
             }
         }
 
         @media (min-width: 867px) {
             .flotante {
-                /*right: 100px;*/
-                /*left : 10px;*/
-                /*float: right;*/
                 top: 19px;
             }
         }
 
         @media (min-width: 992px) {
             .flotante {
-                /*right: 100px;*/
-                /*left : 10px;*/
-                /*float: right;*/
                 top: 50px;
             }
         }
 
         @media (min-width: 1200px) {
             .flotante {
-                /*right: 100px;*/
-                /*left : 10px;*/
-                /*float: right;*/
                 top: 50px;
             }
-        }
-
-        .modal-dialog {
-            margin-top: 100px;
-        }
-
-        .close-log {
-            background: rgb(255, 255, 255);
-            /* z-index: 99999; */
-            border-radius: 21px;
-            /* border-color: rgb(255, 0, 0); */
-            /*border: 1px rgb(255, 255, 255) solid;*/
-            padding-bottom: 21px;
-            float: right;
-            height: 31px;
-            width: 33px;
-            margin-top: -40px;
-            /* margin-left: -19px; */
-            margin-right: -43px;
-        }
-
-        .close-btn {
-            background: rgb(255, 255, 255);
-            color: rgb(0, 0, 0);
-            margin-right: 7px;
-            font-size: 2em;
         }
         #header6, #header6 .is-sticky header,
         #header-main-sticky-wrapper {

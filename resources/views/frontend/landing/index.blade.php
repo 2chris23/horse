@@ -165,63 +165,59 @@ $favicon= url(\Config::get('logos.favicon256'));
 <body id="header6">
 <div class="clearfix"></div>
 
-<!-- Modal -->
-<div id="loginmod" class="modal  fade" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-body col-xs-12 login2_border login_section_top">
-                <div class="close-log">
-                    <button type="button" class="close close-btn" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="login_logo login_border_radius1">
-                    <h3 class="text-center text-white">
-                        <img src="{!!url('logo.png')!!}" alt="{!! Config::get('app.name') !!}"
-                             class="admire_logo"><br/>
-                        <span class="m-t-15">{{trans('landing.login')}}</span>
-                    </h3>
-                </div>
-                <div class="m-t-15 col-xs-12">
-                    <form class="form-horizontal" id="login_validator" role="form"
-                          method="POST"
-                          action="{{ url('login') }}">
-                        {{ csrf_field() }}
-                        <div class="form-group">
-                            <label for="email"
-                                   class="col-form-label text-white">{{trans('landing.email')}}</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control b_r_20" id="email" name="email"
-                                       placeholder="{{trans('landing.placeholder.email')  }}">
-                                <span class="input-group-addon"> <i class="fa fa-envelope text-white"></i> </span>
-                            </div>
+<!-- Modal Login -->
+<div id="loginmod" class="modal fade" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered" style="max-width:420px; margin: auto; top: 50px;">
+        <div class="modal-content" style="border-radius: 10px; border: none; box-shadow: 0 5px 30px rgba(0,0,0,0.3);">
+            <!-- Header -->
+            <div class="modal-header text-center" style="background: linear-gradient(135deg, #e87722, #c0580a); border-radius: 10px 10px 0 0; border: none; padding: 20px;">
+                <h4 class="modal-title w-100" style="color:#fff; font-weight:700;">
+                    <img src="{!!url('logo.png')!!}" alt="{!! Config::get('app.name') !!}" style="height:45px; margin-bottom:8px;"><br>
+                    {{trans('landing.login')}}
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" style="position:absolute; top:10px; right:15px; color:#fff; opacity:1; font-size:24px;">&times;</button>
+            </div>
+            <!-- Body -->
+            <div class="modal-body" style="padding: 25px 30px; background:#fff; border-radius: 0 0 10px 10px;">
+                <form class="form-horizontal" id="login_validator" role="form" method="POST" action="{{ url('login') }}">
+                    {{ csrf_field() }}
+                    <div class="form-group" style="margin-bottom:15px;">
+                        <label for="email" style="font-weight:600; color:#555;">{{trans('landing.email')}}</label>
+                        <div class="input-group">
+                            <span class="input-group-addon" style="background:#f5f5f5; border-right:none;"><i class="fa fa-envelope" style="color:#999;"></i></span>
+                            <input type="text" class="form-control" id="email" name="email"
+                                   placeholder="{{trans('landing.placeholder.email')}}"
+                                   style="border-left:none; border-radius:0 4px 4px 0;">
                         </div>
-                        <div class="form-group">
-                            <label for="password"
-                                   class="col-form-label text-white">{{trans('landing.password')}}</label>
-                            <div class="input-group">
-                                <input type="password" class="form-control b_r_20 pwd" id="password" name="password"
-                                       placeholder="{{trans('landing.placeholder.password')  }}">
-                                <span class="input-group-addon"> <i class="fa fa-key text-white"></i> </span>
-                            </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom:15px;">
+                        <label for="password" style="font-weight:600; color:#555;">{{trans('landing.password')}}</label>
+                        <div class="input-group">
+                            <span class="input-group-addon" style="background:#f5f5f5; border-right:none;"><i class="fa fa-lock" style="color:#999;"></i></span>
+                            <input type="password" class="form-control pwd" id="password" name="password"
+                                   placeholder="{{trans('landing.placeholder.password')}}"
+                                   style="border-left:none; border-radius:0 4px 4px 0;">
                         </div>
-                        <label for="remember"><input type="checkbox" id="remember"
-                                                     name="remember">{!! Funciones::ReemplazarApostrofe(trans('login.keeplog')) !!}
-                        </label>'
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="text-center">
-                                    <button type="submit"
-                                            class="btn btn-success btn-block b_r_20 m-t-20 sendlog">{{trans('landing.login')}}</button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </form>
+                    </div>
+                    <div class="form-group" style="margin-bottom:20px;">
+                        <label style="font-weight:400; color:#555; cursor:pointer;">
+                            <input type="checkbox" id="remember" name="remember">
+                            {!! Funciones::ReemplazarApostrofe(trans('login.keeplog')) !!}
+                        </label>
+                        <a href="{{ route('OlvidoGet') }}" style="float:right; color:#e87722; font-size:13px;">{{trans('login.forgot')}}</a>
+                    </div>
+                    <button type="submit" class="btn btn-block sendlog"
+                            style="background: linear-gradient(135deg, #e87722, #c0580a); color:#fff; font-weight:700; padding:12px; border:none; border-radius:6px; font-size:16px;">
+                        {{trans('landing.login')}}
+                    </button>
+                </form>
+                <hr style="margin: 20px 0 15px;">
+                <div class="text-center" style="color:#555; font-size:14px;">
+                    {{trans('login.noacc')}}
+                    <a href="{{url('register')}}" style="color:#e87722; font-weight:700;">{{trans('login.signup')}}</a>
                 </div>
-
             </div>
         </div>
-
     </div>
 </div><!--modal-->
 

@@ -4,11 +4,17 @@
     // jQuery for page scrolling feature - requires jQuery Easing plugin
     $('body').on('click', '.page-scroll a', function (event) {
         var $anchor = $(this);
+        var href = $anchor.attr('href');
+        // Only intercept anchor links (starting with #), not full URLs
+        if (!href || href.charAt(0) !== '#') {
+            return; // let browser handle navigation normally
+        }
         $('html, body').stop().animate({
-            scrollTop: ($($anchor.attr('href')).offset().top - 85 )
+            scrollTop: ($(href).offset().top - 85 )
         }, 1500, 'easeInOutExpo');
         event.preventDefault();
     });
+
 
     $("body").scrollspy({target: ".navbar-collapse", offset: 200});
 

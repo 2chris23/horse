@@ -367,8 +367,10 @@
                 top: 50px;
             }
         }
-        .modal-dialog {
-            margin-top: 100px;
+        /* Modal login centering fix */
+        #loginmod .modal-dialog {
+            margin: 30px auto !important;
+            max-width: 420px !important;
         }
         .close-log {
             background: rgb(255, 255, 255);
@@ -406,96 +408,77 @@
 </div>
 <div class="cliearfix"></div>
 
-{{-- Modal --}}
-<div id="loginmod" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content" style="border-radius: 10px; overflow: hidden;">
-            <div class="modal-header" style="background-color: #f8f9fa; border-bottom: 1px solid #dee2e6;">
-                <button type="button" class="close" data-dismiss="modal" style="font-size: 1.5em;">&times;</button>
-                <h4 class="modal-title text-center" style="color: #333; font-weight: bold;">
-                    <img src="{!!url('logo.png')!!}" alt="logo" style="max-height: 40px; margin-bottom: 10px;"><br/>
+{{-- Modal Login --}}
+<div id="loginmod" class="modal fade" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered" style="max-width:420px; margin: 30px auto;">
+        <div class="modal-content" style="border-radius: 10px; border: none; box-shadow: 0 5px 30px rgba(0,0,0,0.3); overflow: hidden;">
+            <!-- Header -->
+            <div class="modal-header text-center" style="background: linear-gradient(135deg, #e87722, #c0580a); border: none; padding: 20px; position: relative;">
+                <button type="button" class="close" data-dismiss="modal" style="position:absolute; top:12px; right:15px; color:#fff; opacity:0.9; font-size:24px; text-shadow:none;">&times;</button>
+                <h4 class="modal-title" style="color:#fff; font-weight:700; margin:0;">
+                    <img src="{!!url('logo.png')!!}" alt="Horses World Sale" style="max-height:45px; margin-bottom:8px;"><br>
                     {{trans('login.login')}}
                 </h4>
             </div>
-            <div class="modal-body" style="padding: 30px;">
-                <form class="form-horizontal" role="form" method="POST" action="{{ url('login') }}">
+            <!-- Body -->
+            <div class="modal-body" style="padding: 25px 30px; background:#fff;">
+                <form class="form-horizontal" id="login_validator" role="form" method="POST" action="{{ url('login') }}">
                     {{ csrf_field() }}
 
-                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                        <div class="col-md-12">
-                            <label for="email" class="control-label" style="color: #555;">{{trans('login.email')}}</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-envelope text-primary"></i></span>
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="{{trans('login.placeholder.email')}}" required autofocus>
-                            </div>
-                            @if ($errors->has('email'))
-                                <span class="help-block" style="color: red;">
-                                    <strong>{{ $errors->first('email') }}</strong>
-                                </span>
-                            @endif
+                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}" style="margin-bottom:15px;">
+                        <label for="email" style="font-weight:600; color:#555;">{{trans('login.email')}}</label>
+                        <div class="input-group">
+                            <span class="input-group-addon" style="background:#f5f5f5; border-right:none;"><i class="fa fa-envelope" style="color:#999;"></i></span>
+                            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}"
+                                   placeholder="{{trans('login.placeholder.email')}}" required autofocus
+                                   style="border-left:none; border-radius:0 4px 4px 0;">
                         </div>
+                        @if ($errors->has('email'))
+                            <span class="help-block" style="color: red; font-size:12px;">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                        @endif
                     </div>
 
-                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}" style="margin-top: 15px;">
-                        <div class="col-md-12">
-                            <label for="password" class="control-label" style="color: #555;">{{trans('login.password')}}</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-lock text-primary"></i></span>
-                                <input type="password" class="form-control" id="password" name="password" placeholder="{{trans('login.placeholder.password')}}" required>
-                            </div>
-                            @if ($errors->has('password'))
-                                <span class="help-block" style="color: red;">
-                                    <strong>{{ $errors->first('password') }}</strong>
-                                </span>
-                            @endif
+                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}" style="margin-bottom:15px;">
+                        <label for="password" style="font-weight:600; color:#555;">{{trans('login.password')}}</label>
+                        <div class="input-group">
+                            <span class="input-group-addon" style="background:#f5f5f5; border-right:none;"><i class="fa fa-lock" style="color:#999;"></i></span>
+                            <input id="password" type="password" class="form-control" name="password"
+                                   placeholder="{{trans('login.placeholder.password')}}" required
+                                   style="border-left:none; border-radius:0 4px 4px 0;">
                         </div>
+                        @if ($errors->has('password'))
+                            <span class="help-block" style="color: red; font-size:12px;">
+                                <strong>{{ $errors->first('password') }}</strong>
+                            </span>
+                        @endif
                     </div>
 
-                    <div class="form-group" style="margin-top: 20px;">
-                        <div class="col-md-12 text-center">
-                            <button type="submit" class="btn btn-primary btn-block" style="background-color: #2180ac; border: none; padding: 10px 0; font-size: 1.1em;">
-                                {{trans('login.login')}}
-                            </button>
-                        </div>
+                    <div class="form-group" style="margin-bottom:20px;">
+                        <label style="font-weight:400; color:#555; cursor:pointer;">
+                            <input type="checkbox" name="remember"> {{trans('login.keeplog')}}
+                        </label>
+                        <a href="{{ url('/password/reset') }}" style="float:right; color:#e87722; font-size:13px;">{{trans('login.forgot')}}</a>
                     </div>
 
-                    <div class="form-group text-center" style="margin-top: 10px;">
-                        <div class="col-md-12">
-                            <div class="checkbox">
-                                <label style="color: #555;">
-                                    <input type="checkbox" name="remember"> {{trans('login.keeplog')}}
-                                </label>
-                                <a style="margin-left:15px; color: #2180ac;" href="{{ url('/password/reset') }}">{{trans('login.forgot')}}</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <hr style="border-top: 1px solid #ddd; margin: 20px 0;">
-
-                    <div class="form-group text-center">
-                        <div class="col-md-6 col-xs-6">
-                            <a href="#" class="btn btn-block" style="background-color: #3b5998; color: white;">
-                                <i class="fa fa-facebook"></i> <span class="hidden-xs">{{trans('login.facebook')}}</span>
-                            </a>
-                        </div>
-                        <div class="col-md-6 col-xs-6">
-                            <a href="#" class="btn btn-block" style="background-color: #d34836; color: white;">
-                                <i class="fa fa-google-plus"></i> <span class="hidden-xs">{{trans('login.google')}}</span>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group text-center" style="margin-top: 20px; margin-bottom: 0;">
-                        <div class="col-md-12">
-                            <span style="color: #555;">{{trans('login.noacc')}}</span>
-                            <a href="{{url('register')}}" style="color: #2180ac; font-weight: bold;">{{trans('login.signup')}}</a>
-                        </div>
-                    </div>
+                    <button type="submit" class="btn btn-block sendlog"
+                            style="background: linear-gradient(135deg, #e87722, #c0580a); color:#fff; font-weight:700; padding:12px; border:none; border-radius:6px; font-size:16px;">
+                        {{trans('login.login')}}
+                    </button>
                 </form>
+
+                <hr style="margin: 20px 0 15px;">
+
+                <div class="text-center" style="color:#555; font-size:14px;">
+                    {{trans('login.noacc')}}
+                    <a href="{{url('register')}}" style="color:#e87722; font-weight:700;">{{trans('login.signup')}}</a>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
 
 <div class="cliearfix"></div>
 <div class="outer-wrapper">
@@ -566,8 +549,8 @@
                                 </li>
                                 --}}
 
-                                <li class="page-scroll dropdown">
-                                    <a href="https://www.smartsupp.com/es/features#" id="langsDropdown"
+                                <li class="dropdown">
+                                    <a href="#" id="langsDropdown"
                                        class="account-lang dropdown-toggle" data-toggle="dropdown" style="    margin-top: 4px;">
                                         <span class="flag flag-es"></span> <b class="caret"></b>
                                     </a>
@@ -609,12 +592,13 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="page-scroll">
-                                    <a href="{{ url('login') }}" class="btn btn-small btn-single" data-toggle="modal" data-target="#loginmod"> {{$login}}</a>
+                                <li>
+                                    <a href="#loginmod" class="btn btn-small btn-single" data-toggle="modal" data-target="#loginmod"> {{$login}}</a>
                                 </li>
                                 <li class="page-scroll">
                                     <a href="#register" class="btn btn-small btn-max">{{$register}}</a>
                                 </li>
+
 
                             </ul>
                         </div>
@@ -1431,8 +1415,9 @@
 <script src="{!! url('landing/js/magnific-popup/jquery.magnific-popup.min.js')!!}"></script>
 <script src="{!! route('Easing.js') !!}"></script>
 <script src="{!! url('landing/js/main.js')!!}"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-<script src="{!! url('landing/js/gmaps/greyscale.js')!!}"></script>
+{{-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script> --}}
+{{-- <script src="{!! url('landing/js/gmaps/greyscale.js')!!}"></script> --}}
+
 <script src="{!! url('frontend/js/awsome.js') !!}" id="awesome-gallery-script"></script>
 <script>
     {{--

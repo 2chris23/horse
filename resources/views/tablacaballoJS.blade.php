@@ -138,7 +138,7 @@
                 if (horseindex != undefined) {
                     var url = $('#TablaAdmin').attr('data-url');
                     <?php
-                        if (\Auth::user()->isAdm() or \Auth::user()->Asociado()) {
+                        if (\Auth::check() && (\Auth::user()->isAdm() or \Auth::user()->Asociado())) {
                             $columnsHorse1 = [
                                 'id' => '#',
                                 'img' => 'Imagen',
@@ -270,7 +270,7 @@
         if ($('#tablah') !== undefined) {
             var table = undefined, m = 0;
             <?php
-                if (\Auth::user()->isAdm() or \Auth::user()->Asociado()) {
+                if (\Auth::check() && (\Auth::user()->isAdm() or \Auth::user()->Asociado())) {
                     $columnsHorse1 = [
                         'id' => '#',
                         'img' => 'Imagen',

@@ -167,54 +167,54 @@ $favicon= url(\Config::get('logos.favicon256'));
 
 <!-- Modal Login -->
 <div id="loginmod" class="modal fade" role="dialog" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered" style="max-width:420px; margin: auto; top: 50px;">
-        <div class="modal-content" style="border-radius: 10px; border: none; box-shadow: 0 5px 30px rgba(0,0,0,0.3);">
-            <!-- Header -->
-            <div class="modal-header text-center" style="background: linear-gradient(135deg, #e87722, #c0580a); border-radius: 10px 10px 0 0; border: none; padding: 20px;">
-                <h4 class="modal-title w-100" style="color:#fff; font-weight:700;">
-                    <img src="{!!url('logo.png')!!}" alt="{!! Config::get('app.name') !!}" style="height:45px; margin-bottom:8px;"><br>
-                    {{trans('landing.login')}}
+    <div class="modal-dialog modal-dialog-centered" style="max-width:420px; margin: 30px auto;">
+        <div class="modal-content" style="border-radius: 12px; border: none; box-shadow: 0 10px 40px rgba(0,0,0,0.25); overflow: hidden; background: #fff;">
+            <!-- Header Blanco -->
+            <div class="modal-header text-center" style="background: #ffffff; border-bottom: 1px solid #eeeeee; padding: 25px 20px 15px; position: relative;">
+                <button type="button" class="close" data-dismiss="modal" style="position:absolute; top:12px; right:15px; color:#888; opacity:0.8; font-size:26px; text-shadow:none; outline:none;">&times;</button>
+                <h4 class="modal-title" style="color:#222; font-weight:700; margin:0;">
+                    <img src="{!!url('logo.png')!!}" alt="{!! Config::get('app.name') !!}" style="max-height:48px; max-width:220px; width:auto; height:auto; margin-bottom:10px; display:inline-block;"><br>
+                    <span style="color:#2c3e50; font-size:18px; font-weight:700; letter-spacing:0.5px;">{{trans('landing.login')}}</span>
                 </h4>
-                <button type="button" class="close" data-dismiss="modal" style="position:absolute; top:10px; right:15px; color:#fff; opacity:1; font-size:24px;">&times;</button>
             </div>
             <!-- Body -->
-            <div class="modal-body" style="padding: 25px 30px; background:#fff; border-radius: 0 0 10px 10px;">
+            <div class="modal-body" style="padding: 25px 30px; background:#fff;">
                 <form class="form-horizontal" id="login_validator" role="form" method="POST" action="{{ url('login') }}">
                     {{ csrf_field() }}
-                    <div class="form-group" style="margin-bottom:15px;">
-                        <label for="email" style="font-weight:600; color:#555;">{{trans('landing.email')}}</label>
+                    <div class="form-group" style="margin-bottom:18px;">
+                        <label for="email" style="font-weight:600; color:#444; font-size:13px; margin-bottom:6px; display:block;">{{trans('landing.email')}}</label>
                         <div class="input-group">
-                            <span class="input-group-addon" style="background:#f5f5f5; border-right:none;"><i class="fa fa-envelope" style="color:#999;"></i></span>
+                            <span class="input-group-addon" style="background:#f8f9fa; border:1px solid #dce1e6; border-right:none; color:#777;"><i class="fa fa-envelope"></i></span>
                             <input type="text" class="form-control" id="email" name="email"
                                    placeholder="{{trans('landing.placeholder.email')}}"
-                                   style="border-left:none; border-radius:0 4px 4px 0;">
+                                   style="border:1px solid #dce1e6; border-left:none; border-radius:0 4px 4px 0; height:42px; font-size:14px;">
                         </div>
                     </div>
-                    <div class="form-group" style="margin-bottom:15px;">
-                        <label for="password" style="font-weight:600; color:#555;">{{trans('landing.password')}}</label>
+                    <div class="form-group" style="margin-bottom:18px;">
+                        <label for="password" style="font-weight:600; color:#444; font-size:13px; margin-bottom:6px; display:block;">{{trans('landing.password')}}</label>
                         <div class="input-group">
-                            <span class="input-group-addon" style="background:#f5f5f5; border-right:none;"><i class="fa fa-lock" style="color:#999;"></i></span>
+                            <span class="input-group-addon" style="background:#f8f9fa; border:1px solid #dce1e6; border-right:none; color:#777;"><i class="fa fa-lock"></i></span>
                             <input type="password" class="form-control pwd" id="password" name="password"
                                    placeholder="{{trans('landing.placeholder.password')}}"
-                                   style="border-left:none; border-radius:0 4px 4px 0;">
+                                   style="border:1px solid #dce1e6; border-left:none; border-radius:0 4px 4px 0; height:42px; font-size:14px;">
                         </div>
                     </div>
-                    <div class="form-group" style="margin-bottom:20px;">
-                        <label style="font-weight:400; color:#555; cursor:pointer;">
-                            <input type="checkbox" id="remember" name="remember">
+                    <div class="form-group" style="margin-bottom:22px;">
+                        <label style="font-weight:400; color:#666; cursor:pointer; font-size:13px;">
+                            <input type="checkbox" id="remember" name="remember" style="margin-top:2px;">
                             {!! Funciones::ReemplazarApostrofe(trans('login.keeplog')) !!}
                         </label>
-                        <a href="{{ route('OlvidoGet') }}" style="float:right; color:#e87722; font-size:13px;">{{trans('login.forgot')}}</a>
+                        <a href="{{ route('OlvidoGet') }}" style="float:right; color:#e87722; font-size:13px; text-decoration:none; font-weight:500;">{{trans('login.forgot')}}</a>
                     </div>
                     <button type="submit" class="btn btn-block sendlog"
-                            style="background: linear-gradient(135deg, #e87722, #c0580a); color:#fff; font-weight:700; padding:12px; border:none; border-radius:6px; font-size:16px;">
+                            style="background: #e87722; background: linear-gradient(135deg, #fa6900, #d15b06); color:#fff; font-weight:700; padding:12px; border:none; border-radius:6px; font-size:16px; box-shadow:0 3px 10px rgba(232,119,34,0.3); cursor:pointer;">
                         {{trans('landing.login')}}
                     </button>
                 </form>
-                <hr style="margin: 20px 0 15px;">
-                <div class="text-center" style="color:#555; font-size:14px;">
+                <hr style="margin: 22px 0 15px; border-top:1px solid #eee;">
+                <div class="text-center" style="color:#666; font-size:14px;">
                     {{trans('login.noacc')}}
-                    <a href="{{url('register')}}" style="color:#e87722; font-weight:700;">{{trans('login.signup')}}</a>
+                    <a href="{{url('register')}}" style="color:#e87722; font-weight:700; text-decoration:none;">{{trans('login.signup')}}</a>
                 </div>
             </div>
         </div>

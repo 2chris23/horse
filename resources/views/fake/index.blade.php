@@ -1,38 +1,37 @@
 @php
-    $logobasic= url("landing/images/basic/logo.png");
-        $logo =url("landing/images/basic/logo.png");
-        $logo = url('assets/img/logo2.png');
-        $espanol =  url("landing/img/es.png");
-        $english =  url("landing/img/en.png");
-        /*slider*/
-        $dummy = url("landing/images/dummy.png");
-        /*slider 1*/
-        $img1 = url("landing/images/slider/1/2.jpg");
-        $text1 = "LA APLICACIÓN DE CABALLOS QUE TE HARA LAS COSAS MÄS FACIL PARA GESTIONAR TU NEGOCIO";
-        $stext1 ="¡INSCRÍBETE CON NOSOTROS YA!";
-        $img2 =url("landing/images/slider/1/1.jpg");
-        $text2 = '2 LA APLICACIÓN DE CABALLOS QUE TE HARA LAS COSAS MÄS FACIL PARA GESTIONAR TU NEGOCIO';
-        $stext2 ='LAS COSAS MÄS FACIL PARA GESTIONAR TU NEGOCIO';
-        $horseapp ='LA APLICACIÖN DE CABALLOS QUE TE HARA LAS COSAS MÄS FACIL PARA GESTIONAR TU NEGOCIO';
-        $horseinscription ="¡INSCRÍBETE CON NOSOTROS YA!";
-        $tittlehorsewordsale ='Horses world Sale';
-        $register ="Registrate";
-        $login = "Iniciar sesión";
-        $imgother3 = url("landing/images/other/3.png");
-        $sms = \Session::get('flash_message');
-        $error = 0;
-        if(!empty($sms)){
-            try{
-                $error = (isset($sms['error'])?$sms['error']:null);
-            }catch(\ErrorException $e){
-                $sms['error'] = null;
-            }
-            try{
-                $error = (isset($sms['sms'])?$sms['sms']:null);
-            }catch(\ErrorException $e){
-                $sms['sms'] = null;
-            }
-        };
+    $logobasic = url("logo.png");
+    $logo = url("logo.png");
+    $espanol =  url("landing/img/es.png");
+    $english =  url("landing/img/en.png");
+    /*slider*/
+    $dummy = url("landing/images/dummy.png");
+    /*slider 1*/
+    $img1 = url("landing/images/slider/1/2.jpg");
+    $text1 = "LA APLICACIÓN DE CABALLOS QUE TE HARA LAS COSAS MÄS FACIL PARA GESTIONAR TU NEGOCIO";
+    $stext1 ="¡INSCRÍBETE CON NOSOTROS YA!";
+    $img2 =url("landing/images/slider/1/1.jpg");
+    $text2 = '2 LA APLICACIÓN DE CABALLOS QUE TE HARA LAS COSAS MÄS FACIL PARA GESTIONAR TU NEGOCIO';
+    $stext2 ='LAS COSAS MÄS FACIL PARA GESTIONAR TU NEGOCIO';
+    $horseapp ='LA APLICACIÖN DE CABALLOS QUE TE HARA LAS COSAS MÄS FACIL PARA GESTIONAR TU NEGOCIO';
+    $horseinscription ="¡INSCRÍBETE CON NOSOTROS YA!";
+    $tittlehorsewordsale ='Horses world Sale';
+    $register ="Registrate";
+    $login = "Iniciar sesión";
+    $imgother3 = url("landing/images/other/3.png");
+    $sms = \Session::get('flash_message');
+    $error = 0;
+    if(!empty($sms)){
+        try{
+            $error = (isset($sms['error'])?$sms['error']:null);
+        }catch(\ErrorException $e){
+            $sms['error'] = null;
+        }
+        try{
+            $error = (isset($sms['sms'])?$sms['sms']:null);
+        }catch(\ErrorException $e){
+            $sms['sms'] = null;
+        }
+    };
 @endphp
         <!DOCTYPE html>
 <html lang="en">
@@ -307,83 +306,80 @@
             background-size: cover;
             background-position: center;
         }
-        {{--
-        .flotante {
-            /*http://www.albertvalleyturf.com.au/wp-content/uploads/2017/06/oz-tuff-2.jpg*/
-            background-image: url("{{ asset('assets/img/login.jpg') }}");
-            border-radius: 10px;
-            width: 320px;
-            /*clear: both;*/
-            position: absolute;
-            top: 23px;
-            z-index: 999;
-        }
---}}
         @media (min-width: 320px) {
             .flotante {
-                /*left: 18%;*/
-                /*left : 10px;*/
-                /*float: right;*/
                 top: 175px;
             }
         }
         @media (min-width: 576px) {
             .flotante {
-                /*left: 18%;*/
-                /*left : 10px;*/
-                /*float: right;*/
                 top: 180px;
             }
         }
         @media (min-width: 768px) {
             .flotante {
-                /*right: 100px;*/
-                /*left : 10px;*/
-                /*float: right;*/
                 top: 19px;
             }
         }
         @media (min-width: 867px) {
             .flotante {
-                /*right: 100px;*/
-                /*left : 10px;*/
-                /*float: right;*/
                 top: 19px;
             }
         }
         @media (min-width: 992px) {
             .flotante {
-                /*right: 100px;*/
-                /*left : 10px;*/
-                /*float: right;*/
                 top: 50px;
             }
         }
         @media (min-width: 1200px) {
             .flotante {
-                /*right: 100px;*/
-                /*left : 10px;*/
-                /*float: right;*/
                 top: 50px;
             }
         }
-        /* Modal login centering fix */
+        /* Centrado perfecto del modal en pantalla */
+        #loginmod {
+            text-align: center;
+            padding: 0 !important;
+        }
+        #loginmod:before {
+            content: '';
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+            margin-right: -4px;
+        }
         #loginmod .modal-dialog {
-            margin: 30px auto !important;
+            display: inline-block !important;
+            text-align: left;
+            vertical-align: middle;
             max-width: 420px !important;
+            width: 90% !important;
+            margin: 30px auto !important;
+        }
+        /* Logo Navbar sin estiramiento */
+        #header-main .navbar-brand,
+        .navbar-brand {
+            padding: 10px 15px !important;
+            height: auto !important;
+        }
+        #header-main .navbar-brand img,
+        .navbar-brand img,
+        .navbar-brand > img {
+            max-height: 42px !important;
+            width: auto !important;
+            height: auto !important;
+            object-fit: contain !important;
+            display: inline-block !important;
+            margin-top: 0 !important;
         }
         .close-log {
             background: rgb(255, 255, 255);
-            /* z-index: 99999; */
             border-radius: 21px;
-            /* border-color: rgb(255, 0, 0); */
-            /*border: 1px rgb(255, 255, 255) solid;*/
             padding-bottom: 21px;
             float: right;
             height: 31px;
             width: 33px;
             margin-top: -40px;
-            /* margin-left: -19px; */
             margin-right: -43px;
         }
         .close-btn {
@@ -411,13 +407,13 @@
 {{-- Modal Login --}}
 <div id="loginmod" class="modal fade" role="dialog" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered" style="max-width:420px; margin: 30px auto;">
-        <div class="modal-content" style="border-radius: 10px; border: none; box-shadow: 0 5px 30px rgba(0,0,0,0.3); overflow: hidden;">
-            <!-- Header -->
-            <div class="modal-header text-center" style="background: linear-gradient(135deg, #e87722, #c0580a); border: none; padding: 20px; position: relative;">
-                <button type="button" class="close" data-dismiss="modal" style="position:absolute; top:12px; right:15px; color:#fff; opacity:0.9; font-size:24px; text-shadow:none;">&times;</button>
-                <h4 class="modal-title" style="color:#fff; font-weight:700; margin:0;">
-                    <img src="{!!url('logo.png')!!}" alt="Horses World Sale" style="max-height:45px; margin-bottom:8px;"><br>
-                    {{trans('login.login')}}
+        <div class="modal-content" style="border-radius: 12px; border: none; box-shadow: 0 10px 40px rgba(0,0,0,0.25); overflow: hidden; background: #fff;">
+            <!-- Header Blanco -->
+            <div class="modal-header text-center" style="background: #ffffff; border-bottom: 1px solid #eeeeee; padding: 25px 20px 15px; position: relative;">
+                <button type="button" class="close" data-dismiss="modal" style="position:absolute; top:12px; right:15px; color:#888; opacity:0.8; font-size:26px; text-shadow:none; outline:none;">&times;</button>
+                <h4 class="modal-title" style="color:#222; font-weight:700; margin:0;">
+                    <img src="{!!url('logo.png')!!}" alt="Horses World Sale" style="max-height:48px; max-width: 220px; width:auto; height:auto; margin-bottom:10px; display:inline-block;"><br>
+                    <span style="color:#2c3e50; font-size:18px; font-weight:700; letter-spacing:0.5px;">{{trans('login.login')}}</span>
                 </h4>
             </div>
             <!-- Body -->
@@ -425,61 +421,59 @@
                 <form class="form-horizontal" id="login_validator" role="form" method="POST" action="{{ url('login') }}">
                     {{ csrf_field() }}
 
-                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}" style="margin-bottom:15px;">
-                        <label for="email" style="font-weight:600; color:#555;">{{trans('login.email')}}</label>
+                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}" style="margin-bottom:18px;">
+                        <label for="email" style="font-weight:600; color:#444; font-size:13px; margin-bottom:6px; display:block;">{{trans('login.email')}}</label>
                         <div class="input-group">
-                            <span class="input-group-addon" style="background:#f5f5f5; border-right:none;"><i class="fa fa-envelope" style="color:#999;"></i></span>
+                            <span class="input-group-addon" style="background:#f8f9fa; border:1px solid #dce1e6; border-right:none; color:#777;"><i class="fa fa-envelope"></i></span>
                             <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}"
                                    placeholder="{{trans('login.placeholder.email')}}" required autofocus
-                                   style="border-left:none; border-radius:0 4px 4px 0;">
+                                   style="border:1px solid #dce1e6; border-left:none; border-radius:0 4px 4px 0; height:42px; font-size:14px;">
                         </div>
                         @if ($errors->has('email'))
-                            <span class="help-block" style="color: red; font-size:12px;">
+                            <span class="help-block" style="color: #e74c3c; font-size:12px; margin-top:4px;">
                                 <strong>{{ $errors->first('email') }}</strong>
                             </span>
                         @endif
                     </div>
 
-                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}" style="margin-bottom:15px;">
-                        <label for="password" style="font-weight:600; color:#555;">{{trans('login.password')}}</label>
+                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}" style="margin-bottom:18px;">
+                        <label for="password" style="font-weight:600; color:#444; font-size:13px; margin-bottom:6px; display:block;">{{trans('login.password')}}</label>
                         <div class="input-group">
-                            <span class="input-group-addon" style="background:#f5f5f5; border-right:none;"><i class="fa fa-lock" style="color:#999;"></i></span>
+                            <span class="input-group-addon" style="background:#f8f9fa; border:1px solid #dce1e6; border-right:none; color:#777;"><i class="fa fa-lock"></i></span>
                             <input id="password" type="password" class="form-control" name="password"
                                    placeholder="{{trans('login.placeholder.password')}}" required
-                                   style="border-left:none; border-radius:0 4px 4px 0;">
+                                   style="border:1px solid #dce1e6; border-left:none; border-radius:0 4px 4px 0; height:42px; font-size:14px;">
                         </div>
                         @if ($errors->has('password'))
-                            <span class="help-block" style="color: red; font-size:12px;">
+                            <span class="help-block" style="color: #e74c3c; font-size:12px; margin-top:4px;">
                                 <strong>{{ $errors->first('password') }}</strong>
                             </span>
                         @endif
                     </div>
 
-                    <div class="form-group" style="margin-bottom:20px;">
-                        <label style="font-weight:400; color:#555; cursor:pointer;">
-                            <input type="checkbox" name="remember"> {{trans('login.keeplog')}}
+                    <div class="form-group" style="margin-bottom:22px;">
+                        <label style="font-weight:400; color:#666; cursor:pointer; font-size:13px;">
+                            <input type="checkbox" name="remember" style="margin-top:2px;"> {{trans('login.keeplog')}}
                         </label>
-                        <a href="{{ url('/password/reset') }}" style="float:right; color:#e87722; font-size:13px;">{{trans('login.forgot')}}</a>
+                        <a href="{{ url('/password/reset') }}" style="float:right; color:#e87722; font-size:13px; text-decoration:none; font-weight:500;">{{trans('login.forgot')}}</a>
                     </div>
 
                     <button type="submit" class="btn btn-block sendlog"
-                            style="background: linear-gradient(135deg, #e87722, #c0580a); color:#fff; font-weight:700; padding:12px; border:none; border-radius:6px; font-size:16px;">
+                            style="background: #e87722; background: linear-gradient(135deg, #fa6900, #d15b06); color:#fff; font-weight:700; padding:12px; border:none; border-radius:6px; font-size:16px; box-shadow:0 3px 10px rgba(232,119,34,0.3); cursor:pointer;">
                         {{trans('login.login')}}
                     </button>
                 </form>
 
-                <hr style="margin: 20px 0 15px;">
+                <hr style="margin: 22px 0 15px; border-top:1px solid #eee;">
 
-                <div class="text-center" style="color:#555; font-size:14px;">
+                <div class="text-center" style="color:#666; font-size:14px;">
                     {{trans('login.noacc')}}
-                    <a href="{{url('register')}}" style="color:#e87722; font-weight:700;">{{trans('login.signup')}}</a>
+                    <a href="{{url('register')}}" style="color:#e87722; font-weight:700; text-decoration:none;">{{trans('login.signup')}}</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
 <div class="cliearfix"></div>
 <div class="outer-wrapper">
     <div class="header-wrap">

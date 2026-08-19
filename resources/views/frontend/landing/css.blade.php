@@ -339,10 +339,25 @@
             }
         }
 
-        /* Modal login fix: override legacy margin-top that splits the modal */
+        /* Centrado perfecto del modal en pantalla */
+        #loginmod {
+            text-align: center;
+            padding: 0 !important;
+        }
+        #loginmod:before {
+            content: '';
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+            margin-right: -4px;
+        }
         #loginmod .modal-dialog {
-            margin: 30px auto !important;
+            display: inline-block !important;
+            text-align: left;
+            vertical-align: middle;
             max-width: 420px !important;
+            width: 90% !important;
+            margin: 30px auto !important;
         }
 
         .close-log {
@@ -363,11 +378,17 @@
             font-size: 2em;
         }
 
-        #header-main .yamm img {
-            width: 210px !important;
-            margin-top: -8px;
-            height: auto;
+        #header-main .navbar-brand img,
+        .navbar-brand img,
+        .navbar-brand > img {
+            max-height: 45px !important;
+            width: auto !important;
+            height: auto !important;
+            object-fit: contain !important;
+            display: inline-block !important;
+            margin-top: 0 !important;
         }
+
 
         .negro {
             color: black;
@@ -704,9 +725,12 @@
         }
 
         .navbar-brand img {
-            width: 210px;
-            margin-top: -8px;
+            width: auto;
+            max-height: 45px;
+            margin-top: 0;
+            object-fit: contain;
         }
+
 
         .account-lang {
             margin-top: 4px;

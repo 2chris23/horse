@@ -1,7 +1,4 @@
-<?php $cd = null; ?>
-@if(!empty($cd))
-    <script>
-        @endif
+<script>
         function log() {
                     {{--#navbar-collapse-1--}}
                     {{--logingbut--}}
@@ -241,6 +238,4 @@
             $('#remember').click();
         })
 
-        @if(!empty($cd))
-    </script>
-@endif
+</script>

@@ -12,11 +12,11 @@
     $d[8]= url('frontend/img/slides/s2.jpg');
     $d[9]= url('frontend/img/slides/s3.jpg');
 */
+$mostrarmarca = 0;
+$agua = 0;
 if(\Auth::user()->isAdm() != true){
     $yegu = \Auth::user()->Yeguada();
     $marca = $yegu->Marca();
-    $mostrarmarca = 0;
-    $agua = 0;
     if(!empty($marca)){
     $mostrarmarca = 1;
     $agua = $yegu->MarcaAgua()->first()->status;

@@ -242,7 +242,11 @@ class Contacto extends Model
 
     public function getTelefono()
     {
-        return json_decode($this->telefono);
+        $t = json_decode($this->telefono);
+        if (empty($t)) {
+            return [];
+        }
+        return $t;
     }
 
     public function setTelefono($nombre = [])

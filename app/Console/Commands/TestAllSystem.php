@@ -55,6 +55,15 @@ class TestAllSystem extends Command
         // 3. Test Core Routes
         $this->info("\n--- [3/4] Probando Carga de Rutas y Vistas ---");
 
+        $totalRoutes = count(app('router')->getRoutes());
+        $this->line("  [INFO] Rutas registradas en memoria: {$totalRoutes}");
+        foreach (['MyPage', 'MyInstalation', 'MyContact', 'MyGallery', 'MyVideo', 'MySell'] as $rn) {
+            $this->line("  [INFO] Route::has('{$rn}') => " . (Route::has($rn) ? 'SI' : 'NO'));
+        }
+        if (is_file(base_path('bootstrap/cache/routes-v7.php'))) {
+            $this->warn("  [ALERTA] Existe cache de rutas (bootstrap/cache/routes-v7.php). Si las rutas publicas fallan, ejecuta: php artisan route:clear");
+        }
+
         $routesToTest = [
             ['uri' => '/', 'desc' => 'Portal Principal (portal.landing)'],
             ['uri' => '/login', 'desc' => 'Pantalla de Login (auth.login)'],
@@ -64,6 +73,8 @@ class TestAllSystem extends Command
             ['uri' => '/panel/Caballos/Nuevo', 'desc' => 'Panel Ganadero - Publicar Caballo'],
             ['uri' => '/panel/MiPerfil', 'desc' => 'Panel Ganadero - Mi Perfil'],
             ['uri' => '/panel/Pais', 'desc' => 'Panel Ganadero - Países'],
+            ['uri' => '/dnieves/Instalaciones', 'desc' => 'Pagina publica cliente - Instalaciones'],
+            ['uri' => '/dnieves/Contacto', 'desc' => 'Pagina publica cliente - Contacto'],
         ];
 
         $passed = 0;

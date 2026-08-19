@@ -2,11 +2,11 @@
 @php($stud = !empty($user)?$user->Yeguada():null)
 @php($tiempoaviso = 60000)
 @php
+    $mostrarmarca = 0;
+    $agua = 0;
     if(\Auth::user()->isAdm() != true){
 $yegu = \Auth::user()->Yeguada();
 $marca = $yegu->Marca();
-$mostrarmarca = 0;
-$agua = 0;
 if(!empty($marca)){
 $mostrarmarca = 1;
 $agua = $yegu->MarcaAgua()->first()->status;

@@ -139,6 +139,26 @@ class Photo extends Model
         return $this->type;
     }
 
+    public function SaveGalery($name, $stud_id)
+    {
+        $f = "uploads/" . \Config::get('aplication.fotoyeguada');
+        $this->name = $name;
+        $this->tableid = $stud_id;
+        $this->type = 2;
+        $this->url = url($f . "/" . $name);
+        return $this;
+    }
+
+    public function SaveInstalationsImage($name, $stud_id)
+    {
+        $f = "uploads/" . \Config::get('aplication.fotoyeguada');
+        $this->name = $name;
+        $this->tableid = $stud_id;
+        $this->type = 3;
+        $this->url = url($f . "/" . $name);
+        return $this;
+    }
+
     public function setType($type)
     {
         if ($type === 'stud') $type = 1;

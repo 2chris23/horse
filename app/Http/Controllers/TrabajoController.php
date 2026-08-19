@@ -24,6 +24,7 @@ class TrabajoController extends Controller
         $user = $data['user'];
         $stud = $data['stud'];
         $studphoto = $data['studphoto'];
+        $galeria = $data['studphoto'];
         $horses = $data['horses'];
         $horsesfav = $data['horsesfav'];
 
@@ -67,7 +68,7 @@ class TrabajoController extends Controller
             }
         }
 
-        return view('frontend.trabajos.index', compact('stud '))->with(['stud' => $stud, 'user' => $user]);
+        return view('frontend.trabajos.index', compact('stud'))->with(['stud' => $stud, 'user' => $user]);
     }
 
     public function indexpost(Request $r)

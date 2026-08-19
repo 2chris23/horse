@@ -669,6 +669,8 @@ class StudController extends Controller
         $persona = $data['persona'];
         $error = $data['error'];
         $user = $data['user'];
+        $horses = $data['horses'];
+        $horsesfav = $data['horsesfav'];
 
         $desing = $data['desing'];
 
@@ -679,19 +681,19 @@ class StudController extends Controller
         //return view('frontend.landing.v1.fotos', compact('user', 'error', 'stud', 'persona', 'horses', 'horsesfav'));
         if ($desing != 0) {
             if ($desing == 1) {
-                return view('frontend.landing.v1.fotos', compact('user', 'error', 'stud', 'persona', 'horses', 'horsesfav', 'data'));
+                return view('frontend.landing.v1.fotos', compact('user', 'error', 'stud', 'persona', 'galeria', 'horses', 'horsesfav', 'data'));
             } elseif ($desing == 2) {
-                return view('frontend.landing.v2.index', compact('user', 'error', 'stud', 'persona', 'horses', 'horsesfav', 'data'));
+                return view('frontend.landing.v2.index', compact('user', 'error', 'stud', 'persona', 'galeria', 'horses', 'horsesfav', 'data'));
             } elseif ($desing == 3) { //olon
-                return view('frontend.landing.v3.fotos', compact('user', 'error', 'stud', 'persona', 'horses', 'horsesfav', 'data'));
+                return view('frontend.landing.v3.fotos', compact('user', 'error', 'stud', 'persona', 'galeria', 'horses', 'horsesfav', 'data'));
             } elseif ($desing == 4) {
-                return view('frontend.landing.v4.fotos', compact('user', 'error', 'stud', 'persona', 'horses', 'horsesfav', 'data'));
+                return view('frontend.landing.v4.fotos', compact('user', 'error', 'stud', 'persona', 'galeria', 'horses', 'horsesfav', 'data'));
             } elseif ($desing == 5) {
-                return view('frontend.landing.v5.index', compact('user', 'error', 'stud', 'persona', 'horses', 'horsesfav', 'data'));
+                return view('frontend.landing.v5.index', compact('user', 'error', 'stud', 'persona', 'galeria', 'horses', 'horsesfav', 'data'));
             } elseif ($desing == 6) { //beni
-                return view('frontend.landing.v6.foto', compact('user', 'error', 'stud', 'persona', 'horses', 'horsesfav', 'data'));
+                return view('frontend.landing.v6.foto', compact('user', 'error', 'stud', 'persona', 'galeria', 'horses', 'horsesfav', 'data'));
             } elseif ($desing == 7) { //beni
-                return view('frontend.landing.v3.pupilaje', compact('user', 'error', 'stud', 'persona', 'horses', 'horsesfav', 'data'));
+                return view('frontend.landing.v3.pupilaje', compact('user', 'error', 'stud', 'persona', 'galeria', 'horses', 'horsesfav', 'data'));
             }
         }
         return view('frontend.landing.studs.photo', compact('user', 'error', 'stud', 'persona', 'galeria'));
@@ -780,6 +782,8 @@ class StudController extends Controller
         $stud = $data['stud'];
         $persona = $data['persona'];
         $galeria = $data['studphotoinstalations'];
+        $horses = $data['horses'];
+        $horsesfav = $data['horsesfav'];
         $error = $data['error'];
         $desing = $data['desing'];
         if ($d == true) {
@@ -788,19 +792,19 @@ class StudController extends Controller
         //return view('frontend.landing.v1.instalaciones', compact('user', 'error', 'stud', 'persona', 'horses', 'horsesfav'));
         if ($desing != 0) {
             if ($desing == 1) {
-                return view('frontend.landing.v1.instalaciones', compact('user', 'error', 'stud', 'persona', 'horses', 'horsesfav', 'data'));
+                return view('frontend.landing.v1.instalaciones', compact('user', 'error', 'stud', 'persona', 'galeria', 'horses', 'horsesfav', 'data'));
             } elseif ($desing == 2) {
-                return view('frontend.landing.v2.index', compact('user', 'error', 'stud', 'persona', 'horses', 'horsesfav', 'data'));
+                return view('frontend.landing.v2.index', compact('user', 'error', 'stud', 'persona', 'galeria', 'horses', 'horsesfav', 'data'));
             } elseif ($desing == 3) {//olon
-                return view('frontend.landing.v3.instalations', compact('user', 'error', 'stud', 'persona', 'horses', 'horsesfav', 'data'));
+                return view('frontend.landing.v3.instalations', compact('user', 'error', 'stud', 'persona', 'galeria', 'horses', 'horsesfav', 'data'));
             } elseif ($desing == 4) {
-                return view('frontend.landing.v4.instalations', compact('user', 'error', 'stud', 'persona', 'horses', 'horsesfav', 'data'));
+                return view('frontend.landing.v4.instalations', compact('user', 'error', 'stud', 'persona', 'galeria', 'horses', 'horsesfav', 'data'));
             } elseif ($desing == 5) {
-                return view('frontend.landing.v5.instalations', compact('user', 'error', 'stud', 'persona', 'horses', 'horsesfav', 'data'));
+                return view('frontend.landing.v5.instalations', compact('user', 'error', 'stud', 'persona', 'galeria', 'horses', 'horsesfav', 'data'));
             } elseif ($desing == 6) {
-                return view('frontend.landing.v6.instalations', compact('user', 'error', 'stud', 'persona', 'horses', 'horsesfav', 'data'));
+                return view('frontend.landing.v6.instalations', compact('user', 'error', 'stud', 'persona', 'galeria', 'horses', 'horsesfav', 'data'));
             } elseif ($desing == 7) { //beni
-                return view('frontend.landing.v3.contacto', compact('user', 'error', 'stud', 'persona', 'horses', 'horsesfav', 'data'));
+                return view('frontend.landing.v3.contacto', compact('user', 'error', 'stud', 'persona', 'galeria', 'horses', 'horsesfav', 'data'));
             }
         }
         return view('frontend.landing.studs.instalations', compact('user', 'error', 'stud', 'persona', 'data'));
@@ -1347,6 +1351,7 @@ return redirect($url);
         $persona = $data['persona'];
         $error = $data['error'];
         $horses = $data['horses'];
+        $horsesfav = $data['horsesfav'];
 
 
         if (empty($horse)) {

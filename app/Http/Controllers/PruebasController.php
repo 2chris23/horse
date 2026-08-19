@@ -16,6 +16,7 @@ class PruebasController extends Controller
         $user = $data['user'];
         $stud = $data['stud'];
         $studphoto = $data['studphoto'];
+        $galeria = $data['studphoto'];
         $horses = $data['horses'];
         $horsesfav = $data['horsesfav'];
 
